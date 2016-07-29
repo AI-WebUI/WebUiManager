@@ -1,0 +1,86 @@
+.ui-picker{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	width: 100%;
+	z-index:999998;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	-webkit-transition: .3s;
+	-webkit-transform: translateY(540px);
+	-webkit-tap-highlight-color: transparent;
+}
+.ui-picker .ui-picker-header{
+	height: 90px;
+	background-color: #f2f2f2;
+	-webkit-user-select: none;
+}
+.ui-picker .ui-picker-header .ui-picker-button{
+	float: left;
+	font:28px "microsoft yahei";
+	color: #268bc4;
+	line-height: 90px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+.ui-picker .ui-picker-header .ui-picker-button:last-child{
+	float: right;
+}
+.ui-picker .ui-picker-content{
+	background-color: #fff;
+	height: 450px;
+	width: 100%;
+}
+.ui-picker .ui-picker-content .ui-picker-item{
+	height: 450px;
+	overflow-y: auto;
+	float: left;
+	background-color: #fff;
+	/*width: 25%;*/
+	/*left: -20px;*/
+	/*position: relative;*/
+}
+.ui-picker .ui-picker-content .ui-picker-item.ios{
+	width: calc(100% + 8px);
+	padding-right: 8px;
+}
+.ui-picker .ui-picker-item .ui-picker-cell{
+	font:28px "helvetica Neue";
+	color: #9C9C9C;
+	height: 90px;
+	line-height: 90px;
+}
+.ui-picker .ui-picker-content .ui-picker-item .ui-picker-cell-current{
+	font:32px "helvetica Neue";
+	color: #333;
+	height: 90px;
+	line-height: 90px;
+}
+.ui-picker .ui-picker-rule{
+	position: absolute;
+	font:32px "helvetica Neue";
+	color: #333;
+	border: 1px #9C9C9C solid ;
+	border-left-style: none;
+	border-right-style: none;
+	/*width: 100%;*/
+	/*left: 0px;*/
+	top: 50%;
+	z-index: 0;
+	height: 90px;
+	margin-top: 0px;
+}
+.ui-picker .ui-picker-rule.android{
+	width: 100%;
+	left: 0px;
+}
+.ui-picker-shadow{
+	position: fixed;
+	z-index: 998;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	background-color: rgba(0,0,0,.3);
+}

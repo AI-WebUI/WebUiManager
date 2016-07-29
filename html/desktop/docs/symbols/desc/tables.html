@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>table</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/demoApi.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../js/rainbow.min.js"></script>
+    <style type="text/css">
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            display: block;
+            margin: 10px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="cont">
+    <h1>表格组件API</h1>
+
+    <h2>基本数据展示表格</h2>
+
+    <p> html代码： </p>
+		<pre><code>&lt;table id=&quot;tt&quot;&gt;&lt;/table&gt;
+        </code></pre>
+
+    <p> js代码： </p>
+		<pre><code>$('#tt').datagrid({
+            url:'datagrid_data.json',
+            columns:[[
+            {field:'code',title:'Code',width:100},
+            {field:'name',title:'Name',width:100},
+            {field:'price',title:'Price',width:100,align:'right'}
+            ]]
+            });
+        </code></pre>
+
+    <p> 参数： </p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th width="150">类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>url（超链接）</td>
+            <td>string（字符串）</td>
+            <td>一个用以从远程站点请求数据的超链接地址。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>columns（列）</td>
+            <td>array（数组）</td>
+            <td>数据表格列配置对象，查看列属性以获取更多细节。</td>
+            <td>null</td>
+        </tr>
+        </tbody>
+    </table>
+    <p> columns属性值： </p>
+		<pre><code>columns:[[
+            {field:'itemid',title:'Item ID',rowspan:2,width:80,sortable:true},
+            {field:'productid',title:'Product ID',rowspan:2,width:80,sortable:true},
+            {title:'Item Details',colspan:4}
+            ],[
+            {field:'listprice',title:'List Price',width:80,align:'right',sortable:true},
+            {field:'unitcost',title:'Unit Cost',width:80,align:'right',sortable:true},
+            {field:'attr1',title:'Attribute',width:100},
+            {field:'status',title:'Status',width:60}
+            ]]
+        </code></pre>
+
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th width="150">名称</th>
+            <th>类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>title（标题）</td>
+            <td>string（字符串）</td>
+            <td>列标题。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>field（字段）</td>
+            <td>string（字符串）</td>
+            <td>列字段。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>width（宽度）</td>
+            <td>number（数字）</td>
+            <td>列宽。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>rowspan（跨行数）</td>
+            <td>number（数字）</td>
+            <td>表明一个单元格跨几行。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>colspan（跨列数）</td>
+            <td>number（数字）</td>
+            <td>表明一个单元格跨几列。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>align（对其方式）</td>
+            <td>string（字符串）</td>
+            <td>表明如何对其列数据，可选值：'left'，'right'，'center'。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>sortable（可排序）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true允许对该列排序。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>resizable（缩放）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true允许该列被缩放。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>hidden（隐藏）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true将隐藏列。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>checkbox（复选框）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true将显示复选框。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>formatter（格式化）</td>
+            <td>function（函数）</td>
+            <td>格式化单元格函数，有3个参数：
+                <br> value：字段的值。
+                <br> rowData：行数据。
+                <br> rowIndex：行索引。
+            </td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>styler（样式）</td>
+            <td>function（函数）</td>
+            <td>单元格样式函数，返回样式字符串装饰表格如'background:red'，function有3个参数：
+                <br> value：字段值。
+                <br> rowData：行数据。
+                <br> rowIndex：行索引。
+            </td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>sorter（排序器）</td>
+            <td>function（函数）</td>
+            <td>T自定义字段排序函数，有2个参数：
+                <br> a：该列的第一个值。
+                <br> b：该列的第二个值。
+            </td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>editor（编辑器）</td>
+            <td>string,object（字符串，对象）</td>
+            <td>表明编辑类型。如果属性是字符串类型表示编辑类型，如果是对象则包含2个参数：
+                <br> type：字符串，编辑类型，可选值：text，textarea，checkbox，numberbox，validatebox，datebox，combobox，combotree。
+                <br> options：对象，对象于编辑类型的编辑器属性。
+            </td>
+            <td>undefined</td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>带选择的数据表格</h2>
+
+    <p> js代码： </p>
+		<pre><code>$('#test').datagrid({
+            url:'datagrid_data.json',
+            frozenColumns:[[
+            {field:'ck',checkbox:true},
+            {title:'Code',field:'code',width:80,sortable:true}
+            ]],
+            columns:[[
+            {title:'Base Information',colspan:3},
+            {field:'opt',title:'Operation',width:100,align:'center', rowspan:2}
+            ],[
+            {field:'name',title:'Name',width:120},
+            {field:'addr',title:'Address',width:220,rowspan:2,sortable:true},
+            {field:'col4',title:'Col41',width:150,rowspan:2}
+            ]],
+            rownumbers:true
+            });
+        </code></pre>
+
+    <p> 属性值： </p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th width="150">类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>url（超链接）</td>
+            <td>string（字符串）</td>
+            <td>一个用以从远程站点请求数据的超链接地址。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>frozenColumns（固定列）</td>
+            <td>array（数组）</td>
+            <td>跟列属性一样，但是这些列固定在左边，不会滚动。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>columns（列）</td>
+            <td>array（数组）</td>
+            <td>数据表格列配置对象，查看列属性以获取更多细节。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>rownumbers（行数）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true将显示行数。</td>
+            <td>false</td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>可编辑的表格</h2>
+
+    <p> js代码： </p>
+		<pre><code>$('#tt').edatagrid({
+            url: 'datagrid_data.json',
+            saveUrl: ...,
+            updateUrl: ...,
+            destroyUrl: ...
+            });
+        </code></pre>
+
+    <p> 属性值： </p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th width="150">类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>url</td>
+            <td>string</td>
+            <td>一个 URL，从服务器检索数据。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>saveUrl</td>
+            <td>string</td>
+            <td>一个 URL，向服务器保存数据，并返回添加的行。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>updateUrl</td>
+            <td>string</td>
+            <td>一个 URL，向服务器更新数据，并返回更新的行。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>destroyUrl</td>
+            <td>string</td>
+            <td>一个 URL，向服务器传送 'id' 参数来销毁该行。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>autoSave</td>
+            <td>boolean</td>
+            <td>设置为 true，则当点击数据网格外部时自动保存编辑行。</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>destroyMsg</td>
+            <td>object</td>
+            <td>当销毁一行时要显示的确认对话框消息。</td>
+            <td>
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="pln">destroyMsg</span><span class="pun">:{</span></li>
+                    <li class="L1"><span class="pln">	no</span><span id="1_nwp"
+                                                                        style="width: auto; height: auto; float: none;"><a
+                            id="1_nwl"
+                            href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=f349e7605ab8f407&amp;k=record&amp;k0=record&amp;kdi0=0&amp;luki=7&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=7f4b85a60e749f3&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fextension%2F190%2Ehtml&amp;urlid=0"
+                            target="_blank" mpid="1" style="text-decoration: none;"><span
+                            style="color:#0000ff;font-size:13px;width:auto;height:auto;float:none;"><span class="pln">record</span></span></a></span><span
+                            class="pun">:{</span><span class="pln">	</span><span class="com">// when no record is selected</span>
+                    </li>
+                    <li class="L2"><span class="pln">		title</span><span class="pun">:</span><span class="str">'Warning'</span><span
+                            class="pun">,</span></li>
+                    <li class="L3"><span class="pln">		msg</span><span class="pun">:</span><span class="str">'No record is selected.'</span>
+                    </li>
+                    <li class="L4"><span class="pln">	</span><span class="pun">},</span></li>
+                    <li class="L5"><span class="pln">	confirm</span><span class="pun">:{</span><span
+                            class="pln">	</span><span class="com">// when select a row</span></li>
+                    <li class="L6"><span class="pln">		title</span><span class="pun">:</span><span class="str">'Confirm'</span><span
+                            class="pun">,</span></li>
+                    <li class="L7"><span class="pln">		msg</span><span class="pun">:</span><span class="str">'Are you sure you want to delete?'</span>
+                    </li>
+                    <li class="L8"><span class="pln">	</span><span class="pun">}</span></li>
+                    <li class="L9"><span class="pun">}</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>属性数据表格</h2>
+
+    <p> js代码： </p>
+		<pre><code>$('#pg').propertygrid({
+            url:'propertygrid_data.json',
+            showGroup:true
+            });
+        </code></pre>
+
+    <p> 属性值： </p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>showGroup（显示分组）</td>
+            <td>boolean（布尔型）</td>
+            <td>定义是否显示属性分组。</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>groupField（分组字段）</td>
+            <td>string（字符串）</td>
+            <td>定义要分组的字段名称。</td>
+            <td>group</td>
+        </tr>
+        <tr>
+            <td>groupFormatter（分组格式）</td>
+            <td>function（函数）</td>
+            <td>定义如何格式化分组中的值。</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h1>提供方法</h1>
+
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <th align="left">名称</th>
+            <th align="left">参数</th>
+            <th align="left">描述</th>
+        </tr>
+
+        <tr>
+            <td>getData</td>
+            <td>none</td>
+            <td>返回加载的数据。</td>
+        </tr>
+        <tr>
+            <td>getRows</td>
+            <td>none</td>
+            <td>返回当前页的行。</td>
+        </tr>
+        <tr>
+            <td>getFooterRows</td>
+            <td>none</td>
+            <td>返回底部的行。</td>
+        </tr>
+        <tr>
+            <td>getRowIndex</td>
+            <td>row</td>
+            <td>返回指定行的索引，row 参数可以是一个行记录或者一个 id 字段的值。</td>
+        </tr>
+        <tr>
+            <td>getChecked</td>
+            <td>none</td>
+            <td>返回复选框选中的所有行。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>getSelected</td>
+            <td>none</td>
+            <td>返回第一个选中的行或者 null。</td>
+        </tr>
+        <tr>
+            <td>getSelections</td>
+            <td>none</td>
+            <td>返回所有选中的行，当没有选中的记录时，将返回空数组。</td>
+        </tr>
+        <tr>
+            <td>clearSelections</td>
+            <td>none</td>
+            <td>清除所有的选择。</td>
+        </tr>
+        <tr>
+            <td>clearChecked</td>
+            <td>none</td>
+            <td>清除所有勾选的行。该方法自版本 1.3.2 起可用。</td>
+        </tr>
+        <tr>
+            <td>deleteRow</td>
+            <td>index</td>
+            <td>删除一行。</td>
+        </tr>
+        <tr>
+            <td>updateRow</td>
+            <td>param</td>
+            <td>更新指定的行， param 参数包括下列属性：
+                <br> index：要更新的行的索引。
+                <br> row：新的行数据。
+                <br>
+                <br> 代码实例：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
+                            class="str">'#dg'</span><span class="pun">).</span><span class="pln">datagrid</span><span
+                            class="pun">(</span><span class="str">'updateRow'</span><span class="pun">,{</span></li>
+                    <li class="L1"><span class="pln">	index</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">2</span><span class="pun">,</span></li>
+                    <li class="L2"><span class="pln">	row</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="pun">{</span></li>
+                    <li class="L3"><span class="pln">		name</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
+                    <li class="L4"><span class="pln">		note</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new note message'</span></li>
+                    <li class="L5"><span class="pln">	</span><span class="pun">}</span></li>
+                    <li class="L6"><span class="pun">});</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>appendRow</td>
+            <td>row</td>
+            <td>追加一个新行。新的行将被添加在最后的位置：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
+                            class="str">'#dg'</span><span class="pun">).</span><span class="pln">datagrid</span><span
+                            class="pun">(</span><span class="str">'appendRow'</span><span class="pun">,{</span></li>
+                    <li class="L1"><span class="pln">	name</span><span class="pun">:</span><span class="pln"> </span><span
+                            class="str">'new name'</span><span class="pun">,</span></li>
+                    <li class="L2"><span class="pln">	age</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">30</span><span class="pun">,</span></li>
+                    <li class="L3"><span class="pln">	note</span><span class="pun">:</span><span class="pln"> </span><span
+                            class="str">'some messages'</span></li>
+                    <li class="L4"><span class="pun">});</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>insertRow</td>
+            <td>param</td>
+            <td>插入一个新行， param 参数包括下列属性：
+                <br> index：插入进去的行的索引，如果没有定义，就追加该新行。
+                <br> row：行的数据。
+                <br>
+                <br> 代码实例：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="com">// insert a new row at second row position</span></li>
+                    <li class="L1"><span class="pln">$</span><span class="pun">(</span><span
+                            class="str">'#dg'</span><span class="pun">).</span>datagrid</span><span class="pun">(</span><span
+                            class="str">'insertRow'</span><span class="pun">,{</span></li>
+                    <li class="L2"><span class="pln">	index</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span
+                            class="pln">	</span><span class="com">// index start with 0</span></li>
+                    <li class="L3"><span class="pln">	row</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="pun">{</span></li>
+                    <li class="L4"><span class="pln">		name</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
+                    <li class="L5"><span class="pln">		age</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">30</span><span class="pun">,</span></li>
+                    <li class="L6"><span class="pln">		note</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'some messages'</span></li>
+                    <li class="L7"><span class="pln">	</span><span class="pun">}</span></li>
+                    <li class="L8"><span class="pun">});</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>getPager</td>
+            <td>none</td>
+            <td>返回分页（pager）对象。</td>
+        </tr>
+        <tr>
+            <td>loadData</td>
+            <td><span id="16_nwp" style="width: auto; height: auto; float: none;">data
+				</span>
+            </td>
+            <td>加载本地数据，旧的行会被移除。</td>
+        </tr>
+        <tr>
+            <td>highlightRow</td>
+            <td>index</td>
+            <td>高亮显示一行。该方法自版本 1.3.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>selectAll</td>
+            <td>none</td>
+            <td>选中当前页所有的行。</td>
+        </tr>
+        <tr>
+            <td>unselectAll</td>
+            <td>none</td>
+            <td>取消选中当前页所有的行。</td>
+        </tr>
+        <tr>
+            <td>selectRow</td>
+            <td>index</td>
+            <td>选中一行，行索引从 0 开始。</td>
+        </tr>
+        <tr>
+            <td>selectRecord</td>
+            <td>idValue</td>
+            <td>通过传递 id 的值做参数选中一行。</td>
+        </tr>
+        <tr>
+            <td>unselectRow</td>
+            <td>index</td>
+            <td>取消选中一行。</td>
+        </tr>
+        <tr>
+            <td>checkAll</td>
+            <td>none</td>
+            <td>勾选当前页所有的行。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>uncheckAll</td>
+            <td>none</td>
+            <td>取消勾选当前页所有的行。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>checkRow</td>
+            <td>index</td>
+            <td>勾选一行，行索引从 0 开始。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>uncheckRow</td>
+            <td>index</td>
+            <td>取消勾选一行，行索引从 0 开始。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>beginEdit</td>
+            <td>index</td>
+            <td>开始对一行进行编辑。</td>
+        </tr>
+        <tr>
+            <td>endEdit</td>
+            <td>index</td>
+            <td>结束对一行进行编辑。</td>
+        </tr>
+        <tr>
+            <td>cancelEdit</td>
+            <td>index</td>
+            <td>取消对一行进行编辑。</td>
+        </tr>
+        <tr>
+            <td>getEditors</td>
+            <td>index</td>
+            <td>获取指定行的编辑器。每个编辑器有下列属性：
+                <br> actions：编辑器能做的动作，与编辑器定义相同。
+                <br>target：目标编辑器的 jQuery 对象。
+                <br> field：字段名。
+                <br> type：编辑器的类型，比如：'text'、'combobox'、'datebox'，等等。
+            </td>
+        </tr>
+        <tr>
+            <td>getEditor</td>
+            <td>options</td>
+            <td>获取指定的编辑器， options 参数包含两个属性：
+                <br> index：行的索引。
+                <br> field：字段名。
+                <br>
+                <br> 代码实例：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="com">// get the datebox editor and change its value</span></li>
+                    <li class="L1"><span class="kwd">var</span><span class="pln"> ed </span><span
+                            class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#dg'</span><span
+                            class="pun">).</span><span class="pln">datagrid</span><span class="pun">(</span><span
+                            class="str">'getEditor'</span><span class="pun">,</span><span class="pln"> </span><span
+                            class="pun">{</span><span class="pln">index</span><span class="pun">:</span><span
+                            class="lit">1</span><span class="pun">,</span><span class="pln">field</span><span
+                            class="pun">:</span><span class="str">'birthday'</span><span class="pun">});</span></li>
+                    <li class="L2"><span class="pln">$</span><span class="pun">(</span><span class="pln">ed</span><span
+                            class="pun">.target</span><span class="pun">).</span><span class="pln">datebox</span><span
+                            class="pun">(</span><span class="str">'setValue'</span><span class="pun">,</span><span
+                            class="pln"> </span><span class="str">'5/4/2012'</span><span class="pun">);</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>refreshRow</td>
+            <td>index</td>
+            <td>刷新一行。</td>
+        </tr>
+        <tr>
+            <td>validateRow</td>
+            <td>index</td>
+            <td>验证指定的行，有效时返回 true。</td>
+        </tr>
+        <tr>
+            <td>mergeCells</td>
+            <td>options</td>
+            <td>把一些单元格合并为一个单元格，options 参数包括下列特性：
+                <br> index：列的索引。
+                <br> field：字段名。
+                <br> rowspan：合并跨越的行数。
+                <br> colspan：合并跨越的列数。
+            </td>
+        </tr>
+        <tr>
+            <td>showColumn</td>
+            <td>field</td>
+            <td>显示指定的列。</td>
+        </tr>
+        <tr>
+            <td>hideColumn</td>
+            <td>field</td>
+            <td>隐藏指定的列。</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<p>参考链接：<a href="http://www.jeasyui.net/plugins/183.html" title="官方文档">http://www.jeasyui.net/plugins/183.html</a></p>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+</body>
+
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

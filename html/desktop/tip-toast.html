@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>提示</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<style type="text/css">
+			button{
+				display: block;
+				float: left;
+				padding: 10px;
+				margin: 10px;
+				border: none;
+				background-color: #44ABE5;
+				color: #fff;
+				cursor: pointer;
+				outline: none;
+			}
+			button:hover{
+				background-color: #95B8E7;
+				color: #333;
+			}
+			.big{
+				height: 1000px;
+			}
+			.tip-test{
+				display: block;
+				width: 500px;
+				height: 300px;
+				border: 1px solid #44ABE5;
+				float: left;
+				top: 150px;
+				position: relative;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/toast.css"/>
+	</head>
+	<body style="background-color: #eee;">
+		<!--<div class="ui-tip-toast">
+			<div class="ui-toast-centent">
+				<span class="span-success"></span>
+				<p>请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次</p>
+			</div>
+		</div>-->
+		<button onclick="tip.open()">成功</button>
+		<button onclick="tip.setContent('改变后的内容！');tip.open()">改变内容后打开</button>
+		<button onclick="tip.setContent('改变后的内容！');tip.setPosition(500);tip.open()">改变内容和位置后打开</button>
+		<button onclick="tip2.open()">错误</button>
+		<button onclick="tip3.open()">疑问</button>
+		<button onclick="tip4.open()">信息</button>
+		<button onclick="tip5.open()">警告（重）</button>
+		<button onclick="tip6.open()">警告（轻）</button>
+		<button onclick="tip7.open()">在下边框中上下居中显示</button>
+		<div id="tip_test" class="tip-test">
+			所需显示的外部div必须存在position属性
+		</div>
+	</body>
+	<script type="text/javascript" src="lib/jquery/1.11.3/jquery.js"></script>
+	<script src="js/toastTip.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var tip = new AIToastTip({
+			message:"请选择营销案档次",
+			type:"success",
+			timeout:5000
+		});
+		var tip2 = new AIToastTip({
+			message:"请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+			type:"error",
+			timeout:10000
+		});
+		var tip3 = new AIToastTip({
+			message:"请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+			type:"question",
+			timeout:10000
+		});
+		var tip4 = new AIToastTip({
+			message:"请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+			type:"info",
+			timeout:10000
+		});
+		var tip5 = new AIToastTip({
+			message:"请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+			type:"warn",
+			timeout:10000
+		});
+		var tip6 = new AIToastTip({
+			message:"请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+			type:"warn-little",
+			timeout:10000
+		});
+		var tip7 = new AIToastTip({
+			message:"请选择营销案档次",
+			type:"warn-little",
+			id:"tip_test",
+			timeout:10000
+		});
+	</script>
+</html>

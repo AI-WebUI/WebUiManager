@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>输入框组件</title>
+		<link rel="stylesheet" type="text/css" href="css320/base.css" />
+		<link rel="stylesheet" type="text/css" href="css320/input.css" />
+		<link rel="stylesheet" href="css/scrollbar.css"/>
+		<style type="text/css">
+			
+			body {
+				background: #F1F1F1;
+			}
+			
+			.btn-group {
+				margin-top: 20px;
+				width: 100%;
+				height: 60px;
+				display: block;
+			}
+			
+			.btn-group button {
+				width: 40%;
+				height: 50px;
+				font-size: 25px;
+				line-height: 50px;
+				display: block;
+				float: left;
+				margin-left: 7%;
+				border: none;
+				background-color: #44ABE5;
+				color: #fff;
+			}
+			
+			.btn-group button:active {
+				background-color: #BEBEBE;
+			}
+			
+			.mobile_div {
+				margin: 0 auto;
+				border: 1px #CCCCCC solid;
+				border-radius: 6px;
+				margin-top: 10px;
+				padding-bottom: 10px;
+				width: 96%;
+				background: #f1f1f1;
+			}
+			
+			.input-list {
+				width:90%;
+				background-color: #fff;
+				padding-left: 20px;
+				overflow: hidden;
+				margin:0 auto;
+			}
+			
+			.title-p {
+				text-align: center;
+				color: #febe44;
+				font-size: 20px;
+				padding: 24px 0 18px 0
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="title-p">文本框</div>
+		<p>1.搜索框</p>
+		<div class="ui-search-div">
+			<span class="ui-search-icon"></span>
+			<input class="ui-input ui-search" type="text" placeholder="搜索提示" value="请输入搜索内容" required/>
+			<span class="js-ui-clear ui-search-clear fn-hide"></span>
+		</div>
+
+		<p>2.普通输入框</p>
+		<div class="ui-input-group">
+			<div class="ui-input-content">
+				<span class="ui-input-content-name">手机号码</span>
+				<input class="ui-input ui-input-val" type="text" name="name" id="name" placeholder="请输入您的手机号码" required/>
+				<span class="js-ui-clear fn-hide"></span>
+			</div>
+			<div class="ui-tip">
+				<span class="ui-tip-error"></span>
+				<p class="js-tip-val">错误信息提示</p>
+
+			</div>
+
+		</div>
+
+		<!--
+        	作者：178974662@qq.com
+        	时间：2015-08-21
+        	描述：带有 js- 开头的为js代码操作的class属性
+        -->
+		<p>3.输入框组合</p>
+		<div class="input-list">
+			<div class="ui-input-div">
+				<input class="ui-input" type="text" placeholder="输入框" value="" required/>
+				<span class="js-ui-clear fn-hide"></span>
+			</div>
+			<hr />
+			<div class="ui-input-div">
+				<input class="ui-input ui-input-pass" type="password" value="" placeholder="输入密码" required/>
+				<span class="js-ui-clear ui-pass-clear fn-hide"></span>
+				<span class="js-ui-look"></span>
+			</div>
+		</div>
+
+		<p>4.文本域输入</p>
+
+		<div class="ui-textarea-div">
+			<div id="JS_titel-one" class="ui-textarea-title-one">标题</div>
+			<textarea class="ui-textarea ui-textarea-one js-textarea" name="name" rows="1" cols="" maxlength="30" placeholder="输入提示"></textarea>
+			<div class="ui-textarea-tip">
+				还可以输入<span></span>个字
+			</div>
+		</div>
+		<div class="ui-textarea-div">
+			<div id="JS_titel-two" class="ui-textarea-title-two">标题</div>
+			<textarea class="ui-textarea ui-textarea-two js-textarea" name="name" rows="1" cols="" maxlength="30" placeholder="文本域输入框"></textarea>
+			<div class="ui-textarea-tip">
+				还可以输入<span></span>个字
+			</div>
+		</div>
+
+		<p>5.置灰输入框</p>
+		<div class="ui-input-div">
+			<input class="ui-input ui-un-input" disabled="disabled" type="text" placeholder="输入置灰" required/>
+			<span class="js-ui-clear fn-hide"></span>
+		</div>
+		<br />
+
+	</body>
+	<script src="lib/jquery/2.1.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/input.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			bindInputEvent(true, true, true);
+			$("#name").bind("blur",function(){
+				var phone = $("#name").val();
+				if(phone && /^[1][358][0-9]{9}$/.test(phone)){
+					return true;
+				} else{
+					$(".js-tip-val").text("请输入正确手机号");
+					return false;
+				}
+			})
+			$("#name").keyup(function(){
+				var tmptxt=$(this).val();
+				$(this).val(tmptxt.replace(/\D/g,''));
+			}).bind("paste",function(){
+				var tmptxt=$(this).val();
+				$(this).val(tmptxt.replace(/\D/g,''));
+			}).css("ime-mode", "disabled");
+		})
+	</script>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<!-- 文档框架样式 -->
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/select.css" />
+		<link rel="stylesheet" href="../../css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+		<script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+		<script type="text/javascript" src="../../../js/select.js"></script>
+		<script type="text/javascript" src="../../js/rainbow.min.js"></script>
+		<script type="text/javascript" src="../../../js/jquery.webui.min.js"></script>
+		<style type="text/css">
+			p {
+				font-weight: bold;
+				margin: 8px 0 8px 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="cont">
+			<h1 class="main_title">选择控件</h1>
+			<p class="view-desc">单选、复选</p>
+			<div class="demo_content">
+				<!-- 组件示例区域 -->
+				<div class="aries_demo bs-example">
+					<div class="content">
+						<h1>select 选择框使用案例</h1>
+						<p>1、单选框radio </p>
+						<div id="radio-nomarl"></div>
+						<br />
+						<br />
+						<p>2、复选框checkbox </p>
+						<div id="checkbox-normal"></div>
+						<br />
+						<br />
+						<p>3、单选框radioBlock-样式1</p>
+						<div id="radio-block"></div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<p>4、单选框radioBlock-样式2</p>
+						<div id="radio-block-bg"></div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<p>5、复选框checkBlock</p>
+						<div id="checkbox-block"></div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<p>6、级联选择</p>
+						<div id="cascade-select"></div>
+					</div>
+
+					<br />
+					<br />
+
+					<script>
+						$(function() {
+							//普通单选
+							var radio_normal = $("#radio-nomarl").AISelect({
+								type: 'radio',
+								displayField: 'channelName',
+								valueField: 'channelId',
+								data: [{
+									channelId: '1001',
+									channelName: '选项1'
+								}, {
+									channelId: '1002',
+									channelName: '选项2'
+								}, {
+									channelId: '1003',
+									channelName: '选项3'
+								}, {
+									channelId: '1004',
+									channelName: '选项4',
+									disabled: true
+								}],
+								onSelect: function(obj) {
+									//alert(JSON.stringify(obj.getSelectedIndex()));
+								},
+								must: false
+							});
+							//块级普通单选
+							var radio_block = $("#radio-block").AISelect({
+								type: 'radioBlock',
+								displayField: 'channelName',
+								valueField: 'channelId',
+								data: [{
+									channelId: '1001',
+									channelName: '选项1'
+								}, {
+									channelId: '1002',
+									channelName: '选项2'
+								}, {
+									channelId: '1003',
+									channelName: '选项3'
+								}, {
+									channelId: '1004',
+									channelName: '选项4',
+									disabled: true
+								}],
+								onSelect: function(obj) {
+									//alert(JSON.stringify(obj.getSelectedIndex()));
+								},
+								must: false
+							});
+							//块级普通单选
+							var radio_block_2 = $("#radio-block-bg").AISelect({
+								type: 'radioBlock',
+								background: "background",
+								displayField: 'channelName',
+								valueField: 'channelId',
+								data: [{
+									channelId: '1001',
+									channelName: '选项1'
+								}, {
+									channelId: '1002',
+									channelName: '选项2'
+								}, {
+									channelId: '1003',
+									channelName: '选项3'
+								}, {
+									channelId: '1004',
+									channelName: '选项4',
+									disabled: true
+								}],
+								onSelect: function(obj) {
+									//alert(JSON.stringify(obj.getSelectedIndex()));
+								},
+								must: false
+							});
+							//块级普通单选
+							var checkbox_normal = $("#checkbox-normal").AISelect({
+								type: 'checkbox',
+								displayField: 'channelName',
+								valueField: 'channelId',
+								data: [{
+									channelId: '1001',
+									channelName: '选项1'
+								}, {
+									channelId: '1002',
+									channelName: '选项2'
+								}, {
+									channelId: '1003',
+									channelName: '选项3'
+								}, {
+									channelId: '1004',
+									channelName: '选项4',
+									disabled: true
+								}],
+								onSelect: function(obj) {
+									//alert(JSON.stringify(obj.getSelectedIndex()));
+								},
+								must: false
+							});
+							//块级复选框
+							var checkbox_block = $("#checkbox-block").AISelect({
+								type: 'checkboxBlock',
+								displayField: 'channelName',
+								valueField: 'channelId',
+								data: [{
+									channelId: '1001',
+									channelName: '选项1'
+								}, {
+									channelId: '1002',
+									channelName: '选项2'
+								}, {
+									channelId: '1003',
+									channelName: '选项3'
+								}, {
+									channelId: '1004',
+									channelName: '选项4',
+									disabled: true
+								}],
+								onSelect: function(obj) {
+									//alert(JSON.stringify(obj.getSelectedIndex()));
+								},
+								must: false
+							});
+							//块级复选框
+							var cascade_select = $("#cascade-select").AISelectQuery({
+								width: 400,
+								fields: [{
+									id: 'item1',
+									name: '手机品牌',
+									content: [{
+										text: '苹果',
+										value: '1'
+									}, {
+										text: '小米',
+										value: '2'
+									}, {
+										text: '三星',
+										value: '3'
+									}]
+								}, {
+									id: 'item2',
+									name: '手机颜色',
+									content: [{
+										text: '白色',
+										value: '1'
+									}, {
+										text: '土豪金',
+										value: '2'
+									}, {
+										text: '深空灰',
+										value: '3'
+									}],
+									multi: true
+								}, {
+									id: 'item3',
+									name: '价格',
+									content: [{
+										text: '0~500',
+										value: '1'
+									}, {
+										text: '500~2000',
+										value: '2'
+									}, {
+										text: '2000~5000',
+										value: '3'
+									}]
+								}]
+							});
+						});
+					</script>
+				</div>
+				<!-- 组件示例代码区域 -->
+				<div class="highlight"></div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+	</body>
+
+</html>

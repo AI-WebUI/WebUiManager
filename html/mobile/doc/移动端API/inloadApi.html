@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title>移动端顶部加载API</title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		
+		.text_head {
+			width: 100%;
+			display: block;
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			font-weight: bold;
+			padding: 10px 0px 10px 0;
+			background: #000;
+		}
+		
+		.little_title {
+			display: block;
+			width: 100%;
+			font-size: 14px;
+			font-weight: bold;
+			padding: 8px 0 8px 0;
+			background: #eee;
+		}
+		
+		.article_div .p {
+			display: block;
+			font-size: 14px;
+			padding: 6px 0 6px 0px;
+		}
+		
+		.article_div {
+			padding: 5px 10px 5px 10px;
+		}
+		
+		pre,
+		code {
+			font-size: 0.75em;
+			font-family: Consolas, Inconsolata, Courier, monospace;
+		}
+		
+		code {
+			margin: 0 0.15em;
+			padding: 0 0.3em;
+			white-space: pre-wrap;
+			border: 1px solid #EAEAEA;
+			background-color: #F8F8F8;
+			border-radius: 3px;
+			display: inline;
+			/* added to fix Yahoo block display of inline code */
+		}
+		
+		pre {
+			font-size: 1em;
+			line-height: 1.2em;
+		}
+		
+		pre code {
+			white-space: pre;
+			overflow: auto;
+			/* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			padding: 0.5em 0.7em;
+			display: block !important;
+			/* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
+		}
+		
+		pre,
+		code {
+			font-size: 0.75em;
+			font-family: Consolas, Inconsolata, Courier, monospace;
+		}
+		
+		code {
+			margin: 0 0.15em;
+			padding: 0 0.3em;
+			white-space: pre-wrap;
+			border: 1px solid #EAEAEA;
+			background-color: #F8F8F8;
+			border-radius: 3px;
+			display: inline;
+			/* added to fix Yahoo block display of inline code */
+		}
+		
+		pre {
+			font-size: 1em;
+			line-height: 1.2em;
+		}
+		
+		pre code {
+			white-space: pre;
+			overflow: auto;
+			/* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			padding: 0.5em 0.7em;
+			display: block !important;
+			/* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
+		}
+		
+		.in_filed {
+			width: 100%;
+			height: auto
+		}
+	</style>
+
+	<body>
+		<header class="text_head">移动端-顶部加载API</header>
+		<div class="in_filed">
+			<label class="little_title">1.需要引入的文件</label>
+			<article class="article_div">
+				<pre><code class="code_content">
+ webui.css、jquery.js、webui.js
+				 </code></pre>
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">2.引入的顺序</label>
+			<article class="article_div">
+				<pre><code class="code_content">
+&lt;link rel="stylesheet" type="text/css" href="css/webui.css" /&gt;
+
+&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+
+&lt;script src="webui.js" type="text/javascript"&gt;&lt;/script&gt;
+				</code></pre>
+			</article>
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">3.使用方法</label>
+			<article class="article_div">
+				<pre><code class="code_content">&lt;div class="center"&gt;
+	&lt;input class="btn" type="button" name="开始" id="start" onclick="_load.start()" value="开始" /&gt;
+	&lt;input class="btn" type="button" name="开始" id="end" onclick="_load.done()" value="结束" /&gt;
+&lt;/div&gt;
+</code></pre>
+
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">4.JS代码</label>
+			<article class="article_div">
+				<pre class="pre_cont"><code class="code_content" style="font-size: 10px;">
+var _load = $('body').progress();
+					</code></pre>
+
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">5.参数说明</label>
+			<article class="article_div">
+				<pre class="pre_cont"><code class="code_content">
+						
+选择需要绑定进度条的元素，绑定进度条到当前元素；
+
+start():进度条开始方法
+
+done():进度条结束方法
+
+					</code></pre>
+
+			</article>
+
+		</div>
+	</body>
+
+</html>

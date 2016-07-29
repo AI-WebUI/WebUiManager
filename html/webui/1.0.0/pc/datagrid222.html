@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/webui.css"/>
+    <script src="../../../desktop/lib/jquery/1.11.3/jquery.js"></script>
+    <script src="js/webui.js"></script>
+</head>
+<body>
+
+    <table id="data7" style="max-height:200px"></table>
+
+<script>
+    var data = [];
+    for (var i = 1; i <= 30; i++) {
+        var amount = Math.floor(Math.random() * 1000);
+        var price = Math.floor(Math.random() * 1000);
+        data.push({
+            inv: 'Inv No ' + i,
+            date: $.fn.datebox.defaults.formatter(new Date()),
+            name: 'Name ' + i,
+            amount: amount,
+            price: price,
+            cost: amount * price,
+            note: 'Note ' + i
+        });
+    }
+    $(function () {
+        $("#data7").datagrid({
+            width: 700,
+            height: 248,
+            singleSelect: true,
+            autoRowHeight: false,
+            rownumbers: true,
+            fitColumns: false,
+            pagination: true,
+//            fit:false,
+//            nowrap: true,
+            data: data.slice(0, 10),
+            pageSize: 10,
+//                        loadFilter:function(data){
+//                            pagerFilter()
+//                        },
+            columns: [[
+                {field: 'inv', width: 80, title: 'Inv No'},
+                {field: 'date', width: 100, title: 'Date'},
+                {field: 'name', width: 80, title: 'Name'},
+                {field: 'amount', width: 80, title: 'Amount'},
+                {field: 'price', width: 80, title: 'Price'},
+                {field: 'cost', width: 100, title: 'Cost'},
+                {field: 'note', width: 110, title: 'Note'},
+            ]]
+        });
+        var pager = $("#data7").datagrid("getPager");
+        pager.pagination({
+            total: data.length,
+            onSelectPage: function (pageNo, pageSize) {
+                var start = (pageNo - 1) * pageSize;
+                var end = start + pageSize;
+                $("#data7").datagrid("loadData", data.slice(start, end));
+                pager.pagination('refresh', {
+                    total: data.length,
+                    pageNumber: pageNo
+                });
+            }
+        })
+    })
+</script>
+</body>
+</html>

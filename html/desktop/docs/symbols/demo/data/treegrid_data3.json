@@ -1,0 +1,69 @@
+[{
+	"id":1,
+	"name":"宽带业务",
+	"size":"",
+	"date":"02/19/2010",
+	"children":[{
+		"id":113,
+		"name":"宽带开户",
+		"size":"120 MB",
+		"date":"03/20/2010",
+		"children":[{
+			"id":22321,
+			"name":"sdfsdfsdf",
+			"typeName":"sdfsdfsdf",
+			"size":"",
+			"date":"01/13/2010",
+			"state":"closed",
+			"children":[{
+				"id":211111,
+				"name":"华为T4200",
+				"size":"142 KB",
+				"date":"01/13/2010"
+			},{
+				"id":212,
+				"name":"摩托罗拉X200",
+				"size":"5 KB",
+				"date":"01/13/2010"
+			}]
+		},{
+			"id":22,
+			"name":"送柴米油盐活动",
+			"size":"",
+			"date":"01/13/2010",
+			"state":"closed",
+			"children":[{
+				"id":221,
+				"name":"全家福大豆油4L",
+				"size":"10 KB",
+				"date":"02/26/2009"
+			},{
+				"id":222,
+				"name":"中粮东北香10kg",
+				"size":"5 KB",
+				"date":"02/26/2009"
+			}]
+		}]
+	},{
+		"id":3,
+		"name":"宽带变更",
+		"size":"",
+		"date":"01/20/2010",
+		"children":[{
+			"id":31,
+			"name":"账户变更",
+			"size":"56 KB",
+			"date":"05/19/2009"
+		},{
+			"id":32,
+			"name":"地址变更",
+			"size":"1 KB",
+			"date":"04/20/2010"
+		},{
+			"id":33,
+			"name":"费用变更",
+			"size":"7 KB",
+			"date":"03/17/2005"
+		}]
+	}]
+}]

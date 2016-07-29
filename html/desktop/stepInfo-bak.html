@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>流程条</title>
+<style type="text/css">
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, SimSun, sans-serif;
+    line-height: 1.5;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    background: rgb(255, 255, 255);
+    transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow-x: hidden;
+}
+
+.aiuiicon-check{
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url(step-success.png) no-repeat center center;  
+}
+
+.aiui-steps {
+  font-size: 0;
+  width: 100%;
+  line-height: 1.5;
+}
+.aiui-steps .aiui-steps-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-wait .aiui-steps-head-inner {
+  border-color: #ccc;
+  background-color: #fff;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-wait .aiui-steps-head-inner > .aiui-steps-icon {
+  color: #ccc;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-wait .aiui-steps-title {
+  color: #999;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-wait .aiui-steps-description {
+  color: #999;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-wait .aiui-steps-tail > i {
+  background-color: #e9e9e9;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-process .aiui-steps-head-inner {
+  border-color: #7DC433;
+  background-color: #7DC433;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-process .aiui-steps-head-inner > .aiui-steps-icon {
+  color: #fff;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-process .aiui-steps-title {
+  color: #666;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-process .aiui-steps-description {
+  color: #666;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-process .aiui-steps-tail > i {
+  background-color: #e9e9e9;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-finish .aiui-steps-head-inner {
+  border-color: #7DC433;
+  background-color: #fff;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-finish .aiui-steps-head-inner > .aiui-steps-icon {
+  color: #7DC433;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-finish .aiui-steps-tail > i:after {
+  width: 100%;
+  background: #7DC433;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  opacity: 1;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-finish .aiui-steps-title {
+  color: #999;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-status-finish .aiui-steps-description {
+  color: #999;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-custom .aiui-steps-head-inner {
+  background: none;
+  border: 0;
+  width: auto;
+  height: auto;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-custom .aiui-steps-head-inner > .aiui-steps-icon {
+  font-size: 20px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+}
+.aiui-steps .aiui-steps-item.aiui-steps-custom.aiui-steps-status-process .aiui-steps-head-inner > .aiui-steps-icon {
+  color: #7DC433;
+}
+.aiui-steps .aiui-steps-head,
+.aiui-steps .aiui-steps-main {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.aiui-steps .aiui-steps-head {
+  background: #fff;
+  margin-top: 3px;
+}
+.aiui-steps .aiui-steps-head-inner {
+  display: block;
+  border: 1px solid #ccc;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 16px;
+  font-size: 14px;
+  margin-right: 8px;
+  -webkit-transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.aiui-steps .aiui-steps-head-inner > .aiui-steps-icon {
+  line-height: 1;
+  top: -1px;
+  color: #7DC433;
+  position: relative;
+}
+.aiui-steps .aiui-steps-head-inner > .aiui-steps-icon.aiuiicon {
+  font-size: 12px;
+}
+.aiui-steps .aiui-steps-main {
+  margin-top: 3px;
+}
+.aiui-steps .aiui-steps-title {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #666;
+  font-weight: bold;
+  background: #fff;
+  display: inline-block;
+  padding-right: 10px;
+}
+.aiui-steps .aiui-steps-item-last .aiui-steps-title {
+  padding-right: 0;
+}
+.aiui-steps .aiui-steps-description {
+  font-size: 12px;
+  color: #999;
+}
+.aiui-steps .aiui-steps-tail {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 13px;
+  padding: 0 10px;
+}
+.aiui-steps .aiui-steps-tail > i {
+  display: inline-block;
+  vertical-align: top;
+  background: #e9e9e9;
+  height: 1px;
+  border-radius: 1px;
+  width: 100%;
+  position: relative;
+}
+.aiui-steps .aiui-steps-tail > i:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  width: 0;
+  background: #e9e9e9;
+  height: 100%;
+  opacity: 0;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-head-inner {
+  border: 1px solid #ccc;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 18px;
+  font-size: 12px;
+  margin-right: 10px;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-head-inner > .aiui-steps-icon.aiuiicon {
+  display: inline-block;
+  font-size: 0.75;
+  font-size: 9px \9;
+  -webkit-transform: scale(0.75) rotate(0deg);
+          transform: scale(0.75) rotate(0deg);
+  /* IE6-IE8 */
+  filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1);
+  zoom: 1;
+  top: 0;
+}
+:root .aiui-steps.aiui-steps-small .aiui-steps-head-inner > .aiui-steps-icon.aiuiicon {
+  -webkit-filter: none;
+          filter: none;
+}
+:root .aiui-steps.aiui-steps-small .aiui-steps-head-inner > .aiui-steps-icon.aiuiicon {
+  font-size: 12px;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-main {
+  margin-top: 0;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-title {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #666;
+  font-weight: bold;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-description {
+  font-size: 12px;
+  color: #999;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-tail {
+  top: 8px;
+  padding: 0 8px;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-tail > i {
+  height: 1px;
+  border-radius: 1px;
+  width: 100%;
+}
+.aiui-steps.aiui-steps-small .aiui-steps-item.aiui-steps-custom .aiui-steps-head-inner,
+.aiui-steps .aiui-steps-item.aiui-steps-custom .aiui-steps-head-inner {
+  width: inherit;
+  height: inherit;
+  line-height: inherit;
+  border-radius: 0;
+  border: 0;
+  background: none;
+}
+.aiui-steps-vertical .aiui-steps-item {
+  display: block;
+}
+.aiui-steps-vertical .aiui-steps-tail {
+  position: absolute;
+  left: 13px;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  padding: 30px 0 4px 0;
+}
+.aiui-steps-vertical .aiui-steps-tail > i {
+  height: 100%;
+  width: 1px;
+}
+.aiui-steps-vertical .aiui-steps-tail > i:after {
+  height: 0;
+  width: 100%;
+}
+.aiui-steps-vertical .aiui-steps-status-finish .aiui-steps-tail > i:after {
+  height: 100%;
+}
+.aiui-steps-vertical .aiui-steps-head {
+  float: left;
+}
+.aiui-steps-vertical .aiui-steps-head-inner {
+  margin-right: 16px;
+}
+.aiui-steps-vertical .aiui-steps-main {
+  min-height: 47px;
+  overflow: hidden;
+  display: block;
+}
+.aiui-steps-vertical .aiui-steps-main .aiui-steps-title {
+  line-height: 26px;
+}
+.aiui-steps-vertical .aiui-steps-main .aiui-steps-description {
+  padding-bottom: 12px;
+}
+.aiui-steps-vertical.aiui-steps-small .aiui-steps-tail {
+  position: absolute;
+  left: 9px;
+  top: 0;
+  padding: 22px 0 4px 0;
+}
+.aiui-steps-vertical.aiui-steps-small .aiui-steps-tail > i {
+  height: 100%;
+}
+.aiui-steps-vertical.aiui-steps-small .aiui-steps-title {
+  line-height: 18px;
+}
+
+</style>
+</head>
+
+<body>
+    <div style="width:800px;margin:50px auto">
+        <div class="aiui-steps">
+            <div class="aiui-steps-item aiui-steps-status-finish" style="width: 211px;">
+                <div class="aiui-steps-tail"><i></i></div>
+                <div class="aiui-steps-head">
+                    <div class="aiui-steps-head-inner"><span class="aiui-steps-icon aiuiicon aiuiicon-check"></span></div>
+                </div>
+                <div class="aiui-steps-main" style="max-width:100px;">
+                    <div class="aiui-steps-title">已完成</div>
+                    <div class="aiui-steps-description">这里是多信息的描述啊</div>
+                </div>
+            </div>
+            <div class="aiui-steps-item aiui-steps-status-process" style="width: 211px;">
+                <div class="aiui-steps-tail"><i></i></div>
+                <div class="aiui-steps-head">
+                    <div class="aiui-steps-head-inner"><span class="aiui-steps-icon">2</span></div>
+                </div>
+                <div class="aiui-steps-main" style="max-width:100px;">
+                    <div class="aiui-steps-title">进行中</div>
+                    <div class="aiui-steps-description">这里是多信息的耶哦耶哦哦耶哦耶</div>
+                </div>
+            </div>
+            <div class="aiui-steps-item aiui-steps-status-wait" style="width: 205px;">
+                <div class="aiui-steps-tail"><i></i></div>
+                <div class="aiui-steps-head">
+                    <div class="aiui-steps-head-inner"><span class="aiui-steps-icon">3</span></div>
+                </div>
+                <div class="aiui-steps-main" style="max-width:100px;">
+                    <div class="aiui-steps-title">又一个待运行</div>
+                    <div class="aiui-steps-description">描述啊描述啊</div>
+                </div>
+            </div>
+            <div class="aiui-steps-item aiui-steps-item-last aiui-steps-status-wait" ><span></span>
+                <div class="aiui-steps-head">
+                    <div class="aiui-steps-head-inner"><span class="aiui-steps-icon">4</span></div>
+                </div>
+                <div class="aiui-steps-main" style="max-width:100px;">
+                    <div class="aiui-steps-title">待运行</div>
+                    <div class="aiui-steps-description">这里是多信息的描述啊</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

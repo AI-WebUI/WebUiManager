@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>控件首页</title>
+		<link href="assets/css/font-awesome.css" rel="stylesheet" />
+	</head>
+	<style>
+	body{
+		background: #f3f3f3;
+	
+	}
+	   *{
+	   	margin: 0;
+	   	padding: 0;
+	   	font-family: "微软雅黑";
+	   }
+		.div_bg{
+			width: 930px;
+			height: 580px;
+			margin: 0 auto;
+			box-shadow: 2px 2px 2px 2px #ccc;
+		}
+		.div-top{
+			height:40px;
+		}
+		.logo{
+			position: absolute;
+			width: 150px;
+			height: 40px;
+			margin: -560px 0 0 20px;
+		}
+		.div-btn{
+			position: absolute;
+			margin: -380px 0 0 20px;
+		}
+		.div-btn a{
+			display: block;
+			position: absolute;
+			width: 160px;
+			text-align: center;
+			background: #f06521;
+			padding:10px 20px;
+			border-radius:10px;
+			color: #FFF;
+			font-size: 20px;
+			margin: 18px;
+			text-decoration: none;
+			
+		}
+		.div-btn .pc-a:hover{
+			background: #f78b4a;
+		}
+		.div-btn .app-a:hover{
+			background: #90c850;
+		}
+		.div-btn .app-a{
+			
+			background: #35b055;
+			margin: 18px 0 0 240px;
+		}
+		.title-lab{
+			display: block;
+			position: absolute;
+			margin: -550px 0 0 180px;
+			font-size: 20px;
+			color: #BEBEBE;
+		}
+	</style>
+	<body>
+		<div class="div-top"></div>
+		<div class="div_bg">
+			<img src="assets/img/bg4.png" />
+			<div>
+				<img class="logo" src="assets/img/webui1.png" /><label class="title-lab">基于jQuery EasyUI的javascript框架</label>
+			</div>
+			<div class="div-btn">
+				<a class="pc-a" href="index_ver2.html"><i class="fa fa-desktop"></i>  桌面端组件</a>
+				<a class="app-a" href="../../../mobile/extends/extends.html"><i class="fa fa-mobile-phone"></i> 移动端端组件</a>
+				<!--<a class="app-a" href="../../../mobile/mobile_extends/index_ver1.html"><i class="fa fa-mobile-phone"></i> 移动端端组件</a>-->
+			</div>
+	     		    
+		</div>
+	</body>
+</html>

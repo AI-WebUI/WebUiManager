@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title>列表</title>
+		<link rel="stylesheet" type="text/css" href="css320/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css320/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css320/list.css" />
+		<link rel="stylesheet" type="text/css" href="css320/btn.css"/>
+	</head>
+
+	<body>
+
+		<div id="content"></div>
+		<a  href="javascript:;" class="ui-block-btn" id="add">增加</a>
+		<a  href="javascript:;" class="ui-block-btn" id="remove">删除</a>
+		<a  href="javascript:;" class="ui-block-btn" id="getData">请求数据</a>
+
+		<!-- <ul class="ui-list">
+		    <li class="ui-list-item">
+		        <a class="icon-navigate-right" >4G业务</a>
+		    </li>
+		    <li class="ui-list-item">
+		        <a class="icon-navigate-right">家庭亲情网</a>
+		    </li>
+		    <li class="ui-list-item">
+		        <a class="icon-navigate-right">虚拟网</a>
+		    </li>
+		</ul>
+		<ul class="ui-list">
+		    <li class="ui-list-item ui-media">
+		        <a class="icon-navigate-right">
+		            <span class="ui-media-object fn-left ui-icon icon-star"></span>
+		            <div class="ui-media-body">4G业务</div>
+		        </a>
+		    </li>
+		    <li class="ui-list-item ui-media">
+		        <a class="icon-navigate-right">
+		            <span class="ui-media-object fn-left ui-icon icon-sound"></span>
+		            <div class="ui-media-body">家庭亲情网</div>
+		        </a>
+		    </li>
+		    <li class="ui-list-item ui-media">
+		        <a class="icon-navigate-right">
+		            <span class="ui-media-object fn-left ui-icon icon-pages"></span>
+		            <div class="ui-media-body">虚拟网</div>
+		        </a>
+		    </li>
+		</ul>
+		<ul class="ui-list">
+		    <li class="ui-list-item ui-media">
+		        <a class="icon-navigate-right" href="javascript:;">
+		            <img class="ui-media-object fn-left" src="img/tab_bottom_1.png">                
+		            <div class="ui-media-body">
+		                <h4>和你一起购</h4>
+		                <p>充值多少送多少电子卷</p>
+		            </div>
+		        </a>
+		    </li>
+		    <li class="ui-list-item ui-media">
+		        <a class="icon-navigate-right" href="javascript:;">
+		            <img class="ui-media-object fn-left" src="img/tab_bottom_1.png">                
+		            <div class="ui-media-body">
+		                <h4>和你一起“充”</h4>
+		                <p>充多少送多少</p>
+		            </div>
+		        </a>
+		    </li>
+		    <li class="ui-list-item ui-media">
+		        <a class="icon-navigate-right" href="javascript:;">
+		            <img class="ui-media-object fn-left" src="img/tab_bottom_1.png">                
+		            <div class="ui-media-body">
+		                <h4>掌厅专享，充100送2</h4>
+		                <p>掌厅专享，充100送2</p>
+		            </div>
+		        </a>
+		    </li>
+		</ul> -->
+	</body>
+	<script src="lib/jquery/2.1.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/list.js" type="text/javascript" charset="utf-8"></script>
+	<script src="json/listJson.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+		var menuList = $('#content').AIList({
+			type:0,
+			data:jsonList,
+			isInit:true
+		});
+
+
+
+		$("#add").click(function(){
+
+			//添加 
+			menuList.addRow({
+				"id":"1005",
+				"title": "4G业务",
+				"type":"3",
+				"pic": "http://d8.yihaodianimg.com/N06/M06/8A/B9/CgQIzVQj87GAZ2-bAAMyoIZt8v863301_80x80.jpg",
+				"link": "#1",
+				"icon" :"icon-star",
+				"desc": "描述相关内容"
+			});	
+		})
+
+		$("#remove").click(function(){
+			//删除 
+			menuList.removeRow(0);	
+		})
+
+		$("#getData").click(function(){
+			//删除 
+			menuList.getDataRow(0);	
+		})
+		
+		//menuList.removeRow("1001");
+		//menuList.setColorRow("1001");
+	</script>
+</html>

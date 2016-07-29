@@ -1,0 +1,115 @@
+.ui-operate.ui-operate-28{
+	display: block;
+	width: 104px;
+	height: 26px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+/*正常尺寸*/
+.ui-operate-28 .ui-operate-minus{
+	display: block;
+	width: 26px;
+	height: 26px;
+	float: left;
+	cursor:pointer;
+	background: url(icons/operate-big.png) no-repeat -29px -1px;
+}
+.ui-operate-28 .ui-operate-minus.disabled,
+.ui-operate-28 .ui-operate-minus.disabled:hover{
+	background: url(icons/operate-big.png) no-repeat -1px -1px;
+	cursor: default;
+}
+.ui-operate-28 .ui-operate-minus:hover{
+	background: url(icons/operate-big.png) no-repeat -57px -1px #DBECF9;
+}
+.ui-operate-28 .ui-operate-add{
+	display: block;
+	width: 26px;
+	height: 26px;
+	float: left;
+	cursor:pointer;
+	background: url(icons/operate-big.png) -113px -1px;
+}
+.ui-operate-28 .ui-operate-add:hover{
+	background: url(icons/operate-big.png) -141px -1px #DBECF9;
+}
+.ui-operate-28 .ui-operate-add.disabled,
+.ui-operate-28 .ui-operate-add.disabled:hover{
+	background: url(icons/operate-big.png) no-repeat -85px -1px;
+	cursor: default;
+}
+
+.ui-operate-28 .ui-operate-input{
+	display: inline-block;
+	width: 50px;
+	height: 26px;
+	line-height: 26px;
+	padding: 0;
+	float: left;
+	-webkit-appearance: none;
+	text-align: center;
+	font-size: 14px;
+	font-family: helvetica;
+	color: #333;
+	outline: none;
+	border: 1px solid #ccc;
+	border-top: none;
+	border-bottom: none;
+}
+/*小尺寸*/
+.ui-operate.ui-operate-22{
+	display: block;
+	width: 82px;
+	height: 20px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+.ui-operate-22 .ui-operate-minus{
+	display: block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	cursor:pointer;	
+	background: url(icons/operate-small.png) no-repeat -20px 0;
+}
+.ui-operate-22 .ui-operate-minus.disabled,
+.ui-operate-22 .ui-operate-minus.disabled:hover{
+	background: url(icons/operate-small.png) no-repeat 0 0;
+	cursor: default;
+}
+.ui-operate-22 .ui-operate-minus:hover{
+	background: url(icons/operate-small.png) no-repeat -40px 0 #DBECF9;
+}
+.ui-operate-22 .ui-operate-add{
+	display: block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	cursor:pointer;
+	background: url(icons/operate-small.png) -60px 0px;
+}
+.ui-operate-22 .ui-operate-add:hover{
+	background: url(icons/operate-small.png) -100px 0 #DBECF9;
+}
+.ui-operate-22 .ui-operate-add.disabled,
+.ui-operate-22 .ui-operate-add.disabled:hover{
+	background: url(icons/operate-small.png) no-repeat -80px 0;
+	cursor: default;
+}
+.ui-operate-22 .ui-operate-input{
+	display: inline-block;
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	padding: 0;
+	float: left;
+	-webkit-appearance: none;
+	text-align: center;
+	font-size: 12px;
+	font-family: helvetica;
+	color: #333;
+	outline: none;
+	border: 1px solid #ccc;
+	border-top: none;
+	border-bottom: none;
+}

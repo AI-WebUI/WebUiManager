@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dataPick</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 20px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 32px;
+  color: #44ABE5;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #333;
+  border: none;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  padding: 0;
+  height: 2px;
+  background-color: #44ABE5;
+}
+
+/* TABLES
+=============================================================================*/
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+table th {
+  font-weight: bold;
+  background-color: #DBECF9;
+}
+
+table th, table td {
+  border: 1px solid #44ABE5;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #44ABE5;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #eee;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+strong{
+	font-weight: bold;
+	color:#FF9933;
+}
+hr{
+	background-color:#44abe5;
+	height:2px;
+}
+</style>
+</head>
+<body>
+<h1>日期时间输入框</h1>
+<hr />
+<h2>普通日期输入框</h2>
+<p><strong>使用标签创建日期输入框。</strong></p>
+<pre><code>&lt;input id=&quot;dd&quot; type=&quot;text&quot; class=&quot;webui-datebox&quot; required=&quot;required&quot;&gt;&lt;/input&gt; 
+</code></pre>
+
+<p><strong>使用Javascript创建日期输入框。</strong></p>
+<pre><code>&lt;input id=&quot;dd&quot; type=&quot;text&quot;&gt;&lt;/input&gt; 
+
+$('#dd').datebox({    
+    required:true   
+}); 
+</code></pre>
+
+<p><strong>属性</strong></p>
+<table class="doc-table">
+<tbody><tr>
+<th>属性名</th>
+<th>类型</th>
+<th>描述</th>
+<th width="60">默认值</th>
+</tr>
+<tr>
+
+<td>panelWidth</td>
+<td>number</td>
+<td>下拉日历面板宽度。</td>
+<td>256</td>
+</tr>
+<tr>
+<td>panelHeight</td>
+<td>number</td>
+<td>下拉日历面板高度。</td>
+<td>auto</td>
+
+</tr>
+<tr>
+<td>currentText</td>
+<td>string</td>
+<td>显示当天按钮。</td>
+<td>Today</td>
+</tr>
+<tr>
+<td>closeText</td>
+<td>string</td>
+<td>显示关闭按钮。</td>
+
+<td>Close</td>
+</tr>
+<tr>
+<td>okText</td>
+<td>string</td>
+<td>显示OK按钮。</td>
+<td>Ok</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+
+<td>该属性值为true时禁用该字段。</td>
+<td>false</td>
+</tr>
+<tr>
+<td>buttons</td>
+<td>array</td>
+<td>
+在日历下面的按钮。（该属性自1.3.5版开始可用） 
+<p>代码示例：</p>
+<pre>var buttons = $.extend([], $.fn.datebox.defaults.buttons);
+buttons.splice(1, 0, {
+	text: 'MyBtn',
+	handler: function(target){
+		alert('click MyBtn');
+	}
+});
+$('#dd').datebox({
+	buttons: buttons
+});
+</pre>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>sharedCalendar</td>
+<td>string,selector</td>
+<td>
+将一个日历控件共享给多个datebox控件使用。（该属性自1.3.5版开始可用） 
+<p>代码示例：</p>
+<pre>&lt;input class="webui-datebox" sharedCalendar="#sc"&gt;
+&lt;input class="easyui-datebox" sharedCalendar="#sc"&gt;
+&lt;div id="sc" class="easyui-calendar"&gt;&lt;/div&gt;
+</pre>
+</td>
+<td>null</td>
+</tr>
+<tr>
+<td>formatter</td>
+<td>function</td>
+<td>
+该函数用于格式化日期，它有一个'date'参数并且会返回一个字符串类型的值。下面的一个例子展示了如何重写默认的formatter函数。
+
+<pre>$.fn.datebox.defaults.formatter = function(date){
+	var y = date.getFullYear();
+	var m = date.getMonth()+1;
+	var d = date.getDate();
+	return m+'/'+d+'/'+y;
+}
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>parser</td>
+
+<td>function</td>
+<td>
+该函数用于解析一个日期字符串，它有一个'date'字符串参数并且会返回一个日期类型的值。下面的一个例子展示了如何重写默认的parser函数。
+<pre>$.fn.datebox.defaults.parser = function(s){
+	var t = Date.parse(s);
+	if (!isNaN(t)){
+		return new Date(t);
+	} else {
+		return new Date();
+	}
+}
+</pre>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>事件</strong></p>
+<table class="doc-table">
+<tbody><tr>
+
+<th>事件名</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>onSelect</td>
+<td>date</td>
+<td>
+在用户选择了一个日期的时候触发。
+<p>代码示例:</p>
+<pre>$('#dd').datebox({
+	onSelect: function(date){
+		alert(date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate());
+	}
+});
+</pre>
+</td>
+</tr>
+</tbody></table>
+<p><strong>方法</strong></p>
+<table class="doc-table">
+<tbody><tr>
+<th>方法名</th>
+<th>参数</th>
+<th>描述</th>
+
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>返回属性对象。</td>
+</tr>
+<tr>
+<td>calendar</td>
+<td>none</td>
+<td>
+获取日历对象。下面的例子显示了如果获取日历对象并重新创建它。
+<pre>// 获取日历对象
+var c = $('#dd').datebox('calendar');
+// 设置一周的第一天是星期几（0是周日，1是周一）
+c.calendar({
+	firstDay: 1
+});
+</pre>
+</td>
+</tr>
+
+<tr>
+<td>setValue</td>
+<td>value</td>
+<td>
+设置日期输入框的值。
+<p>代码示例:</p>
+<pre>$('#dd').datebox('setValue', '6/1/2012');	// 设置日期输入框的值
+var v = $('#dd').datebox('getValue');	//  获取日期输入框的值
+</pre>
+</td>
+</tr>
+<tr>
+<td>cloneFrom</td>
+<td>from</td>
+<td>
+从原日期输入框克隆日期内容. （该属性自1.4.1版开始可用）
+<p>代码示例:</p>
+<pre>&lt;input id="from" class="easyui-datebox"&gt;
+
+// 从其它时间输入框获取时间的值，填充当前输入框
+$('.dt').datebox('cloneFrom', '#from');
+</pre>
+</td>
+</tr>
+</tbody></table>
+<h2>带时分秒的日期输入框</h2>
+<p><strong>使用标签创建日期时间输入框。</strong></p>
+<pre><code>&lt;input class=&quot;webui-datetimebox&quot; name=&quot;birthday&quot;     
+    data-options=&quot;required:true,showSeconds:false&quot; value=&quot;3/4/2010 2:3&quot; style=&quot;width:150px&quot;&gt;  
+</code></pre>
+
+<p><strong>使用Javascript创建日期时间输入框。</strong></p>
+<pre><code>&lt;input id=&quot;dt&quot; type=&quot;text&quot; name=&quot;birthday&quot;&gt;&lt;/input&gt; 
+
+$('#dt').datetimebox({    
+    value: '3/4/2010 2:3',    
+    required: true,    
+    showSeconds: false   
+}); 
+</code></pre>
+
+<p><strong>属性</strong></p>
+<table class="doc-table">
+<tbody><tr>
+<th>属性名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+<tr>
+<td>currentText</td>
+<td>string</td>
+<td>当天按钮的显示文本</td>
+<td>今天</td>
+</tr>
+<tr>
+<td>closeText</td>
+<td>string</td>
+<td>关闭按钮的显示文本。</td>
+
+<td>关闭</td>
+</tr>
+<tr>
+<td>okText</td>
+<td>string</td>
+<td>确定按钮的显示文本。</td>
+<td>确定</td>
+</tr>
+<tr>
+<td>spinnerWidth</td>
+<td>number</td>
+<td>
+定义datetimebox组件嵌入的时间微调器的宽度。
+</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>showSeconds</td>
+<td>boolean</td>
+<td>定义是否显示秒钟信息。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>timeSeparator</td>
+<td>string</td>
+<td>定义在小时、分钟和秒之间的时间分割字符。（该属性自1.3版开始可用）</td>
+<td>:</td>
+</tr>
+</tbody></table>
+<p><strong>方法</strong></p>
+<table class="doc-table">
+<tbody><tr>
+<th>方法名</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+
+<td>返回属性对象。</td>
+</tr>
+<tr>
+<td>spinner</td>
+<td>none</td>
+<td>返回时间微调器对象。</td>
+</tr>
+<tr>
+<td>setValue</td>
+<td>value</td>
+<td>
+设置日期时间输入框值。 
+<p>代码示例:</p>
+<pre>$('#dt').datetimebox('setValue', '6/1/2012 12:30:56');	// 设置日期时间输入框的值
+var v = $('#dt').datetimebox('getValue');		// 获取日期时间输入框的值
+alert(v);
+</pre>
+</td>
+
+</tr>
+<tr>
+<td>cloneFrom</td>
+<td>from</td>
+<td>
+从另一个时间输入框中克隆值到另一个时间输入框
+<p>代码示例:</p>
+<pre>&lt;input id="from" class="webui-datetimebox"&gt;
+
+// 从其它时间输入框获取时间的值，填充当前输入框
+$('.dt').datetimebox('cloneFrom', '#from');
+</pre>
+</td>
+</tr>
+</tbody></table>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

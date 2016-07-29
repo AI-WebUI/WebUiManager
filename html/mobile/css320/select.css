@@ -1,0 +1,317 @@
+.ui-select-radio-blue-cycle,
+.ui-select-radio-blue-angle,
+.ui-select-checkbox-black-icon,
+.ui-select-checkbox-blue-cycle,
+.ui-select-checkbox-blue-angle {
+	display: none;
+}
+.ui-select-radio-blue-cycle+label,
+.ui-select-checkbox-blue-cycle + label {
+	background-color: #ffffff;
+	border: 1px #44abe5 solid;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	width: 90px;
+	height: 32px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.ui-select-radio-blue-cycle + label:after,
+.ui-select-checkbox-blue-cycle + label:after {
+	content: attr(data-attr);
+	position: absolute;
+	line-height: 31px;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	color: #44ABE5;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-blue-cycle:checked + label:after,
+.ui-select-checkbox-blue-cycle:checked + label:after {
+	content: attr(data-attr);
+	position: absolute;
+	background: #44abe5;
+	border: 1px #44abe5 solid;
+	color: #FFFFFF;
+	margin: -1px 0 0 -1px;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-checkbox-blue-cycle-flex + label,
+.ui-select-radio-blue-cycle-flex + label {
+	background-color: #ffffff;
+	border: 1px #44abe5 solid;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	height: 32px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	line-height: 31px;
+	border-radius: 5px;
+	color: #44ABE5;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 15px;
+	padding: 0 10px;
+}
+.ui-select-radio-blue-cycle-flex:checked + label,
+.ui-select-checkbox-blue-cycle-flex:checked + label {
+	background: #44abe5;
+	border: 1px #44abe5 solid;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-blue-angle + label,
+.ui-select-checkbox-blue-angle + label {
+	background-color: #ffffff;
+	border: 1px #44abe5 solid;
+	display: inline-block;
+	position: relative;
+	width: 90px;
+	height: 31px;
+	margin-bottom: 20px;
+	margin-left: 20px;		
+}
+.ui-select-radio-blue-angle + label:after,
+.ui-select-checkbox-blue-angle + label:after {
+	content: attr(data-attr);
+	position: absolute;
+	line-height: 31px;
+	width: 100%;
+	height: 100%;
+	color: #44ABE5;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-blue-angle:checked + label:after,
+.ui-select-checkbox-blue-angle:checked + label:after,
+.ui-select-radio-black-angle:checked + label:after {
+	content: attr(data-attr);
+	position: absolute;
+	background: #44abe5;
+	border: 1px #44abe5 solid;
+	color: #FFFFFF;
+	margin: -1px 0 0 -1px;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-blue-angle-flex + label,
+.ui-select-checkbox-blue-angle-flex + label {
+	background-color: #ffffff;
+	border: 1px #FFFFFF solid;
+	display: inline-block;
+	position: relative;
+	height: 32px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	padding: 0 10px;
+	line-height: 31px;
+	color: #44ABE5;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-blue-angle-flex:checked + label,
+.ui-select-checkbox-blue-angle-flex:checked + label,
+.ui-select-radio-black-angle-flex:checked + label {
+	background: #44abe5;
+	border: 1px #44abe5 solid;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-black-icon + label,
+.ui-select-checkbox-black-icon + label,
+.ui-select-radio-black-angle + label {
+	background-color: #fff;
+	border: 0px #FFFFFF solid;
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	height: 34px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.ui-select-radio-black-angle + label{
+	background-color: #f5f5f5;
+}
+.ui-select-radio-black-icon + label:after,
+.ui-select-checkbox-black-icon + label:after,
+.ui-select-radio-black-angle + label:after {
+	content: attr(data-attr);
+	position: absolute;
+	font-size: 15px;
+	line-height: 31px;
+	width: 100%;
+	height: 100%;
+	color: #333;
+	text-align: center;
+	font-family: "微软雅黑";
+}
+.ui-select-radio-black-icon:checked + label:after,
+.ui-select-checkbox-black-icon:checked + label:after {
+	content: attr(data-attr);
+	position: absolute;
+	background: #FFFFFF;
+	border: 1px #44abe5 solid;
+	color: #333;
+	background-image: url(../img/gouxuan.png);
+	background-size: 26px;
+	background-repeat: no-repeat;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-black-icon-flex + label,
+.ui-select-checkbox-black-icon-flex + label,
+.ui-select-radio-black-angle-flex + label {
+	background-color: #ffffff;
+	border: 1px #FFFFFF solid;
+	display: inline-block;
+	position: relative;
+	/*height: 32px;
+	line-height: 31px;*/
+	margin-bottom: 10px;
+	margin-left: 10px;
+	font-size: 15px;
+	color: #333;
+	text-align: center;
+	font-family: "微软雅黑";
+	padding: 10px 15px;
+}
+label p{
+	padding: 0;
+	margin:0;
+}
+.ui-select-radio-black-icon-flex:checked + label,
+.ui-select-checkbox-black-icon-flex:checked + label {
+	background: #FFFFFF;
+	border: 1px #44abe5 solid;
+	color: #333;
+	background-image: url(../img/gouxuan.png);
+	background-size: 24px;
+	background-repeat: no-repeat;
+	font-family: "微软雅黑";
+	font-size: 15px;
+}
+.ui-select-radio-blue-tradition-label,
+.ui-select-radio-blue-throughout-label,
+.ui-select-checkbox-blue-tradition-label {
+	font-family: "微软雅黑";
+	font-size: 15px;
+	display: block;
+}
+input[type=radio],
+input[type=checkbox] {
+	display: none;
+}
+.ui-select-radio-blue-tradition-label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	background-position-y: 2px;
+	background-image: url(../img/radio.png);
+	background-size: 15px;
+	background-repeat: no-repeat;
+}
+.ui-select-radio-blue-throughout-label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	float: right;
+	background-position-x: 5px;
+	background-position-y: 2px;
+	/*background-image: url(../img/checkbox-checked-no-border.png);*/
+	background-size: 15px;
+	background-repeat: no-repeat;
+}
+.ui-select-checkbox-blue-tradition-label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	background-position-y: 2px;
+	background-image: url(../img/checkbox.png);
+	background-size: 15px;
+	background-repeat: no-repeat;
+}
+input[type=radio]:checked + label:before {
+	background-image: url(../img/radio-checked.png);
+	/*小按钮里面的样式,单选选中状态*/
+}
+input[type=radio]:checked + label.ui-select-radio-blue-throughout-label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	float: right;
+	background-position-x: 5px;
+	background-position-y: 2px;
+	background-image: url(../img/checkbox-checked-no-border.png);
+	background-size: 15px;
+	background-repeat: no-repeat;
+}
+input[type=radio]:disabled + label:before {
+	background-image: url(../img/radio-disabled.png);
+	/*小按钮里面的样式,单选选中状态*/
+}
+input[type=checkbox]:checked + label:before {
+	background-image: url(../img/checkbox-checked.png);
+	/*color: #ffffff;
+	background-color: #44ABE5;*/
+}
+input[type=checkbox]:disabled + label:before {
+	background-image: url(../img/checkbox-disabled.png);
+}
+.ui-select-radio-blue-tradition-ul,
+.ui-select-radio-blue-throughout-ul,
+.ui-select-checkbox-blue-tradition-ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	background-color: #FFFFFF;
+}
+.ui-select-radio-blue-tradition-li,
+.ui-select-checkbox-blue-tradition-li {
+	/*margin: -30px 40px 0 20px;*/
+	margin: 0 20px -15px 10px;
+	padding: 15px 0;
+	background-color: #FFFFFF;
+	/*display: inline-flex;*/
+}
+.ui-select-radio-blue-throughout-li {
+	/*margin: -30px 40px 0 20px;*/
+	margin: 0 10px -15px 10px;
+	padding: 15px 0;
+	background-color: #FFFFFF;
+	/*display: inline-flex;*/
+}
+.ui-select-radio-blue-tradition-li:last-child,
+.ui-select-checkbox-blue-tradition-li:last-child {
+	/*margin: -30px 60px 30px 20px;*/
+	margin: 0 20px 0 10px;
+}
+.ui-select-radio-blue-throughout-li:last-child {
+	/*margin: -30px 60px 30px 20px;*/
+	margin: 0 10px;
+}
+.ui-select-radio-tradition-throughout-flex {
+	display: inline-flex;
+	display: -webkit-inline-flex;
+	/*padding: 30px 0;
+	margin: 0 40px -30px 20px;
+	background-color: #FFFFFF;*/
+}
+/*.ui-select-radio-blue-tradition-li-flex:last-child {
+	margin: 0 60px 0 20px;
+}*/

@@ -1,0 +1,108 @@
+body {
+	
+	font-family: "微软雅黑";
+	margin:0;
+	padding:0;
+	overflow-y:scroll;
+}
+
+.div-a {
+	position: relative;
+	width: 100%;
+	height: 60px;
+	background:black;
+}
+ ul{
+	 position:absolute;
+	 top: 90px;
+	 left:60px;
+	width:65%;
+	height:auto;
+	/*margin-left:60px;*/
+}
+ .lis {
+	 font-family: "Microsoft YaHei";
+	 font-size:18px;
+	display: inline-block;
+	background: #ff9920;
+	width:108px;
+	text-align: center;
+	height: 30px;
+	 line-height: 30px;
+	color: #fff;
+	padding: 5px 0;
+	margin: 6px 0 6px 10px;
+	 /*margin-left:20px;*/
+	text-decoration: none;
+	 border:2px solid #febe44;
+	 border-radius: 5px;
+	/*border-bottom: 2px #f06521 solid;*/
+	/*-webkit-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius:6px ;*/
+	cursor: pointer;
+}
+
+
+.div-mobile {
+	position: absolute;
+	background: url(../img/applephone.png);
+	background-size: 320px 640px;
+	width: 320px;
+	height: 640px;
+	margin: 0.3% 0 30px 72%;
+	overflow-y: hidden;
+	z-index: 55;
+	
+}
+
+.iframe-mobile {
+	width: 290px;
+	height:500px;
+	background: #fff;
+	margin: 70px 0 0 16px;
+	background:url(../img/kaiji.jpg) no-repeat top left;
+	margin: 66px 0 10px 15px;
+	/*border: 1px #333 solid;*/
+}
+
+.title-p {
+	position:absolute;
+	top:0px;
+	left:250px;
+	font-size: 24px;
+	color: #fff;
+}
+
+.ext{
+	
+	background:#f28100;
+	color: #000;
+	border-bottom: 2px solid #f28100;
+}
+.div-code{
+	position: absolute;
+	width: 57%;
+	margin: 180px 0 0 100px;
+	/*overflow: scroll;*/
+	-webkit-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-moz-border-radius: 4px;
+	
+	
+}
+.div-code pre{
+	font-family: "微软雅黑";
+	font-size: 16px;
+	height:380px;
+	color:#333;
+	overflow-y: scroll;
+	/*font-weight: bold;*/
+}
+.img-logo{
+	display: block;
+	position: absolute;
+	margin: 13px 0 0 88px;
+}
+@media screen and (max-width:1043px){.div-code{margin-top:320px;}}

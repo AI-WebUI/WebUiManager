@@ -1,0 +1,178 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
+<span class='line'>  2</span> </span><span class="COMM">/** 
+<span class='line'>  3</span>  * 一款列表导航插件，提供默认列表，图标列表，图片列表的三种形式
+<span class='line'>  4</span>  * 
+<span class='line'>  5</span>  * @fileOverview 
+<span class='line'>  6</span>  * @version 1.0
+<span class='line'>  7</span>  * @author  qijc
+<span class='line'>  8</span>  * @description 
+<span class='line'>  9</span>  * 
+<span class='line'> 10</span>  */</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="PUNC">;</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 12</span> 
+<span class='line'> 13</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 14</span> 	 * 列表导航插件
+<span class='line'> 15</span> 	 *
+<span class='line'> 16</span> 	 * @constructor List
+<span class='line'> 17</span> 	 * @desc 提供默认列表，图标列表，图片列表的三种形式
+<span class='line'> 18</span> 	 * @memberOf jQuery
+<span class='line'> 19</span> 	 * @name list
+<span class='line'> 20</span> 	 * @param {Object} option 参数对象
+<span class='line'> 21</span> 	 * 
+<span class='line'> 22</span> 	 * @property {Number} type [1:文字|2:图标|3:图片] 列表类型
+<span class='line'> 23</span> 	 * @property {Object} data 数据源
+<span class='line'> 24</span> 	 * @property {Boolean} isInit 是否初始化
+<span class='line'> 25</span> 	 * @return {Object} 返回List对象的一个实例
+<span class='line'> 26</span> 	 * 
+<span class='line'> 27</span> 	 * @example
+<span class='line'> 28</span> 	 * var list = $('#demo').list({
+<span class='line'> 29</span> 	 *     type:0,
+<span class='line'> 30</span> 	 *     data:jsonList,
+<span class='line'> 31</span> 	 *     isInit:true
+<span class='line'> 32</span> 	 * });
+<span class='line'> 33</span> 	 *
+<span class='line'> 34</span> 	 * //删除
+<span class='line'> 35</span> 	 * list.removeRow(0);
+<span class='line'> 36</span> 	 * 
+<span class='line'> 37</span> 	 */</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="NAME">$.fn.list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">option</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">List</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">option</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 41</span> 
+<span class='line'> 42</span> </span><span class="WHIT">	</span><span class="COMM">//默认模版</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_listTpl</span><span class="PUNC">=</span><span class="STRN">'&lt;ul class="ui-list">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% for (var i = 0; i &lt; lists.length; i++) { %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% var post = lists[i]; %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% if (post.type == "list" || post.type == "1") { %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;li class="ui-list-item">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">		</span><span class="STRN">'	&lt;a class="icon-navigate-right" href="&lt;%=post.link%>" data-id="&lt;%=post.id%>">&lt;%=post.title%>&lt;/a>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;/li>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% } else if(post.type == "iconList" || post.type == "2"){ %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;li class="ui-list-item ui-media">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">		</span><span class="STRN">'    &lt;a class="icon-navigate-right" href="&lt;%=post.link%>" data-id="&lt;%=post.id%>">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">		</span><span class="STRN">'        &lt;span class="ui-media-object fn-left ui-icon &lt;%=post.icon%>">&lt;/span>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">		</span><span class="STRN">'        &lt;div class="ui-media-body">&lt;%=post.title%>&lt;/div>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">		</span><span class="STRN">'    &lt;/a>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;/li>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% } else if(post.type == "mediaList" || post.type == "3"){ %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;li class="ui-list-item ui-media">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">		</span><span class="STRN">'    &lt;a class="icon-navigate-right" href="&lt;%=post.link%>" data-id="&lt;%=post.id%>">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">		</span><span class="STRN">'        &lt;img class="ui-media-object fn-left" src="&lt;%=post.pic%>">                '</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">		</span><span class="STRN">'        &lt;div class="ui-media-body">'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">		</span><span class="STRN">'            &lt;h4>&lt;%=post.title%>&lt;/h4>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">		</span><span class="STRN">'            &lt;p>&lt;%=post.desc%>&lt;/p>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">		</span><span class="STRN">'        &lt;/div>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">		</span><span class="STRN">'    &lt;/a>'</span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;/li>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% } %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;% } %>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">		</span><span class="STRN">'&lt;/ul>'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> 
+<span class='line'> 72</span> </span><span class="WHIT">	</span><span class="COMM">//默认</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defaults</span><span class="PUNC">=</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">		</span><span class="NAME">data</span><span class="PUNC">:</span><span class="STRN">''</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">		</span><span class="NAME">isFromTpl</span><span class="PUNC">:</span><span class="STRN">''</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">		</span><span class="NAME">isInit</span><span class="PUNC">:</span><span class="KEYW">false</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="WHIT">	</span><span class="COMM">//构造方法</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">List</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">el</span><span class="PUNC">,</span><span class="NAME">option</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="PUNC">=</span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">		</span><span class="NAME">this.element</span><span class="PUNC">=</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">el</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">		</span><span class="NAME">this.option</span><span class="PUNC">=</span><span class="NAME">$.extend</span><span class="PUNC">(</span><span class="NAME">defaults</span><span class="PUNC">,</span><span class="NAME">option</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">this.option.isInit</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">			</span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 90</span>      * list 名字空间
+<span class='line'> 91</span>      * @namespace 
+<span class='line'> 92</span>      * @memberOf jQuery
+<span class='line'> 93</span> 	 * @name list
+<span class='line'> 94</span>      */</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">	</span><span class="NAME">List.prototype</span><span class="PUNC">=</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 97</span>      * @lends jQuery.list
+<span class='line'> 98</span>      */</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>100</span> 
+<span class='line'>101</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>102</span>          * 初始化，拼装数据和模版加载到容器
+<span class='line'>103</span>          */</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">		</span><span class="NAME">init</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">opt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.option</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tpl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">opt.isFromTpl</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">opt.isFromTpl</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">_listTpl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">			</span><span class="NAME">this.element.html</span><span class="PUNC">(</span><span class="NAME">$.tpl</span><span class="PUNC">(</span><span class="NAME">tpl</span><span class="PUNC">,</span><span class="NAME">opt.data</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>110</span>          * 添加一条数据
+<span class='line'>111</span>          * 
+<span class='line'>112</span>          * @param {Object} data 数据
+<span class='line'>113</span>          */</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">		</span><span class="NAME">addRow</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">			</span><span class="NAME">this.option.data.lists.push</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">			</span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>119</span>          * 删除某条数据
+<span class='line'>120</span>          * 
+<span class='line'>121</span>          * @param {Number} index 删除行的索引值
+<span class='line'>122</span>          */</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">		</span><span class="NAME">removeRow</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">			</span><span class="NAME">this.option.data.lists.splice</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">,</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">			</span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>128</span>          * 获取某行数据
+<span class='line'>129</span>          * 
+<span class='line'>130</span>          * @param {Number} index 获取行的索引值
+<span class='line'>131</span>          * @return {Object} JSON数据
+<span class='line'>132</span>          */</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">		</span><span class="NAME">getDataRow</span><span class="PUNC">:</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">			</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">this.option.data.lists</span><span class="PUNC">[</span><span class="NAME">index</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.option.data.lists</span><span class="PUNC">[</span><span class="NAME">index</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_private</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">	</span><span class="NAME">_private.cache</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">	</span><span class="NAME">$.tpl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">env</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">		</span><span class="COMM">// 判断str参数，如str为script标签的id，则取该标签的innerHTML，再递归调用自身</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">		</span><span class="COMM">// 如str为HTML文本，则分析文本并构造渲染函数</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="REGX">/[^\w\-\.:]/</span><span class="PUNC">.</span><span class="NAME">test</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">			</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">_private.cache</span><span class="PUNC">[</span><span class="NAME">str</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_private.cache</span><span class="PUNC">[</span><span class="NAME">str</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.get</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">innerHTML</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">			</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">env</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">variable</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// variable数组存放变量名，对应data结构的成员变量；value数组存放各变量的值</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">			</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">				</span><span class="NAME">variable.push</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">				</span><span class="NAME">value.push</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Function</span><span class="PUNC">(</span><span class="NAME">variable</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn.code</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">				</span><span class="PUNC">.</span><span class="NAME">apply</span><span class="PUNC">(</span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 此处的new Function是由下面fn.code产生的渲染函数；执行后即返回渲染结果HTML</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> 
+<span class='line'>158</span> </span><span class="WHIT">		</span><span class="NAME">fn.code</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fn.code</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"var $parts=[]; $parts.push('"</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">str</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/\\/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'\\\\'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 处理模板中的\转义</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/[\r\t\n]/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">" "</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 去掉换行符和tab符，将模板合并为一行</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">"&lt;%"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">join</span><span class="PUNC">(</span><span class="STRN">"\t"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 将模板左标签&lt;%替换为tab，起到分割作用</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/(^|%>)[^\t]*/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/'/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"\\'"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 将模板中文本部分的单引号替换为\'</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/\t=(.*?)%>/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"',$1,'"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 将模板中&lt;%= %>的直接数据引用（无逻辑代码）与两侧的文本用'和,隔开，同时去掉了左标签产生的tab符</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">"\t"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">join</span><span class="PUNC">(</span><span class="STRN">"');"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 将tab符（上面替换左标签产生）替换为'); 由于上一步已经把&lt;%=产生的tab符去掉，因此这里实际替换的只有逻辑代码的左标签</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">			</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">"%>"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">join</span><span class="PUNC">(</span><span class="STRN">"$parts.push('"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="COMM">// 把剩下的右标签%>（逻辑代码的）替换为"$parts.push('"</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"'); return $parts.join('');"</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 最后得到的就是一段JS代码，保留模板中的逻辑，并依次把模板中的常量和变量压入$parts数组</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">env</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// 如果传入了数据，则直接返回渲染结果HTML文本，否则返回一个渲染函数</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span></pre></body></html>

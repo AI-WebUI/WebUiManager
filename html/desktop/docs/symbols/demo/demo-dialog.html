@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dialog提示组件</title>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/demoApi.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <link rel="stylesheet" href="../../css/prettify.css"/>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+    <style>
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .prettyprint ol.linenums {
+            background: #f8f8f8 !important;
+        }
+    </style>
+</head>
+<body>
+<h1 class="main_title">WEBUI PC端dialog提示组件</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>dialog使用案例</h2>
+
+            <div class="aries_demo bs-example code">
+                <p>用html加载</p>
+
+                <div id="dd" class="webui-dialog" title="My Dialog" style="width:400px;height:200px;"
+                     data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true">
+                    Dialog Content.
+                </div>
+                <a href="#" class="webui-linkbutton btn-blue" onclick="$('#dd').dialog('open')">Open</a>
+
+                <p>用js加载dialog提示</p>
+
+                <div id="dl">Dialog Content.</div>
+                <script>
+                    $('#dl').dialog({
+                        title: 'My Dialog',
+                        top: 500,
+                        left: 558,
+                        width: 400,
+                        height: 200,
+                        closed: true,
+                        cache: false,
+                        href: 'get_content.php',
+                        modal: true
+                    });
+                    //                    $('#dl').dialog('refresh', 'data/datagrid.jsp');
+                </script>
+                <a href="#" class="webui-linkbutton btn-blue" onclick="$('#dl').dialog('open')">Open</a>
+
+                <div id="dt"></div>
+                <div id="footer">
+                    <a href="#" class="webui-linkbutton btn-blue">Save</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="$('#dt').dialog('close')">Close</a>
+                </div>
+                <p>用dialog加载普通表格</p>
+                <script>
+                    $('#dt').dialog({
+                        left: "558px",
+                        top: "500px",
+                        title: '顾客预订信息',
+                        inline: false,
+                        closed: true,
+                        width: 600,
+                        height: 450,
+                        cache: false,
+                        buttons: "#footer",
+                        shadow: false,
+                        modal: true
+                    });
+                    $('#dt').dialog('refresh', 'data/bookinfo.jsp');
+                </script>
+                <a href="#" onclick="$('#dt').dialog('open');" class="webui-linkbutton btn-blue">打开</a>
+
+                <p>用dialog加载datagrid表格</p>
+
+                <div id="datagrid"></div>
+                <!--<div id="win" class="webui-window" title="My Window" style="width:600px;height:400px"-->
+                <!--data-options="iconCls:'icon-save',modal:true">-->
+                <!--<div class="webui-layout" data-options="fit:true">-->
+                <!--<div data-options="region:'north',split:true" style="height:100px"></div>-->
+                <!--<div data-options="region:'center'">-->
+                <!--The Content.-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <script>
+                    $("#datagrid").dialog({
+                        left: 400,
+                        top: 100,
+                        title: '顾客信息',
+                        inline: false,
+                        closed: true,
+                        width: 781,
+                        height: 400,
+                        cache: false,
+                        shadow: false,
+                        modal: true,
+                        content: '<div id="data2"></div>',
+                        onBeforeOpen: function () {
+                            $("#data2").datagrid({
+                                width: 721,
+                                height: 400,
+                                url: 'data/datagrid_data2.json',
+                                method: 'get',
+                                singleSelect: true,
+                                loadMsg: "查询数据请稍候。。。",
+                                fitColumns: true,
+                                pagination: true,
+                                showFooter: true,
+                                fitColumns: true,
+//                                data:[{itemid:'1348384993',productid:'习大大',listprice:'杭州市西湖区',unitcost:'3',attr1:'大编号',status:'正常'}],
+                                columns: [[
+                                    {field: 'itemid', title: '号码', width: 100, editor: 'numberbox', align: 'center'},
+                                    {field: 'productid', title: '姓名', width: 100, editor: 'text', align: 'center'},
+                                    {
+                                        field: 'listprice',
+                                        title: '地区',
+                                        width: 135,
+                                        editor: 'numberbox',
+                                        align: 'center'
+                                    },
+                                    {field: 'unitcost', title: '有效期', width: 100, editor: 'text', align: 'center'},
+                                    {field: 'attr1', title: '规格', width: 148, editor: 'text', align: 'center'},
+                                    {field: 'status', title: '状态', width: 158, editor: 'text', align: 'center'},
+                                    //{field:'togher'}
+                                ]]
+                            })
+                        }
+                    });
+                    //                    $('#datagrid').dialog('refresh', 'data/datagrid.jsp');
+
+
+                </script>
+                <a href="#" onclick="$('#datagrid').dialog('open');" class="webui-linkbutton btn-blue data2">打开</a>
+                <script>
+                    $(".data2").click(function () {
+                        $("#datagrid").dialog('open');
+//                        $("#datagrid").dialog({
+//                            content:"<table class='webui-datagrid' style='width:600px;height:450px'data-options=url:'data/datagrid_data2.json',fitColumns:true,singleSelect:true'>" + "<thead><tr>"+"<th data-options=" + "'field:'itemid',width:100'>"+ "Code</th>" + "<th data-options=" + "'field:'productid',width:100'>" + "Name</th>"+"<th data-options=" + "'field:'unitcost',width:100,align:'right'>" + "Price</th>"+"<th data-options=" + "'field:'attr1',width:100,align:'right'>" + "Price</th>"+"<th data-options=" + "'field:'attr1',width:100,align:'right'>" + "Peice</th>"+"<th data-options=" + "'field:'status',width:80,align:'right'>" +"状态</th></tr></thead></table>"
+//                        })
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+<script>
+    $(function () {
+        var html = $('.code').html();
+        $("pre").text(html).addClass("prettyprint linenums");
+        prettyPrint();
+//        var sontent = "";
+//        sontent += "<table class='webui-datagrid'";
+//        sontent += "style='width:600px;height:450px'" + "data-options='url:'data/datagrid_data2.json',fitColumns:true,singleSelect:true'" + "<thead><tr>";
+//        sontent += "<th data-options=" + "'field:'itemid',width:100'>" + "Code</th>" + "<th data-options=" + "'field:'productid',width:100'>" + "Name</th>";
+//        sontent += "<th data-options=" + "'field:'unitcost',width:100,align:'right'>" + "Price</th>";
+//        sontent += "<th data-options=" + "'field:'attr1',width:100,align:'right'>" + "Price</th>";
+//        sontent += "<th data-options=" + "'field:'attr1',width:100,align:'right'>" + "Peice</th>";
+//        sontent += "<th data-options=" + "'field:'status',width:80,align:'right'>" + "状态</th></tr></thead></table>";
+    })
+</script>
+</body>
+</html>

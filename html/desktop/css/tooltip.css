@@ -1,0 +1,81 @@
+.tooltip {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  outline: none;
+ 	border: 1px solid #777;
+  padding: 10px;
+  line-height: 1.5;
+  max-width: 200px;
+}
+.tooltip-content {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: normal;
+  color: #fff;
+}
+.tooltip-arrow {
+	display: none;
+}
+.tooltip-arrow-outer {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  display: block;
+  border: none;
+  background: url("icons/icon-toolstip.png") no-repeat;
+}
+.tooltip-right .tooltip-arrow-outer {
+  left: 0;
+  top: 50%;
+  margin: -6px 0 0 -12px;
+}
+.tooltip-left .tooltip-arrow-outer {
+  right: 0;
+  top: 50%;
+  margin: -6px -12px 0 0;
+}
+.tooltip-top .tooltip-arrow-outer {
+  bottom: 0;
+  left: 50%;
+  margin: 0 0 -12px -6px;
+}
+.tooltip-bottom .tooltip-arrow-outer {
+  top: 0;
+  left: 50%;
+  margin: -12px 0 0 -6px;
+}
+.tooltip {
+  background: url("icons/icon-toolstip-bg.png");
+  color: #fff;
+}
+.tooltip-right .tooltip-arrow-outer {
+  background-position: -24px 0;
+}
+.tooltip-left .tooltip-arrow-outer {
+  background-position: -36px 0;
+}
+.tooltip-top .tooltip-arrow-outer {
+  background-position: -12px 0;
+}
+.tooltip-bottom .tooltip-arrow-outer {
+  background-position: 0 0;
+}
+
+.tooltip-obj.tooltip-right .tooltip-arrow-outer {
+  background-position: -24px -13px;
+  margin-left: -12px;
+}
+.tooltip-obj.tooltip-left .tooltip-arrow-outer {
+  background-position: -36px -13px;
+  margin-right: -12px;
+}
+.tooltip-obj.tooltip-top .tooltip-arrow-outer {
+  background-position: -12px -13px;
+  margin-bottom: -12px;
+}
+.tooltip-obj.tooltip-bottom .tooltip-arrow-outer {
+  background-position: 0 -13px;
+  margin-top: -12px;
+}
+

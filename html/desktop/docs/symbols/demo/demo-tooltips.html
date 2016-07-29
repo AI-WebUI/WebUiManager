@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tooltips</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <link rel="stylesheet" href="../../css/demoApi.css">
+    <link rel="stylesheet" href="../../css/prettify.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+    <style type="text/css">
+        .webui-pane {
+            border: 1px solid #000;
+            width: 100px;
+            display: block;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 16px;
+        }
+
+        .webui-input {
+            display: block;
+            width: 230px;
+            height: 28px;
+            float: right;
+        }
+
+        p {
+            font-size: 16px;
+            display: block;
+            padding: 6px 0 6px 2px;
+            margin: 20px 0 20px 0;
+        }
+
+        .dd, .webui-pane {
+            border: 1px solid #000;
+            width: 100px;
+            height: 40px;
+            display: block;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /*.ui-label {*/
+            /*width: 56px;*/
+            /*display: block;*/
+            /*float: left;*/
+            /*font-size: 12px;*/
+            /*line-height: 28px;*/
+            /*text-align: right;*/
+            /*border: none;*/
+            /*padding-right: 10px;*/
+        /*}*/
+
+        .ui-desk {
+            opacity: 1;
+            /*background-color: rgba(0, 255, 255,0);*/
+        }
+
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+        .input_diolog{
+            position:relative;
+        }
+        .prettyprint ol.linenums {
+            background: #f8f8f8 !important;
+        }
+    </style>
+</head>
+<body>
+<h1 class="main_title">WEBUI PC端TIPS组件</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab" data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2 style="font-size:20px;">提示使用案例tooltips</h2>
+            <div class="aries_demo bs-example code">
+                <div class="body">
+                    <div style="padding:10px 200px">
+                        <div id="pp1" class="webui-pane">right</div>
+                    </div>
+                    <div style="padding:10px 200px">
+                        <div id="pp2" class="webui-pane">bottom</div>
+                    </div>
+                    <div style="padding:10px 200px">
+                        <div id="pp3" class="webui-pane">left</div>
+                    </div>
+                    <div style="padding:10px 200px">
+                        <div id="pp4" class="webui-pane">top</div>
+                    </div>
+                    <div style="padding:10px 200px">
+                        <div class="dd">点击</div>
+                    </div>
+                </div>
+                <script>
+                    $(function () {
+                        $("#pp1").tooltip({
+                            position: 'right',
+                            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打'
+                        });
+                        $("#pp2").tooltip({
+                            position: 'bottom',
+                            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打'
+                        });
+                        $('#pp3').tooltip({
+                            position: 'left',
+                            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打'
+                        });
+                        $('#pp4').tooltip({
+                            position: 'top',
+                            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打',
+                        });
+                        $('.dd').each(function () {
+                            $(this).tooltip({
+                                position: 'bottom',
+                                content: $('<div class="ui-desk"></div>'),
+                                showEvent: 'click',
+                                onUpdate: function (content) {
+                                    content.panel({
+                                        width: 200,
+                                        border: false,
+                                        href: '_dialog.html'
+                                    });
+                                },
+                                onShow: function () {
+                                    var t = $(this);
+                                    $(this).tooltip('tip').css({
+                                        background: '#333',
+                                        borderColor: '#44abe5',
+                                        opacity: 1
+                                    });
+                                    t.unbind().bind('mouseenter', function () {
+                                        t.tooltip('show');
+                                    }).bind('mouseleave', function () {
+                                        t.tooltip('show');
+                                    });
+                                }
+                            });
+                        });
+                    })
+
+                </script>
+                <div style="margin:20px 0;display:none;">
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert1()">Alert</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert2()">Error</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert3()">Info</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert4()">Question</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert5()">Warning</a>
+                </div>
+                <script>
+                    function alert1() {
+                        $.messager.alert('标题', 'Here is a message!');
+                    }
+
+                    function alert2() {
+                        $.messager.alert('My Title', 'Here is a error message!', 'error');
+                    }
+
+                    function alert3() {
+                        $.messager.alert('My Title', 'Here is a info message!', 'info');
+                    }
+
+                    function alert4() {
+                        $.messager.alert('My Title', 'Here is a question message!', 'question');
+                    }
+
+                    function alert5() {
+                        $.messager.alert('My Title', 'Here is a warning message!', 'warning');
+                    }
+
+                    function alert6() {
+                        $.messager.alert('My Title', '触发函数', 'info');
+                    }
+                </script>
+                <div style="margin:20px 0;display:none">
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="confirm1();">Confirm</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="prompt1()">Prompt</a>
+                </div>
+                <script>
+                    function alert7(mess) {
+                        $.messager.alert('My Title', mess);
+                    }
+
+                    function confirm1() {
+                        $.messager.confirm('My Title', 'Are you confirm this?', function (r) {
+                            if (r) {
+                                alert7('confirmed: ' + r);
+                            }
+                        });
+                    }
+                    function prompt1() {
+                        $.messager.prompt('My Title', 'Please type something', function (r) {
+                            if (r) {
+                                alert7('you type: ' + r);
+                            }
+                        });
+                    }
+
+                </script>
+                <!--<p>s输入框和其他组件代码</p>-->
+                <div style="display:none;">
+                    <div style="margin-bottom: 280px;">
+                        <a href="javascript:void(0)" class="webui-linkbutton btn-blue input_diolog">Open</a>
+                        <a href="javascript:void(0)" class="webui-linkbutton btn-blue input_diolog_close">Close</a>
+                    </div>
+                    <div id="dilog-1" class="webui-dialog" title="输入框、其他组件" style="top: 960px;"
+                         data-options="buttons: '#dlg-1-buttons',closed:true"><!--closed:true默认关闭-->
+                        <div>
+                            <span class="ui-label">名称:</span>
+                            <input class="webui-input">
+                        </div>
+                    </div>
+                    <div id="dilog-1-buttons">
+                        <a href="javascript:void(0)" class="webui-linkbutton btn-blue" onclick="javascript:alert8()">保存</a>
+                        <a href="javascript:void(0)" class="webui-linkbutton btn-grey"
+                           onclick="javascript:$('#dlg-1').dialog('close')">关闭</a>
+                    </div>
+                </div>
+            </div>
+            <div class="aries_demo bs-example">
+                <p>信息提示框代码</p>
+                <div style="margin:20px 0;">
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert1()">Alert</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert2()">Error</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert3()">Info</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert4()">Question</a>
+                    <a href="#" class="webui-linkbutton btn-blue" onclick="alert5()">Warning</a>
+                </div>
+                <script>
+                    function alert1() {
+                        $.messager.alert('标题', 'Here is a message!');
+                    }
+
+                    function alert2() {
+                        $.messager.alert('My Title', 'Here is a error message!', 'error');
+                    }
+
+                    function alert3() {
+                        $.messager.alert('My Title', 'Here is a info message!', 'info');
+                    }
+
+                    function alert4() {
+                        $.messager.alert('My Title', 'Here is a question message!', 'question');
+                    }
+
+                    function alert5() {
+                        $.messager.alert('My Title', 'Here is a warning message!', 'warning');
+                    }
+
+                    function alert6() {
+                        $.messager.alert('My Title', '触发函数', 'info');
+                    }
+                </script>
+            </div>
+            <div class="aries_demo bs-example code" style="width:100%;height:420px;margin-top:80px;">
+                <p>确认弹出框和信息输入框代码</p>
+                <div style="margin:20px 0;">
+                    <a href="#" class="webui-linkbutton btn-blue confirm" onclick="confirm1();">Confirm</a>
+                    <a href="#" class="webui-linkbutton btn-blue prompt" onclick="prompt1()">Prompt</a>
+                </div>
+                <script>
+                    function alert7(mess) {
+                        $.messager.alert('My Title', mess);
+                    }
+
+                    function confirm1() {
+                        $.messager.confirm('My Title', 'Are you confirm this?', function (r) {
+                            if (r) {
+                                alert7('confirmed: ' + r);
+                            }
+                        });
+                    }
+
+                    function prompt1() {
+                        $.messager.prompt('My Title', 'Please type something', function (r) {
+                            if (r) {
+                                alert7('you type: ' + r);
+                            }
+                        });
+                    }
+                    $(".panel").css({
+                        "left": $(".confirm").offset().left+"px",
+                        "top": $(".confirm").offset().top+"px"
+                    })
+                </script>
+            </div>
+            <div class="aries_demo bs-example code">
+                <p>弹出输入框和其他组件</p>
+                <div style="margin-bottom: 280px;">
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-blue input_diolog">Open</a>
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-blue input_diolog_close">Close</a>
+                </div>
+                <div id="dlg-1" class="webui-dialog" title="输入框、其他组件" style="top: 960px;"
+                     data-options="buttons: '#dlg-1-buttons',closed:true"><!--closed:true默认关闭-->
+                    <div>
+                        <span class="ui-label">名称:</span>
+                        <input class="webui-input">
+                    </div>
+                </div>
+                <script>
+
+                    $(".input_diolog").click(function(){
+                        $("#dlg-1").dialog("open");
+                    })
+                    $(".input_diolog_close").click(function(){
+                        $("#dlg-1").dialog("close");
+                    });
+                    var t=$(".input_diolog").offset();
+                    $("#dlg-1").css({
+                        "left": t.left+500+"px",
+                        "top": t.top+1280+"px"
+                    })
+                </script>
+                <div id="dlg-1-buttons">
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-blue" onclick="javascript:alert8()">保存</a>
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-grey"
+                       onclick="javascript:$('#dlg-1').dialog('close')">关闭</a>
+                </div>
+            </div>
+
+            <div class="aries_demo bs-example">
+                <p>弹出对话框</p>
+                <div style="margin-bottom: 280px;">
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-blue diolog_button"
+                       onclick="$('#dlg-3').dialog('open')">Open</a>
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-blue"
+                       onclick="$('#dlg-3').dialog('close')">Close</a>
+                </div>
+                <div id="dlg-3" class="webui-dialog webui-dialog-tip" title="确认对话框" style="top: 1840px;" data-options="
+	iconCls:'icon-save',
+	buttons: '#dlg-3-buttons',
+	closed:true
+">
+                    <div class="webui-dialog-text">
+                        这个是提示内容！可以自定义设置显示内容！
+                    </div>
+                </div>
+                <div id="dlg-3-buttons" class="dialog-button-2">
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-blue" onclick="javascript:alert8()">保存</a>
+                    <a href="javascript:void(0)" class="webui-linkbutton btn-grey"
+                       onclick="javascript:$('#dlg-3').dialog('close')">关闭</a>
+                </div>
+            </div>
+            <script>
+                var s=$(".diolog_button").offset();
+                $("#dlg-3").css({
+                    "top": s.top+120,
+                    "left": s.left+500
+                })
+            </script>
+            <script>
+                function alert8(mess) {
+                    $.messager.alert('My Title', 'save');
+                }
+            </script>
+            <div class="aries_demo bs-example">
+                <h1 class="main_title">tips提示API</h1>
+
+                <p>通过标签创建提示框，给元素添加一个&quot;webui-tooltip&quot;的类名，无需任何Javascript代码。</p>
+			<pre><code>&lt;a href=&quot;#&quot; title=&quot;This is the tooltip message.&quot; class=&quot;webui-tooltip&quot;&gt;Hover
+                me&lt;/a&gt;
+            </code></pre>
+
+                <p>通过Javascript创建提示框。</p>
+			<pre><code>&lt;a id=&quot;dd&quot; href=&quot;javascript:void(0)&quot;&gt;Click here&lt;/a&gt;
+                $('#dd').tooltip({
+                position: 'right',
+                content: '&lt;span style=&quot;color:#fff&quot;&gt;This is the tooltip message.&lt;/span&gt;',
+                onShow: function() {
+                $(this).tooltip('tip').css({
+                backgroundColor: '#666',
+                borderColor: '#666'
+                });
+                }
+                });
+            </code></pre>
+
+                <p> 属性 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>属性名</th>
+                        <th>类型</th>
+                        <th>描述</th>
+                        <th>默认值</th>
+                    </tr>
+                    <tr>
+                        <td>position</td>
+                        <td>string</td>
+                        <td>消息框位置。可用值有："left","right","top","bottom"</td>
+                        <td>bottom</td>
+                    </tr>
+                    <tr>
+                        <td>content</td>
+                        <td>string</td>
+                        <td>消息框内容。</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>trackMouse</td>
+                        <td>boolean</td>
+                        <td>为true时，允许提示框跟着鼠标移动。</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>deltaX</td>
+                        <td>number</td>
+                        <td>水平方向提示框的位置。</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>deltaY</td>
+                        <td>number</td>
+                        <td>垂直方向提示框的位置。</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>showEvent</td>
+                        <td>string</td>
+                        <td>当激发什么事件的时候显示提示框。</td>
+                        <td>mouseenter</td>
+                    </tr>
+                    <tr>
+                        <td>hideEvent</td>
+                        <td>string</td>
+                        <td>当激发什么事件的时候隐藏提示框。</td>
+                        <td>mouseleave</td>
+                    </tr>
+                    <tr>
+                        <td>showDelay</td>
+                        <td>number</td>
+                        <td>延时多少秒显示提示框。</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td>hideDelay</td>
+                        <td>number</td>
+                        <td>延时多少秒隐藏提示框。</td>
+                        <td>100</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p> 事件 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>事件名称</th>
+                        <th>参数</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>onShow</td>
+                        <td>e</td>
+                        <td>在显示提示框的时候触发。</td>
+                    </tr>
+                    <tr>
+                        <td>onHide</td>
+                        <td>e</td>
+                        <td>在隐藏提示框的时候触发。</td>
+                    </tr>
+                    <tr>
+                        <td>onUpdate</td>
+                        <td>content</td>
+                        <td>在提示框内容更新的时候触发。</td>
+                    </tr>
+                    <tr>
+                        <td>onPosition</td>
+                        <td>left,top</td>
+                        <td>在提示框位置改变的时候触发。</td>
+                    </tr>
+                    <tr>
+                        <td>onDestroy</td>
+                        <td>none</td>
+                        <td>在提示框被销毁的时候触发。</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p> 方法 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>方法名</th>
+                        <th>参数</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>options</td>
+                        <td>none</td>
+                        <td>返回控件属性对象。</td>
+                    </tr>
+                    <tr>
+                        <td>tip</td>
+                        <td>none</td>
+                        <td>返回tip元素对象。</td>
+                    </tr>
+                    <tr>
+                        <td>arrow</td>
+                        <td>none</td>
+                        <td>返回箭头元素对象。</td>
+                    </tr>
+                    <tr>
+                        <td>show</td>
+                        <td>e</td>
+                        <td>显示提示框。</td>
+                    </tr>
+                    <tr>
+                        <td>hide</td>
+                        <td>e</td>
+                        <td>隐藏提示框。</td>
+                    </tr>
+                    <tr>
+                        <td>update</td>
+                        <td>content</td>
+                        <td>更新提示框内容。</td>
+                    </tr>
+                    <tr>
+                        <td>reposition</td>
+                        <td>none</td>
+                        <td>重置提示框位置。</td>
+                    </tr>
+                    <tr>
+                        <td>destroy</td>
+                        <td>none</td>
+                        <td>销毁提示框。</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>alert And Confirm</h2>
+
+                <p>用法：</p>
+			<pre><code>$.messager.alert('警告','警告消息');
+                $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+                if (r){
+                alert('确认删除');
+                }
+                });
+            </code></pre>
+
+                <h2>dialog模态框</h2>
+
+                <p>通过从现有的DOM节点标记创建对话框。 下面的例子展示了一个模态对话框和可调整大小的功能。</p>
+			<pre><code>&lt;div id=&quot;dd&quot; class=&quot;webui-dialog&quot; title=&quot;My Dialog&quot;
+                data-options=&quot;iconCls:'icon-save',resizable:true,modal:true&quot;&gt;
+                Dialog Content.
+                &lt;/div&gt;
+            </code></pre>
+
+                <p>使用Javascript创建对话框窗口也是允许的。现在让我们创建一个模式窗口并调用'refresh'方法通过ajax读取内容。</p>
+			<pre><code>&lt;div id=&quot;dd&quot;&gt;Dialog Content.&lt;/div&gt;
+
+                $('#dd').dialog({
+                title: 'My Dialog',
+                width: 400,
+                height: 200,
+                closed: false,
+                cache: false,
+                href: 'get_content.php',
+                modal: true
+                });
+                $('#dd').dialog('refresh', 'new_content.php');
+            </code></pre>
+
+                <p> 属性 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>属性名</th>
+                        <th>属性类型</th>
+                        <th>描述</th>
+                        <th>默认值</th>
+                    </tr>
+                    <tr>
+
+                        <td>title</td>
+                        <td>string</td>
+                        <td>dialog的标题</td>
+                        <td>New Dialog</td>
+                    </tr>
+                    <tr>
+                        <td>collapsible</td>
+                        <td>boolean</td>
+                        <td>定义是否显示可折叠按钮。</td>
+                        <td>false</td>
+
+                    </tr>
+                    <tr>
+                        <td>minimizable</td>
+                        <td>boolean</td>
+                        <td>定义是否显示最小化按钮。</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>maximizable</td>
+                        <td>boolean</td>
+                        <td>定义是否显示最大化按钮。</td>
+
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>resizable</td>
+                        <td>boolean</td>
+                        <td>定义是否可以改变对话框窗口大小。</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>toolbar</td>
+                        <td>array,selector</td>
+
+                        <td>
+                            设置对话框窗口顶部工具栏，可用值有：
+                            <br> 1) 一个数组，每一个工具栏中的工具属性都和linkbutton相同。
+                            <br> 2) 一个选择器指定工具栏。
+                            <p>对话框窗口工具栏可以声明在&lt;div&gt;标签里面：</p>
+							<pre>&lt;div class="webui-dialog" style="width:600px;height:300px"
+data-options="title:'我的对话框',toolbar:'#tb',modal:true"&gt;
+	对话框窗口内容。
+&lt;/div&gt;
+&lt;div id="tb"&gt;
+&lt;a href="#" class="webui-linkbutton" data-options="iconCls:'icon-edit',plain:true"/a&gt;
+&lt;a href="#" class="webui-linkbutton" data-options="iconCls:'icon-help',plain:true"/a&gt;
+&lt;/div&gt;
+</pre>
+                            <p>对话框窗口工具栏也可以通过数组进行定义：</p>
+							<pre>&lt;div class="webui-dialog" style="width:600px;height:300px"
+		data-options="title:'My Dialog',modal:true,
+			toolbar:[{
+				text:'编辑',
+				iconCls:'icon-edit',
+				handler:function(){alert('edit')}
+			},{
+				text:'帮助',
+				iconCls:'icon-help',
+				handler:function(){alert('help')}
+			}]"&gt;
+	对话框窗口内容。
+&lt;/div&gt;
+</pre>
+                        </td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>buttons</td>
+                        <td>array,selector</td>
+                        <td>
+                            对话框窗口底部按钮，可用值有：
+                            <br> 1) 一个数组，每一个按钮的属性都和linkbutton相同。
+                            <br> 2) 一个选择器指定按钮栏。
+                            <p>按钮可以声明在&lt;div&gt; 标签中:</p>
+							<pre>&lt;div class="webui-dialog" style="width:600px;height:300px"
+		data-options="title:'My Dialog',buttons:'#bb',modal:true"&gt;
+	对话框窗口内容。
+&lt;/div&gt;
+&lt;div id="bb"&gt;
+	&lt;a href="#" class="webui-linkbutton"&gt;Save&lt;/a&gt;
+	&lt;a href="#" class="webui-linkbutton"&gt;Close&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+                            <p>按钮也可以通过数组定义：</p>
+							<pre>&lt;div class="webui-dialog" style="width:600px;height:300px"
+		data-options="title:'My Dialog',modal:true,
+			buttons:[{
+				text:'保存',
+				handler:function(){...}
+			},{
+				text:'关闭',
+				haFndler:function(){...}
+			}]"&gt;
+	对话框内容。
+&lt;/div&gt;
+</pre>
+                        </td>
+                        <td>null</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p> 方法 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>方法名</th>
+
+                        <th>参数</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>dialog</td>
+                        <td>none</td>
+                        <td>返回外部dialog对象</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>toast提示</h2>
+
+                <p>使用方法：</p>
+			<pre><code>var tip = new AIToastTip({
+                message:&quot;请选择营销案档次&quot;,
+                type:&quot;success&quot;,
+                timeout:5000
+                });
+            </code></pre>
+
+                <p> 属性 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>属性名</th>
+                        <th>属性类型</th>
+                        <th>描述</th>
+                        <th>默认值</th>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>string</td>
+                        <td>需要显示的消息内容</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td>消息的类型，分为6类：success、error、info、question、warn、warn-little</td>
+                        <td>success</td>
+                    </tr>
+                    <tr>
+                        <td>timeout</td>
+                        <td>number</td>
+                        <td>消息显示的时间</td>
+                        <td>2000</td>
+                    </tr>
+                    <tr>
+                        <td>top</td>
+                        <td>number</td>
+                        <td>距离页面顶部的距离</td>
+                        <td>200</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p> 方法 </p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>方法名</th>
+
+                        <th>参数</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>setPosition</td>
+                        <td>number</td>
+                        <td>设置提示信息显示的位置，距离顶部的位置。</td>
+                    </tr>
+                    <tr>
+                        <td>setContent</td>
+                        <td>string</td>
+                        <td>设置显示的消息内容。</td>
+                    </tr>
+                    <tr>
+                        <td>open</td>
+                        <td>null</td>
+                        <td>打开提示消息。</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+</body>
+<script>
+        var html = $('.code').html();
+        $(".prettyprint").text(html).addClass("prettyprint linenums");
+        prettyPrint();
+</script>
+<script>
+    $(function(){
+        $("#pp1,#pp2,#pp3,#pp4").tooltip({ onShow: function(){
+            $(this).tooltip('tip').css({
+                opacity:1
+            });
+        }});
+    })
+</script>
+<!--<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>-->
+</html>
