@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title>移动端提示API</title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		
+		.text_head {
+			width: 100%;
+			display: block;
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			font-weight: bold;
+			padding: 10px 0px 10px 0;
+			background: #000;
+		}
+		
+		.little_title {
+			display: block;
+			width: 100%;
+			font-size: 14px;
+			font-weight: bold;
+			padding: 8px 0 8px 0;
+			background: #eee;
+		}
+		
+		.article_div .p {
+			display: block;
+			font-size: 14px;
+			padding: 6px 0 6px 0px;
+		}
+		
+		.article_div {
+			padding: 5px 10px 5px 10px;
+		}
+		
+		pre,
+		code {
+			font-size: 0.75em;
+			font-family: Consolas, Inconsolata, Courier, monospace;
+		}
+		
+		code {
+			margin: 0 0.15em;
+			padding: 0 0.3em;
+			white-space: pre-wrap;
+			border: 1px solid #EAEAEA;
+			background-color: #F8F8F8;
+			border-radius: 3px;
+			display: inline;
+			/* added to fix Yahoo block display of inline code */
+		}
+		
+		pre {
+			font-size: 1em;
+			line-height: 1.2em;
+		}
+		
+		pre code {
+			white-space: pre;
+			overflow: auto;
+			/* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			padding: 0.5em 0.7em;
+			display: block !important;
+			/* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
+		}
+		
+		pre,
+		code {
+			font-size: 0.75em;
+			font-family: Consolas, Inconsolata, Courier, monospace;
+		}
+		
+		code {
+			margin: 0 0.15em;
+			padding: 0 0.3em;
+			white-space: pre-wrap;
+			border: 1px solid #EAEAEA;
+			background-color: #F8F8F8;
+			border-radius: 3px;
+			display: inline;
+			/* added to fix Yahoo block display of inline code */
+		}
+		
+		pre {
+			font-size: 1em;
+			line-height: 1.2em;
+		}
+		
+		pre code {
+			white-space: pre;
+			overflow: auto;
+			/* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			padding: 0.5em 0.7em;
+			display: block !important;
+			/* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
+		}
+		
+		.in_filed {
+			width: 100%;
+			height: auto
+		}
+	</style>
+
+	<body>
+		<header class="text_head">移动端-提示API</header>
+		<div class="in_filed">
+			<label class="little_title">1.需要引入的文件</label>
+			<article class="article_div">
+				<pre><code class="code_content">
+ webui.css、jquery.js、webui.js
+				 </code></pre>
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">2.引入的顺序</label>
+			<article class="article_div">
+				<pre><code class="code_content">
+&lt;link rel="stylesheet" type="text/css" href="css/webui.css" /&gt;
+
+&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+
+&lt;script src="webui.js" type="text/javascript"&gt;&lt;/script&gt;
+				</code></pre>
+			</article>
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">3.使用方法</label>
+			<article class="article_div">
+				<pre><code class="code_content">&lt;div id="guide-demo" &gt;&lt;/div&gt;</code></pre>
+
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">4.JS代码</label>
+			<article class="article_div">
+				<pre class="pre_cont"><code class="code_content" style="font-size: 10px;">
+$('body').tips({
+	'type': 'confirm',
+	'message': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+	'buttons': [{
+		'text': '取消',
+		'action': function() {}
+	}, {
+		'text': '确定',
+		'action': function() {}
+	}],
+	'theme': 'white',
+	'icon': "img/1.png"
+});
+					</code></pre>
+
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">5.参数说明</label>
+			<article class="article_div">
+				<pre class="pre_cont"><code class="code_content">
+
+type ： 提示类型，如：确认提示、警告提示等。
+
+theme ： 插件主题
+
+buttons ： 按钮内容，包括text按钮名称和action点击方法
+
+message ： 提示的内容
+
+icon ： 提示内容前面的图标路径
+
+timeout ： toast提示的展示时间，单位:ms
+
+
+dir ： 指引提示的箭头方向
+
+.tips()——初始化
+
+.hideWarning()——隐藏顶部提示
+
+.hideDot()——隐藏隐藏圆点提示
+
+.remainsNum()——设置未读数量提示的数值
+
+					</code></pre>
+
+			</article>
+
+		</div>
+	</body>
+
+</html>

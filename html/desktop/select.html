@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/select.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../webui/1.0.0/pc/css/webui.css"/>-->
+		<style type="text/css">
+			.content {
+				width: 500px;
+				margin: 0 auto;
+				display: block;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content">
+			<h1>select 选择框使用案例</h1>
+			<h3>1、单选框radio </h3>
+			<div id="radio-nomarl"></div>
+			<button onclick="console.log(radio_normal.getSelectedIndex());">获取选中索引</button>
+			<button onclick="console.log(radio_normal.getSelectedValue());">获取选中值</button>
+			<button onclick="console.log(radio_normal.getSelectedField());">获取选中对象</button>
+			<button onclick="console.log(radio_normal.getObject());">获取刚选中对象</button>
+			<br />
+			<h3>1、单选框radio </h3>
+			<div id="radio-nomarl-line"></div>
+			<br />
+			<h3>2、复选框checkbox </h3>
+			<div id="checkbox-normal"></div>
+			<button onclick="console.log(checkbox_normal.getSelectedIndex());">获取选中索引</button>
+			<br />
+			<h3>复选框checkbox-line </h3>
+			<div id="checkbox-normal-line"></div>
+			<br />
+			<h3>3、单选框radioBlock-样式1</h3>
+			<div id="radio-block"></div>
+			<button onclick="console.log(radio_block.getSelectedIndex());">获取选中索引</button>
+			<br />
+			<br />
+			<h3>4、单选框radioBlock-样式2</h3>
+			<div id="radio-block-bg"></div>
+			<button onclick="console.log(radio_block_2.getSelectedIndex());">获取选中索引</button>
+			<br />
+			<br />
+			<h3>5、复选框checkBlock</h3>
+			<div id="checkbox-block"></div>
+			<button onclick="console.log(checkbox_block.getSelectedIndex());">获取选中索引</button>
+			<br />
+			<br />
+			<h3>6、级联选择</h3>
+			<div id="cascade-select"></div>
+		</div>
+		<div id="div4"></div>
+	</body>
+	<script src="lib/jquery/1.11.3/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/select.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//普通单选
+			var radio_normal = $("#radio-nomarl").AISelect({
+				type: 'radio',
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1',
+					mustSelect:true
+				}, {
+					channelId: '1002',
+					channelName: '选项2'
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(radio_normal) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+					console.log(radio_normal.getIndex());
+				},
+				must: false
+			});
+			var radio_normal_line = $("#radio-nomarl-line").AISelect({
+				type: 'radioLine',
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1',
+					mustSelect:true
+				}, {
+					channelId: '1002',
+					channelName: '选项2'
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(radio_normal) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+					console.log(radio_normal.getIndex());
+				},
+				must: false
+			});
+			//块级普通单选
+			var radio_block = $("#radio-block").AISelect({
+				type: 'radioBlock',
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1'
+				}, {
+					channelId: '1002',
+					channelName: '选项2',
+					mustSelect: true
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(obj) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+				},
+				must: false
+			});
+			//块级普通单选
+			var radio_block_2 = $("#radio-block-bg").AISelect({
+				type: 'radioBlock',
+				background: "background",
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1'
+				}, {
+					channelId: '1002',
+					channelName: '选项2'
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(obj) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+				},
+				must: false
+			});
+			//块级普通单选
+			var checkbox_normal = $("#checkbox-normal").AISelect({
+				type: 'checkbox',
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1',
+					mustSelect: true
+				}, {
+					channelId: '1002',
+					channelName: '选项2'
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(obj) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+				},
+				must: false
+			});
+			//块级普通单选
+			var checkbox_normal_line = $("#checkbox-normal-line").AISelect({
+				type: 'checkboxLine',
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1',
+					mustSelect: true
+				}, {
+					channelId: '1002',
+					channelName: '选项2'
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(obj) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+				},
+				must: false
+			});
+			//块级复选框
+			var checkbox_block = $("#checkbox-block").AISelect({
+				type: 'checkboxBlock',
+				displayField: 'channelName',
+				valueField: 'channelId',
+				data: [{
+					channelId: '1001',
+					channelName: '选项1'
+				}, {
+					channelId: '1002',
+					channelName: '选项2'
+				}, {
+					channelId: '1003',
+					channelName: '选项3'
+				}, {
+					channelId: '1004',
+					channelName: '选项4',
+					disabled: true
+				}],
+				onSelect: function(obj) {
+					//alert(JSON.stringify(obj.getSelectedIndex()));
+				},
+				must: false
+			});
+			//块级复选框
+			var cascade_select = $("#cascade-select").AISelectQuery({
+				width: 400,
+				fields: [{
+					id: 'item1',
+					name: '手机品牌',
+					content: [{
+						text: '苹果',
+						value: '1'
+					}, {
+						text: '小米',
+						value: '2'
+					}, {
+						text: '三星',
+						value: '3'
+					}]
+				}, {
+					id: 'item2',
+					name: '手机颜色',
+					content: [{
+						text: '白色',
+						value: '1'
+					}, {
+						text: '土豪金',
+						value: '2'
+					}, {
+						text: '深空灰',
+						value: '3'
+					}],
+					multi: true
+				}, {
+					id: 'item3',
+					name: '价格',
+					content: [{
+						text: '0~500',
+						value: '1'
+					}, {
+						text: '500~2000',
+						value: '2'
+					}, {
+						text: '2000~5000',
+						value: '3'
+					}]
+				}]
+			});
+	</script>
+
+</html>

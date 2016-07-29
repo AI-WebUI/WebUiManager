@@ -1,0 +1,59 @@
+.accordion-header{
+    padding:10px 0;
+    background-color:transparent;
+    background-repeat: repeat-x;
+}
+
+.accordion-header, .accordion.panel-body,.accordion-body{
+  border:none;
+}
+
+.accordion-header .panel-title{
+  font-size: 16px;
+  color: #787878;
+  background-color:transparent;
+}
+
+.accordion-header .panel-body{
+  padding: 10px;
+  color: #333;
+  background-color:transparent;
+}
+.webui-accordion .panel-body{
+  background-color:transparent;
+}
+.accordion-header .panel-tool a{
+  width: 50px;
+  color: #787878;
+  line-height: 16px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.accordion-header .panel-tool a:hover {
+  background-color: #fff;
+  color: #44abe5;
+}
+
+.accordion-collapse {
+    background: url('images/accordion_arrows_02.png') no-repeat right center;
+}
+.accordion-collapse:hover{
+    background: url('images/accordion_arrows_04.png') no-repeat right center;
+}
+
+
+.accordion-collapse:after{
+    content: '收起'
+}
+
+.accordion-expand {
+    background: url('images/accordion_arrows_01.png') no-repeat right center;
+}
+
+.accordion-expand:after{
+    content: '展开'
+}
+.accordion-expand:hover{
+    background: url('images/accordion_arrows_03.png') no-repeat right center;
+}

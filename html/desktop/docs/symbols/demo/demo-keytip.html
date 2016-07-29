@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>keytip</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/demoApi.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+    <style type="text/css">
+        #my-div1{
+            width: 800px;
+            display: block;
+            height: 60px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+    </style>
+    <!--修改后-->
+</head>
+
+<body>
+<h1 class="main_title">WEBUI PC端keytips组件</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>基本功能：keytip效果，可以设置展示位置</h2>
+            <div class="aries_demo bs-example code">
+                <a class="webui-linkbutton btn-grey" onclick="tip.open()">打开顶部提示 </a>
+                <a class="webui-linkbutton btn-grey" onclick="tip_other.open()">在下框中打开</a>
+                <br/>
+                <br/>
+                <div id="my-div1"></div>
+                <br/>
+                <script>
+                    var tip = new AIKeyTip({
+                        callback: function () {
+                            //alert("这个是回调函数！");
+                        },
+                        closeBtn: true,
+                        message: '1.亲，宽带账号和密码由系统生成，可在订单详情中查看！<br>2.亲，宽带账号和密码由系统生成，可在订单详情中查看！'
+                    });
+                    var tip_other = new AIKeyTip({
+                        callback: function () {
+                            //alert("这个是回调函数！");
+                        },
+                        idName: "my-div1",
+                        message: '1.亲，宽带账号和密码由系统生成，可在订单详情中查看！'
+                    });
+
+                    function openTest() {
+                        tip.open();
+                    }
+                </script>
+            </div>
+
+            <div class="aries_demo bs-example">
+                <h1>顶部提示</h1>
+
+                <p>参数</p>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>参数名</th>
+
+
+                        <th>描述</th>
+                        <th>默认值</th>
+                    </tr>
+                    <tr>
+                        <td>idName</td>
+
+                        <td>需要显示的元素id</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>callback</td>
+
+                        <td>按钮返回事件</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>closeBtn</td>
+
+                        <td>是否存在关闭按钮</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+
+                        <td>消息内容</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>btnText</td>
+
+                        <td>按钮文字，默认为：我知道了</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>bgColor</td>
+
+                        <td>背景色，</td>
+                        <td>#DBECF9</td>
+                    </tr>
+                    <tr>
+
+                        <td>borderColor</td>
+
+                        <td>border颜色</td>
+                        <td>#c2e5f7</td>
+                    </tr>
+                    <tr>
+                        <td>timeOut</td>
+
+                        <td>谈出时间</td>
+                        <td>2000毫秒</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>width</td>
+
+                        <td>总宽度</td>
+                        <td>770px</td>
+                    </tr>
+                    <tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+</body>
+<script>
+
+            var html=$('.code').html();
+            $(".prettyprint").text(html).addClass("prettyprint linenums");
+            prettyPrint();
+
+</script>
+<!--<script>-->
+    <!--var tip = new AIKeyTip({-->
+        <!--callback: function () {-->
+            <!--//alert("这个是回调函数！");-->
+        <!--},-->
+        <!--closeBtn: true,-->
+        <!--message: '1.亲，宽带账号和密码由系统生成，可在订单详情中查看！<br>2.亲，宽带账号和密码由系统生成，可在订单详情中查看！'-->
+    <!--});-->
+    <!--var tip_other = new AIKeyTip({-->
+        <!--callback: function () {-->
+            <!--//alert("这个是回调函数！");-->
+        <!--},-->
+        <!--idName: "my-div",-->
+        <!--message: '1.亲，宽带账号和密码由系统生成，可在订单详情中查看！'-->
+    <!--});-->
+
+    <!--function openTest() {-->
+        <!--tip.open();-->
+    <!--}-->
+
+<!--</script>-->
+</html>

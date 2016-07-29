@@ -1,0 +1,43 @@
+/*基本样式*/
+.ui-collapse {
+	height: auto;
+	padding: 0;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #e8e8e8;
+}
+.ui-collapse-name {
+	height: 45px;
+	cursor: pointer;
+	position: relative;
+	margin: 0;
+	line-height: 45px;
+	font-size: 15px;
+	text-indent: 15px;
+	color: #333;
+	border-top: 1px solid #e8e8e8;
+}
+.ui-collapse-content{
+	display: none;
+	padding: 5px 5px 20px 25px;
+}
+.ui-collapse-content p{
+	padding: 0;
+	margin: 0;
+	line-height: 24px;
+	font-size: 13px;
+}
+/*标志样式*/
+.ui-collapse-icon{
+	position: absolute;
+	width: 13px;
+	height: 8px;
+	right: 15px;
+	top: 18px;
+	background: url(../img/ui-collapse-icon.png);
+	background-size:cover;
+}
+.ui-icon-up{
+	background: url(../img/ui-icon-up.png);
+	background-size:cover;
+}

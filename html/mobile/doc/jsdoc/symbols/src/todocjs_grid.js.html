@@ -1,0 +1,345 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Grid表单插件
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @fileOverview
+<span class='line'>  5</span>  * @author liuliang
+<span class='line'>  6</span>  * @time 2015-8-11
+<span class='line'>  7</span>  * @version 1.0
+<span class='line'>  8</span>  */</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 11</span> 	 * Grid表单插件插件
+<span class='line'> 12</span> 	 *
+<span class='line'> 13</span> 	 * @constructor Grid
+<span class='line'> 14</span> 	 * @desc 能够实现数据展示和按列排序
+<span class='line'> 15</span> 	 * @memberOf jQuery
+<span class='line'> 16</span> 	 * @name grid
+<span class='line'> 17</span> 	 * @param {Object} option 参数对象
+<span class='line'> 18</span> 	 *
+<span class='line'> 19</span> 	 * @param {Array} params.heads - 表头内容，包括name名称，text显示名称，stype排序类型（默认为string）
+<span class='line'> 20</span> 	 * @param {String} params.loadFunc - 加载数据的方法
+<span class='line'> 21</span> 	 * @param {String} params.theme - 插件主题
+<span class='line'> 22</span> 	 * @param {String} params.action - 点击行时触发的函数
+<span class='line'> 23</span> 	 * @return {Object} 返回grid对象的一个实例
+<span class='line'> 24</span> 	 *
+<span class='line'> 25</span> 	 * @example
+<span class='line'> 26</span>      *	var opts = {
+<span class='line'> 27</span>      *            'heads':[
+<span class='line'> 28</span>      *	            {
+<span class='line'> 29</span>      *	            	'text':'号码',
+<span class='line'> 30</span>      *	            	'name':'haoma'
+<span class='line'> 31</span>      *	            },
+<span class='line'> 32</span>      *	            {
+<span class='line'> 33</span>      *	            	'text':'保底',
+<span class='line'> 34</span>      *	            	'name':'baodi'
+<span class='line'> 35</span>      *	            },
+<span class='line'> 36</span>      *	            {
+<span class='line'> 37</span>      *	            	'text':'预存',
+<span class='line'> 38</span>      *	            	'name':'yucun'
+<span class='line'> 39</span>      *	            },
+<span class='line'> 40</span>      *	            {
+<span class='line'> 41</span>      *	            	'text':'周期',
+<span class='line'> 42</span>      *	            	'name':'cycle',
+<span class='line'> 43</span>      *	            	"stype":'int'
+<span class='line'> 44</span>      *	            }
+<span class='line'> 45</span>      *			],
+<span class='line'> 46</span>      *		    'loadFunc':loadPage,//方法要有1个页码的入参
+<span class='line'> 47</span>      *		    "theme":'normal',
+<span class='line'> 48</span>      *		    "action":function(){
+<span class='line'> 49</span>      *		    	alert()
+<span class='line'> 50</span>      *		    }
+<span class='line'> 51</span>      *        };
+<span class='line'> 52</span>      *	var myGrid = new $("#demo-grid").grid(opts);
+<span class='line'> 53</span> 	 *
+<span class='line'> 54</span> 	 */</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="COMM">//绑定到jquery上</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">	</span><span class="NAME">$.fn.grid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Grid</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IDs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 61</span> 	 * @description 表单组件
+<span class='line'> 62</span> 	 * @param {Object} element - 当前绑定的元素
+<span class='line'> 63</span> 	 * @todo 定义一些变量，初始化插件。
+<span class='line'> 64</span> 	 * @constructor 表明这个方法是个构造。
+<span class='line'> 65</span> 	 */</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Grid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">element</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">			</span><span class="NAME">_.el</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">element</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">			</span><span class="COMM">//		_.insertDOM = false;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">			</span><span class="COMM">//		_.loading = false;</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">			</span><span class="NAME">options.sel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_.el</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">			</span><span class="NAME">_.cloneMarkup</span><span class="PUNC">=</span><span class="STRN">''</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">			</span><span class="NAME">_.init</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 76</span> 	 * grid 名字空间
+<span class='line'> 77</span> 	 * @namespace
+<span class='line'> 78</span> 	 * @memberOf jQuery
+<span class='line'> 79</span> 	 * @name grid
+<span class='line'> 80</span> 	 */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="NAME">Grid.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 83</span> 		 * @lends jQuery.grid
+<span class='line'> 84</span> 		 */</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">		</span><span class="COMM">/** 
+<span class='line'> 86</span> 		 * @description 当前页码
+<span class='line'> 87</span> 		 * @todo 定义、绑定参数，并给当前元素绑定事件。
+<span class='line'> 88</span> 		 * @example
+<span class='line'> 89</span> 	     *	myGrid.curPage;
+<span class='line'> 90</span> 		 *
+<span class='line'> 91</span> 		 * 
+<span class='line'> 92</span> 		 */</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">		</span><span class="NAME">curPage</span><span class="PUNC">:</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">		</span><span class="NAME">tableGridID</span><span class="PUNC">:</span><span class="STRN">''</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 96</span> 		 * 初始化，拼装数据和模版加载到容器
+<span class='line'> 97</span> 		 * 
+<span class='line'> 98</span> 		 * @param {Object} option 参数对象
+<span class='line'> 99</span> 		 */</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">		</span><span class="NAME">init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">			</span><span class="NAME">CreateTable</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">		</span><span class="COMM">/** 
+<span class='line'>104</span> 		 * @description 获取、修改grid数据
+<span class='line'>105</span> 		 * @param {String} params.rowIdx - 表单行号
+<span class='line'>106</span> 		 * @param {String} params.colName - 表单列名
+<span class='line'>107</span> 		 * @param {String} params.value - 设置值
+<span class='line'>108</span> 		 * @todo 获取表单行时，不需传入params.colName 和params.value
+<span class='line'>109</span> 		 * @todo 获取表单列时，不需传入params.value
+<span class='line'>110</span> 		 * @example
+<span class='line'>111</span> 	     *	myGrid.gridData({
+<span class='line'>112</span> 	     * 		rowIdx:1,
+<span class='line'>113</span> 	     * 		colName:2
+<span class='line'>114</span> 	     * 		});
+<span class='line'>115</span>  	     *	myGrid.gridData({
+<span class='line'>116</span> 	     * 		rowIdx:1,
+<span class='line'>117</span> 	     * 		colName:2,
+<span class='line'>118</span> 	     * 		value:"6666"
+<span class='line'>119</span> 	     * 		});
+<span class='line'>120</span> 		 */</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">		</span><span class="NAME">gridData</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">def</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">				</span><span class="STRN">'rowIdx'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">				</span><span class="STRN">'colName'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">				</span><span class="STRN">'value'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">opts</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.extend</span><span class="PUNC">(</span><span class="NAME">def</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">opts.colName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">opts.value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">					</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="PUNC">+</span><span class="NAME">this.tableGridID</span><span class="PUNC">+</span><span class="STRN">" .ui-grid-table-tbody   tr > td[name='"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">opts.colName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"']"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">eq</span><span class="PUNC">(</span><span class="NAME">opts.rowIdx</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">text</span><span class="PUNC">(</span><span class="NAME">opts.value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="PUNC">+</span><span class="NAME">this.tableGridID</span><span class="PUNC">+</span><span class="STRN">" .ui-grid-table-tbody   tr > td[name='"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">opts.colName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"']"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">eq</span><span class="PUNC">(</span><span class="NAME">opts.rowIdx</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="PUNC">+</span><span class="NAME">this.tableGridID</span><span class="PUNC">+</span><span class="STRN">" .ui-grid-table-tbody   tr"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">eq</span><span class="PUNC">(</span><span class="NAME">opts.rowIdx</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>137</span> 
+<span class='line'>138</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">	</span><span class="NAME">CreateTable</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">		</span><span class="COMM">//code here</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tableID</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'gridTable'</span><span class="PUNC">+</span><span class="NAME">IDs</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">		</span><span class="NAME">Grid.prototype.tableGridID</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tableID</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="COMM">//		var curPage = 1;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defaults</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">			</span><span class="STRN">'heads'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">			</span><span class="STRN">'loadFunc'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">settings</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.extend</span><span class="PUNC">(</span><span class="NAME">defaults</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">markup</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thMarkup</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">			</span><span class="NAME">tdMarkup</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> 
+<span class='line'>154</span> </span><span class="WHIT">		</span><span class="NAME">$.each</span><span class="PUNC">(</span><span class="NAME">settings.heads</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">colsIdx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">aCol</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">			</span><span class="NAME">thMarkup</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&lt;th class="ui-grid-table-thead-tr-th fn-text-nowrap"'</span><span class="PUNC">+</span><span class="PUNC">(</span><span class="NAME">aCol.stype</span><span class="PUNC">?</span><span class="STRN">' stype="'</span><span class="PUNC">+</span><span class="NAME">aCol.stype</span><span class="PUNC">+</span><span class="STRN">'"'</span><span class="PUNC">:</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">'>'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">aCol.text</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'&lt;/th>'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">			</span><span class="NAME">tdMarkup</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&lt;td name="'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">aCol.name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" class="ui-grid-table-tbody-tr-td">&lt;/td>'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">		</span><span class="NAME">this.cloneMarkup</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'			    &lt;tr id="cloneTr" class="ui-grid-table-tbody-tr">                               '</span><span class="WHIT"> 
+<span class='line'>159</span> 			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">tdMarkup</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="STRN">'			     &lt;/tr>                                          '</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">		</span><span class="NAME">markup</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">			</span><span class="STRN">'&lt;table id="'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">tableID</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" class="ui-grid-table">  '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">			</span><span class="STRN">'			&lt;thead class="ui-grid-table-thead">                                             '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">			</span><span class="STRN">'				&lt;tr  class="ui-grid-table-thead-tr">                                            '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">			</span><span class="NAME">thMarkup</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">			</span><span class="STRN">'				&lt;/tr>                                           '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">			</span><span class="STRN">'			&lt;/thead>                                            '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">			</span><span class="STRN">'			&lt;tbody class="ui-grid-table-tbody">                                             '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">			</span><span class="NAME">this.cloneMarkup</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">			</span><span class="STRN">'			 &lt;/tbody>                                           '</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">			</span><span class="STRN">'&lt;/table>  		                                                '</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">		</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">join</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">		</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">markup</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">appendTo</span><span class="PUNC">(</span><span class="NAME">options.sel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">		</span><span class="NAME">GenerateTable</span><span class="PUNC">(</span><span class="NAME">settings.loadFunc</span><span class="PUNC">(</span><span class="NAME">Grid.prototype.curPage</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">drag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.sel.drag</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">			</span><span class="NAME">loadUpFn</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">				</span><span class="COMM">//				$("#demo-grid").CreateTable();</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">				</span><span class="COMM">// 为了测试，延迟1秒加载</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">				</span><span class="NAME">setTimeout</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">					</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">".ui-grid-table-tbody-tr"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">remove</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">					</span><span class="NAME">Grid.prototype.curPage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">					</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">this.cloneMarkup</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">appendTo</span><span class="PUNC">(</span><span class="NAME">options.sel.find</span><span class="PUNC">(</span><span class="STRN">'tbody'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">					</span><span class="NAME">GenerateTable</span><span class="PUNC">(</span><span class="NAME">settings.loadFunc</span><span class="PUNC">(</span><span class="NAME">Grid.prototype.curPage</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">					</span><span class="NAME">e.resetload</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">			</span><span class="NAME">loadDownFn</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">				</span><span class="COMM">// 为了测试，延迟1秒加载</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">				</span><span class="NAME">setTimeout</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">					</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">this.cloneMarkup</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">appendTo</span><span class="PUNC">(</span><span class="NAME">options.sel.find</span><span class="PUNC">(</span><span class="STRN">'tbody'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">					</span><span class="NAME">GenerateTable</span><span class="PUNC">(</span><span class="NAME">settings.loadFunc</span><span class="PUNC">(</span><span class="PUNC">++</span><span class="NAME">Grid.prototype.curPage</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">					</span><span class="NAME">e.resetload</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">		</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#cloneTr"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">remove</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">settings.action</span><span class="PUNC">)</span><span class="PUNC">==</span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">			</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="PUNC">+</span><span class="NAME">Grid.prototype.tableGridID</span><span class="PUNC">+</span><span class="STRN">" .ui-grid-table-tbody   tr"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">on</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">settings.action</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">		</span><span class="NAME">gridSort</span><span class="PUNC">(</span><span class="NAME">tableID</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">	</span><span class="NAME">GenerateTable</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">		</span><span class="COMM">//code here</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defaults</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">			</span><span class="STRN">"field"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">settings</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.extend</span><span class="PUNC">(</span><span class="NAME">defaults</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tdMarkup</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#cloneTr"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">		</span><span class="NAME">$.each</span><span class="PUNC">(</span><span class="NAME">settings.field</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rowIdx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rowData</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">clonedTr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tr.clone</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">			</span><span class="NAME">clonedTr.attr</span><span class="PUNC">(</span><span class="STRN">'id'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"generatedTr"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">			</span><span class="NAME">clonedTr.children</span><span class="PUNC">(</span><span class="STRN">"td"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">colIdx</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">				</span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="NAME">rowData</span><span class="PUNC">[</span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">'name'</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">			</span><span class="NAME">clonedTr.insertAfter</span><span class="PUNC">(</span><span class="NAME">tr</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">		</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#cloneTr"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">remove</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> 
+<span class='line'>220</span> </span><span class="WHIT">	</span><span class="COMM">/*
+<span class='line'>221</span> 	 * @创建排序的构造函数
+<span class='line'>222</span> 	 * @GID string 需要支持排序的table唯一ID，只能是ID
+<span class='line'>223</span> 	 */</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">w</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GridSort</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">GID</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">		</span><span class="NAME">this.Grid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="NAME">GID</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">		</span><span class="NAME">this.Gbody</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.Grid.tBodies</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">		</span><span class="NAME">this.Ghead</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.Grid.tHead</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>230</span> 
+<span class='line'>231</span> </span><span class="WHIT">	</span><span class="COMM">/*
+<span class='line'>232</span> 	 * @公共的静态函数
+<span class='line'>233</span> 	 * @主要是做Grid中字符串类型转换并返回新类型值，以便排序使用
+<span class='line'>234</span> 	 * @val string      需要转换的字符串值
+<span class='line'>235</span> 	 * @valType string  需要转换的类型格式，目前接收int、float、date,默认返回string型
+<span class='line'>236</span> 	 */</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">	</span><span class="NAME">GridSort._StringByConvert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cell</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">valType</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">val</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">cell.firstChild</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">			</span><span class="NAME">val</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cell.firstChild.nodeValue</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">valType</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">val.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">		</span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">valType.toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">			</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'int'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">val</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">			</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'float'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">parseFloat</span><span class="PUNC">(</span><span class="NAME">val</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">			</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'date'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="NAME">Date.parse</span><span class="PUNC">(</span><span class="NAME">val</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">			</span><span class="KEYW">default</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">val.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>254</span> 
+<span class='line'>255</span> </span><span class="WHIT">	</span><span class="COMM">/*
+<span class='line'>256</span> 	 * @Grid支持排序的核心方法
+<span class='line'>257</span> 	 * @colIdx int  数据表（table）中td的列索引
+<span class='line'>258</span> 	 * @colType string 数据表（table）中td的列类型
+<span class='line'>259</span> 	 */</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">	</span><span class="NAME">GridSort.prototype._Sequence</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">colIdx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colType</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">		</span><span class="COMM">//这里相信JS的高手们一下就可以看出来这是一个匿名方法体</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">		</span><span class="COMM">//这个方法体在这里不会执行，它会return到调用_Sequence()的函数上去执行</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">		</span><span class="COMM">//在这里这个匿名方法体是属于Array的Sort（）函数的参数</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">		</span><span class="COMM">//细心的童鞋可能主要到了arguments</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">		</span><span class="COMM">//我们将这两个参数看做为A跟B，接下来我们来看看这两个参数是如何比较的</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">		</span><span class="COMM">//译：</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">		</span><span class="COMM">//若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">		</span><span class="COMM">//若 a 等于 b，则返回 0。</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">		</span><span class="COMM">//若 a 大于 b，则返回一个大于 0 的值。</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_rowPrevVal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GridSort._StringByConvert</span><span class="PUNC">(</span><span class="NAME">arguments</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">cells</span><span class="PUNC">[</span><span class="NAME">colIdx</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colType</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">//这个相当于A参数</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">				</span><span class="NAME">_rowAfterVal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GridSort._StringByConvert</span><span class="PUNC">(</span><span class="NAME">arguments</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">cells</span><span class="PUNC">[</span><span class="NAME">colIdx</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colType</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">//这个相当于B参数</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">			</span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="NAME">_rowPrevVal</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">			</span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="NAME">_rowAfterVal</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_rowPrevVal</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">_rowAfterVal</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_rowPrevVal</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">_rowAfterVal</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>283</span> 
+<span class='line'>284</span> </span><span class="WHIT">	</span><span class="COMM">/*
+<span class='line'>285</span> 	 * @Grid列头点击事件的处理方法
+<span class='line'>286</span> 	 * @该方法为处理排序的核心方法，包含了Table内置函数的使用，以及文档碎片的使用
+<span class='line'>287</span> 	 * @通过此方法可以比一般处理DOM来排序的性能高很多
+<span class='line'>288</span> 	 */</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">	</span><span class="NAME">GridSort.prototype.BindClickHeadSort</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_rowsHead</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.Ghead.rows</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">cells</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">			</span><span class="NAME">_gbody</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.Gbody</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">			</span><span class="NAME">_gridRows</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_gbody.rows</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">			</span><span class="NAME">_girdSort</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._Sequence</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>294</span> 
+<span class='line'>295</span> </span><span class="WHIT">		</span><span class="COMM">//为每个Grid列头绑定一个Click的点击事件，这样比直接在dom上添加onclick更简洁</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">		</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_rowsHead.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>297</span> 
+<span class='line'>298</span> </span><span class="WHIT">			</span><span class="COMM">//注意这里，这里为了避免闭包的影响使用了匿名函数</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">			</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">idx</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">				</span><span class="NAME">_rowsHead</span><span class="PUNC">[</span><span class="NAME">idx</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">onclick</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_sortRows</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">						</span><span class="NAME">_sortType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getAttribute</span><span class="PUNC">(</span><span class="STRN">'stype'</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">						</span><span class="NAME">_orderby</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_gbody.getAttribute</span><span class="PUNC">(</span><span class="STRN">'orderby'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>304</span> 
+<span class='line'>305</span> </span><span class="WHIT">					</span><span class="COMM">//首先将Grid中的Row Copy到一个空数组中，以便之后排序</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">					</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_gridRows.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">						</span><span class="NAME">_sortRows</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_gridRows</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>309</span> 
+<span class='line'>310</span> </span><span class="WHIT">					</span><span class="COMM">//这里的_orderby是我们自己设置的属性，为了区分是降序还是升序</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">_orderby</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">						</span><span class="COMM">//开始执行Array的Sort()函数，可能很多童鞋都还米有看见过Sort()函数中加参数的用法</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">						</span><span class="COMM">//不了解Sort()函数参数的童鞋，请马上跳到_Sequence()函数那里继续看吧，那里我会解释</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">						</span><span class="NAME">_sortRows.sort</span><span class="PUNC">(</span><span class="NAME">_girdSort</span><span class="PUNC">(</span><span class="NAME">idx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_sortType</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">						</span><span class="NAME">_gbody.setAttribute</span><span class="PUNC">(</span><span class="STRN">'orderby'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'asc'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">						</span><span class="NAME">_sortRows.reverse</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">						</span><span class="NAME">_gbody.removeAttribute</span><span class="PUNC">(</span><span class="STRN">'orderby'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>320</span> 
+<span class='line'>321</span> </span><span class="WHIT">					</span><span class="COMM">//这里创建文档碎片，然后通过上面已排好序的Rows从新添加到文档碎片中</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">					</span><span class="COMM">//使用文档碎片的好处是，避免了浏览器的绘制过程，加快了页面响应速度</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_newRows</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createDocumentFragment</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">					</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">count2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_sortRows.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">count2</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">						</span><span class="NAME">_newRows.appendChild</span><span class="PUNC">(</span><span class="NAME">_sortRows</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>327</span> 
+<span class='line'>328</span> </span><span class="WHIT">					</span><span class="COMM">//最后一次性的加载到了Grid的内部</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">					</span><span class="NAME">_gbody.appendChild</span><span class="PUNC">(</span><span class="NAME">_newRows</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>334</span> 
+<span class='line'>335</span> </span><span class="WHIT">	</span><span class="NAME">gridSort</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">gid</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">		</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">GridSort</span><span class="PUNC">(</span><span class="NAME">gid</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">BindClickHeadSort</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

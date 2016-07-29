@@ -1,0 +1,135 @@
+	
+.aim_page_group{
+				padding: 0;
+				margin: 0;
+				text-align: center;
+			}
+			.aim_page_group a{
+				display: inline-block;
+				border: 2px #d3d3d3 solid;
+				background-color: #ffffff;
+				color: #333;
+				padding: 0;
+				margin: 0;
+			}
+			.aim_page_group a.pre{
+				width: 100px;
+				margin-right: 20px;
+				font:24px "Microsoft Yahei";
+				height: 60px;
+				line-height: 60px;
+				overflow: hidden;
+			}
+			.aim_page_group a.next{
+				width: 100px;
+				font:24px "microsoft yahei";
+				height: 60px;
+				line-height: 60px;
+				overflow: hidden;
+			}
+			.aim_page_group a.sel{
+				width: 154px;
+				margin-right: 20px;
+				font:28px helvetica;
+				height: 60px;
+				line-height: 60px;
+				overflow: hidden;
+			}
+			.aim_page_group a.unclick{
+				background-color: #f2f2f2;
+				color: #9c9c9c;
+			}
+			.aim_page_group a.clicked{
+				background-color: #f2f2f2;
+				border: 2px #9c9c9c solid;
+			}
+			.aim_page_group .sel .drop{
+				display: inline-block;
+				width: 20px;
+				height: 12px;
+				background: url(../img/drop.png);
+				position: relative;
+				top: -4px;
+				margin-left: 10px;
+			}
+			.page_selecter{
+				padding: 0;
+				margin: 0;
+				text-align: center;
+				width: 100%;
+				z-index:999999;
+				position: fixed;
+				left: 0px;
+				bottom: 0px;
+				box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.1);
+				box-sizing: border-box;
+				-webkit-user-select: none;
+				outline: 0;
+				-webkit-transition: .3s;
+				-webkit-transform: translateY(360px);
+				-webkit-tap-highlight-color: transparent;/*移动端点击按钮透明*/
+				
+			}
+			.page_selecter .header{
+				height: 90px;
+				background-color: #f2f2f2;
+				-webkit-user-select: none;
+			}
+			.page_selecter .header .button{
+				float: left;
+				font:28px "microsoft yahei";
+				color: #268bc4;
+				line-height: 90px;
+				padding-right: 30px;
+				padding-left: 30px;
+			}
+			.page_selecter .header .button:last-child{
+				float: right;
+			}
+			.page_selecter .content{
+				position: relative;
+				-webkit-user-select: none;
+				background-color: #fff;
+				height: 270px;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+			.page_selecter .content.ios{
+				width: calc(100% + 8px);
+				padding-right: 8px;
+			}
+			.page_selecter .content .subcontent{
+				font:28px "microsoft yahei";
+				color: #9C9C9C;
+				height: 90px;
+				line-height: 90px;
+			}
+			.page_selecter .content .subcontent.current{
+				font:32px "microsoft yahei";
+				color: #333;
+				height: 90px;
+				line-height: 90px;
+			}
+			.page_selecter-rule{
+				position: absolute;
+				font:32px "microsoft yahei";
+				color: #333;
+				border: 1px #9c9c9c solid ;
+				border-left-style: none;
+				border-right-style: none;
+				width: 100%;
+  				left: 0px;
+  				top: 50%;
+  				z-index: 0;
+  				height: 90px;
+  				margin-top: 0px;
+			}
+			.aim_backdrop{
+				position: fixed;
+				z-index: 998;
+				top: 0px;
+				right: 0px;
+				left: 0px;
+				bottom: 0px;
+				background-color: rgba(0,0,0,.3);
+			}

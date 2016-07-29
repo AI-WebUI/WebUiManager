@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/textbox.css" type="text/css"/>
+		<script src="lib/jquery/1.11.3/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../webui/1.0.0/pc/js/webui.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".ui-input").defaultChars();
+			});
+		</script>
+	</head>
+	<body>
+		<label class="ui-label">用户名</label>
+		<input type="text" id="USER_NAME" class="ui-input ui-input-medium" defaultChars="请输入用户名"/>
+		<label class="ui-label">用户名不可修改</label>
+		<input type="text" id="USER_NAME2" class="ui-input ui-input-medium" disabled="disabled" value="用户名2"/>
+		<br /><br />
+		<label class="ui-label">密码</label>
+		<input type="password" id="PASSWORD" class="ui-passord ui-passord-medium" value="password1"/>
+		<label class="ui-label">密码不可修改</label>
+		<input type="password" id="PASSWORD2" class="ui-passord ui-passord-medium" disabled="disabled" value="password2"/>
+		<br /><br />
+		<label class="ui-label">文本域</label>
+		<textarea id="TEXT_AREA" class="ui-textarea" rows="2" maxlength="20">备注1</textarea>
+		<label class="ui-label">文本域不可修改</label>
+		<textarea id="TEXT_AREA2" class="ui-textarea" disabled="disabled" maxlength="20" style="width: 200px;">备注2</textarea>
+		<br /><br />
+		<label class="ui-label">密码开关打开</label>
+		<input type="password" id="PWD_SWITCH1" class="ui-passord ui-passord-large" value="password1"/>
+		<label class="ui-label">密码开关关闭</label>
+		<input type="password" id="PWD_SWITCH2" class="ui-passord ui-passord-small" value="password2"/>
+		<label class="ui-label">密码开关打开</label>
+		<input type="password" id="PWD_SWITCH3" class="ui-passord ui-passord-medium" value="password1"/>
+		<label class="ui-label">密码开关关闭</label>
+		<input type="password" id="PWD_SWITCH4" class="ui-passord ui-passord-largest" value="password2"/>
+	</body>
+</html>

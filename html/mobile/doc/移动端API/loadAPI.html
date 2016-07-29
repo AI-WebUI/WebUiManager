@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>组件列表</title>
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/tips.css" />
+		<style type="text/css">
+         *,
+			*:before,
+			*:after {
+				-webkit-user-select: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				-moz-user-select: -moz-none; /*禁止用户选中文本，-moz-none，是写给老版本的ff的方法，当然新版本也是向上兼容的	
+				目前还是个私用属性，ios2.0以上的safari实现良好，安卓尚未支持*/
+				-webkit-touch-callout: none; 
+				-ms-touch-action: pan-y;
+			}
+			
+		a {
+		    text-decoration: none;
+		}
+		a:active, a:hover {
+		    outline: 0 none;
+		}
+		.ui-toolbar {
+		    position: relative;
+		    top:0;
+		    right: 0;
+		    left: 0;
+		    z-index: 10;
+		    height: 44px;
+		    padding-right: 10px;
+		    padding-left: 10px;
+		    border-bottom: 0;
+		    background-color: #6cbff1;
+		}
+		.ui-toolbar .fn-left {
+		    margin-right: 10px; 
+		}
+
+		.ui-toolbar .fn-right {
+		    margin-left: 10px;
+		}
+
+		.ui-toolbar .ui-toolbar-title {
+		    position: absolute;
+		    display: block;
+		    width: 100%;
+		    padding: 0;
+		    margin: 0 -10px;
+		    font-size: 17px;
+		    font-weight: 500;
+		    line-height: 44px;
+		    background-color:#6cbff1;
+		    color: #fff;
+		    text-align: center;
+		    white-space: nowrap;
+		}
+
+		.ui-toolbar .ui-toolbar-btn {
+		    position: relative;
+		    display: inline-block;
+		    font-size: 12px;
+		    line-height: 1;
+		    text-align: center;
+		    white-space: nowrap;
+		    vertical-align: top;
+		    cursor: pointer;
+		    top: 8px;
+		    z-index: 20;
+		    padding: 6px 12px 7px;
+		    margin-top: 0;
+		    margin-bottom: 0;
+		    font-weight: 400;
+		    border-radius: 3px;
+		    color: #7FCEFD;
+		    background-color: #fff;
+		    border: 1px solid #fff;
+
+		    outline:none;
+		    -moz-outline:none;
+		}
+		.ui-toolbar-btn.active, .ui-toolbar-btn:active{
+		    color:#fff;
+		    background-color:#4CB9EC;
+		}
+		.ui-toolbar .ui-icon {
+		    position: relative;
+		    z-index: 20;
+		    padding-top: 10px;
+		    padding-bottom: 10px;
+		    font-size: 24px;
+		    vertical-align: middle;
+		}
+		.ui-toolbar a{
+		    color:#fff
+		}
+		.ui-toolbar a:active{
+		    color:#4CB9EC
+		}
+		.ui-toolbar .ui-btn-link{
+		    top: 0;
+		    padding: 0;
+		    font-size: 16px;
+		    line-height: 44px;
+		    color: #fff;
+		    background-color: transparent;
+		    border: none;
+		}
+		.ui-toolbar .ui-btn-link.active,.ui-toolbar .ui-btn-link:active{
+		    color:#0062cc;
+		    background-color:transparent
+		}
+		.ui-toolbar .ui-btn-link.fn-left {
+		    margin-left: -5px;
+		}
+
+		.ui-toolbar .ui-btn-link.fn-right {
+		    margin-right: -5px;
+		}
+		/*@ui-tab*/
+		.ui-toolbar .ui-tab{
+		    top: 8px;
+		    margin: 0 auto;
+		}
+		.ui-list{
+		    padding-left: 0;
+		    margin-top: 0;
+		    margin-bottom: 15px;
+		    list-style: none;
+		    background-color: #fff;
+		}
+
+		.ui-list .ui-list-item{
+		    position: relative;
+		    padding: 11px 20px 11px 15px;
+		    overflow: hidden;
+		    border-bottom: 1px solid #ddd;
+		}
+
+		.ui-list .ui-list-item img{
+		    width: 100px;
+		}
+		.ui-list .ui-list-item h4{
+		    font-size: 16px;
+		}
+
+		.ui-list .ui-list-item:active{
+		    color:inherit;
+		    background-color:#e0e0e0
+		}
+
+		.ui-list .ui-list-item a{
+		    position: relative;
+		    display: block;
+		    padding: inherit;
+		    margin: -11px -20px -11px -15px;
+		    overflow: hidden;
+		    color: #333;
+		    font-size: 16px;
+		}
+		.ui-list-item .ui-icon{
+		    color: #4CB9EC;
+		}
+		.ui-list-item p{
+		    margin: 0 0 5px 0;
+		}
+
+		.ui-badge {
+		    display: inline-block;
+		    padding: 2px 9px 3px;
+		    font-size: 12px;
+		    line-height: 1;
+		    color: #333;
+		    background-color: rgba(0,0,0,.15);
+		    border-radius: 100px;
+		}
+
+		.ui-list-item .ui-badge{
+		    position: absolute;
+		    top: 50%;
+		    right: 15px;
+		    -webkit-transform: translateY(-50%);
+		    -ms-transform: translateY(-50%);
+		    transform: translateY(-50%);
+		}
+
+		.ui-list-item .icon-navigate-right .ui-badge{
+		    right:35px;
+		}
+
+
+		.ui-list .ui-media{
+		    overflow: hidden;
+		}
+
+		.ui-media .fn-left {
+		    margin-right: 10px;
+		}
+
+		.ui-media .ui-media-body {
+		    overflow: hidden;
+		}
+        .logo{
+        	width: 30px;
+        	height: 30px;
+        	position: absolute;
+        	margin: 7px 0 3px -40px;
+        }
+       .api-a{
+       	background: #F1F1F1;
+       }
+       
+     #api{
+     	background: #FaFaFa;
+     }
+    
+		</style>
+	</head>
+	<body>
+		<header class="ui-toolbar">
+	        <h1 class="ui-toolbar-title" style="background: #000000;">
+	        	
+	        	<label style="font-weight:bold;">
+	        		WebUI</label>-移动端控件加载</h1>
+	    </header>
+		<ul class="ui-list">
+		  
+		    
+		    <li class="ui-list-item">
+		        <a class="icon-navigate-right" href="inloadApi.html" id="api">顶部使用API</a>
+		    </li> <li class="ui-list-item">
+		        <a class="icon-navigate-right" href="tipsApi.html" id="api">操作使用API</a>
+		    </li> <li class="ui-list-item">
+		        <a class="icon-navigate-right" href="toploadApi.html" id="api">进入页面使用API</a>
+		    </li>
+		    </li> <li class="ui-list-item">
+		        <a class="icon-navigate-right" href="dragloadApi.html" id="api">上拉刷新下拉加载使用API</a>
+		    </li>
+		    <!--<li class="ui-list-item">
+		        <a class="icon-navigate-right" href="category.html">桌面式导航</a>
+		    </li>-->
+		</ul>
+	</body>
+	<script src="lib/jquery/1.11.3/jquery.js"></script>
+	<script src="js/tips.js"></script>
+	<script src="js/mobile-util.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	
+	
+		$('#tips1').click(function(){
+			$.tips({
+				'type'		: 'alert',
+				'message'	: '1、请先链接无线网络"UED"(uiue1234)<br/>2、扫描下面二维码<br/><img src="../doc/URL.png" />',
+				'buttons'	: {
+					'确定'	: {
+						'action': function(){
+						}
+					}
+				}
+			});
+		});
+	});	
+
+</script>
+</html>
+

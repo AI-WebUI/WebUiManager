@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PC输入框</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+
+    <style type="text/css">
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            display: block;
+            margin: 20px 0 20px 0;
+        }
+
+        p {
+            display: block;
+            padding: 6px 0 6px 2px;
+            margin: 20px 0 20px 0;
+        }
+
+        .demo-test-div {
+            width: 60%;
+            padding: 20px 0 20px 20px;
+            border: 1px #E9E9E9 solid;
+            margin: 10px 0 10px 0;
+            /*background: #FAFAFA;*/
+        }
+
+        hr {
+            width: 85%;
+            position: absolute;
+            top: 23px;
+            left: 70px;
+            border: 1px solid #ededed;
+
+        }
+
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+        input::-ms-clear{display:none;}
+    </style>
+</head>
+
+<body>
+<h1 class="main_title">WEBUI输入框组件样式与源码</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>1.普通输入框与密码输入框</h2>
+
+            <div class="aries_demo bs-example code">
+                <div class="demo-test-div">
+                    <label class="ui-label">用户名</label>
+                    <input type="text" id="USER_NAME" class="ui-input ui-input-medium" defaultChars="请输入用户名"/>
+                    <br/>
+                    <br/>
+                    <label class="ui-label">密&nbsp&nbsp&nbsp码</label>
+                    <input type="password" id="PASSWORD" class="ui-passord ui-passord-medium" value="password1"/>
+                </div>
+                <script>
+                    $(function () {
+                        $(".ui-input").defaultChars();
+                    })
+                </script>
+            </div>
+            <div class="aries_demo bs-example code">
+                <div class="demo-test-div">
+                    <label class="ui-label">正常状态</label>
+                    <textarea id="TEXT_AREA" class="ui-textarea" rows="2" maxlength="20">备注1</textarea>
+
+                    <label class="ui-label">禁用状态</label>
+                    <textarea id="TEXT_AREA2" class="ui-textarea" disabled="disabled" maxlength="20">备注2</textarea>
+                    <br/>
+                    <br/>
+                </div>
+                <script>
+                    $(function () {
+                        $(".ui-input").defaultChars();
+                    })
+                </script>
+            </div>
+            <div class="aries_demo bs-example code">
+                <div class="demo-test-div">
+                    <label class="ui-label">禁用状态</label>
+                    <input type="text" id="USER_NAME2" class="ui-input ui-input-medium" disabled="disabled"
+                           value="用户名2"/>
+                    <br/>
+                    <br/>
+
+                    <label class="ui-label">禁用状态</label>
+                    <input type="password" id="PASSWORD2" class="ui-passord ui-passord-medium" disabled="disabled"
+                           value="password2"/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    $(".ui-input").defaultChars();
+                })
+            </script>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+        <pre></pre>
+    </div>
+</div>
+
+</div>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+<script>
+    var html = $('.code').html();
+    $("pre").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+</body>
+
+</html>

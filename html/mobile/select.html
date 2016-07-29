@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="width=750,user-scalable=no">-->
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css320/base.css" />
+		<link rel="stylesheet" type="text/css" href="css320/select.css" />
+		<link rel="stylesheet" type="text/css" href="css320/tips.css" />
+		<link rel="stylesheet" type="text/css" href="css320/btn.css" />
+		<link rel="stylesheet" href="css/scrollbar.css"/>
+		<script type="text/javascript" src="lib/jquery/jquery-2.1.4.min.js"></script>
+		<script src="js/webui.js"></script>
+		<!--<script type="text/javascript" src="js/select.js"></script>-->
+		<script type="text/javascript" src="js/tips.js"></script>
+		<script type="text/javascript" src="js/btn-bak.js"></script>
+		<style type="text/css">
+			*,
+			*:before,
+			*:after {
+				-webkit-user-select: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				-moz-user-select: -moz-none;
+				/*禁止用户选中文本，-moz-none，是写给老版本的ff的方法，当然新版本也是向上兼容的	
+				目前还是个私用属性，ios2.0以上的safari实现良好，安卓尚未支持*/
+				-webkit-touch-callout: none;
+				-ms-touch-action: pan-y;
+			}
+			body {
+				background-color: #eee;
+			}
+			
+			.div_label {
+				width: 350px;
+				height: 90px;
+				background-color: #FFFFFF;
+				font-size: 30px;
+				;
+				padding: 0 0 0 30px;
+				line-height: 86px;
+				color: #333;
+			}
+			
+			.div_radio {
+				margin: -36px 0 0 290px;
+				line-height: 2px;
+				position: absolute;
+				cursor: pointer;
+			}
+			
+			.getv,
+			.setv {
+				display: block;
+				margin: 20px 0 0px 0;
+				line-height: 30px;
+				text-align: center;
+				width: 100%;
+				font-size: 12px;
+				color: #787878;
+				background-color: #FFFFFF;
+				border: 1px #B2B2B2 solid;
+			}
+			/*注意：此处控件css纯粹为了样式demo展示*/
+			
+			.demo-radio {
+				margin: 0 auto;
+			}
+			
+			.ui-select-radio-blue-throughout-li.ui-select-radio-blue-throughout-li,
+			.ui-select-radio-blue-tradition-li,
+			.ui-select-checkbox-blue-tradition-li {
+				margin: 0 20px 0px 10px;
+				padding: 15px 0;
+				border-bottom: 1px #ccc solid;
+				/*注意：此处控件css纯粹为了样式demo展示*/
+				background-color: #FFFFFF;
+			}
+			
+			.ui-select-radio-tradition-throughout-flex {
+				border-bottom: none;
+			}
+			
+			.lab {
+				display: block;
+				font-size: 14px;
+				color: #BEBEBE;
+				margin: 0 0 8px 20px;
+			}
+			
+			#demo-radio9 {
+				background: #0000FF;
+			}
+			
+			.title-p {
+				text-align: center;
+				color: #febe44;
+				font-size: 20px;
+				padding: 24px 0 34px 0
+			}
+			.ui-block-btn{
+				background: #FFF;
+				color: #FEBE44;
+				border: 2px #FEBE44 solid;
+				font-size: 10px;
+			}
+			.ui-block-btn:active{
+				background: #FEBE44;
+				color: #fff;
+			}
+			/*以上css仅作demo排版样式*/
+		</style>
+		<title></title>
+	</head>
+
+	<body>
+		<div class="title-p">移动端控件表格</div>
+		<p>1.单选(传统单选样式，通栏)</p>
+
+		<div id="demo-radio" class="demo-radio" style=" background-color: #333;margin-right:0px;">
+
+		</div>
+		<p>2.单选(传统单选勾选样式，通栏)</p>
+		<div id="demo-radio2" class="demo-radio" style="background-color: #ccc;margin-right: 0px;">
+
+		</div>
+		<p>3.单选(传统单选样式，根据文字内容自适应)</p>
+		<div id="demo-radio9"></div>
+		<p>4.单选(定宽块级样式)</p>
+		<div class="cont-div1">
+		<label class="lab">(1)样式一</label>
+		<div id="demo-radio3"></div>
+		<label class="lab">(2)样式二</label>
+		<div id="demo-radio4"></div>
+		<label class="lab">(3)样式三</label>
+		<div id="demo-radio5"></div>
+		<label class="lab">(4)样式四（勾选）</label>
+			<div id="demo-radio5ex"></div>
+		<p>5.单选(块级单选，自适应)</p>
+		<label class="lab">(1)样式一(对此范例：触发下面按钮可获得相关数据)</label>
+		<div id="demo-radio6"></div>
+	     <br />
+		  <a type="button" id="btn1" class="ui-block-btn">获得自适应块级单选(样式一)取值</a>
+		  <br />
+         <a type="button" id="btn2" class="ui-block-btn">获得自适应块级单选(样式一)展示文本</a>
+		
+		<br />
+		<label class="lab">(2)样式二</label>
+		<div id="demo-radio7"></div>
+		<label class="lab">(3)样式三</label>
+		<div id="demo-radio8"></div>
+		<br />
+
+		<p>1.复选(传统单选样式，通栏)</p>
+		<div id="demo-checkboxex">
+		</div>
+
+		<p>2.复选(块级复选，定宽)</p>
+		<label class="lab">(1)样式一</label>
+		<div id="demo-checkbox"></div>
+		<label class="lab">(2)样式二</label>
+		<div id="demo-checkbox2"></div>
+		<label class="lab">(3)样式三-勾选样式和必选的应用</label>
+		<div id="demo-checkbox3"></div>
+			<a type="button" id="block-btn" class="ui-block-btn value">获取选取值</a>
+			<br/>
+			<a type="button" id="block-btn2" class="ui-block-btn text">获取取文本</a>
+			<script>
+				var index=[];
+				var wxw2=$("#demo-checkbox3").AISelect({
+					'type': 'checkbox',
+					'name': 'checkbox',
+					'content': [{
+						"value": 'checkbox3',
+						"text": "块级复选"
+					}, {
+						"value": 'checkbox3',
+						"text": "块级复选"
+					}],
+					'theme': 'ui-select-checkbox-black-icon',
+					'flex': false,
+					onSelect:function(obj){
+						index = JSON.stringify(obj.getSelectedIndex());
+					}
+				});
+				wxw2.mustSelected({
+					'idx':0
+				})
+				$('.value').on("click", function() {
+					var mess1 = wxw2.getValue();
+					$('body').AITips({
+						'type': 'alert',
+						'message': '' + mess1,
+						//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+						'buttons': [{
+							'text': '确定',
+							'action': function() {}
+						}],
+						'theme': 'white',
+						'icon': "img/1.png"
+					});
+				});
+				$('.text').on("click", function() {
+					var text1=wxw2.getText();
+					$('body').AITips({
+						'type': 'alert',
+						'message': '' + text1,
+						//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+						'buttons': [{
+							'text': '确定',
+							'action': function() {}
+						}],
+						'theme': 'white',
+						'icon': "img/1.png"
+					});
+				});
+			</script>
+		<p>3.复选(块级复选，自适应)</p>
+		<label class="lab">(1)样式一</label>
+		<div id="demo-checkbox4"></div>
+		<label class="lab">(2)样式二</label>
+		<div id="demo-checkbox5"></div>
+		<label class="lab">(3)样式三-勾选样式(对此范例：触发下面按钮可获得相关数据)</label>
+		<div id="demo-checkbox6"></div>
+		<br />
+<a type="button" id="btn22" class="ui-block-btn">设置自适应复选块级(样式3-勾选)值</a>
+		<br />
+<a type="button" id="btn3" class="ui-block-btn">获得自适应复选块级(样式3-勾选)取值</a>
+		<br />
+<a type="button" id="btn4" class="ui-block-btn">获得自适应复选块(样式3-勾选)取展示文本</a>
+		
+		<br />
+	</body>
+
+	<script type="application/javascript">
+		var eeex = $("#demo-checkboxex").AISelect({
+			'type': 'checkbox',
+			'name': 'checkbox23333',
+			textField: 'text1',
+			valueField: 'value1',
+
+			'content': [{
+				"value1": 'checkbox',
+				"text1": "不可选状态"
+			}, {
+				"value1": 'checkbox',
+				"text1": "业务名称第一行checkbox"
+			}, {
+				"value1": 'checkbox',
+				"text1": "业务名称第二行checkbox"
+			}],
+			'theme': 'ui-select-checkbox-blue-tradition',
+			'flex': false
+		});
+		eeex.setDisabled({
+				'idx': 0
+			})
+
+			//getter setter\ 用dom初始化
+		aaa = $("#demo-radio").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio1',
+				"text": "不可选状态"
+			}, {
+				"value": 'radio11',
+				"text": "业务名称第一行radio"
+			}, {
+				"value": 'radio111',
+				"text": "业务名称第二行radio"
+			}],
+			'theme': 'ui-select-radio-blue-tradition',
+			'flex': false
+		});
+		aaa.setDisabled({
+			'idx': 0
+		})
+		aaa.setDisabled({
+			'idx': 1
+		})
+		aaa.setEnable({
+			'idx': 1
+		})
+		$("#demo-radio2").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio2',
+				"text": "业务名称第一行勾选样式"
+			}, {
+				"value": 'radio22',
+				"text": "业务名称第二行勾选样式"
+			}],
+			'theme': 'ui-select-radio-blue-throughout',
+			'flex': false,
+			'onChange': asdfgh
+		});
+		$("#demo-radio3").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio1',
+				"text": "块级单选1"
+			}, {
+				"value": 'block-radio2',
+				"text": "块级单选2"
+			}],
+			'theme': 'ui-select-radio-blue-cycle',
+			'flex': false,
+			'width': '90px'
+		});
+		$("#demo-radio4").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio3',
+				"text": "块级单选3"
+			}, {
+				"value": 'block-radio4',
+				"text": "块级单选4"
+			}],
+			'theme': 'ui-select-radio-blue-angle',
+			'flex': false,
+			'width': '80px'
+		});
+		$("#demo-radio5").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio5',
+				"text": "块级单选5"
+			}, {
+				"value": 'block-radio6',
+				"text": "块级单选6"
+			}],
+			'theme': 'ui-select-radio-black-angle'
+		});
+		$("#demo-radio5ex").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio7',
+				"text": "块级单选7"
+			}, {
+				"value": 'block-radio6',
+				"text": "块级单选8"
+			}],
+			'theme': 'ui-select-radio-black-icon'
+		});
+		var wxw=$("#demo-checkbox").AISelect({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox1',
+				"text": "块级复选"
+			}, {
+				"value": 'checkbox11',
+				"text": "块级复选"
+			}],
+			'theme': 'ui-select-checkbox-blue-cycle',
+			'flex': false,
+			'width': '75px'
+		});
+		wxw.mustSelected({'idx':0});
+		$("#demo-checkbox2").AISelect({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox2',
+				"text": "块级复选"
+			}, {
+				"value": 'checkbox2',
+				"text": "块级复选"
+			}],
+			'theme': 'ui-select-checkbox-blue-angle',
+			'flex': false,
+			'width': '110px'
+		});
+		$('#btn1').on("click", function() {
+			var mess1 = qqq.getValue();
+			$('body').AITips({
+				'type': 'alert',
+				'message': '' + mess1,
+				//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+				'buttons': [{
+					'text': '确定',
+					'action': function() {}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png"
+			});
+		});
+		$('#btn2').on("click", function() {
+			var mess2 = qqq.getText();
+			$('body').AITips({
+				'type': 'alert',
+				'message': '' + mess2,
+				//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+				'buttons': [{
+					'text': '确定',
+					'action': function() {}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png"
+			});
+		});
+		$('#btn3').on("click", function() {
+			var mess3 = www.getValue();
+			$('body').AITips({
+				'type': 'alert',
+				'message': '' + mess3,
+				//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+				'buttons': [{
+					'text': '确定',
+					'action': function() {}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png"
+			});
+		});
+		$('#btn4').on("click", function() {
+			var mess4 = www.getText();
+			$('body').AITips({
+				'type': 'alert',
+				'message': '' + mess4,
+				//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+				'buttons': [{
+					'text': '确定',
+					'action': function() {}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png"
+			});
+		});
+		$('#btn22').on("click", function() {
+			www.setText({
+				"idx": '0',
+				"text": "<p>900元 92M/年</p><p>原价:<del>920元</p>"
+			});
+		});
+		www = $("#demo-checkbox6").AISelect({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": '自适应复选样式三勾选1',
+				"text": "<p>480元 12M/年</p><p>原价:<del>720元</p>"
+			}, {
+				"value": '自适应复选样式三勾选2',
+				"text": "<p>480元 12M/年</p><p>原价:<del>720元</p>"
+			}],
+			'theme': 'ui-select-checkbox-black-icon',
+			'flex': true
+		});
+		qqq = $("#demo-radio6").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio-adapt1',
+				"text": "块级单选自适应1"
+			}, {
+				"value": 'block-radio-adapt2',
+				"text": "块级单选自适应2"
+			}],
+			'theme': 'ui-select-radio-blue-cycle',
+			'flex': true
+		});
+		$("#demo-radio7").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio-adapt3',
+				"text": "块级单选自适应3"
+			}, {
+				"value": 'block-radio-adapt4',
+				"text": "块级单选自适应4"
+			}],
+			'theme': 'ui-select-radio-blue-angle',
+			'flex': true
+		});
+		$("#demo-radio8").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'block-radio-adapt5',
+				"text": "块级单选自适应5"
+			}, {
+				"value": 'block-radio-adapt6',
+				"text": "块级单选自适应6"
+			}],
+			'theme': 'ui-select-radio-black-angle',
+			'flex': true
+		});
+		$("#demo-radio9").AISelect({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio9',
+				"text": "radio"
+			}, {
+				"value": 'radio99',
+				"text": "适应radio"
+			}, {
+				"value": 'radio999',
+				"text": "适应宽度radio"
+			}],
+			'theme': 'ui-select-radio-blue-tradition',
+			'flex': true
+		});
+		$("#demo-checkbox4").AISelect({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox4',
+				"text": "块级复选自适应"
+			}, {
+				"value": 'checkbox44',
+				"text": "块级复选自适应适应适应"
+			}],
+			'theme': 'ui-select-checkbox-blue-cycle',
+			'flex': true
+		});
+		$("#demo-checkbox5").AISelect({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox5',
+				"text": "块级复选自适应"
+			}, {
+				"value": 'checkbox5',
+				"text": "块级复选自适应适应适应"
+			}],
+			'theme': 'ui-select-checkbox-blue-angle',
+			'flex': true
+		});
+
+		function asdfgh(asd) {
+			var mess = asd.getValue(); //拿到传统单选勾选的值
+		}
+		//dome样式展示用
+		(function() {
+			$("ul li:last-child").css({
+				"border-bottom": "none"
+			});
+		})();
+	</script>
+
+</html>

@@ -1,0 +1,63 @@
+.ui-table {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	width: 100%;
+}
+.ui-thead {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333;
+	background-color: #e8e8e8;
+}
+.ui-table tr th,
+.ui-table tr td {
+	padding-left: 20px;
+	color: #333;
+	text-align: left;
+	border: 1px #ccc solid;
+	border-right: none;
+	border-left: none;
+	border-bottom: none;
+}
+.ui-table tr th {
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+}
+.ui-table tr td {
+	font-size: 12px;
+	height: 30px;
+	line-height: 31px;
+}
+.ui-table tr th:last-child,
+.ui-table tr td:last-child {
+	padding-right: 20px;
+}
+.ui-table tr td[class=ui-text-right],
+.ui-table tr th[class=ui-text-right] {
+	text-align: right;
+}
+.ui-table tr:hover {
+	background-color: #f2f2f2;
+	cursor: pointer;
+}
+.ui-table tr:active {
+	background-color: #dbecf9;
+	cursor: pointer;
+}
+.ui-table-tr-active{
+	background-color: #dbecf9;
+}
+.ui-table-nodata{
+	min-height: 160px;
+	text-align: center;
+	line-height: 160px;
+	font-size: 12px;
+	color:#787878;
+}
+.ui-tfoot{
+	background-color: #E8E8E8;	
+}
+.ui-bg-nomorl{
+	background-color: #fff;
+}

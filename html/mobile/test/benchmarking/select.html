@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=750,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/select.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/btn.css" />
+		<style type="text/css">
+			p.xxx {
+				font-size: 24px;
+				margin: 20px;
+				color: #b2b2b2;
+			}
+			body {
+				background-color: #F2F2F2;
+			}
+			.div_label {
+				width: 350px;
+				height: 90px;
+				background-color: #FFFFFF;
+				font-size: 30px;
+				;
+				padding: 0 0 0 30px;
+				line-height: 86px;
+				color: #333;
+			}
+			.div_radio {
+				margin: -36px 0 0 290px;
+				line-height: 2px;
+				position: absolute;
+				cursor: pointer;
+			}
+		</style>
+		<title></title>
+	</head>
+
+	<body style="background-color: #F2F2F2">
+		<div id="wrap" style="margin-top: 100px;">
+			<p id="baseInfo"></p>
+		</div>
+		<p class="xxx">定宽单选</p>
+		<br />
+		<div id="demo-radio" style="background-color: #0f0;margin-right: 100px;"></div>
+		<br />
+		<div id="demo-radio2" style="background-color: #0f0;margin-right: 100px;">
+		</div>
+
+		<br />
+		<div id="demo-radio3"></div>
+		<div id="demo-radio4"></div>
+		<div id="demo-radio5"></div>
+		<p class="xxx">定宽复选</p>
+		<br />
+		<div id="demo-checkbox"></div>
+		<div id="demo-checkbox2"></div>
+		<div id="demo-checkbox3"></div>
+
+		<br />
+		<br />
+		<p class="xxx">自适应单选</p>
+		<br />
+		<div id="demo-radio6"></div>
+		<br />
+		<div id="demo-radio7"></div>
+		<br />
+		<div id="demo-radio8"></div>
+		<br />
+		<div id="demo-radio9"></div>
+		<br />
+		<br />
+		<p class="xxx">自适应复选</p>
+		<br />
+		<div id="demo-checkbox4"></div>
+		<div id="demo-checkbox5"></div>
+		<div id="demo-checkbox6"></div>
+		<br />
+		<button id="btn1">单选demo-radio6取值</button>
+		<br />
+		<button id="btn2">单选demo-radio6取展示文本</button>
+		<br />
+		<button id="btn3">复选demo-checkbox6取值</button>
+		<br />
+		<button id="btn4">复选demo-checkbox6取展示文本</button>
+	</body>
+	<script type="text/javascript" src="../../lib/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../js/select.js"></script>
+	<script type="text/javascript" src="../../js/btn-bak.js"></script>
+	<script src="platform.js"></script>
+  <script src="benchmark.js"></script>
+	<script type="text/javascript">
+	var ua = window.navigator.userAgent;
+	$('#baseInfo').text(ua);
+	var $wrap = $('#wrap');
+	
+	
+	var suite = new Benchmark.Suite;
+		
+	// add tests
+		suite.add('定宽单选tradition5#test', function() {
+			 $("#demo-radio").empty().select({
+				'type': 'radio',
+				'name': 'radio',
+				'content': [{
+					"value": 'radio1',
+					"text": "值1"
+				},{
+					"value": 'radio11',
+					"text": "值11"
+				},{
+					"value": 'radio111',
+					"text": "值111"
+				},{
+					"value": 'radio1111',
+					"text": "值1111"
+				},{
+					"value": 'radio11111',
+					"text": "值11111"
+				}],
+				'theme': 'ui-select-radio-blue-tradition',
+				'flex':false
+			});
+		})
+		.add('定宽单选throughout5#test', function() {
+			 $("#demo-radio2").empty().select({
+				'type': 'radio',
+				'name': 'radio',
+				'content': [{
+					"value": 'radio2',
+					"text": "值2"
+				}
+				,{
+					"value": 'radio22',
+					"text": "值22"
+				},{
+					"value": 'radio222',
+					"text": "值222"
+				},{
+					"value": 'radio2222',
+					"text": "值2222"
+				},{
+					"value": 'radio22222',
+					"text": "值22222"
+				}
+				],
+				'theme': 'ui-select-radio-blue-throughout',
+				'flex':false
+			});
+		})
+		.add('定宽单选cycle5#test', function() {
+			 $("#demo-radio3").empty().select({
+				'type': 'radio',
+				'name': 'radio',
+				'content': [{
+					"value": 'radio3',
+					"text": "值3"
+				},
+				{
+					"value": 'radio3',
+					"text": "值33"
+				},
+				{
+					"value": 'radio3',
+					"text": "值333"
+				},
+				{
+					"value": 'radio3',
+					"text": "值3333"
+				},
+				{
+					"value": 'radio3',
+					"text": "值33333"
+				}],
+				'theme': 'ui-select-radio-blue-cycle',
+				'flex':false,
+				'width':'180px'
+			});
+		})
+		.add('定宽单选blue-angle5#test', function() {
+			 $("#demo-radio4").empty().select({
+				'type': 'radio',
+				'name': 'radio',
+				'content': [{
+					"value": 'radio4',
+					"text": "值4"
+				},
+				{
+					"value": 'radio4',
+					"text": "值44"
+				},
+				{
+					"value": 'radio4',
+					"text": "值444"
+				},
+				{
+					"value": 'radio4',
+					"text": "值4444"
+				},
+				{
+					"value": 'radio4',
+					"text": "值44444"
+				}
+				],
+				'theme': 'ui-select-radio-blue-angle',
+				'flex':false,
+				'width':'190px'
+			});
+		})
+		.add('定宽单选black-angle5#test', function() {
+			 $("#demo-radio5").empty().select({
+				'type': 'radio',
+				'name': 'radio',
+				'content': [{
+					"value": 'radio5',
+					"text": "值5"
+				},
+				{
+					"value": 'radio5',
+					"text": "值55"
+				},
+				{
+					"value": 'radio5',
+					"text": "值555"
+				},
+				{
+					"value": 'radio5',
+					"text": "值5555"
+				},
+				{
+					"value": 'radio5',
+					"text": "值55555"
+				}],
+				'theme': 'ui-select-radio-black-angle'
+			});
+		})
+		.add('定宽复选blue-cycle5#test', function() {
+			 $("#demo-checkbox").empty().select({
+				'type': 'checkbox',
+				'name': 'checkbox',
+				'content': [{
+					"value": 'checkbox1',
+					"text": "复选1"
+				}, {
+					"value": 'checkbox11',
+					"text": "复选11"
+				}, {
+					"value": 'checkbox11',
+					"text": "复选111"
+				}, {
+					"value": 'checkbox11',
+					"text": "复选1111"
+				}, {
+					"value": 'checkbox11',
+					"text": "复选11111"
+				}],
+				'theme': 'ui-select-checkbox-blue-cycle',
+				'flex':false,
+				'width':'150px'
+			});
+		})
+		.add('自适应单选blue-cycle5#test', function() {
+			 $("#demo-radio6").empty().select({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio6',
+				"text": "值6xxxxxxxxxxxxx"
+			},{
+				"value": 'radio66',
+				"text": "值66xxxxxxxxxxxxxxx"
+			},
+			{
+				"value": 'radio666',
+				"text": "值66xxxxxxxxxxxxxxx"
+			},{
+				"value": 'radio6666',
+				"text": "值66xxxxxxxxxxxxxxx"
+			},{
+				"value": 'radio66666',
+				"text": "值66xxxxxxxxxxxxxxx"
+			}],
+			'theme': 'ui-select-radio-blue-cycle',
+			'flex':true
+		});
+		})
+		.add('自适应复选black-angle5#test', function() {
+			 $("#demo-checkbox6").empty().select({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox6',
+				"text": "复选6"
+			}, {
+				"value": 'checkbox666',
+				"text": "复选66xxx"
+			}, {
+				"value": 'checkbox6666',
+				"text": "复选66xxx"
+			}, {
+				"value": 'checkbox66666',
+				"text": "复选66xxx"
+			}, {
+				"value": 'checkbox66',
+				"text": "复选66xxx"
+			}],
+			'theme': 'ui-select-checkbox-black-angle',
+			'flex':true
+		});
+		})
+		// add listeners
+		.on('cycle', function(event) {
+		  appendInfo(String(event.target))
+		})
+		// run async
+		.run({ 'async': true });	
+	
+	
+	
+	
+	function appendInfo(str){
+		$wrap.append('<p>' + str + '</p>');
+	}
+		
+		
+		$("#demo-checkbox2").select({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox2',
+				"text": "复选2"
+			}, {
+				"value": 'checkbox2',
+				"text": "复选22"
+			}],
+			'theme': 'ui-select-checkbox-blue-angle',
+			'flex':false,
+			'width':'220px'
+		});
+		$("#demo-checkbox3").select({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox3',
+				"text": "复选3"
+			}, {
+				"value": 'checkbox3',
+				"text": "复选33"
+			}],
+			'theme': 'ui-select-checkbox-black-angle',
+			'flex':false
+		});
+		$('#btn1').blockBtn({
+			clickBtnfunc: function() {
+				alert(qqq.getValue());
+			}
+		});
+		$('#btn2').blockBtn({
+			clickBtnfunc: function() {
+				alert(qqq.getText());
+			}
+		});
+		$('#btn3').blockBtn({
+			clickBtnfunc: function() {
+				alert(www.getValue());
+			}
+		});
+		$('#btn4').blockBtn({
+			clickBtnfunc: function() {
+				alert(www.getText());
+			}
+		});
+		qqq = $("#demo-radio6").select({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio6',
+				"text": "值6xxxxxxxxxxxxx"
+			},{
+				"value": 'radio66',
+				"text": "值66xxxxxxxxxxxxxxx"
+			}],
+			'theme': 'ui-select-radio-blue-cycle',
+			'flex':true
+		});
+		$("#demo-radio7").select({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio7',
+				"text": "值7xxxxxxxxxxxxxx"
+			}],
+			'theme': 'ui-select-radio-blue-angle',
+			'flex':true
+		});
+		$("#demo-radio8").select({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio8',
+				"text": "值8xxxxxxxxxxxxxxxxxx"
+			}],
+			'theme': 'ui-select-radio-black-angle',
+			'flex':true
+		});
+		$("#demo-radio9").select({
+			'type': 'radio',
+			'name': 'radio',
+			'content': [{
+				"value": 'radio9',
+				"text": "值9"
+			},{
+				"value": 'radio99',
+				"text": "值99"
+			},{
+				"value": 'radio999',
+				"text": "值999"
+			},{
+				"value": 'radio9999',
+				"text": "值9999"
+			},{
+				"value": 'radio99999',
+				"text": "值99999"
+			}],
+			'theme': 'ui-select-radio-blue-tradition',
+			'flex':true
+		});
+		
+		$("#demo-checkbox4").select({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox4',
+				"text": "复选4"
+			}, {
+				"value": 'checkbox44',
+				"text": "复选44xxxxxxxxx"
+			}],
+			'theme': 'ui-select-checkbox-blue-cycle',
+			'flex':true,
+		});
+		$("#demo-checkbox5").select({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox5',
+				"text": "复选5"
+			}, {
+				"value": 'checkbox5',
+				"text": "复选55xxxxxxxxxxx"
+			}],
+			'theme': 'ui-select-checkbox-blue-angle',
+			'flex':true
+		});
+		www=$("#demo-checkbox6").select({
+			'type': 'checkbox',
+			'name': 'checkbox',
+			'content': [{
+				"value": 'checkbox6',
+				"text": "复选6"
+			}, {
+				"value": 'checkbox66',
+				"text": "复选66xxx"
+			}],
+			'theme': 'ui-select-checkbox-black-angle',
+			'flex':true
+		});
+	</script>
+
+</html>

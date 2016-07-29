@@ -1,0 +1,57 @@
+.ui-keytip{
+	height: auto;
+	display: block;
+	margin: 10px auto;
+	overflow: hidden;
+	position: absolute;
+	border: 1px solid #c2e5f7;
+	left: 50%;
+}
+.ui-keytip-content{
+	font-size: 12px;
+	color: #333;
+	height: auto;
+	line-height: 20px;
+	overflow: hidden;
+	display: block;
+	float: left;
+	padding: 6px 0 6px 10px;
+}
+.ui-keytip-btn{
+	font-size: 12px;
+	color: #44ABE5;
+	font-weight: bold;
+	text-align: right;
+	padding: 0;
+	margin-right: 20px;
+	display: block;
+	float: right;
+	border: none;
+	height: 30px;
+	background-color: transparent;
+	outline: none;
+}
+.ui-keytip-close{
+	padding: 0;
+	display: block;
+	float: right;
+	border: none;
+	width: 10px;
+	height: 10px;
+	margin-right: 10px;
+	margin-top: 11px;
+	background: url(icons/keytip-close.png);
+	cursor: pointer;
+}
+.ui-keytip-btn:hover{
+	color: #4AB8F6;
+}
+.ui-keytip-btn:active{
+	color: #2e8cd4;
+}
+.ui-keytip-close:hover{
+	background: url(icons/keytip-close.png) -10px;
+}
+.ui-keytip-close:active{
+	background: url(icons/keytip-close.png) -20px;
+}

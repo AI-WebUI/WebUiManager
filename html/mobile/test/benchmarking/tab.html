@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=750,user-scalable=no">
+		<title>标签</title>
+		<script type="text/javascript" src="../../lib/jquery/2.1.4/jquery.js"></script>
+		<script type="text/javascript" src="../../js/mobile-util.js"></script>
+		<link rel="stylesheet" href="../../css/tab.css" type="text/css" />
+		<script type="text/javascript" src="../../js/tab.js"></script>
+		<style type="text/css">
+			p {
+			  font-size: 24px;
+			  margin: 20px;
+			  color: #bebebe;
+			  margin-left: 100px;
+			  cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap" style="margin-top: 100px;">
+			<p id="baseInfo"></p>
+		</div>
+
+	</body>
+	<script src="platform.js"></script>
+	<script src="benchmark.js"></script>
+	<script>
+		var dataArr = [
+				{name:'标签一',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签二',rel:'div2',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签三',rel:'div3',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签四',rel:'div4',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签五',rel:'div5',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签六',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签一',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签二',rel:'div2',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签三',rel:'div3',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签四',rel:'div4',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签五',rel:'div5',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签六',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签一',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签二',rel:'div2',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签三',rel:'div3',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签四',rel:'div4',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签五',rel:'div5',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签六',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签一',rel:'div1',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']},
+				{name:'标签二',rel:'div2',icon:['img/tab_bottom_2.png','img/tab_bottom_1.png']}
+			]
+		
+		var ua = window.navigator.userAgent;
+		$('#baseInfo').text(ua);
+		var $wrap = $('#wrap');
+		
+		
+		var suite = new Benchmark.Suite;
+
+		// add tests
+		suite.add('top_dataLen_4#test', function() {
+		  top_dataLen_4();
+		})
+		.add('top_dataLen_5#test', function() {
+		  top_dataLen_5();
+		})
+		.add('top_dataLen_10#test', function() {
+		  top_dataLen_10();
+		})
+		.add('top_dataLen_20#test', function() {
+		  top_dataLen_20();
+		})
+		.add('left_dataLen_4#test', function() {
+		  left_dataLen_4();
+		})
+		.add('left_dataLen_5#test', function() {
+		  left_dataLen_5();
+		})
+		.add('left_dataLen_10#test', function() {
+		  left_dataLen_10();
+		})
+		.add('left_dataLen_20#test', function() {
+		  left_dataLen_20();
+		})
+		.add('bottom_dataLen_2#test', function() {
+		  bottom_dataLen_2();
+		})
+		.add('bottom_dataLen_4#test', function() {
+		  bottom_dataLen_4();
+		})
+		// add listeners
+		.on('cycle', function(event) {
+		  appendInfo(String(event.target))
+		})
+		// run async
+		.run({ 'async': true });
+		
+		function top_dataLen_4(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"top",
+					field: dataArr.slice(0,4),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		
+		function top_dataLen_5(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"top",
+					field:dataArr.slice(0,5),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		function top_dataLen_10(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"top",
+					field:dataArr.slice(0,10),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		function top_dataLen_20(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"top",
+					field:dataArr.slice(0,20),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		
+		
+		function left_dataLen_4(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"left",
+					field:dataArr.slice(0,4),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		
+		function left_dataLen_5(){
+			$("#tab_group").removeClass().empty();
+			$("#tab_group").aimTab({
+				type:"left",
+				field:dataArr.slice(0,5),
+				after:function(rel){
+					//alert(rel);
+				}
+			});
+		}
+		
+		function left_dataLen_10(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"left",
+					field:dataArr.slice(0,10),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+				
+		}
+		function left_dataLen_20(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"left",
+					field:dataArr.slice(0,20),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		function bottom_dataLen_2(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"bottom",
+					field:dataArr.slice(0,2),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		function bottom_dataLen_4(){
+			$("#tab_group").removeClass().empty();
+					$("#tab_group").aimTab({
+					type:"bottom",
+					field:dataArr.slice(0,4),
+					after:function(rel){
+						//alert(rel);
+					}
+				});
+		}
+		
+		function appendInfo(str){
+			$wrap.append('<p>' + str + '</p>');
+		}
+		
+	</script>
+
+</html>

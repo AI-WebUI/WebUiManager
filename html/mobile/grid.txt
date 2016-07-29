@@ -1,0 +1,89 @@
+<body>
+		 <div class="title-p">移动端控件表格</div>
+		<div id="demo-grid"></div>
+	</body>
+
+</html>
+
+<script>
+	var opts = {
+		'heads': [{
+			'text': '号码',
+			'name': 'name'
+		}, {
+			'text': '保底',
+			'name': 'url'
+		}, {
+			'text': '预存',
+			'name': 'yucun'
+		}, {
+			'text': '周期',
+			'name': 'cycle',
+			"stype": 'int'
+		}],
+		'loadFunc': loadPage, //方法要有1个页码的入参
+		"theme": 'normal',
+		"action": function() {
+			alert()
+		}
+	}
+	var mygrid = new $("#demo-grid").AIGrid(opts);
+	//	$("#demo-grid").GenerateTable();
+	//
+	function loadPage(pageNum) {
+		var defaults = {
+			"field": [{
+				"name": "13877137721",
+				"url":   pageNum+12,
+				"yucun": 100,
+				"cycle": 1
+			}, {
+				"name": "13877133421",
+				"url": pageNum+14,
+				"yucun": 100,
+				"cycle": 2
+			}, {
+				"name": "13877132341",
+				"url": pageNum+12,
+				"yucun": 100,
+				"cycle": 3
+			}, {
+				"name": "13877134721",
+				"url": pageNum+111,
+				"yucun": 100,
+				"cycle": 4
+			}, {
+				"name": "13877137721",
+				"url": pageNum+23,
+				"yucun": 95,
+				"cycle": 5
+			}, {
+				"name": "13877138921",
+				"url": 13+pageNum,
+				"yucun": 96,
+				"cycle": 6
+			}, {
+				"name": "13877145721",
+				"url": 19+ pageNum,
+				"yucun": 97,
+				"cycle": 7
+			}, {
+				"name": "13877137734",
+				"url": 18 + pageNum,
+				"yucun": 98,
+				"cycle": 8
+			}, {
+				"name": "13877137745",
+				"url": 17 + pageNum,
+				"yucun": 99,
+				"cycle": 9
+			}, {
+				"name": "13877137756",
+				"url": 18+ pageNum,
+				"yucun": 100,
+				"cycle": 10
+			}]
+		};
+		return defaults;
+	};
+</script>

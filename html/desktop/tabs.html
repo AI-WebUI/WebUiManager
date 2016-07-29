@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Tabs Style - jQuery EasyUI Demo</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/icon.css">
+		<link rel="stylesheet" type="text/css" href="css/panel.css">
+		<link rel="stylesheet" type="text/css" href="css/textbox.css">
+		<link rel="stylesheet" type="text/css" href="css/tabs.css">
+		<!--<link rel="stylesheet" type="text/css" href="../webui/1.0.0/pc/css/webui.css"/>-->
+		<script type="text/javascript" src="lib/jquery/1.11.3/jquery.js"></script>
+	</head>
+
+	<body>
+		<h2>Tabs Style</h2>
+		<p>Click the options below to change the tabs style.</p>
+		<div style="margin:20px 0;">
+			<input id="plain" type="checkbox" onclick="setTabs()"><span>plain</span>
+			<br>
+			<input id="narrow" type="checkbox" onclick="setTabs()"><span>没有间隔</span>
+			<br>
+			<input id="pill" type="checkbox" onclick="setTabs()"><span>pill</span>
+			<br>
+			<input id="justified" type="checkbox" onclick="setTabs()"><span>没有左右滑动</span>
+		</div>
+		<div id="tt" class="webui-tabs" data-options="tabWidth:160,plain:true,scrollIncrement:160" style="width:700px;height:250px">
+			<div title="业务一" style="padding:10px">
+				
+			</div>
+			<div title="业务二" style="padding:10px">
+				aaaaa
+			</div>
+			<div title="业务三" data-options="closable:true" style="padding:10px">
+				This is the help content.
+			</div>
+			<div title="业务四" data-options="closable:true" style="padding:10px">
+				This is the help content.
+			</div>
+			<div title="业务五" data-options="closable:true" style="padding:10px">
+				This is the help content.
+			</div>
+		</div>
+		<h1>第二次迭代新增样式</h1>
+		<div id="tab_newadd" class="webui-tabs" data-options="plain:true,scrollIncrement:160" style="width:700px;height:250px;">
+			<div title="宽带续包业务" style="padding:10px">
+				
+			</div>
+			<div title="宽带新开户业务" style="padding:10px">
+				aaaaa
+			</div>
+			<div title="宽带融合业务" data-options="closable:true" style="padding:10px">
+				This is the help content.
+			</div>
+		</div>
+		<script type="text/javascript" src="../webui/1.0.0/pc/js/webui.js"></script>
+		<script type="text/javascript">
+	 		setTabs();
+			function setTabs() {
+				$('#tt').tabs({
+					plain: true,
+					narrow: $('#narrow').is(':checked'),
+					pill: $('#pill').is(':checked'),
+					justified: $('#justified').is(':checked')
+				})
+			}
+			$(function(){
+				$('#tab_newadd').tabs({
+					className: "gray-bg"
+				})
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <style>
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+
+        }
+
+        p {
+            font-size: 16px;
+            display: block;
+            padding: 6px 0 6px 2px;
+            margin: 20px 0 20px 0;
+        }
+
+        .datagrid {
+            border-right: 1px #ccc solid;
+
+        }
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1 class="main_title">WEBUI PC端组件数据表格 DataGrid</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>表格组件使用案例</h2>
+            <p>数据表格组件。类似于html中的table，支持后台数据源、分页、自动列宽、单选/多选、行样式、自定义列渲染等功能。</p>
+            <div class="aries_demo bs-example code">
+                <table id="dg1"></table>
+                <script>
+                    $(function () {
+                        $('#dg1').datagrid({
+                            width: 700,
+                            height: 350,
+                            url: 'data/datagrid_data1.json',
+                            method: 'get',
+                            rownumbers: true, //显示行号列
+                            pagination: true, //显示分页工具栏
+                            singleSelect: true,//只能单选行
+                            loadMsg: '请稍候，数据加载中...',//自定义等待消息
+                            columns: [[
+                                {field: 'name', title: '姓名', width: 80},
+                                {field: 'mobile', title: '手机号', width: 100, sortable: true},
+                                {field: 'shortNum', title: '短号', width: 50},
+                                {field: 'region', title: '地区', width: 80},
+                                {field: 'plan', title: '套餐', width: 150},
+                                {field: 'balance', title: '余额', width: 50},
+                                {field: 'status', title: '状态', align: 'right'}
+                            ]]
+                        });
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="codes">
+      </pre>
+    </div>
+</div>
+<!--<div class="cont">-->
+
+    <!--<p class="view-desc">数据表格组件。类似于html中的table，支持后台数据源、分页、自动列宽、单选/多选、行样式、自定义列渲染等功能。</p>-->
+
+    <!--<div class="demo_content">-->
+        <!--&lt;!&ndash; 组件示例区域 &ndash;&gt;-->
+        <!--<div class="aries_demo bs-example">-->
+            <!--<table id="dg1"></table>-->
+            <!--<script>-->
+                <!--$(function () {-->
+                    <!--$('#dg1').datagrid({-->
+                        <!--width: 700,-->
+                        <!--height: 350,-->
+                        <!--url: 'data/datagrid_data1.json',-->
+                        <!--method: 'get',-->
+                        <!--rownumbers: true, //显示行号列-->
+                        <!--pagination: true, //显示分页工具栏-->
+                        <!--singleSelect: true,//只能单选行-->
+                        <!--loadMsg: '请稍候，数据加载中...',//自定义等待消息-->
+                        <!--columns: [[-->
+                            <!--{field: 'name', title: '姓名', width: 80},-->
+                            <!--{field: 'mobile', title: '手机号', width: 100, sortable: true},-->
+                            <!--{field: 'shortNum', title: '短号', width: 50},-->
+                            <!--{field: 'region', title: '地区', width: 80},-->
+                            <!--{field: 'plan', title: '套餐', width: 150},-->
+                            <!--{field: 'balance', title: '余额', width: 50},-->
+                            <!--{field: 'status', title: '状态', align: 'right'}-->
+                        <!--]]-->
+                    <!--});-->
+                <!--})-->
+            <!--</script>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 组件示例代码区域 &ndash;&gt;-->
+        <!--<div class="highlight"></div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<script>
+    var html = $('.code').html();
+    $(".codes").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+
+</body>
+
+</html>
