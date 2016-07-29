@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>body {
+        width: 45em;
+        border: 1px solid #ddd;
+        outline: 1300px solid #fff;
+        margin: 16px auto;
+    }
+
+    body .markdown-body {
+        padding: 30px;
+    }
+
+    @font-face {
+        font-family: fontawesome-mini;
+        src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+    }
+
+    @font-face {
+        font-family: octicons-anchor;
+        src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+    }
+
+    .markdown-body {
+        font-family: sans-serif;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        color: #333333;
+        overflow: hidden;
+        font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        word-wrap: break-word;
+    }
+
+    .markdown-body a {
+        background: transparent;
+    }
+
+    .markdown-body a:active,
+    .markdown-body a:hover {
+        outline: 0;
+    }
+
+    .markdown-body b,
+    .markdown-body strong {
+        font-weight: bold;
+    }
+
+    .markdown-body mark {
+        background: #ff0;
+        color: #000;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .markdown-body sub,
+    .markdown-body sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    .markdown-body sup {
+        top: -0.5em;
+    }
+
+    .markdown-body sub {
+        bottom: -0.25em;
+    }
+
+    .markdown-body h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+    }
+
+    .markdown-body img {
+        border: 0;
+    }
+
+    .markdown-body hr {
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        height: 0;
+    }
+
+    .markdown-body pre {
+        overflow: auto;
+    }
+
+    .markdown-body code,
+    .markdown-body kbd,
+    .markdown-body pre,
+    .markdown-body samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+
+    .markdown-body input {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+    }
+
+    .markdown-body html input[disabled] {
+        cursor: default;
+    }
+
+    .markdown-body input {
+        line-height: normal;
+    }
+
+    .markdown-body input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .markdown-body table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .markdown-body td,
+    .markdown-body th {
+        padding: 0;
+    }
+
+    .markdown-body .codehilitetable {
+        border: 0;
+        border-spacing: 0;
+    }
+
+    .markdown-body .codehilitetable tr {
+        border: 0;
+    }
+
+    .markdown-body .codehilitetable pre,
+    .markdown-body .codehilitetable div.codehilite {
+        margin: 0;
+    }
+
+    .markdown-body .linenos,
+    .markdown-body .code,
+    .markdown-body .codehilitetable td {
+        border: 0;
+        padding: 0;
+    }
+
+    .markdown-body td:not(.linenos) .linenodiv {
+        padding: 0 !important;
+    }
+
+    .markdown-body .code {
+        width: 100%;
+    }
+
+    .markdown-body .linenos div pre,
+    .markdown-body .linenodiv pre,
+    .markdown-body .linenodiv {
+        border: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-border-top-left-radius: 3px;
+        -webkit-border-bottom-left-radius: 3px;
+        -moz-border-radius-topleft: 3px;
+        -moz-border-radius-bottomleft: 3px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .markdown-body .code div pre,
+    .markdown-body .code div {
+        border: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-border-top-right-radius: 3px;
+        -webkit-border-bottom-right-radius: 3px;
+        -moz-border-radius-topright: 3px;
+        -moz-border-radius-bottomright: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .markdown-body * {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .markdown-body input {
+        font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        line-height: 1.4;
+    }
+
+    .markdown-body a {
+        color: #4183c4;
+        text-decoration: none;
+    }
+
+    .markdown-body a:hover,
+    .markdown-body a:focus,
+    .markdown-body a:active {
+        text-decoration: underline;
+    }
+
+    .markdown-body hr {
+        height: 0;
+        margin: 15px 0;
+        overflow: hidden;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .markdown-body hr:before,
+    .markdown-body hr:after {
+        display: table;
+        content: " ";
+    }
+
+    .markdown-body hr:after {
+        clear: both;
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        line-height: 1.1;
+    }
+
+    .markdown-body h1 {
+        font-size: 30px;
+    }
+
+    .markdown-body h2 {
+        font-size: 21px;
+    }
+
+    .markdown-body h3 {
+        font-size: 16px;
+    }
+
+    .markdown-body h4 {
+        font-size: 14px;
+    }
+
+    .markdown-body h5 {
+        font-size: 12px;
+    }
+
+    .markdown-body h6 {
+        font-size: 11px;
+    }
+
+    .markdown-body blockquote {
+        margin: 0;
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .markdown-body ol ol,
+    .markdown-body ul ol {
+        list-style-type: lower-roman;
+    }
+
+    .markdown-body ul ul ol,
+    .markdown-body ul ol ol,
+    .markdown-body ol ul ol,
+    .markdown-body ol ol ol {
+        list-style-type: lower-alpha;
+    }
+
+    .markdown-body dd {
+        margin-left: 0;
+    }
+
+    .markdown-body code,
+    .markdown-body pre,
+    .markdown-body samp {
+        font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        font-size: 12px;
+    }
+
+    .markdown-body pre {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .markdown-body kbd {
+        background-color: #e7e7e7;
+        background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+        background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+        background-image: linear-gradient(#fefefe, #e7e7e7);
+        background-repeat: repeat-x;
+        border-radius: 2px;
+        border: 1px solid #cfcfcf;
+        color: #000;
+        padding: 3px 5px;
+        line-height: 10px;
+        font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        display: inline-block;
+    }
+
+    .markdown-body > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    .markdown-body > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .markdown-body .headeranchor-link {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        padding-right: 6px;
+        padding-left: 30px;
+        margin-left: -30px;
+    }
+
+    .markdown-body .headeranchor-link:focus {
+        outline: none;
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6 {
+        position: relative;
+        margin-top: 1em;
+        margin-bottom: 16px;
+        font-weight: bold;
+        line-height: 1.4;
+    }
+
+    .markdown-body h1 .headeranchor,
+    .markdown-body h2 .headeranchor,
+    .markdown-body h3 .headeranchor,
+    .markdown-body h4 .headeranchor,
+    .markdown-body h5 .headeranchor,
+    .markdown-body h6 .headeranchor {
+        display: none;
+        color: #000;
+        vertical-align: middle;
+    }
+
+    .markdown-body h1:hover .headeranchor-link,
+    .markdown-body h2:hover .headeranchor-link,
+    .markdown-body h3:hover .headeranchor-link,
+    .markdown-body h4:hover .headeranchor-link,
+    .markdown-body h5:hover .headeranchor-link,
+    .markdown-body h6:hover .headeranchor-link {
+        height: 1em;
+        padding-left: 8px;
+        margin-left: -30px;
+        line-height: 1;
+        text-decoration: none;
+    }
+
+    .markdown-body h1:hover .headeranchor-link .headeranchor,
+    .markdown-body h2:hover .headeranchor-link .headeranchor,
+    .markdown-body h3:hover .headeranchor-link .headeranchor,
+    .markdown-body h4:hover .headeranchor-link .headeranchor,
+    .markdown-body h5:hover .headeranchor-link .headeranchor,
+    .markdown-body h6:hover .headeranchor-link .headeranchor {
+        display: inline-block;
+    }
+
+    .markdown-body h1 {
+        padding-bottom: 0.3em;
+        font-size: 2.25em;
+        line-height: 1.2;
+        border-bottom: 1px solid #eee;
+    }
+
+    .markdown-body h2 {
+        padding-bottom: 0.3em;
+        font-size: 1.75em;
+        line-height: 1.225;
+        border-bottom: 1px solid #eee;
+    }
+
+    .markdown-body h3 {
+        font-size: 1.5em;
+        line-height: 1.43;
+    }
+
+    .markdown-body h4 {
+        font-size: 1.25em;
+    }
+
+    .markdown-body h5 {
+        font-size: 1em;
+    }
+
+    .markdown-body h6 {
+        font-size: 1em;
+        color: #777;
+    }
+
+    .markdown-body p,
+    .markdown-body blockquote,
+    .markdown-body ul,
+    .markdown-body ol,
+    .markdown-body dl,
+    .markdown-body table,
+    .markdown-body pre,
+    .markdown-body .admonition {
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    .markdown-body hr {
+        height: 4px;
+        padding: 0;
+        margin: 16px 0;
+        background-color: #e7e7e7;
+        border: 0 none;
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+        padding-left: 2em;
+    }
+
+    .markdown-body ul ul,
+    .markdown-body ul ol,
+    .markdown-body ol ol,
+    .markdown-body ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .markdown-body li > p {
+        margin-top: 16px;
+    }
+
+    .markdown-body dl {
+        padding: 0;
+    }
+
+    .markdown-body dl dt {
+        padding: 0;
+        margin-top: 16px;
+        font-size: 1em;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .markdown-body dl dd {
+        padding: 0 16px;
+        margin-bottom: 16px;
+    }
+
+    .markdown-body blockquote {
+        padding: 0 15px;
+        color: #777;
+        border-left: 4px solid #ddd;
+    }
+
+    .markdown-body blockquote > :first-child {
+        margin-top: 0;
+    }
+
+    .markdown-body blockquote > :last-child {
+        margin-bottom: 0;
+    }
+
+    .markdown-body table {
+        display: block;
+        width: 100%;
+        overflow: auto;
+        word-break: normal;
+        word-break: keep-all;
+    }
+
+    .markdown-body table th {
+        font-weight: bold;
+    }
+
+    .markdown-body table th,
+    .markdown-body table td {
+        padding: 6px 13px;
+        border: 1px solid #ddd;
+    }
+
+    .markdown-body table tr {
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+
+    .markdown-body table tr:nth-child(2n) {
+        background-color: #f8f8f8;
+    }
+
+    .markdown-body img {
+        max-width: 100%;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .markdown-body code,
+    .markdown-body samp {
+        padding: 0;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(0, 0, 0, 0.04);
+        border-radius: 3px;
+    }
+
+    .markdown-body code:before,
+    .markdown-body code:after {
+        letter-spacing: -0.2em;
+        content: "\00a0";
+    }
+
+    .markdown-body pre > code {
+        padding: 0;
+        margin: 0;
+        font-size: 100%;
+        word-break: normal;
+        white-space: pre;
+        background: transparent;
+        border: 0;
+    }
+
+    .markdown-body .codehilite {
+        margin-bottom: 16px;
+    }
+
+    .markdown-body .codehilite pre,
+    .markdown-body pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border-radius: 3px;
+    }
+
+    .markdown-body .codehilite pre {
+        margin-bottom: 0;
+        word-break: normal;
+    }
+
+    .markdown-body pre {
+        word-wrap: normal;
+    }
+
+    .markdown-body pre code {
+        display: inline;
+        max-width: initial;
+        padding: 0;
+        margin: 0;
+        overflow: initial;
+        line-height: inherit;
+        word-wrap: normal;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .markdown-body pre code:before,
+    .markdown-body pre code:after {
+        content: normal;
+    }
+
+    /* Admonition */
+    .markdown-body .admonition {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        position: relative;
+        border-radius: 3px;
+        border: 1px solid #e0e0e0;
+        border-left: 6px solid #333;
+        padding: 10px 10px 10px 30px;
+    }
+
+    .markdown-body .admonition table {
+        color: #333;
+    }
+
+    .markdown-body .admonition p {
+        padding: 0;
+    }
+
+    .markdown-body .admonition-title {
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .markdown-body .admonition > .admonition-title {
+        color: #333;
+    }
+
+    .markdown-body .attention > .admonition-title {
+        color: #a6d796;
+    }
+
+    .markdown-body .caution > .admonition-title {
+        color: #d7a796;
+    }
+
+    .markdown-body .hint > .admonition-title {
+        color: #96c6d7;
+    }
+
+    .markdown-body .danger > .admonition-title {
+        color: #c25f77;
+    }
+
+    .markdown-body .question > .admonition-title {
+        color: #96a6d7;
+    }
+
+    .markdown-body .note > .admonition-title {
+        color: #d7c896;
+    }
+
+    .markdown-body .admonition:before,
+    .markdown-body .attention:before,
+    .markdown-body .caution:before,
+    .markdown-body .hint:before,
+    .markdown-body .danger:before,
+    .markdown-body .question:before,
+    .markdown-body .note:before {
+        font: normal normal 16px fontawesome-mini;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        line-height: 1.5;
+        color: #333;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+
+    .markdown-body .admonition:before {
+        content: "\f056\00a0";
+        color: 333;
+    }
+
+    .markdown-body .attention:before {
+        content: "\f058\00a0";
+        color: #a6d796;
+    }
+
+    .markdown-body .caution:before {
+        content: "\f06a\00a0";
+        color: #d7a796;
+    }
+
+    .markdown-body .hint:before {
+        content: "\f05a\00a0";
+        color: #96c6d7;
+    }
+
+    .markdown-body .danger:before {
+        content: "\f057\00a0";
+        color: #c25f77;
+    }
+
+    .markdown-body .question:before {
+        content: "\f059\00a0";
+        color: #96a6d7;
+    }
+
+    .markdown-body .note:before {
+        content: "\f040\00a0";
+        color: #d7c896;
+    }
+
+    .markdown-body .admonition::after {
+        content: normal;
+    }
+
+    .markdown-body .attention {
+        border-left: 6px solid #a6d796;
+    }
+
+    .markdown-body .caution {
+        border-left: 6px solid #d7a796;
+    }
+
+    .markdown-body .hint {
+        border-left: 6px solid #96c6d7;
+    }
+
+    .markdown-body .danger {
+        border-left: 6px solid #c25f77;
+    }
+
+    .markdown-body .question {
+        border-left: 6px solid #96a6d7;
+    }
+
+    .markdown-body .note {
+        border-left: 6px solid #d7c896;
+    }
+
+    .markdown-body .admonition > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    .markdown-body .admonition > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    /* progress bar*/
+    .markdown-body .progress {
+        display: block;
+        width: 300px;
+        margin: 10px 0;
+        height: 24px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #ededed;
+        position: relative;
+        box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+    }
+
+    .markdown-body .progress-label {
+        position: absolute;
+        text-align: center;
+        font-weight: bold;
+        width: 100%;
+        margin: 0;
+        line-height: 24px;
+        color: #333;
+        text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+        -webkit-font-smoothing: antialiased !important;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .markdown-body .progress-bar {
+        height: 24px;
+        float: left;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #96c6d7;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+        background-size: 30px 30px;
+        background-image: -webkit-linear-gradient(
+                135deg, rgba(255, 255, 255, .4) 27%,
+                transparent 27%,
+                transparent 52%, rgba(255, 255, 255, .4) 52%,
+                rgba(255, 255, 255, .4) 77%,
+                transparent 77%, transparent
+        );
+        background-image: -moz-linear-gradient(
+                135deg,
+                rgba(255, 255, 255, .4) 27%, transparent 27%,
+                transparent 52%, rgba(255, 255, 255, .4) 52%,
+                rgba(255, 255, 255, .4) 77%, transparent 77%,
+                transparent
+        );
+        background-image: -ms-linear-gradient(
+                135deg,
+                rgba(255, 255, 255, .4) 27%, transparent 27%,
+                transparent 52%, rgba(255, 255, 255, .4) 52%,
+                rgba(255, 255, 255, .4) 77%, transparent 77%,
+                transparent
+        );
+        background-image: -o-linear-gradient(
+                135deg,
+                rgba(255, 255, 255, .4) 27%, transparent 27%,
+                transparent 52%, rgba(255, 255, 255, .4) 52%,
+                rgba(255, 255, 255, .4) 77%, transparent 77%,
+                transparent
+        );
+        background-image: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, .4) 27%, transparent 27%,
+                transparent 52%, rgba(255, 255, 255, .4) 52%,
+                rgba(255, 255, 255, .4) 77%, transparent 77%,
+                transparent
+        );
+    }
+
+    .markdown-body .progress-100plus .progress-bar {
+        background-color: #a6d796;
+    }
+
+    .markdown-body .progress-80plus .progress-bar {
+        background-color: #c6d796;
+    }
+
+    .markdown-body .progress-60plus .progress-bar {
+        background-color: #d7c896;
+    }
+
+    .markdown-body .progress-40plus .progress-bar {
+        background-color: #d7a796;
+    }
+
+    .markdown-body .progress-20plus .progress-bar {
+        background-color: #d796a6;
+    }
+
+    .markdown-body .progress-0plus .progress-bar {
+        background-color: #c25f77;
+    }
+
+    .markdown-body .candystripe-animate .progress-bar {
+        -webkit-animation: animate-stripes 3s linear infinite;
+        -moz-animation: animate-stripes 3s linear infinite;
+        animation: animate-stripes 3s linear infinite;
+    }
+
+    @-webkit-keyframes animate-stripes {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 60px 0;
+        }
+    }
+
+    @-moz-keyframes animate-stripes {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 60px 0;
+        }
+    }
+
+    @keyframes animate-stripes {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 60px 0;
+        }
+    }
+
+    .markdown-body .gloss .progress-bar {
+        box-shadow: inset 0 4px 12px rgba(255, 255, 255, .7),
+        inset 0 -12px 0 rgba(0, 0, 0, .05);
+    }
+
+    /* Multimarkdown Critic Blocks */
+    .markdown-body .critic_mark {
+        background: #ff0;
+    }
+
+    .markdown-body .critic_delete {
+        color: #c82829;
+        text-decoration: line-through;
+    }
+
+    .markdown-body .critic_insert {
+        color: #718c00;
+        text-decoration: underline;
+    }
+
+    .markdown-body .critic_comment {
+        color: #8e908c;
+        font-style: italic;
+    }
+
+    .markdown-body .headeranchor {
+        font: normal normal 16px octicons-anchor;
+        line-height: 1;
+        display: inline-block;
+        text-decoration: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .headeranchor:before {
+        content: '\f05c';
+    }
+
+    .markdown-body .task-list-item {
+        list-style-type: none;
+    }
+
+    .markdown-body .task-list-item + .task-list-item {
+        margin-top: 3px;
+    }
+
+    .markdown-body .task-list-item input {
+        margin: 0 4px 0.25em -20px;
+        vertical-align: middle;
+    }
+
+    /* Media */
+    @media only screen and (min-width: 480px) {
+        .markdown-body {
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .markdown-body {
+            font-size: 16px;
+        }
+    }
+
+    @media print {
+        .markdown-body * {
+            background: transparent !important;
+            color: black !important;
+            filter: none !important;
+            -ms-filter: none !important;
+        }
+
+        .markdown-body {
+            font-size: 12pt;
+            max-width: 100%;
+            outline: none;
+            border: 0;
+        }
+
+        .markdown-body a,
+        .markdown-body a:visited {
+            text-decoration: underline;
+        }
+
+        .markdown-body .headeranchor-link {
+            display: none;
+        }
+
+        .markdown-body a[href]:after {
+            content: " (" attr(href) ")";
+        }
+
+        .markdown-body abbr[title]:after {
+            content: " (" attr(title) ")";
+        }
+
+        .markdown-body .ir a:after,
+        .markdown-body a[href^="javascript:"]:after,
+        .markdown-body a[href^="#"]:after {
+            content: "";
+        }
+
+        .markdown-body pre {
+            white-space: pre;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .markdown-body pre,
+        .markdown-body blockquote {
+            border: 1px solid #999;
+            padding-right: 1em;
+            page-break-inside: avoid;
+        }
+
+        .markdown-body .progress,
+        .markdown-body .progress-bar {
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .markdown-body .progress {
+            border: 1px solid #ddd;
+        }
+
+        .markdown-body .progress-bar {
+            height: 22px;
+            border-right: 1px solid #ddd;
+        }
+
+        .markdown-body tr,
+        .markdown-body img {
+            page-break-inside: avoid;
+        }
+
+        .markdown-body img {
+            max-width: 100% !important;
+        }
+
+        .markdown-body p,
+        .markdown-body h2,
+        .markdown-body h3 {
+            orphans: 3;
+            widows: 3;
+        }
+
+        .markdown-body h2,
+        .markdown-body h3 {
+            page-break-after: avoid;
+        }
+    }
+    </style>
+    <title>table</title>
+
+    <link rel="stylesheet" href="../../css/prettify.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../js/rainbow.min.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<article class="markdown-body">
+    <div class="toc">
+        <ul>
+            <li><a href="#api">表格组件API</a>
+                <ul>
+                    <li><a href="#_1">基本数据展示表格</a></li>
+                    <li><a href="#_2">带选择的数据表格</a></li>
+                    <li><a href="#_3">可编辑的表格</a></li>
+                    <li><a href="#_4">属性数据表格</a></li>
+                </ul>
+            </li>
+            <li><a href="#_5">提供方法</a></li>
+        </ul>
+    </div>
+    <h1 id="api"><a name="user-content-api" href="#api" class="headeranchor-link" aria-hidden="true"><span
+            class="headeranchor"></span></a>表格组件API</h1>
+    <hr/>
+    <h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span
+            class="headeranchor"></span></a>基本数据展示表格</h2>
+
+    <p><strong>html代码：</strong></p>
+<pre><code>&lt;table id="tt"&gt;&lt;/table&gt;
+</code></pre>
+    <p><strong>js代码：</strong></p>
+<pre class="prettyprint linenums"><code>$('#tt').datagrid({
+    url:'datagrid_data.json',
+    columns:[[
+    {field:'code',title:'Code',width:100},
+    {field:'name',title:'Name',width:100},
+    {field:'price',title:'Price',width:100,align:'right'}
+    ]]
+    });
+</code></pre>
+    <p><strong>参数：</strong></p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th width="150">类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>url（超链接）</td>
+            <td>string（字符串）</td>
+            <td>一个用以从远程站点请求数据的超链接地址。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>columns（列）</td>
+            <td>array（数组）</td>
+            <td>数据表格列配置对象，查看列属性以获取更多细节。</td>
+            <td>null</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p><strong>columns属性值：</strong></p>
+<pre class="prettyprint linenums"><code>columns:[[
+    {field:'itemid',title:'Item ID',rowspan:2,width:80,sortable:true},
+    {field:'productid',title:'Product ID',rowspan:2,width:80,sortable:true},
+    {title:'Item Details',colspan:4}
+    ],[
+    {field:'listprice',title:'List Price',width:80,align:'right',sortable:true},
+    {field:'unitcost',title:'Unit Cost',width:80,align:'right',sortable:true},
+    {field:'attr1',title:'Attribute',width:100},
+    {field:'status',title:'Status',width:60}
+    ]]
+</code></pre>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th width="150">名称</th>
+            <th>类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>title（标题）</td>
+            <td>string（字符串）</td>
+            <td>列标题。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>field（字段）</td>
+            <td>string（字符串）</td>
+            <td>列字段。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>width（宽度）</td>
+            <td>number（数字）</td>
+            <td>列宽。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>rowspan（跨行数）</td>
+            <td>number（数字）</td>
+            <td>表明一个单元格跨几行。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>colspan（跨列数）</td>
+            <td>number（数字）</td>
+            <td>表明一个单元格跨几列。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>align（对其方式）</td>
+            <td>string（字符串）</td>
+            <td>表明如何对其列数据，可选值：'left'，'right'，'center'。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>sortable（可排序）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true允许对该列排序。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>resizable（缩放）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true允许该列被缩放。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>hidden（隐藏）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true将隐藏列。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>checkbox（复选框）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true将显示复选框。</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>formatter（格式化）</td>
+            <td>function（函数）</td>
+            <td>格式化单元格函数，有3个参数：<br>
+                value：字段的值。<br>
+                rowData：行数据。<br>
+                rowIndex：行索引。
+            </td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>styler（样式）</td>
+            <td>function（函数）</td>
+            <td>单元格样式函数，返回样式字符串装饰表格如'background:red'，function有3个参数：<br>
+                value：字段值。<br>
+                rowData：行数据。<br>
+                rowIndex：行索引。
+            </td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>sorter（排序器）</td>
+            <td>function（函数）</td>
+            <td>T自定义字段排序函数，有2个参数：<br>
+                a：该列的第一个值。<br>
+                b：该列的第二个值。
+            </td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>editor（编辑器）</td>
+            <td>string,object（字符串，对象）</td>
+            <td>表明编辑类型。如果属性是字符串类型表示编辑类型，如果是对象则包含2个参数：<br>
+                type：字符串，编辑类型，可选值：text，textarea，checkbox，numberbox，validatebox，datebox，combobox，combotree。<br>
+                options：对象，对象于编辑类型的编辑器属性。
+            </td>
+            <td>undefined</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span
+            class="headeranchor"></span></a>带选择的数据表格</h2>
+
+    <p><strong>js代码：</strong></p>
+<pre class="prettyprint linenums"><code>$('#test').datagrid({
+    url:'datagrid_data.json',
+    frozenColumns:[[
+    {field:'ck',checkbox:true},
+    {title:'Code',field:'code',width:80,sortable:true}
+    ]],
+    columns:[[
+    {title:'Base Information',colspan:3},
+    {field:'opt',title:'Operation',width:100,align:'center', rowspan:2}
+    ],[
+    {field:'name',title:'Name',width:120},
+    {field:'addr',title:'Address',width:220,rowspan:2,sortable:true},
+    {field:'col4',title:'Col41',width:150,rowspan:2}
+    ]],
+    rownumbers:true
+    });
+</code></pre>
+    <p><strong>属性值：</strong></p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th width="150">类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>url（超链接）</td>
+            <td>string（字符串）</td>
+            <td>一个用以从远程站点请求数据的超链接地址。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>frozenColumns（固定列）</td>
+            <td>array（数组）</td>
+            <td>跟列属性一样，但是这些列固定在左边，不会滚动。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>columns（列）</td>
+            <td>array（数组）</td>
+            <td>数据表格列配置对象，查看列属性以获取更多细节。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>rownumbers（行数）</td>
+            <td>boolean（布尔型）</td>
+            <td>设置为true将显示行数。</td>
+            <td>false</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span
+            class="headeranchor"></span></a>可编辑的表格</h2>
+
+    <p><strong>js代码：</strong></p>
+<pre><code>$('#tt').edatagrid({
+    url: 'datagrid_data.json',
+    saveUrl: ...,
+    updateUrl: ...,
+    destroyUrl: ...
+    });
+</code></pre>
+    <p><strong>属性值：</strong></p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th width="150">类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>url</td>
+            <td>string</td>
+            <td>一个 URL，从服务器检索数据。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>saveUrl</td>
+            <td>string</td>
+            <td>一个 URL，向服务器保存数据，并返回添加的行。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>updateUrl</td>
+            <td>string</td>
+            <td>一个 URL，向服务器更新数据，并返回更新的行。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>destroyUrl</td>
+            <td>string</td>
+            <td>一个 URL，向服务器传送 'id' 参数来销毁该行。</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>autoSave</td>
+            <td>boolean</td>
+            <td>设置为 true，则当点击数据网格外部时自动保存编辑行。</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>destroyMsg</td>
+            <td>object</td>
+            <td>当销毁一行时要显示的确认对话框消息。</td>
+            <td>
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="pln">destroyMsg</span><span class="pun">:{</span></li>
+                    <li class="L1"><span class="pln"> no</span><span id="1_nwp"
+                                                                     style="width: auto; height: auto; float: none;"><a
+                            id="1_nwl"
+                            href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=f349e7605ab8f407&amp;k=record&amp;k0=record&amp;kdi0=0&amp;luki=7&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=7f4b85a60e749f3&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fextension%2F190%2Ehtml&amp;urlid=0"
+                            target="_blank" mpid="1" style="text-decoration: none;"><span
+                            style="color:#0000ff;font-size:13px;width:auto;height:auto;float:none;"><span class="pln">record</span></span></a></span><span
+                            class="pun">:{</span><span class="pln"> </span><span class="com">// when no record is selected</span>
+                    </li>
+                    <li class="L2"><span class="pln">     title</span><span class="pun">:</span><span class="str">'Warning'</span><span
+                            class="pun">,</span></li>
+                    <li class="L3"><span class="pln">        msg</span><span class="pun">:</span><span class="str">'No record is selected.'</span>
+                    </li>
+                    <li class="L4"><span class="pln"> </span><span class="pun">},</span></li>
+                    <li class="L5"><span class="pln">    confirm</span><span class="pun">:{</span><span
+                            class="pln"> </span><span class="com">// when select a row</span></li>
+                    <li class="L6"><span class="pln">      title</span><span class="pun">:</span><span class="str">'Confirm'</span><span
+                            class="pun">,</span></li>
+                    <li class="L7"><span class="pln">        msg</span><span class="pun">:</span><span class="str">'Are you sure you want to delete?'</span>
+                    </li>
+                    <li class="L8"><span class="pln">   </span><span class="pun">}</span></li>
+                    <li class="L9"><span class="pun">}</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span
+            class="headeranchor"></span></a>属性数据表格</h2>
+
+    <p><strong>js代码：</strong></p>
+<pre><code>$('#pg').propertygrid({
+    url:'propertygrid_data.json',
+    showGroup:true
+    });
+</code></pre>
+    <p><strong>属性值：</strong></p>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>类型</th>
+            <th>描述</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>showGroup（显示分组）</td>
+            <td>boolean（布尔型）</td>
+            <td>定义是否显示属性分组。</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>groupField（分组字段）</td>
+            <td>string（字符串）</td>
+            <td>定义要分组的字段名称。</td>
+            <td>group</td>
+        </tr>
+        <tr>
+            <td>groupFormatter（分组格式）</td>
+            <td>function（函数）</td>
+            <td>定义如何格式化分组中的值。</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span
+            class="headeranchor"></span></a>提供方法</h1>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <th align="left">名称</th>
+            <th align="left">参数</th>
+            <th align="left">描述</th>
+        </tr>
+
+        <tr>
+            <td>getData</td>
+            <td>none</td>
+            <td>返回加载的数据。</td>
+        </tr>
+        <tr>
+            <td>getRows</td>
+            <td>none</td>
+            <td>返回当前页的行。</td>
+        </tr>
+        <tr>
+            <td>getFooterRows</td>
+            <td>none</td>
+            <td>返回底部的行。</td>
+        </tr>
+        <tr>
+            <td>getRowIndex</td>
+            <td>row</td>
+            <td>返回指定行的索引，row 参数可以是一个行记录或者一个 id 字段的值。</td>
+        </tr>
+        <tr>
+            <td>getChecked</td>
+            <td>none</td>
+            <td>返回复选框选中的所有行。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>getSelected</td>
+            <td>none</td>
+            <td>返回第一个选中的行或者 null。</td>
+        </tr>
+        <tr>
+            <td>getSelections</td>
+            <td>none</td>
+            <td>返回所有选中的行，当没有选中的记录时，将返回空数组。</td>
+        </tr>
+        <tr>
+            <td>clearSelections</td>
+            <td>none</td>
+            <td>清除所有的选择。</td>
+        </tr>
+        <tr>
+            <td>clearChecked</td>
+            <td>none</td>
+            <td>清除所有勾选的行。该方法自版本 1.3.2 起可用。</td>
+        </tr>
+        <tr>
+            <td>deleteRow</td>
+            <td>index</td>
+            <td>删除一行。</td>
+        </tr>
+        <tr>
+            <td>updateRow</td>
+            <td>param</td>
+            <td>更新指定的行， param 参数包括下列属性：
+                <br> index：要更新的行的索引。
+                <br> row：新的行数据。
+                <br>
+                <br> 代码实例：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
+                            class="str">'#dg'</span><span class="pun">).</span><span class="pln">datagrid</span><span
+                            class="pun">(</span><span class="str">'updateRow'</span><span class="pun">,{</span></li>
+                    <li class="L1"><span class="pln">  index</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">2</span><span class="pun">,</span></li>
+                    <li class="L2"><span class="pln">  row</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="pun">{</span></li>
+                    <li class="L3"><span class="pln">      name</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
+                    <li class="L4"><span class="pln">      note</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new note message'</span></li>
+                    <li class="L5"><span class="pln">    </span><span class="pun">}</span></li>
+                    <li class="L6"><span class="pun">});</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>appendRow</td>
+            <td>row</td>
+            <td>追加一个新行。新的行将被添加在最后的位置：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
+                            class="str">'#dg'</span><span class="pun">).</span><span class="pln">datagrid</span><span
+                            class="pun">(</span><span class="str">'appendRow'</span><span class="pun">,{</span></li>
+                    <li class="L1"><span class="pln">   name</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
+                    <li class="L2"><span class="pln">  age</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">30</span><span class="pun">,</span></li>
+                    <li class="L3"><span class="pln">   note</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'some messages'</span></li>
+                    <li class="L4"><span class="pun">});</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>insertRow</td>
+            <td>param</td>
+            <td>插入一个新行， param 参数包括下列属性：
+                <br> index：插入进去的行的索引，如果没有定义，就追加该新行。
+                <br> row：行的数据。
+                <br>
+                <br> 代码实例：
+                <pre class="prettyprint linenums"><ol class="linenums">
+                    <li class="L0"><span class="com">// insert a new row at second row position</span></li>
+                    <li class="L1"><span class="pln">$</span><span class="pun">(</span><span
+                            class="str">'#dg'</span><span class="pun">).</span><span id="0_nwp"
+                                                                                     style="width: auto; height: auto; float: none;"><a
+                            id="0_nwl"
+                            href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=8218e910969c82f8&amp;k=data&amp;k0=data&amp;kdi0=0&amp;luki=5&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=f8829c9610e91882&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fplugins%2F183%2Ehtml&amp;urlid=0"
+                            target="_blank" mpid="0" style="text-decoration: none;"><span
+                            style="color:#0000ff;font-size:13px;width:auto;height:auto;float:none;"><span class="pln">data</span></span></a></span><span
+                            class="pln">grid</span><span class="pun">(</span><span class="str">'insertRow'</span><span
+                            class="pun">,{</span></li>
+                    <li class="L2"><span class="pln"> index</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span
+                            class="pln">  </span><span class="com">// index start with 0</span></li>
+                    <li class="L3"><span class="pln"> row</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="pun">{</span></li>
+                    <li class="L4"><span class="pln">      name</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
+                    <li class="L5"><span class="pln">      age</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="lit">30</span><span class="pun">,</span></li>
+                    <li class="L6"><span class="pln">       note</span><span class="pun">:</span><span
+                            class="pln"> </span><span class="str">'some messages'</span></li>
+                    <li class="L7"><span class="pln">   </span><span class="pun">}</span></li>
+                    <li class="L8"><span class="pun">});</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>getPager</td>
+            <td>none</td>
+            <td>返回分页（pager）对象。</td>
+        </tr>
+        <tr>
+            <td>loadData</td>
+            <td><span id="16_nwp" style="width: auto; height: auto; float: none;"><a id="16_nwl"
+                                                                                     href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=8218e910969c82f8&amp;k=data&amp;k0=data&amp;kdi0=0&amp;luki=5&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=f8829c9610e91882&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fplugins%2F183%2Ehtml&amp;urlid=0"
+                                                                                     target="_blank" mpid="16"
+                                                                                     style="text-decoration: none;"><span
+                    style="color:#0000ff;font-size:14px;width:auto;height:auto;float:none;">data</span></a>
+                </span>
+            </td>
+            <td>加载本地数据，旧的行会被移除。</td>
+        </tr>
+        <tr>
+            <td>highlightRow</td>
+            <td>index</td>
+            <td>高亮显示一行。该方法自版本 1.3.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>selectAll</td>
+            <td>none</td>
+            <td>选中当前页所有的行。</td>
+        </tr>
+        <tr>
+            <td>unselectAll</td>
+            <td>none</td>
+            <td>取消选中当前页所有的行。</td>
+        </tr>
+        <tr>
+            <td>selectRow</td>
+            <td>index</td>
+            <td>选中一行，行索引从 0 开始。</td>
+        </tr>
+        <tr>
+            <td>selectRecord</td>
+            <td>idValue</td>
+            <td>通过传递 id 的值做参数选中一行。</td>
+        </tr>
+        <tr>
+            <td>unselectRow</td>
+            <td>index</td>
+            <td>取消选中一行。</td>
+        </tr>
+        <tr>
+            <td>checkAll</td>
+            <td>none</td>
+            <td>勾选当前页所有的行。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>uncheckAll</td>
+            <td>none</td>
+            <td>取消勾选当前页所有的行。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>checkRow</td>
+            <td>index</td>
+            <td>勾选一行，行索引从 0 开始。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>uncheckRow</td>
+            <td>index</td>
+            <td>取消勾选一行，行索引从 0 开始。该方法自版本 1.3 起可用。</td>
+        </tr>
+        <tr>
+            <td>beginEdit</td>
+            <td>index</td>
+            <td>开始对一行进行编辑。</td>
+        </tr>
+        <tr>
+            <td>endEdit</td>
+            <td>index</td>
+            <td>结束对一行进行编辑。</td>
+        </tr>
+        <tr>
+            <td>cancelEdit</td>
+            <td>index</td>
+            <td>取消对一行进行编辑。</td>
+        </tr>
+        <tr>
+            <td>getEditors</td>
+            <td>index</td>
+            <td>获取指定行的编辑器。每个编辑器有下列属性：
+                <br> actions：编辑器能做的动作，与编辑器定义相同。
+                <br> <span id="15_nwp" style="width: auto; height: auto; float: none;"><a id="15_nwl"
+                                                                                          href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=8218e910969c82f8&amp;k=target&amp;k0=target&amp;kdi0=0&amp;luki=10&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=f8829c9610e91882&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fplugins%2F183%2Ehtml&amp;urlid=0"
+                                                                                          target="_blank" mpid="15"
+                                                                                          style="text-decoration: none;"><span
+                        style="color:#0000ff;font-size:14px;width:auto;height:auto;float:none;">target</span></a>
+                </span>：目标编辑器的 jQuery 对象。
+                <br> field：字段名。
+                <br> type：编辑器的类型，比如：'text'、'combobox'、'datebox'，等等。
+            </td>
+        </tr>
+        <tr>
+            <td>getEditor</td>
+            <td>options</td>
+            <td>获取指定的<span id="14_nwp" style="width: auto; height: auto; float: none;"><a id="14_nwl"
+                                                                                          href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=8218e910969c82f8&amp;k=%B1%E0%BC%AD%C6%F7&amp;k0=%B1%E0%BC%AD%C6%F7&amp;kdi0=0&amp;luki=6&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=f8829c9610e91882&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fplugins%2F183%2Ehtml&amp;urlid=0"
+                                                                                          target="_blank" mpid="14"
+                                                                                          style="text-decoration: none;"><span
+                    style="color:#0000ff;font-size:14px;width:auto;height:auto;float:none;">编辑器</span></a>
+                </span>， options 参数包含两个属性：
+                <br> index：行的索引。
+                <br> field：字段名。
+                <br>
+                <br> 代码实例：
+                <pre class="prettyprint linenums"><ol class="prettyprint linenums">
+                    <li class="L0"><span class="com">// get the datebox editor and change its value</span></li>
+                    <li class="L1"><span class="kwd">var</span><span class="pln"> ed </span><span
+                            class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#dg'</span><span
+                            class="pun">).</span><span class="pln">datagrid</span><span class="pun">(</span><span
+                            class="str">'getEditor'</span><span class="pun">,</span><span class="pln"> </span><span
+                            class="pun">{</span><span class="pln">index</span><span class="pun">:</span><span
+                            class="lit">1</span><span class="pun">,</span><span class="pln">field</span><span
+                            class="pun">:</span><span class="str">'birthday'</span><span class="pun">});</span></li>
+                    <li class="L2"><span class="pln">$</span><span class="pun">(</span><span class="pln">ed</span><span
+                            class="pun">.</span><span id="1_nwp" style="width: auto; height: auto; float: none;"><a
+                            id="1_nwl"
+                            href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=8218e910969c82f8&amp;k=target&amp;k0=target&amp;kdi0=0&amp;luki=10&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=f8829c9610e91882&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fplugins%2F183%2Ehtml&amp;urlid=0"
+                            target="_blank" mpid="1" style="text-decoration: none;"><span
+                            style="color:#0000ff;font-size:13px;width:auto;height:auto;float:none;"><span class="pln">target</span></span></a></span><span
+                            class="pun">).</span><span class="pln">datebox</span><span class="pun">(</span><span
+                            class="str">'setValue'</span><span class="pun">,</span><span class="pln"> </span><span
+                            class="str">'5/4/2012'</span><span class="pun">);</span></li>
+                </ol></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>refreshRow</td>
+            <td>index</td>
+            <td>刷新一行。</td>
+        </tr>
+        <tr>
+            <td>validateRow</td>
+            <td>index</td>
+            <td>验证指定的行，有效时返回 true。</td>
+        </tr>
+        <tr>
+            <td>mergeCells</td>
+            <td>options</td>
+            <td>把一些单元格合并为一个单元格，options 参数包括下列特性：
+                <br> index：列的索引。
+                <br> field：字段名。
+                <br> rowspan：合并跨越的行数。
+                <br> colspan：合并跨越的列数。
+            </td>
+        </tr>
+        <tr>
+            <td>showColumn</td>
+            <td>field</td>
+            <td>显示指定的列。</td>
+        </tr>
+        <tr>
+            <td>hideColumn</td>
+            <td>field</td>
+            <td>隐藏指定的列。</td>
+        </tr>
+        </tbody>
+    </table>
+</article>
+
+</body>
+</html>

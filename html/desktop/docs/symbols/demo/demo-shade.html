@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>遮罩</title>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/demoApi.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="../../../css/shade.css"/>
+    <script src="../../../js/webui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/shade.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <style>
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        .content {
+            width: 400px;
+            height: 150px;
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -75px;
+            display: none;
+            line-height: 30px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="main_title">WEBUI PC端遮罩层组件</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>遮罩层使用案例</h2>
+            <div class="aries_demo bs-example code">
+                <a onclick="shade.open();" class="webui-linkbutton btn-blue btn-bigger">打开遮罩</a>
+
+                <div class="content" id="test">
+                    这个是内容！
+                    <br/>
+                    <a onclick="shade.close();" style="margin-top: 70px;"
+                       class="webui-linkbutton btn-blue btn-bigger">关闭遮罩</a>
+                </div>
+                <script>
+                    var shade = $('.aries_demo').AIShade({
+                        content: "test"
+                    });
+                </script>
+            </div>
+            <div class="aries_demo bs-example">
+                <h2>遮罩</h2>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>参数名</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>content</td>
+                        <td>string或者 Object</td>
+                        <td>null</td>
+                        <td>遮罩上显示的内容，可以传入需要显示的对象或者div的id值</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td>black</td>
+                        <td>遮罩样式，可选black或者white</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+<!--<div class="cont">-->
+
+    <!--<h2>遮罩层使用案例</h2>-->
+
+    <!--<div class="demo_content">-->
+        <!--<div class="aries_demo bs-example">-->
+            <!--<div class="tubiao"></div>-->
+            <!--<p class="pp-ps">样式</p>-->
+            <!--<hr/>-->
+            <!--<a onclick="shade.open();" class="webui-linkbutton btn-blue btn-bigger">打开遮罩</a>-->
+
+            <!--<div class="content" id="test">-->
+                <!--这个是内容！-->
+                <!--<br/>-->
+                <!--<a onclick="shade.close();" style="margin-top: 70px;"-->
+                   <!--class="webui-linkbutton btn-blue btn-bigger">关闭遮罩</a>-->
+            <!--</div>-->
+            <!--<script>-->
+                <!--var shade = $('.aries_demo').AIShade({-->
+                    <!--content: "test"-->
+                <!--});-->
+            <!--</script>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 组件示例代码区域 &ndash;&gt;-->
+        <!--<div class="highlight"></div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="cont">-->
+    <!--<h1 class="main_title">遮罩</h1>-->
+
+    <!--<table class="doc-table">-->
+        <!--<tbody>-->
+        <!--<tr>-->
+            <!--<th>参数名</th>-->
+            <!--<th>类型</th>-->
+            <!--<th>默认值</th>-->
+            <!--<th>描述</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>content</td>-->
+            <!--<td>string或者 Object</td>-->
+            <!--<td>null</td>-->
+            <!--<td>遮罩上显示的内容，可以传入需要显示的对象或者div的id值</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>type</td>-->
+            <!--<td>string</td>-->
+            <!--<td>black</td>-->
+            <!--<td>遮罩样式，可选black或者white</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->
+<script>
+    var html = $('.code').html();
+    $(".prettyprint").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+</body>
+</html>

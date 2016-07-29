@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<!-- 文档框架样式 -->
+		<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+		<link rel="stylesheet" href="../../css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+				<link rel="stylesheet" href="../../css/demoApi.css">
+		<script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+		<script type="text/javascript" src="../../js/rainbow.min.js"></script>
+		<link rel="stylesheet" href="../../css/prettify.css" />
+		<script type="text/javascript" src="../../js/prettify.js"></script>
+	</head>
+ 
+	<body>
+    <div class="cont">
+        <h1>选择组件</h1>
+
+        <p> 使用方式 </p>
+<pre><code>//普通单选--例子
+    var radio_normal = $(&quot;#radio-nomarl&quot;).AISelect({
+    type: 'radio',
+    displayField: 'channelName',
+    valueField: 'channelId',
+    data: [{
+    channelId: '1001',
+    channelName: '选项1',
+    mustSelect: true
+    }, {
+    channelId: '1002',
+    channelName: '选项2'
+    }, {
+    channelId: '1003',
+    channelName: '选项3'
+    }, {
+    channelId: '1004',
+    channelName: '选项4',
+    disabled: true
+    }],
+    onSelect: function(obj) {
+    //alert(JSON.stringify(obj.getSelectedIndex()));
+    },
+    must: false
+    });
+</code></pre>
+
+        <p> 参数 </p>
+        <table>
+            <tbody>
+            <tr>
+                <th>参数名</th>
+                <th>类型</th>
+                <th>描述</th>
+                <th width="60">默认值</th>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>string</td>
+                <td>所使用选择组件的类型。包括:radio、radioBlock、checkbox、checkboxBlock</td>
+                <td>null(必填项)</td>
+            </tr>
+            <tr>
+                <td>displayField</td>
+                <td>string</td>
+                <td>需要显示的json数组中的字段名。</td>
+                <td>null</td>
+            </tr>
+            <tr>
+                <td>valueField</td>
+                <td>string</td>
+                <td>显示的json数组中的唯一标识。</td>
+                <td>Today</td>
+            </tr>
+            <tr>
+                <td>data</td>
+                <td>数组或者json对象</td>
+                <td>填充的数据。</td>
+                <td>null</td>
+            </tr>
+            <tr>
+                <td>onSelect</td>
+                <td>function</td>
+                <td>点击选择所触发的事件。</td>
+                <td>null</td>
+            </tr>
+            <tr>
+                <td>must</td>
+                <td>boolean</td>
+                <td>是否必须选中至少一个。</td>
+                <td>false</td>
+            </tr>
+            <td>background</td>
+            <td>string</td>
+            <td>块级单选的另一种样式,如需使用第二种样式则添加该参数。</td>
+            <td>background(只有这一个值)</td>
+            </tr>
+            </tbody>
+        </table>
+        <p> 填充数据的参数
+            如要实现默认选中、必选、可选、不可选则需要在数据中添加以下参数:</p>
+        <ul>
+            <li>默认选中:defaultSelected:true</li>
+            <li>必选且不可取消:mustSelect: true</li>
+            <li>不可选:disabled: true</li>
+            <li>可选不用添加任何东西,默认即为可选状态</li>
+        </ul>
+        <p> 提供方法 </p>
+        <table>
+            <tbody>
+            <tr>
+                <th>方法名</th>
+                <th>返回值</th>
+                <th>描述</th>
+            </tr>
+            <tr>
+                <td>getSelectedIndex</td>
+                <td>返回数组</td>
+                <td>获取选中的索引。</td>
+            </tr>
+            <tr>
+                <td>getSelectedValue</td>
+                <td>返回数组</td>
+                <td>返回选中的所有值(value:真实值)。</td>
+            </tr>
+            <tr>
+                <td>getSelectedField</td>
+                <td>返回数组</td>
+                <td>返回所选中的对象。例如:</td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>新增选择</h2>
+
+        <p> 使用方法 </p>
+<pre><code>var select = $(&quot;#selectLinkage&quot;).AISelectLinkage({
+    displayField: 'text',
+    valueField: 'value',
+    multiple: true,
+    onSelect:function(){
+    console.log(&quot;hehe&quot;);
+    },
+    data: [{
+    &quot;text&quot;: '苹果',
+    &quot;value&quot;: '1'
+    }, {
+    &quot;text&quot;: '小米',
+    &quot;value&quot;: '2'
+    }, {
+    &quot;text&quot;: '三星',
+    &quot;value&quot;: '3'
+    }, {
+    &quot;text&quot;: '魅族',
+    &quot;value&quot;: '4'
+    }]
+    });
+</code></pre>
+
+        <p>新增参数:</p>
+        <ul>
+            <li>是否可多选:multiple: true 默认值为false,不可多选</li>
+        </ul>
+        <p>改变的方法:</p>
+        <table>
+            <tbody>
+            <tr>
+                <th>方法名</th>
+                <th>返回值</th>
+                <th>描述</th>
+            </tr>
+            <tr>
+                <td>getSelectedObj</td>
+                <td>返回数组</td>
+                <td>返回所选中的原json对象。方法修改自:getSelectedField,此处不提供getSelectedField方法。</td>
+            </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+    </div>
+
+		<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+	</body>
+
+</html>

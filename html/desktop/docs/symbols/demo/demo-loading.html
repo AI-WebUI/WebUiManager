@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/panel.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/datagrid.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/pagination.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/linkbutton.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/icon.css">
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../../js/webui.js"></script>
+</head>
+
+<body>
+    <div style="width: 720px; margin: 0 auto;">
+    <h2>Loading效果</h2>
+    <p>内容区</p>
+    <div id="p" class="webui-panel" title="内容区域Loading" style="width:700px;height:200px;padding:10px;"
+            data-options="
+                tools:[{
+                    iconCls:'icon-reload',
+                    handler:function(){
+                        $('#p').panel('refresh', 'http://www.baidu.com');
+                    }
+                }],
+                loadingMessage:'数据加载中...'
+            ">
+    </div>
+    <p>表格数据Loading</p>
+    <table id="dg1" class="webui-datagrid" style="width:700px;height:250px" data-options="singleSelect:true,collapsible:true,url:'https://github2.com/douglascrockford/JSON-js/blob/master/json2.js',method:'get',loadMsg:'数据加载中,请稍候...'">
+        <thead>
+            <tr>
+                <th data-options="field:'itemid',resizable:false" width="15%">产品 ID</th>
+                <th data-options="field:'名称id',resizable:false" width="15%">名称</th>
+                <th data-options="field:'listprice',align:'right',resizable:false" width="15%">价格</th>
+                <th data-options="field:'unitcost',align:'right',resizable:false" width="15%">有效期</th>
+                <th data-options="field:'attr1',resizable:false" width="25%">规格</th>
+                <th data-options="field:'status',align:'center',resizable:false" width="15%">状态</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>

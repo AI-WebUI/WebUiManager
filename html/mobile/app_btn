@@ -1,0 +1,140 @@
+<body onclick="scroll()" id="panel">
+<!--
+    作者：janglanyu@q163.com
+    时间：2015-09-02
+    描述：带有 js- 开头的为js代码操作的class属性
+-->
+<div class="title-p">按钮</div>
+<div class="con_div">
+	<p>1.页面级操作按钮</p>
+	<div class="cont_btn">
+		<p class="title_p">(1)页面级操作按钮</p>
+		<a type="button" id="block-btn" class="ui-block-btn">受理提交</a>
+
+
+		<p class="title_p">(2)不可选状态</p>
+		<input type="button" class="ui-disabled-block-btn" disabled value="独立按钮">
+	</div>
+	<p>2. 移动端开关</p>
+	<div class="cont_btn">
+		<div class="switch_div1">
+			<!--控件代码-->
+			<input id="switch-group" class="ui-swicth-checkbox" type="checkbox">
+			<label for="switch-group"></label>
+			<div class="mess" id="mess"></div>
+		</div>
+
+		<br />
+		<div class="switch_div2">
+			<!--控件代码-->
+			<input id="switch-group2" class="ui-swicth-checkbox" type="checkbox" checked="checked">
+			<label for="switch-group2"></label>
+			<div class="mess" id="mess2"></div>
+
+		</div>
+	</div>
+	<!--<button id="js-btn-getVaule1">点击获得操作按钮的值</button>-->
+	<br />
+	<br />
+	<p> 3.数据操作按钮(可点击可输入)</p>
+	<div class="cont_btn">
+		<p class="title_p">最大值最小值可配置，手动输入只是别数字字符(此处展示的值范围1-9)</p>
+
+		<div class="counter_div">
+			<!--控件代码-->
+			<div id="ui-btn-group-div1" class="ui-btn-group">
+				<span class="ui-btn-reduce"><img class="ui-btn-imgreduce" src="img/reduce1.png" ></span>
+				<input type="tel" id="input_counter" class="ui-btn-group-input" value=1 min=1 onblur="if(this.value < 1){this.value = 1;}" />
+				<span class="ui-btn-add"><img class="ui-btn-imgadd" src="img/add.png" ></span>
+			</div>
+		</div>
+	</div>
+	<!--<button id="js-btn-getVaule">点击获得数据操作按钮的值</button>-->
+	<br />
+	<a type="button" id="js-btn-getVaule" class="get-number">点击获取数据按钮值</a>
+	<br />
+</body>
+<!-- 自定义方法扩展 -->
+<script src="lib/jquery/2.1.4/jquery.js"></script>
+<script src="js/btn.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/tips.js"></script>
+<script>
+	function scroll(){
+		$("#panel").css("overflowY","scroll")
+	}
+	$(function() {
+		$("#block-btn").blockBtn();
+		$("#js-btn-getVaule").blockBtn();
+		$("#switch-group").switchBtn({
+			selectfunc: function() {
+				//打开开关触发的方法
+				//alert("打开")
+				//demo测试使用
+				$("#mess").text("打开了")
+			},
+			unselectfunc: function() {
+				//关闭开关触发的方法
+				//alert("关闭")
+				$("#mess").text("关闭了")
+			}
+		});
+		$("#switch-group2").switchBtn({
+			selectfunc: function() {
+				//打开开关触发的方法
+				//alert("打开")
+				//demo测试使用
+				$("#mess2").text("打开了")
+			},
+			unselectfunc: function() {
+				//关闭开关触发的方法
+				//alert("关闭")
+				$("#mess2").text("关闭了")
+			}
+		});
+		//获得开关的状态值,默认值为开：'on'、关：'off'
+		$("#js-btn-getVaule1").click(function() {
+			var statusSwitch = $("#switch-group").curStatus();
+			alert(statusSwitch)
+		});
+		//初始化计数器按钮组,初始化传参，最大maxNum
+//		var $btn = $("#ui-btn-group-div1").counterBtn({
+//			maxNum: 9
+//		});
+		$("#js-btn-getVaule").on("click", function() {
+			//获得按钮数值的函数
+			var inputValue = parseInt($("#ui-btn-group-div1").curNum());
+			var max = 9;
+			if (inputValue > max) {
+
+				$('body').AITips({
+					'type': 'alert',
+					'message': '您的取值超过了最大值' + max,
+					//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+					'buttons': [{
+						'text': '确定',
+						'action': function() {
+							$("#input_counter").val(max);
+
+						}
+					}],
+					'theme': 'white',
+					'icon': "img/1.png"
+				});
+				/////todo
+			} else {
+				/////todo
+				$('body').AITips({
+					'type': 'alert',
+					'message': '您的取值为' + inputValue,
+					//					'desc': '提示提示提示提示提示提提示提示提示提示提示提提示提示提示提示提示提',
+					'buttons': [{
+						'text': '确定',
+						'action': function() {}
+					}],
+					'theme': 'white',
+					'icon': "img/1.png"
+				});
+			}
+		});
+	});
+</script>

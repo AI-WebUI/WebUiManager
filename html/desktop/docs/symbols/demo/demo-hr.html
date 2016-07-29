@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>分割线</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+
+    <style>
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        p {
+            background: #FaFaFa;
+            display: block;
+            padding: 6px 0 6px 2px;
+            margin: 20px 0 20px 0;
+        }
+
+        .demo-test-div {
+            width: 98%;
+            margin: 20px 0 0 0;
+            padding: 20px 0 0 20px;
+            /*border: 1px #E9E9E9 solid;*/
+            height: 20px;
+            /*background: #FAFAFA;*/
+        }
+
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+<h1 class="main_title">WEBUI分割线</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>WEBUI分割线样式</h2>
+            <div class="aries_demo bs-example code">
+                <div class="demo-test-div">
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+<script>
+    var html = $('.code').html();
+    $(".prettyprint").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+</html>

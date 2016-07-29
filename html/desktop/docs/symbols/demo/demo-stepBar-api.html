@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>StepBar</title>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/demoApi.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../js/rainbow.min.js"></script>
+    <link rel="stylesheet" href="../../css/prettify.css"/>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+</head>
+<body>
+<div class="cont">
+    <h2>流程条StepBar</h2>
+
+    <p>使用js动态生成自适应的流程条.</p>
+<pre><code>
+    //html代码
+    &lt;div id=&quot;stepTest&quot;&gt;&lt;/div&gt;
+    //js代码
+    var data = [{
+    "name": "已完成",
+    "state": "finish",
+    "desc": "这个是描述信息"
+    },{
+    "name": "进行中",
+    "state": "process",
+    "desc": "这个是描述信息"
+    },{
+    "name": "等待中等待中",
+    "state": "",
+    "desc": "这个是描述信息"
+    },{
+    "name": "等待中等待中",
+    "state": "",
+    "desc": "这个是描述信息"
+    },{
+    "name": "正在排队等待",
+    "state": "",
+    "desc": "这些文字每行最多八个"
+    }];
+    $("#stepTest").AIStepBar({
+    data:data,
+    width:900
+    });
+</code>
+</pre>
+    <h2>参数</h2>
+    <table class="doc-table">
+        <tbody>
+        <tr>
+            <th>参数名</th>
+            <th>类型</th>
+            <th>默认值</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+            <td>data</td>
+            <td>array数组</td>
+            <td>null</td>
+            <td>需要显示的步骤，每一步的名字、状态、描述。数组对象为一个一个的对象格式为：
+                <br/>{
+                "name": "进行中",<br/>
+                "state": "process",<br/>
+                "desc": "这个是描述信息"<br/>
+                }；<br/>状态为三种：finish（完成）、process（进行中）、wait（等待中——默认）
+            </td>
+        </tr>
+        <tr>
+            <td>width</td>
+            <td>number</td>
+            <td>750</td>
+            <td>步骤条的总长度，根据传入的值自适应。</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

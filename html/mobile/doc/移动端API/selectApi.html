@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title>移动端选择API</title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		
+		.text_head {
+			width: 100%;
+			display: block;
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			font-weight: bold;
+			padding: 10px 0px 10px 0;
+			background: #000;
+		}
+		
+		.little_title {
+			display: block;
+			width: 100%;
+			font-size: 14px;
+			font-weight: bold;
+			padding: 8px 0 8px 0;
+			background: #eee;
+		}
+		
+		.article_div .p {
+			display: block;
+			font-size: 14px;
+			padding: 6px 0 6px 0px;
+		}
+		
+		.article_div {
+			padding: 5px 10px 5px 10px;
+		}
+		
+		pre,
+		code {
+			font-size: 0.75em;
+			font-family: Consolas, Inconsolata, Courier, monospace;
+		}
+		
+		code {
+			margin: 0 0.15em;
+			padding: 0 0.3em;
+			white-space: pre-wrap;
+			border: 1px solid #EAEAEA;
+			background-color: #F8F8F8;
+			border-radius: 3px;
+			display: inline;
+			/* added to fix Yahoo block display of inline code */
+		}
+		
+		pre {
+			font-size: 1em;
+			line-height: 1.2em;
+		}
+		
+		pre code {
+			white-space: pre;
+			overflow: auto;
+			/* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			padding: 0.5em 0.7em;
+			display: block !important;
+			/* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
+		}
+		
+		pre,
+		code {
+			font-size: 0.75em;
+			font-family: Consolas, Inconsolata, Courier, monospace;
+		}
+		
+		code {
+			margin: 0 0.15em;
+			padding: 0 0.3em;
+			white-space: pre-wrap;
+			border: 1px solid #EAEAEA;
+			background-color: #F8F8F8;
+			border-radius: 3px;
+			display: inline;
+			/* added to fix Yahoo block display of inline code */
+		}
+		
+		pre {
+			font-size: 1em;
+			line-height: 1.2em;
+		}
+		
+		pre code {
+			white-space: pre;
+			overflow: auto;
+			/* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			padding: 0.5em 0.7em;
+			display: block !important;
+			/* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
+		}
+		
+		.in_filed {
+			width: 100%;
+			height: auto
+		}
+	</style>
+
+	<body>
+		<header class="text_head">移动端-选择API</header>
+		<div class="in_filed">
+			<label class="little_title">1.需要引入的文件</label>
+			<article class="article_div">
+				<pre><code class="code_content">
+ webui.css、jquery.js、webui.js
+				 </code></pre>
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">2.引入的顺序</label>
+			<article class="article_div">
+				<pre><code class="code_content">
+&lt;link rel="stylesheet" type="text/css" href="css/webui.css" /&gt;
+
+&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+
+&lt;script src="webui.js" type="text/javascript"&gt;&lt;/script&gt;
+				</code></pre>
+			</article>
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">3.使用方法</label>
+			<article class="article_div">
+				<pre><code class="code_content">&lt;div id="demo-radio3"&gt;&lt;/div&gt;</code></pre>
+
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">4.JS代码</label>
+			<article class="article_div">
+				<pre class="pre_cont"><code class="code_content" style="font-size: 10px;">
+var aaa = $("#demo-radio").select({
+	'type': 'radio',
+	'name': 'radio',
+	'content': [{
+		"value": 'radio1',
+		"text": "值1"
+	},{
+		"value": 'radio11',
+		"text": "值11"
+	},{
+		"value": 'radio111',
+		"text": "值111"
+	},{
+		"value": 'radio1111',
+		"text": "值1111"
+	},{
+		"value": 'radio11111',
+		"text": "值11111"
+	}],
+	'theme': 'ui-select-radio-blue-tradition',
+	'flex':false
+});
+
+
+
+					</code></pre>
+
+			</article>
+
+		</div>
+
+		<div class="in_filed">
+			<label class="little_title">5.参数说明</label>
+			<article class="article_div">
+				<pre class="pre_cont"><code class="code_content">					
+
+type ： 选择类型：单选或复选
+
+theme ： 插件主题
+
+content ： 选项的内容，包含每个选项的实际值value和展示值text
+
+name ： 这组选择框的名称
+
+flex ： 是否弹性布局，此项为false时：
+
+flex ： 传统tradition和throughout的radio的宽度为100%；
+
+flex ： 其他radio和checkbox的宽度为params.width；
+
+width ： 选项的宽度，固定宽度的主题需要输入，默认200px
+
+.select()-初始化方法
+
+.getValue()——获取选择的实际值
+
+.getText()——获取选择的显示值
+
+.setValue()——设置某选项的实际值
+
+.setText()——设置某选项的显示值
+
+.setDisabled()——设置某选项为禁用
+
+.setEnable()——设置某选项为可用
+
+
+
+
+					</code></pre>
+
+			</article>
+
+		</div>
+	</body>
+
+</html>

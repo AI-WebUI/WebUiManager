@@ -1,0 +1,1045 @@
+﻿<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<title>data-grid</title>
+</head>
+<body>
+<div class="cont main_doc">
+	<div class="tab_menu">
+		<ul>
+			<li class="tab_menu_current">属性</li>
+			<li>方法</li>
+			<li>事件</li>
+		</ul>
+	</div>
+	<div class="tab_main">
+		<!-- --------------------------------------------------------------------------------------------------------------------- -->
+		<!-- 														属性区域													   -->
+		<!-- --------------------------------------------------------------------------------------------------------------------- -->
+		<div class="tab_contents docAttribute" style="display:block">
+			<h3>常用属性<span class="tool_box"><a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>aeInit<span class="e_required">&nbsp;</span></span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">无</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								组件是否可在页面加载时执行初始化，值为true时被自动初始化<span class="code">（建议）</span>，值为false需自行执行初始化方法：$('#myGrid').aeGrid()。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>aeType<span class="e_required">&nbsp;</span></span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Only：<span class="e_green">aeGrid</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								组件归属类型，必备属性，且值只能为aeGrid。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>datafield</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">无</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								组件所绑定数据对象的层级，使用<span class="code">.</span>号来隔离层级，用于刷新组件数据或构建组件数据对象。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" datafield="cust.orders"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>height</span>
+					<span class="option_bo">Number,String</span>
+					<span class="option_def">Default：<span class="e_green">462</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格高度，设为数字时单位为px,也可以设为'fit'，表示自适应父容器高度。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" height="300"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>id<span class="e_required">&nbsp;</span></span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">无</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								组件id，必备属性，且值不可为空。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>isPaging</span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">false</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格是否展示分页栏。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" isPaging="true"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>pagingSize</span>
+					<span class="option_bo">Number</span>
+					<span class="option_def">Default：<span class="e_green">10</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格分页时每页最大展示的数据条数。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" pagingSize="8"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>pagingAlign</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">right</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								分页栏横向对其方式，默认居右，可选 left、center、right。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" pagingAlign="center"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>showIndex</span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">true</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								是否在最左边一列显示序号列。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" showIndex="false"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>singleSelect</span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">true</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								是否只能单选（一次只能选择一条记录，选择第二条时第一条会自动取消选择）。若设置为false表示可以多选（选择其它行时原来已经选择的将继续保持选择状态）。
+								<span class="code">注意：设成true时将不会出现checkbox列，设成false则将自动出现checkbox列。</span>
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" singleSelect="false"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>title</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">无</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								当title有值且不为空字符串时，表格最上方显示标题栏。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" title="客户信息列表"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>width</span>
+					<span class="option_bo">Number,String</span>
+					<span class="option_def">Default：<span class="e_green">100%</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格宽度，设为数字时单位为px,也可以设为'fit'，表示自适应父容器宽度。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" width="600"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+			</ul>
+			
+			<!-- ------------------------------------------高级属性------------------------------------------------- -->
+			
+			<h3>高级属性<span class="tool_box">
+			<a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>emptyMsg</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">没有数据</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格取数完成后但是后台没有返回任何数据时显示的提示。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" emptyMsg="查询无数据！"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>loadingMsg</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">正在加载，请稍候...</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格正在取数时显示的提示，取数结束后消失。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" loadingMsg="正在查询中，请等待..."/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>singleRowClass</span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">false</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								是否显示奇偶行样式，默认false，行样式一致。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" singleRowClass="true"/>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				
+			</ul>
+			<!-- ------------------------------------------表格树属性------------------------------------------------- -->
+			
+			<h3>表格树属性<span class="tool_box">
+			<a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>treeColumn</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">""</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								配置树型展示对应的列，对应列属性的datafield属性值。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" treeColumn="Name">
+	&lt;span datafield="Name">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>treeIdField</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">""</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格数据中对应id的属性名，用于定义树节点的id。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" treeColumn="Name" treeIdField="custId">
+	&lt;span datafield="Name">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>treePidField</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">""</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								表格数据中对应父对象id的属性名，用于定义树节点的父节点id。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" treeColumn="Name" treeIdField="custId" treePidField="parentCustId">
+	&lt;span datafield="Name">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>treeSortField</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">treeIdField</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								用于同级节点排序依赖的数据属性，默认与treeIdField一致。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" treeColumn="Name" treeIdField="custId" treePidField="parentCustId" treeSortField="CustId">
+	&lt;span datafield="Name">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				
+			</ul>
+			<!-- ------------------------------------------列属性------------------------------------------------- -->
+			<h3>列属性<span class="tool_box"><a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>align</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">left</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								列单元格文字对齐方式，属性值可以为'left'、'center'、'right'。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName" align="center">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>datafield<span class="e_required">&nbsp;</span></span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">aeGrid</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								组件所绑定数据对象的层级，使用<span class="code">.</span>号来隔离层级，用于刷新组件数据或构建组件数据对象。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>headAlign</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">center</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								列头标题文字对齐方式，属性值可以为'left'、'center'、'right'。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName" headAlign="left">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>renderer</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">无</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>为某列设定renderer属性，让该列的值根据设定的renderer来做展现。</p>
+							<p>
+								renderer为一个函数，接受3个参数，colValue存放该单元格的值，rowData存放当前行数据，rowIndex存放当前行号(从0开始)。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="mail" renderer="onMailRenderer">&lt;/span>
+&lt;/div>
+&lt;script language="javascript" type="text/javascript"> 
+function onMailRenderer(colValue, rowData, rowIndex){
+	return '<a>'+colValue+'</a>';
+}
+&lt;/script>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>title</span>
+					<span class="option_bo">String</span>
+					<span class="option_def">Default：<span class="e_green">无</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								列头的标题。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName" title="名称">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>visible</span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">true</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								列是否隐藏，默认显示。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName" visible="false">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>width</span>
+					<span class="option_bo">Number,String</span>
+					<span class="option_def">Default：<span class="e_green">false</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								列的宽度，取值为Number或者'autoExpand'。注意只能有一个列被设置为'autoExpand'属性。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName" width="150">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>wrap</span>
+					<span class="option_bo">Boolean</span>
+					<span class="option_def">Default：<span class="e_green">false</span></span>
+					<ul class="li_open">
+						<div class="par">
+							<p>
+								列是否自动换行，默认不换行。
+							</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true">
+	&lt;span datafield="custName" wrap="true">&lt;/span>
+&lt;/div>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				
+				
+			</ul>
+		</div>
+		<!-- --------------------------------------------------------------------------------------------------------------------- -->
+		<!-- 														方法区域													   -->
+		<!-- --------------------------------------------------------------------------------------------------------------------- -->
+		<div class="tab_contents docFunction">
+			<h3>常用方法<span class="tool_box">
+			<a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>getData</span>
+					<span class="option_bo">getData()</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>获取表格JSON数据。</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="js">
+var gridData = $('#myGrid').aeGrid('getData');
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>getEnd</span>
+					<span class="option_bo">getEnd()</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>获取当前页最后一条数据的序号。</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="js">
+var end = $('#myGrid').aeGrid('getEnd');
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>getSelections</span>
+					<span class="option_bo">getSelections(needRecords)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>获取选择的行的行号或行记录。<span class="code">注意：默认返回的是行序号组成的数组（如选择了第2行和第5行则返回[1,4]），如果要返回行记录JSON组成的数组需要传入一个true作为参数。</span></p>
+							<h4 class="descParam">参数:</h4>
+							<p><span class="e_green">needRecords</span> - 参数为true时返回的不是行序号数组而是行记录数组。参数为空或不是true时返回行序号数组。 </p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="js">
+var selectedIndexed = $('#myGrid').aeGrid('getSelections');
+var selectedRecords = $('#myGrid').aeGrid('getSelections',true);
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>getStart</span>
+					<span class="option_bo">getStart()</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>获取当前页第一条数据的序号。</p>
+							<h4 class="descParam">参数:</h4>
+							<p></p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="js">
+var start = $('#myGrid').aeGrid('getStart');
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>reload</span>
+					<span class="option_bo">reload(data, param, page)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>获取表格数据，并可刷新指定的页。</p>
+							<p>当data为url时，结合param参数一起发送ajax请求获取数据，且会将请求页起始index一并发送，如data为'/crm?servicecode=queryCust'，param为'custName=jack'，
+							后台实际收到的参数为'custName=jack&start=1&end=10'。<span class="code">注意：后台服务入参中必须有int类型的start和end，且形参名一致。</span></p>
+							<p>当data为json数据时，不会发送 ajax，而直接刷新表格。</p>
+							<p>如果没有page参数则刷新第一页，如果有参数则转到参数所表示的页（如果参数不合法会自动进行修正）。</p>
+							<p><span class="code">注意：该方法会发送Ajax请求，而且如果表格当前正在加载数据（loadmask还未消失）的话则什么也不做直接返回。</span></p>
+							<h4 class="descParam">参数:</h4>
+							<p><span class="e_green">data</span> - 可为访问url或json对象。 </p>
+							<p><span class="e_green">param</span> - 在data为url时有效。 </p>
+							<p><span class="e_green">page</span> - 刷新指定页，默认为第一页。 </p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="js">
+$('#myGrid').aeGrid('reload','/crm?servicecode=queryCust','custName=jack',1);//刷新第一页
+
+$.ajaxPost('/demo/data/demogrid.json',param,function(data){
+	if(data){
+		$('#demoGrid').aeGrid('reload',data,null,3); 
+	}
+});
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>setSelections</span>
+					<span class="option_bo">setSelections(indexes)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>选择行。</p>
+							<p><span class="code">注意：传入的参数是序号（第一行是0第二行是1）数组（比如[0,1]表示选择第一行和第二行）；
+							要想清除所有选择，请使用空数组[]作为参数；只能传入序号数组，如果要做复杂的选择算法，请先在其它地方算好序号数组后后调用此方法；
+							此方法会清除其它选择状态，如选择第1,2行然后setSelections([3])最后结果中只有第3行，如setSelections([3,4]);
+							setSelections([5,6])后只会选择5,6两行。</span></p>
+							<h4 class="descParam">参数:</h4>
+							<p><span class="e_green">indexes </span> - 序号（第一行是0,第二行是1）数组。 </p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code class="js">
+//选择表格中第二行、第三行、第五行
+$('#demoGrid').aeGrid('setSelections',[1,2,4]);
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+			</ul>
+			
+			<!-- ------------------------------------------高级方法------------------------------------------------- -->
+			
+			<!-- <h3>高级方法<span class="tool_box">
+			<a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				
+			</ul> -->
+		</div>
+		<!-- --------------------------------------------------------------------------------------------------------------------- -->
+		<!-- 														事件区域													   -->
+		<!-- --------------------------------------------------------------------------------------------------------------------- -->
+		<div class="tab_contents docEvent">
+			<h3>常用事件<span class="tool_box">
+			<a class="split isDesc">显示描述</a><a class="isCode">显示示例</a></span></h3>
+			<ul class="options-list">
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>onRowClick</span>
+					<span class="option_bo">function(rowIndex, rowData, event)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>单击一行记录后执行的方法。</p>
+							<h4 class="descParam">参数:</h4>
+							<p>
+								<p><span class="e_green">rowIndex</span> - 行号（从0开始）。</p>
+								<p><span class="e_green">rowData</span> - 选择的行数据的JSON对象。</p>
+								<p><span class="e_green">event</span> - jQuery.Event对象。</p>
+							</p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" onRowClick="myOnRowClick()">&lt;/div>
+&lt;script language="javascript" type="text/javascript"> 
+function myOnRowClick(rowIndex,rowData,event){
+    alert('the '+rowIndex+'th row has been clicked!type='+rowData.type);
+}
+&lt;/script>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>onRowDblClick</span>
+					<span class="option_bo">function(rowIndex, rowData, event)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>双击一行记录后执行的方法。</p>
+							<h4 class="descParam">参数:</h4>
+							<p>
+								<p><span class="e_green">rowIndex</span> - 行号（从0开始）。</p>
+								<p><span class="e_green">rowData</span> - 选择的行数据的JSON对象。</p>
+								<p><span class="e_green">event</span> - jQuery.Event对象。</p>
+							</p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" onRowDblClick="myOnRowDblClick()">&lt;/div>
+&lt;script language="javascript" type="text/javascript"> 
+function myOnRowDblClick(rowIndex,rowData,event){
+    alert('the '+rowIndex+'th row has been double clicked!type='+rowData.type);
+}
+&lt;/script>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>onRowDeselect</span>
+					<span class="option_bo">function(rowIndex, rowData, event)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>取消一行记录的选择后执行的方法。</p>
+							<h4 class="descParam">参数:</h4>
+							<p>
+								<p><span class="e_green">rowIndex</span> - 行号（从0开始）。</p>
+								<p><span class="e_green">rowData</span> - 选择的行数据的JSON对象。</p>
+								<p><span class="e_green">event</span> - jQuery.Event对象。</p>
+							</p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" onRowDeselect="myOnRowDeselect()">&lt;/div>
+&lt;script language="javascript" type="text/javascript"> 
+function myOnRowDeselect(rowIndex,rowData,event){
+    alert('the '+rowIndex+'th row has been deselected!');
+}
+&lt;/script>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+				<li class="li_current">
+					<span class="option_tit"><em class="option_arrow-drop"></em>onPageChange</span>
+					<span class="option_bo">function(type, newPage, event)</span>
+					<ul class="li_open">
+						<div class="par">
+							<p>改变分页之前执行的方法。注意：如果此方法返回false则不进行分页切换或跳转。</p>
+							<h4 class="descParam">参数:</h4>
+							<p>
+								<p><span class="e_green">type</span> - 切换类型，是'first'、'prev'、'next'、'last'、'input'之一。</p>
+								<p><span class="e_green">newPage</span> - 要转到的页号（从1开始，第一页是1而不是0）。</p>
+								<p><span class="e_green">event</span> - jQuery.Event对象。</p>
+							</p>
+							<h4 class="descReturn">返回:</h4>
+							<p></p>
+						</div>
+						<div class="code_box">
+							<h4 class="tit_line">示例</h4>
+							<!-- 组件示例代码区域 -->
+							<pre><code  class="html">
+&lt;div id="myGrid" aeType="aeGrid" aeInit="true" onPageChange="myOnPageChange">&lt;/div>
+&lt;script language="javascript" type="text/javascript"> 
+function myOnPageChange(type,newPage,event){
+    alert('will goto page '+newPage);
+}
+&lt;/script>
+							</code></pre>
+						</div>
+					</ul>
+				</li>
+			</ul>
+			
+			<!-- ------------------------------------------高级事件------------------------------------------------- -->
+			
+			<!-- <h3>高级事件<span class="tool_box">
+			<a class="split isDesc">显示描述</a><a class="isCode">显示示例</a>
+			</span></h3>
+			<ul class="options-list">
+				
+				
+				
+			</ul> -->
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+seajs.use('aries-main',function(){
+
+
+});
+
+
+
+ 
+</script>
+</html>

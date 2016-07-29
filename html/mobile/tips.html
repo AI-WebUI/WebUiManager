@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="width=750,user-scalable=no">-->
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<!--<meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=0.5,maximum-scale=1,user-scalable=no" />-->
+		<script src="lib/jquery/2.1.4/jquery.js"></script>
+		<!--<script src="js/mobile-util.js"></script>-->
+		<script src="js/tips.js"></script>
+		<script src="js/btn-bak.js"></script>
+
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css320/tips.css" />
+		<link rel="stylesheet" type="text/css" href="css320/btn.css" />
+		<link rel="stylesheet" type="text/css" href="css320/input.css" />
+		<link rel="stylesheet" href="css/scrollbar.css"/>
+		<title></title>
+		<style type="text/css">
+			*,
+			*:before,
+			*:after {
+				-webkit-user-select: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				-moz-user-select: -moz-none;
+				/*禁止用户选中文本，-moz-none，是写给老版本的ff的方法，当然新版本也是向上兼容的	
+				目前还是个私用属性，ios2.0以上的safari实现良好，安卓尚未支持*/
+				-webkit-touch-callout: none;
+				-ms-touch-action: pan-y;
+			}
+			
+			.title-p {
+				text-align: center;
+				color: #febe44;
+				font-size: 20px;
+				padding: 24px 0 18px 0
+			}
+			
+			body {
+				background-color: #f1f1f1;
+			}
+			
+			.lab_text {
+				font-size: 14px;
+				color: #787878;
+				line-height: 50px;
+				padding: 0;
+				margin: 0;
+				vertical-align: middle;
+			}
+			.test_check{
+				margin-top: 20px;
+			}
+			.ui-block-btn {
+				background: #fff;
+				width: 50%;
+				border: 1px #44ABE5 solid;
+				color: #44ABE5;
+				outline: none;
+			}
+			
+			.text_div {
+				font-size: 12px;
+				text-indent: 2em;
+				color: #BEBEBE;
+				padding: 6px 6px 20px 6px;
+			}
+			
+			.tips_cont {
+				width: 40%;
+				height: auto;
+				position: absolute;
+				margin: -14% 0 2% 60%;
+				z-index: 40;
+			}
+			
+			.tips_cont2 {
+				width: 40%;
+				height: auto;
+				position: absolute;
+				margin: -12% 0 60% 2%;
+				z-index: 45;
+			}
+			
+			.tips_cont3 {
+				margin: -10px 0 0 60px;
+				z-index: 50;
+			}
+			
+			.tips_cont4 {
+				margin: -68px 0 0 50px;
+				z-index: 55;
+			}
+			
+			.test-input {
+				width: 30%;
+				height: auto;
+				border: 1px #44ABE5 solid;
+				padding: 6px 10px 6px 0;
+				outline: none;
+				margin: 10px 0 10px 30%;
+			}
+			
+			::-webkit-input-placeholder {
+				font-size: 14px;
+				line-height: 22px;
+				padding: 0 0 0 10px;
+			}
+			
+			input:focus {
+				padding-left: 10px;
+			}
+			
+			.demo-content {
+				background: #FFFFFF;
+				border-bottom: 1px #ccc solid;
+				border-top: 1px #ccc solid;
+				padding: 0 0 20px 0;
+				margin: 0 0 10px 0;
+			}
+			
+			.top-title {
+				background: #fff;
+				padding: 6px;
+				margin-top: 20px;
+				color: #f78b4a;
+				font-size: 20px;
+				text-align: center;
+			}
+			
+			.top-title span {
+				display: block;
+				position: absolute;
+				background: #f78b4a;
+				width: 4px;
+				margin: -6px 0 0 -6px;
+				height: 40px;
+			}
+			/*以上css仅作demo排版样式*/
+		</style>
+	</head>
+
+	<body>
+		<div class="title-p">提示</div>
+		<p>1.顶部提示</p>
+		<div class="demo-content">
+			<div class="text_div">
+				显示在顶栏下方，通常用于反馈系统当前状态，长时间显示，直到状态改变。比如网络未连接。 可嵌在内容页面内，跟随页面滚动，也可以固定在上方。
+
+			</div>
+			<div class="text_div">
+				<span class="lab_text">重要顶部提示</span>
+				<input id="tips4" type="checkbox"></input>
+			</div>
+			<div class="text_div">
+				<span class="lab_text">普通顶部提示——白底</span>
+				<input id="tips4-1" type="checkbox"></input>
+			</div>
+			<div class="text_div">
+				<span class="lab_text">普通顶部提示——黄底</span>
+				<input id="tips4-2" type="checkbox"></input>
+			</div>
+		</div>
+
+		<p>2.选择对话框</p>
+		<div class="demo-content">
+			<div class="text_div">
+				通常有取消和确定按钮，按钮名称可以是其它； 手机端有确定含义的按钮统一在右侧； 按钮的颜色可以相同，也可以不同，示需求而定； 按钮点击时有视觉反馈； 提示内容可以包含图标； 用于需要用户进一步确认的场合，会打断操作，对用户干扰较大，尽量少用。
+			</div>
+			<a type="button" id="tips1" class="ui-block-btn">选择对话框</a>
+		</div>
+		<p>着重提示选择对话框</p>
+		<div class="demo-content">
+			<div class="text_div">
+				通常有取消和确定按钮，按钮名称可以是其它；拥有着重提示用户点击的效果。
+			</div>
+			<a type="button" id="tips_key" class="ui-block-btn">着重选择对话框</a>
+		</div>
+		<p>3.单键对话框</p>
+		<div class="demo-content">
+			<div class="text_div">
+				与选择对话框类似，用于用户必需知道的提示。按键名称可以是其它。
+			</div>
+			<a id="tips2" class="ui-block-btn">单键对话框</a>
+		</div>
+		<p>单键对话框——标题+内容</p>
+		<div class="demo-content">
+			<div class="text_div">
+				与选择对话框类似，用于用户必需知道的提示。按键名称可以是其它。
+			</div>
+			<a id="tips_2" class="ui-block-btn">单键对话框</a>
+		</div>
+		<p>4.toast提示</p>
+		<div class="demo-content">
+			<div class="text_div">
+				出现3秒后消失，通常用于不太紧要的提示，对用户干扰较低；图标可有可无；
+			</div>
+
+			<a id="tips3" class="ui-block-btn">toast提示</a>
+		</div>
+
+		<p>5.指引提示</p>
+		<div class="demo-content">
+
+			<div class="text_div">
+				通常用于对某个重要功能或隐藏操作做说明； 可以在首次打开时出现，点屏幕后消失，或有关闭的按钮； 也可以通过点击按钮唤出。(位置可自定义配置)
+
+			</div>
+
+			<input type="text" id="tips51" class="test-input" placeholder="触发左箭头提示" />
+			<div class="tips_cont" id="cont_1"></div>
+			<!--单个提示的容器范例-->
+			<br />
+
+			<input type="text" id="tips52" class="test-input" placeholder="触发右箭头提示" />
+			<div class="tips_cont2" id="cont_2"></div>
+			<br />
+
+			<input type="text" id="tips53" class="test-input" placeholder="触发上箭头提示" />
+			<div class="tips_cont3" id="cont_3"></div>
+			<br />
+			<br />
+
+			<input type="text" id="tips54" class="test-input" placeholder="触发下箭头提示" />
+			<div class="tips_cont4" id="cont_4"></div>
+			<br />
+			<br />
+			<br />
+		</div>
+		<p>6.圆点提示</p>
+		<div class="demo-content">
+			<div class="text_div">
+				通常用于有更新未读或需要引起用户注意去查看； 圆点位置可根据需要具体放置，通常放在图标右上角或列表右侧； 颜色可根据实在情况和需要引起注意的程度进行选择。
+
+			</div>
+
+			<div style="background-color: white;width: 100%;height: 54px;border: 1px #CCCCCC solid; border-left: none; border-right:none ;">
+				<div style="display: inline-block;height: 54px;float: left;"><img src="img/ui-tips-dot-wx.png" style="width: 27px;height: 27px;margin:15px 5px 0 15px ;"></div>
+
+				<div id="ss" style="display: inline-block;font-size: 18px; margin: 0 0 0 4px;line-height: 52px;float: left; color: #ccc;">打开开关出现原点提示</div>
+
+				<div id="dotBox" style="width: 50px;height: 54px;float: right;"></div>
+			</div>
+			<br />
+			<input id="tips6" type="checkbox"></input>
+		</div>
+		<p>7.未读数量提示</p>
+		<div class="demo-content">
+			<div class="text_div">
+				与圆点提示类似，不同的是会显示具体的更新或未读数量。(以下是一个范例，数值范围是(0-99))
+
+			</div>
+			<div style="background-color: white;width: 100%;height: 52px; border: 1px #CCCCCC solid; border-left: none; border-right:none ;">
+				<div id="ss " style="display: inline-block;font-size: 18px; margin: 0 0 0 4px;line-height: 52px;float: left;color: #ccc; ">点击初始化信息图标出现</div>
+
+				<div id="dotNum " style="width: 40px;height: 52px;float: right; "></div>
+			</div>
+			<br />
+			<a id="tips8 " class="ui-block-btn ">初始化6条信息</a>
+			<br />
+			<a id="tips9 " class="ui-block-btn ">初始化100条信息</a>
+		</div>
+		<br />
+		<br />
+	</body>
+
+</html>
+
+<script type="text/javascript ">
+	var xxx, yyy, zzz;
+	$(document).ready(function() {
+		$('#tips1').on("click ", function() {
+			$('body').AITips({
+				'type': 'confirm',
+				'title': '提示标题',
+				'message': '选择对话框',
+				'desc': '你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框你好，欢迎来到WEBUI，您点开的是选择对话框',
+				'buttons': [{
+					'text': '取消',
+					//						'color':'white',
+					'action': function() {
+						//							alert(1)
+					}
+				}, {
+					'text': '确定',
+					'action': function() {
+						$('body').AITips({
+							'type': 'toast',
+							'message': '您好，欢迎来到WEBUI',
+							'timeout': 2000,
+							'icon': "img/1.png "
+						});
+					}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png "
+			});
+		});
+		$('#tips_key').on("click ", function() {
+			$('body').AITips({
+				'type': 'confirm',
+				'title': '提示标题',
+				'message': '选择对话框',
+				'desc': '你好，欢迎来到WEBUI，您点开的是选择对话框',
+				'buttons': [{
+					'text': '取消',
+					'color':'black',
+					'action': function() {
+						//							alert(1)
+					}
+				}, {
+					'text': '确定',
+					'action': function() {
+						$('body').AITips({
+							'type': 'toast',
+							'message': '您好，欢迎来到WEBUI',
+							'timeout': 2000,
+							'icon': "img/1.png "
+						});
+					}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png "
+			});
+		});
+		$('#tips2').on("click ", function() {
+			$('body').AITips({
+				'type': 'alert',
+				'message': '你好，欢迎来到WEBUI!',
+				'buttons': [{
+					'text': '确定',
+					'action': function() {}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png "
+			});
+		});
+		$('#tips_2').on("click ", function() {
+			$('body').AITips({
+				'type': 'alert',
+				'message': '你好，欢迎来到WEBUI!',
+				'desc': '提示提示提示提示提示提提示提示示提',
+				'buttons': [{
+					'text': '确定',
+					'action': function() {}
+				}],
+				'theme': 'white',
+				'icon': "img/1.png "
+			});
+		});
+		$('#tips3').on("click ", function() {
+			$('body').AITips({
+				'type': 'toast',
+				'message': '你好，欢迎来到WEBUI，您点开的是toast提示，3秒后消失',
+				'timeout': 2000,
+				'icon': "img/1.png "
+			});
+		});
+		//demo测试方法
+		$('#tips51').focus(function() {
+			$("#cont_1 ").AITips({
+				'type': 'guide',
+				'dir': 'left',
+				'message': '左箭头提示'
+			});
+		});
+		$('#tips52').focus(function() {
+			$("#cont_2 ").AITips({
+				'type': 'guide',
+				'dir': 'right',
+				'message': '右箭头提示'
+			});
+		});
+		$('#tips53').focus(function() {
+			$("#cont_3 ").AITips({
+				'type': 'guide',
+				'dir': 'up',
+				'message': '上箭头提示'
+			});
+		});
+		$('#tips54').focus(function() {
+			$("#cont_4 ").AITips({
+				'type': 'guide',
+				'dir': 'down',
+				'message': '下箭头提示'
+			});
+		});
+		//		
+		//		$('#tips51').blur(function(){
+		//			$("#cont_1 ").hide()
+		//		});
+		//		$('#tips52').blur(function(){
+		//			$("#cont_2 ").hide()
+		//		});
+		//		$('#tips53').blur(function(){
+		//			$("#cont_3 ").hide()
+		//		});
+		//		$('#tips54').blur(function(){
+		//			$("#cont_4 ").hide()
+		//		});
+		$('#tips4').switchBtn({
+			selectfunc: function() {
+				//打开开关触发的方法
+				//alert("打开 ")
+				xxx = $().AITips({
+					'type': 'warning',
+					'theme': 'emergent-red',
+					'message': '你好，欢迎来到WEBUI，您点开的是重要顶部提示'
+				});
+			},
+			unselectfunc: function() {
+				//关闭开关触发的方法
+				//alert("关闭 ")
+				xxx.hideWarning();
+			}
+		});
+		$('#tips4-1').switchBtn({
+			selectfunc: function() {
+				//打开开关触发的方法
+				//alert("打开 ")
+				yyy = $().AITips({
+					'type': 'warning',
+					'theme': 'normal-white',
+					'message': '你好，欢迎来到WEBUI，您点开的是普通顶部提示'
+				});
+			},
+			unselectfunc: function() {
+				//关闭开关触发的方法
+				//alert("关闭 ")
+				yyy.hideWarning();
+			}
+		});
+		$('#tips4-2').switchBtn({
+			selectfunc: function() {
+				//打开开关触发的方法
+				//alert("打开 ")
+				yyy = $().AITips({
+					'type': 'warning',
+					'theme': 'normal-yellow',
+					'message': '你好，欢迎来到WEBUI，您点开的是普通顶部提示'
+				});
+			},
+			unselectfunc: function() {
+				//关闭开关触发的方法
+				//alert("关闭 ")
+				yyy.hideWarning();
+			}
+		});
+		$('#tips6').switchBtn({
+			selectfunc: function() {
+				zzz = $('#dotBox').AITips({
+					'type': 'dot'
+				});
+			},
+			unselectfunc: function() {
+				//关闭开关触发的方法
+				//alert("关闭 ")
+				zzz.hideDot();
+			}
+		});
+		var g6;
+		g6 = $('#dotNum').AITips({
+			'type': 'remains',
+			'theme': 'weixin'
+		});
+		$('#tips8').on("click ", function() {
+			g6.remainsNum(6);
+		});
+		$('#tips9').on("click ", function() {
+			g6.remainsNum(100);
+		});
+	});
+</script>

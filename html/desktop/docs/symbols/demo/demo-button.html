@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/linkbutton.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/icon.css">
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../../js/jquery.webui.min.js"></script>
+</head>
+<body>
+	<div style="margin: 30px; padding: 20px;">
+		<h2>按钮</h2>
+		<div style="margin:10px 0 40px 0;"></div>
+		<p>内联</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton c1" >内联按钮</a>
+			<a href="#nogo" class="webui-linkbutton c2" >内联按钮</a>
+			<a href="#nogo" class="webui-linkbutton c3" >内联按钮</a>
+			<a href="#nogo" class="webui-linkbutton c4" >内联按钮</a>
+		</div>
+		<p>定宽</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton c5" style="width:120px">定宽按钮</a>
+			<a href="#nogo" class="webui-linkbutton c6" style="width:120px">定宽按钮</a>
+			<a href="#nogo" class="webui-linkbutton c7" style="width:120px">定宽按钮</a>
+			<a href="#nogo" class="webui-linkbutton c8" style="width:120px">定宽按钮</a>
+		</div>
+		<p>百分比宽度，width: 15%</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" style="width:15%">百分比宽度</a>
+			<a href="#nogo" class="webui-linkbutton" style="width:15%">百分比宽度</a>
+			<a href="#nogo" class="webui-linkbutton" style="width:15%">百分比宽度</a>
+			<a href="#nogo" class="webui-linkbutton" style="width:15%">百分比宽度</a>
+			<a href="#nogo" class="webui-linkbutton" style="width:15%">百分比宽度</a>
+		</div>
+		<p>不可选</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="disabled:true">不可选</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="disabled:true">不可选</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="disabled:true">不可选</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="disabled:true">不可选</a>
+		</div>
+		<h2>正在加载中</h2>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-add',toggle:true">Add</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-remove',toggle:true">Remove</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-save',toggle:true,selected:true">Save</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-cut',toggle:true">Cut</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="toggle:true">Text Button</a>
+		</div>
+		<h2>图标按钮</h2>
+		<p>内联按钮</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-add'">Add</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">Cut</a>
+			<a href="#nogo" class="webui-linkbutton">Text Button</a>
+		</div>
+		<p>固定尺寸</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-search'" style="width:120px">Search</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-print'" style="width:120px">Print</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-reload'" style="width:120px">Reload</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-help'" style="width:120px">Help</a>
+		</div>
+		<h2>百分比按钮</h2>
+		<p>width: 15%</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-add'" style="width:15%">Add</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-remove'" style="width:15%">Remove</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-save'" style="width:15%">Save</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-cut',disabled:true" style="width:15%">Cut</a>
+			<a href="#nogo" class="webui-linkbutton" style="width:15%">Text Button</a>
+		</div>
+		<p>width: 20%</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-search'" style="width:20%">Search</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-print'" style="width:20%">Print</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-reload'" style="width:20%">Reload</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-help'" style="width:20%">Help</a>
+		</div>
+		
+		<h2>按钮大小</h2>
+		<p>小尺寸</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-add'">Add</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">Cut</a>
+			<a href="#nogo" class="webui-linkbutton">Text Button</a>
+		</div>
+		<p>大尺寸</p>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-large-picture',size:'large',iconAlign:'top'">Picture</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-large-clipart',size:'large',iconAlign:'top'">Clip Art</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-large-shapes',size:'large',iconAlign:'top'">Shapes</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-large-smartart',size:'large',iconAlign:'top'">SmartArt</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="iconCls:'icon-large-chart',size:'large',iconAlign:'top'">Chart</a>
+		</div>
+		<h2>群组按钮</h2>
+		<div>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'">Cancel</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">Refresh</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-search'">Search</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true">Text Button</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-print'">Print</a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-help'"> </a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-save'"></a>
+			<a href="#nogo" class="webui-linkbutton" data-options="plain:true,iconCls:'icon-back'"></a>
+		</div>
+	</div>
+</body>
+</html>

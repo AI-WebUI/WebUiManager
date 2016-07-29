@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../js/rainbow.min.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <style>
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+
+        }
+
+        p {
+
+            display: block;
+            padding: 6px 0 6px 2px;
+            margin: 20px 0 20px 0;
+        }
+
+        .datagrid {
+            border-right: 1px #ccc solid;
+
+        }
+    </style>
+</head>
+
+<body>
+<h1 class="main_title">WEBUI PC端Treegrid</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>基本功能：Treegrid表格使用案例</h2>
+            <div class="aries_demo bs-example code">
+                <table id="dg"></table>
+                <script>
+                    $(function () {
+                        $('#dg').treegrid({
+                            width: 688,
+                            height: 350,
+                            url: 'data/treegrid_data3.json',
+                            method: 'get',
+                            rownumbers: true, //显示行号列
+                            pagination: true, //显示分页工具栏
+                            singleSelect: true,//只能单选行
+                            loadMsg: '请稍候，数据加载中...',//自定义等待消息
+                            idField: 'id',
+                            treeField: 'name',
+                            columns: [[
+                                {field: 'name', title: '姓名', width: 220},
+                                {field: 'size', title: '流量M', width: 200},
+                                {field: 'date', title: '日期', width: 150}
+                            ]]
+                        });
+                    })
+                </script>
+                <!--<p>json的格式</p>
+               [{
+                "id":1,
+                "name":"宽带业务",
+                "size":"",
+                "date":"02/19/2010",
+                "children":[{
+                "id":113,
+                "name":"宽带开户",
+                "size":"120 MB",
+                "date":"03/20/2010",
+                "children":[{
+                "id":22321,
+                "name":"sdfsdfsdf",
+                "typeName":"sdfsdfsdf",
+                "size":"",
+                "date":"01/13/2010",
+                "state":"closed",
+                "children":[{
+                "id":211111,
+                "name":"华为T4200",
+                "size":"142 KB",
+                "date":"01/13/2010"
+                },{
+                "id":212,
+                "name":"摩托罗拉X200",
+                "size":"5 KB",
+                "date":"01/13/2010"
+                }]
+                },{
+                "id":22,
+                "name":"送柴米油盐活动",
+                "size":"",
+                "date":"01/13/2010",
+                "state":"closed",
+                "children":[{
+                "id":221,
+                "name":"全家福大豆油4L",
+                "size":"10 KB",
+                "date":"02/26/2009"
+                },{
+                "id":222,
+                "name":"中粮东北香10kg",
+                "size":"5 KB",
+                "date":"02/26/2009"
+                }]
+                }]
+                },{
+                "id":3,
+                "name":"宽带变更",
+                "size":"",
+                "date":"01/20/2010",
+                "children":[{
+                "id":31,
+                "name":"账户变更",
+                "size":"56 KB",
+                "date":"05/19/2009"
+                },{
+                "id":32,
+                "name":"地址变更",
+                "size":"1 KB",
+                "date":"04/20/2010"
+                },{
+                "id":33,
+                "name":"费用变更",
+                "size":"7 KB",
+                "date":"03/17/2005"
+                }]
+                }]
+                }]-->
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+<script>
+    var html=$('.code').html();
+    $(".prettyprint").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+</body>
+
+</html>

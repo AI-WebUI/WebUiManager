@@ -1,0 +1,279 @@
+/* Page */
+body{
+	background:#F3F3F3 url(images/body_bg.jpg) repeat-x ;
+}
+
+.home-wrapper{
+	margin:0 auto;
+	width:990px;
+}
+.home-wrapper .home-header .home-header-logo{
+	display: block;
+	width: 350px;
+	height: 46px;
+	background: url(images/logo.jpg);
+	text-indent: -9999px;
+}
+
+.home-header-info{
+	height: 46px;
+	line-height: 46px;
+}
+
+.home-header-info .home-toggle-btn .home-toggle-btn-current{
+	color: #1F6A92;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.home-header-nav{
+	height: 41px;
+	padding-top: 9px;
+}
+.home-menu .ui-dropmenu .ui-dropmenu-item span{
+	color: #E9E9E9;
+}
+
+.home-menu .ui-dropmenu .ui-dropmenu-item{
+	padding: 0 4px;
+}
+
+.home-search .ui-input-group{
+	float: right;
+}
+
+.home-main {
+	display:table-cell;
+	*display:block;
+	*zoom:1;
+	width:auto;
+}
+.home-main:after {
+	content:'';
+	display:block;
+	height:0;
+	clear:both;
+}
+.home-content:after {
+	content:'';
+	display:block;
+	height:0;
+	clear:both;
+}
+.home-content {
+	zoom:1;
+}
+.home-container{
+	background: #fff;
+}
+.home-login{
+	background: #fff;
+	position: relative;
+}
+
+
+.home-login-header{
+	background: #7AC2E8;
+	color: #fff;
+	text-align: center;
+	height: 120px;
+	font-size: 16px;
+	line-height: 40px;
+
+}
+
+.home-login-content{
+	padding: 60px 20px 120px;
+	font-size: 14px;
+	color: #666;
+}
+
+.home-login-content h1{
+	font-size: 17px;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.home-login-photo{
+	position: absolute;
+	left: 65px;
+	top: 70px;
+	display: block;
+	text-align: center;
+	width: 80px;
+	height: 80px;
+	vertical-align: bottom;
+	background: #D7D7D7;
+	border: #F1F3F2 5px solid;
+	border-radius: 45px;
+}
+
+.home-login-photo span{
+	top: 10px;
+	color: #fff;
+	font-size: 55px;
+}
+
+.home-login-guide{
+	text-align: right;
+	font-size: 14px;
+	padding:40px 20px;
+	color: #666;
+}
+
+.home-login-guide a{
+	color: #333;
+}
+
+
+.home-sidebar-header {
+	background: #349CD3;
+}
+
+.home-sidebar-header .ui-dropmenu .ui-dropmenu-item a{
+	width: 200px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+}
+.home-sidebar-header .ui-dropmenu .ui-dropmenu-item em{
+	border-top-color: #FFFFFF;
+}
+
+.home-sidebar-header .ui-dropmenu .ui-dropmenu-item i em{
+	border-width: 8px 5px 0;
+}
+.home-sidebar-header .ui-dropmenu .ui-dropmenu-item{
+	border:0;
+  	background: none;
+}
+.home-sidebar-header .ui-dropmenu .ui-dropmenu-content .ui-dropmenu-panel{
+	width: 228px;
+	padding: 0;
+}
+.home-sidebar .home-userlist .glyphicon-remove{
+	color: #D4D4D4;
+	cursor: pointer;
+}
+.home-sidebar .home-userlist .glyphicon-remove:hover{
+	color: #333;
+}
+
+.home-sidebar .home-userlist .ui-button{
+	border: none;
+	background: none;
+	color: #7794A4;
+}
+
+
+.home-sidebar-content{
+	background: #fff;
+	padding: 10px 5px;
+}
+
+.home-sidebar-content .ui-box-container{
+	border-bottom: #D3D3D3 1px dotted;
+	
+}
+.home-sidebar-content .ui-box-container:last-child{
+	border-bottom: none;
+}
+.home-sidebar-content .ui-box-head-title{
+	color: #0D8DD4;
+}
+.usergroup .ui-button{
+	margin-top: 5px;
+	padding: 0 6px;
+	border: #DCECF9 1px solid;
+	background: #DCECF9;
+	color: #666;
+}
+.usergroup .ui-button:hover{
+	border: #339BD2 1px solid;
+	color: #339BD2;
+}
+
+.userstate .ui-tiptext-container{
+	padding: 10px 12px;
+	background: #F3F3F3;
+	border: 0;
+}
+
+.userstate .ui-tiptext,.userstate .ui-tiptext .ui-tiptext-icon{
+	color: #E3017F;
+}
+
+.userstate .ui-tiptext span{
+	margin-right: 20px;
+}
+
+.userstate .ui-tiptext span a{
+	color: #333;
+	text-decoration:underline;
+}
+
+.home-fav-list li{
+	display: inline-block;
+	float: left;
+	width: 20%;
+	margin-bottom: 35px;
+}
+
+.home-fav-list .ui-button{
+	display: block;
+	height: auto;
+	text-align: left;
+	border: none;
+	overflow: hidden;
+	color: #66757C;
+	padding: 6px 19px;
+	border-right: #EBECEE 1px solid;
+}
+
+
+.bus-btn .ui-button{
+	height: 60px;
+}
+
+
+.fav-btn .ui-button{
+	height: 30px;
+}
+
+.home-fav-list .ui-button .glyphicon{
+	top: 4px;
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+.home-footer {
+	width:970px;
+	margin:0 auto;
+	padding:0 10px;
+	line-height: 30px;
+	text-align: right;
+	background: #f9f9f9;
+}
+
+.home-header-login .ui-input-history {
+	position: relative;
+	display: block; 
+	margin-top: 1px; 
+	z-index: 999;
+}
+
+.home-header-login .ui-input-history ul {
+	position: absolute; 
+	display: block; 
+	background-color: white;
+	width: 248px; 
+	font-size: 14px; 
+	border: 1px solid #47AAE1; 
+	border-top: none; border-left: none;
+}
+
+.home-header-login .ui-input-history ul li {
+	padding:6px 9px; 
+	cursor:pointer; 
+	color: #333;
+}

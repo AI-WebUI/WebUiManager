@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tooltip测试</title>
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+    <style>
+        .content{
+            width:500px;
+            height:200px;
+            margin:0 auto;
+        }
+        .webui-pane {
+            border: 1px solid #000000;
+            width: 100px;
+            height:40px;
+            display: block;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content">
+
+</div>
+        <div style="padding:10px 200px">
+            <div id="pp1" class="webui-pane">right</div>
+        </div>
+<script>
+    $(function(){
+        $("#pp1").tooltip({
+            position: 'right',
+            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打'
+        });
+    })
+
+</script>
+</body>
+</html>

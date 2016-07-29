@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/demoApi.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/stepBar.css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <!--<script src="../../../../desktop/js/stepBar.js" type="text/javascript" charset="utf-8"></script>-->
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+
+    <!--<link rel="stylesheet" href="../../css/prettify.css"/>-->
+    <style>
+        hr {
+            display: block;
+            border: 1px solid #ededed;
+            width: 80%;
+            position: absolute;
+            top: 22px;
+            left: 90px;
+        }
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<h1 class="main_title">WEBUI流程条组件样式与源码</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>带详细的文字描述流程条——静态页面元素</h2>
+            <div class="aries_demo bs-example code">
+                <div class="ui-stepbar">
+                    <div class="ui-stepbar-item ui-finish">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">已完成</div>
+                            <div class="ui-stepbar-desc">这个是描述信息</div>
+                        </div>
+                    </div>
+                    <div class="ui-stepbar-item ui-process">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">进行中</div>
+                            <div class="ui-stepbar-desc">这个是描述信息</div>
+                        </div>
+                    </div>
+                    <div class="ui-stepbar-item ui-wait">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">等待中等待中</div>
+                            <div class="ui-stepbar-desc">这个是描述信息</div>
+                        </div>
+                    </div>
+                    <div class="ui-stepbar-item ui-wait">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">正在排队等待</div>
+                            <div class="ui-stepbar-desc">这些文字每行最多八个</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aries_demo bs-example code">
+                <h2>流程条StepBar</h2>
+                <p>使用js动态生成自适应的流程条.</p>
+<pre><code>
+   //html代码
+    &lt;div id=&quot;stepTest&quot;&gt;&lt;/div&gt;
+    //js代码
+    var data = [{
+    "name": "已完成",
+    "state": "finish",
+    "desc": "这个是描述信息"
+    },{
+    "name": "进行中",
+    "state": "process",
+    "desc": "这个是描述信息"
+    },{
+    "name": "等待中等待中",
+    "state": "",
+    "desc": "这个是描述信息"
+    },{
+    "name": "等待中等待中",
+    "state": "",
+    "desc": "这个是描述信息"
+    },{
+    "name": "正在排队等待",
+    "state": "",
+    "desc": "这些文字每行最多八个"
+    }];
+    $("#stepTest").AIStepBar({
+    data:data,
+    width:900
+    });
+</code>
+</pre>
+
+            </div>
+            <h2>参数</h2>
+            <table class="doc-table">
+                <tbody>
+                <tr>
+                    <th>参数名</th>
+                    <th>类型</th>
+                    <th>默认值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>data</td>
+                    <td>array数组</td>
+                    <td>null</td>
+                    <td>需要显示的步骤，每一步的名字、状态、描述。数组对象为一个一个的对象格式为：
+                        <br/>{
+                        "name": "进行中",<br/>
+                        "state": "process",<br/>
+                        "desc": "这个是描述信息"<br/>
+                        }；<br/>状态为三种：finish（完成）、process（进行中）、wait（等待中——默认）
+                    </td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>number</td>
+                    <td>750</td>
+                    <td>步骤条的总长度，根据传入的值自适应。</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script>
+        var html = $('.code').html();
+        $(".prettyprint").text(html).addClass("prettyprint linenums");
+        prettyPrint();
+</script>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+</body>
+</html>

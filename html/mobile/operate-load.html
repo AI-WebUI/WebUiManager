@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>操作加载组件Demo</title>
+		<meta name="viewport" content="width=750,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/operate-load.css"/>
+		<script src="js/mobile-util.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#JS_btn{
+				position: absolute;
+				top: 50px;
+				left: 50px;
+				height: 50px;
+				padding: 0 20px 0 20px;
+				border: none;
+				background-color: #44abe5;
+				color: #fff;
+				font-size: 20px;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="JS_btn">获取数据测试</button>
+	</body>
+	<script src="lib/jquery/2.1.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/operate-load.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("#JS_btn").AIOperatingload({
+			URL:'json/update.json',//访问的地址
+			tipText:'加载中...',//提示文本
+			callback:function(state,json){
+				console.log(JSON.stringify(json));
+			}
+		});
+	</script>
+</html>

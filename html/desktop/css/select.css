@@ -1,0 +1,276 @@
+
+.ui-select-query-box{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	border: 1px solid #ccc;
+	width: 500px;
+}
+
+.ui-select-query-row{
+	
+}
+.ui-select-query-row-left{
+	float: left;
+	padding: 10px 0;
+	line-height: 8px;
+	width: 70px;
+}
+.ui-select-query-row-center{
+	float: left;
+	padding: 10px 0;
+	line-height: 8px;
+}
+.ui-select-query-row-right{
+	float: right;
+	padding: 10px 0;
+	line-height: 8px;
+}
+.ui-select-query-row-down{
+	border-bottom: 1px #ccc dotted;
+}
+.ui-select-query-row-name{
+	display: inline-block;
+	color: #888;
+	line-height: 20px;
+	border: 1px solid #fff;
+	float: right;
+}
+.ui-select-query-row-name span{
+	display: inline-block;
+}
+.ui-select-query-row-name span:after{
+	content: '：';
+}
+.ui-select-query-row-content{
+	margin: 0 5px;
+	padding: 0 12px;
+	display: inline-block;
+	color: #333;
+	line-height: 20px;
+	border: 1px solid #fff;
+	cursor: pointer;
+}
+.ui-select-query-row-content.checked{
+	background-color: #DBECF9;
+	border: 1px solid #44ABE5;
+	color: #44abe5;
+}
+.ui-select-query-row-content:hover{
+	color: #44abe5;
+}
+.ui-select-query-row-more{
+	display: inline-block;
+	margin-right: 20px;
+	color: #44abe5;
+	line-height: 20px;
+	border: 1px solid #fff;
+}
+
+
+.ui-select{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #333;
+}
+
+.ui-select-item{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.ui-select.block .ui-select-item{
+	border: 1px solid #ccc;
+	color: #44ABE5;
+	line-height: 26px;
+	padding: 0px 20px;
+}
+
+.ui-select .ui-select-item:hover{
+	cursor: pointer;
+}
+
+.ui-select.block .ui-select-item:hover{
+	border: 1px solid #44ABE5;
+	cursor: pointer;
+}
+
+.ui-select.block .ui-select-item.disabled{
+	background-color: #ccc;
+	color: #787878;
+}
+
+.ui-select.block .ui-select-item.disabled:hover{
+	border: 1px solid #ccc;
+}
+
+.ui-select.block .ui-select-item.checked{
+	border: 1px solid #44ABE5;
+	background-color: #DBECF9;
+}
+
+.ui-select.block .ui-select-item.checked:hover{
+	border: 1px solid #44ABE5;
+}
+
+.ui-select-item span{
+	display: inline-block;
+	height: 16px;
+	line-height: 16px;
+}
+.ui-select.radio .ui-select-item-pre{
+	vertical-align:middle;
+	background: url(../css/images/ui-select-radio-default.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.radio .ui-select-item.checked .ui-select-item-pre{
+	background: url(../css/images/ui-select-radio-default-checked.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.radio .ui-select-item.checked.mustSelect .ui-select-item-pre{
+	background: url(../css/images/ui-select-radio-disabled-checked.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.radio .ui-select-item.disabled .ui-select-item-pre {
+	background: url(../css/images/ui-select-radio-disabled.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.radio .ui-select-item.disabled {
+	cursor: default;
+}
+.ui-select.radio .ui-select-item.checked.disabled .ui-select-item-pre{
+	background: url(../css/images/ui-select-radio-disabled-checked.png) 0px 0px no-repeat;
+	width: 20px;
+}
+
+.ui-select.radio .ui-select-item.checked{
+	border: 0px solid #FFFFFF;
+	/*background-color: #FFFFFF;*/
+	color: #333;
+}
+/*块级单选-默认*/
+.ui-select.radio.block .ui-select-item{
+	border: 1px solid #ccc;
+	color: #44ABE5;
+}
+/*块级单选-hover&选中*/
+.ui-select.radio.block .ui-select-item:hover{
+	border: 1px solid #44ABE5;
+}
+/*块级单选-选中*/
+.ui-select.radio.block .ui-select-item.checked{
+	border: 1px solid #44ABE5;
+	background-color: #DBECF9;
+}
+/*.ui-select.radio.block .ui-select-item.checked:hover{
+	border: 1px solid #44ABE5;
+	background-color: #fff;
+}*/
+
+/*块级单选-默认*/
+.ui-select.radio.block.background .ui-select-item{
+	border: 1px solid #ccc;
+	color: #44ABE5;
+}
+/*块级单选-hover*/
+.ui-select.radio.block.background .ui-select-item:hover{
+	border: 1px solid #44ABE5;
+}
+/*块级单选-选中*/
+.ui-select.radio.block.background .ui-select-item.checked{
+	border: 1px solid #44ABE5;
+	background: url(../css/images/ui-select-gear-checked-bg.png) top right no-repeat #dbecf9;
+}
+/*块级单选-选中hover*/
+/*.ui-select.radio.block.background .ui-select-item.checked:hover{
+	background: url(../css/icons/mulit.png) top right no-repeat;
+}*/
+/*禁用样式*/
+.ui-select.radio.block .ui-select-item.disabled,
+.ui-select.radio.block .ui-select-item.disabled:hover,
+.ui-select.radio.block .ui-select-item.disabled:active,
+.ui-select.radio.block.background .ui-select-item.disabled,
+.ui-select.radio.block.background .ui-select-item.disabled:hover,
+.ui-select.radio.block.background .ui-select-item.disabled:active{
+	border: 1px solid #ccc;
+	background: #ededed;
+	color: #9c9c9c;
+	cursor: default;
+}
+
+.ui-select.checkbox .ui-select-item-pre{
+	vertical-align:middle;
+	background: url(../css/images/ui-select-checkbox-default.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.checkbox .ui-select-item.checked .ui-select-item-pre{
+	background: url(../css/images/ui-select-checkbox-default-checked.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.checkbox .ui-select-item.checked.mustSelect .ui-select-item-pre{
+	background: url(../css/images/ui-select-checkbox-disabled-checked.png) 0px 0px no-repeat;
+	width: 20px;
+}
+
+.ui-select.checkbox .ui-select-item.checked{
+	border: 0px solid #FFFFFF;
+/*	background-color: #FFFFFF;*/
+	color: #333;
+}
+
+.ui-select.checkbox.block .ui-select-item.checked{
+	border: 1px solid #44ABE5;
+	background-color: #DBECF9;
+	color: #44ABE5;
+}
+
+.ui-select.checkbox .ui-select-item.disabled .ui-select-item-pre{
+	background: url(../css/images/ui-select-checkbox-disabled.png) 0px 0px no-repeat;
+	width: 20px;
+}
+.ui-select.checkbox .ui-select-item.disabled{
+	cursor: default;
+}
+.ui-select.checkbox .ui-select-item.checked.disabled .ui-select-item-pre{
+	background: url(../css/images/ui-select-checkbox-disabled-checked.png) 0px 0px no-repeat;
+	width: 20px;
+}
+
+/*默认样式*/
+.ui-select.checkbox.block .ui-select-item{
+	border: 1px solid #ccc;
+	background: url(../css/icons/add.png) top right no-repeat;
+}
+/*hover*/
+.ui-select.checkbox.block .ui-select-item:hover{
+	border: 1px solid #44abe5;
+	background: url(../css/icons/add_hover.png) top right no-repeat;
+}
+/*选中状态*/
+.ui-select.checkbox.block .ui-select-item.checked {
+	border: 1px solid #44abe5;
+	background: url(../css/images/ui-select-gear-checked-bg.png) top right no-repeat #dbecf9;
+}
+/*选中状态hover*/
+/*.ui-select.checkbox.block .ui-select-item.checked:hover {
+	border: 1px solid #44abe5;
+	background: url(../css/icons/mulit.png) top right no-repeat;
+}*/
+/*禁用样式*/
+.ui-select.checkbox.block .ui-select-item.disabled,
+.ui-select.checkbox.block .ui-select-item.disabled:hover,
+.ui-select.checkbox.block .ui-select-item.disabled:active{
+	border: 1px solid #ccc;
+	background: #ededed;
+	color: #9c9c9c;
+	cursor: default;
+}
+/*新增级联选择样式*/
+li.ui-select-query-row-content{
+	margin: 5px;
+    padding: 3px 12px;
+}
+/*行级选择*/
+.ui-select-line .ui-select-item{
+	float: none;
+}

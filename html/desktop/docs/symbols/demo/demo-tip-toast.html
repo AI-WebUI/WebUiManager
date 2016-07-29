@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tips-toast</title>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/demoApi.css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <link rel="stylesheet" href="../../css/prettify.css"/>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+    <!--新增-->
+    <style type="text/css">
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        p {
+            display: block;
+            padding: 6px 0 6px 2px;
+            margin: 20px 0 20px 0;
+        }
+        .tip-test {
+            display: block;
+            width: 500px;
+            height: 100px;
+            border: 1px solid #C0C0C0;
+            float: left;
+            margin: 20px;
+            color: #C0C0C0;
+            position: relative;
+        }
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+        .prettyprint ol.linenums {
+            background: #f8f8f8 !important;
+        }
+    </style>
+</head>
+<body>
+<h1 class="main_title">WEBUI PC端tips-toast</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>基本功能：弹出提示框使用案例</h2>
+            <div class="aries_demo bs-example">
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.open()">成功</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.setContent('改变后的内容！');tip.open()">改变内容后打开</a>
+                <a class="webui-linkbutton btn-blue btn-small" class="webui-linkbutton btn-blue btn-small"
+                   onclick="tip.setContent('改变后的内容！');tip.setPosition(500);tip.open()">改变内容和位置后打开</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip2.open()">错误</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip3.open();tip3.setPosition(300)">疑问</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip4.open();tip4.setPosition(300)">信息</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip5.open();tip5.setPosition(300)">警告（重）</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip6.open();tip6.setPosition(300)">警告（轻）</a>
+                <br/>
+                <br/>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip7.open()">在下边框中上下居中显示</a>
+                <br/>
+
+                <div id="tip_test" class="tip-test">
+                    所需显示的外部div必须存在position属性
+                </div>
+                <script>
+                    var tip = new AIToastTip({
+                        message: "请选择营销案档次",
+                        type: "success",
+                        timeout: 5000
+                    });
+
+                    tip.setPosition(800,200);
+                    var tip2 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "error",
+                        timeout: 5000
+                    });
+                    tip2.setPosition(800,200);
+                    var tip3 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "question",
+                        timeout: 5000
+                    });
+                    tip3.setPosition(800,200);
+                    var tip4 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "info",
+                        timeout: 5000
+                    });
+                    var tip5 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "warn",
+                        timeout: 5000
+                    });
+                    var tip6 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "warn-little",
+                        timeout:5000
+                    });
+                    var tip7 = new AIToastTip({
+                        message: "请选择营销案档次",
+                        type: "warn-little",
+                        timeout: 5000
+                    });
+                </script>
+            </div>
+            <div class="aries_demo bs-example code" style="display:none">
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.open()">成功</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.setContent('改变后的内容！');tip.open()">改变内容后打开</a>
+                <a class="webui-linkbutton btn-blue btn-small" class="webui-linkbutton btn-blue btn-small"
+                   onclick="tip.setContent('改变后的内容！');tip.setPosition(500);tip.open()">改变内容和位置后打开</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip2.open()">错误</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip3.open()">疑问</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip4.open()">信息</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip5.open()">警告（重）</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip6.open()">警告（轻）</a>
+                <br/>
+                <br/>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip7.open()">在下边框中上下居中显示</a>
+                <br/>
+
+                <div id="top_test" class="tip-test">
+                    所需显示的外部div必须存在position属性
+                </div>
+                <script>
+                    var tip = new AIToastTip({
+                        message: "请选择营销案档次",
+                        type: "success",
+                        timeout: 5000
+                    });
+                    var tip2 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "error",
+                        timeout: 5000
+                    });
+                    var tip3 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "question",
+                        timeout: 5000
+                    });
+                    var tip4 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "info",
+                        timeout: 5000
+                    });
+                    var tip5 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "warn",
+                        timeout: 5000
+                    });
+                    var tip6 = new AIToastTip({
+                        message: "请选择营销案档次请选择营销案档次请选择营销案档次请选择营销案档次",
+                        type: "warn-little",
+                        timeout:5000
+                    });
+                    var tip7 = new AIToastTip({
+                        message: "请选择营销案档次",
+                        type: "warn-little",
+                        id: "tip_test",
+                        timeout: 5000
+                    });
+                </script>
+            </div>
+            <div class="aries_demo bs-example">
+                <h1 >新增toast提示API</h1>
+
+                <p> 用法： </p>
+			<pre><code>var tip = new AIToastTip({
+                message:&quot;请选择营销案档次&quot;,
+                type:&quot;success&quot;,
+                timeout:5000
+                });
+            </code></pre>
+                <p> 参数说明： </p>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th width="150">类型</th>
+                        <th>描述</th>
+                        <th>默认值</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>message</td>
+                        <td>string（字符串）</td>
+                        <td>消息信息。</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td>消息类型。分类为：success,error,info,question,warn,warn-little。</td>
+                        <td>success</td>
+                    </tr>
+                    <tr>
+                        <td>timeout</td>
+                        <td>number</td>
+                        <td>显示时间，以毫秒计算。</td>
+                        <td>2000</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p> 方法： 组件提供的可以使用的方法</p>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>方法名</th>
+                        <th width="150">参数</th>
+                        <th>描述</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>open</td>
+                        <td>null</td>
+                        <td>显示消息。</td>
+                    </tr>
+                    <tr>
+                        <td>setContent</td>
+                        <td>string</td>
+                        <td>重新设置消息内容。</td>
+                    </tr>
+                    <tr>
+                        <td>setPosition</td>
+                        <td>number</td>
+                        <td>重新设置显示位置。</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+<script>
+        var html=$('.code').html();
+        $(".prettyprint").text(html).addClass("prettyprint linenums");
+        prettyPrint();
+</script>
+
+</body>
+</html>

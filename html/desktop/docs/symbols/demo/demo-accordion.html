@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <!-- 文档框架样式 -->
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <!--修改后-->
+    <link rel="stylesheet" type="text/css" href="../../../css/keytip.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
+    <script type="text/javascript" src="../../../js/keyTip.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <style>
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        /*hr {*/
+            /*display: block;*/
+            /*border: 1px solid #ededed;*/
+            /*width: 80%;*/
+            /*position: absolute;*/
+            /*top: 22px;*/
+            /*left: 110px;*/
+        /*}*/
+
+        .pp-ps {
+            display: block;
+            color: #8E8E8E;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+        .main_title {
+            width: 500px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<h1 class="main_title">WEBUI PC端手风琴组件</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
+                                              data-toggle="tab">样式和参数</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="result">
+        <div class="cont">
+            <h2>基本功能：手风琴效果，可折叠展开内容，提供两种使用方法</h2>
+            <div class="aries_demo bs-example">
+                <p>样式(页面渲染)</p>
+                <hr/>
+                <div class="webui-accordion" style="width:500px;height:auto;">
+                    <div title="代办人">
+                        <div style="padding: 20px;">
+                            <p>代办人内容</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="webui-accordion" style="width:500px;height:auto;">
+                    <div title="推荐人">
+                        <div style="padding: 20px;">
+                            <p>推荐人内容</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aries_demo bs-example js">
+                <p>样式(JS加载)</p>
+                <hr/>
+                <div id="accordion_demo" style="width:500px;height:auto;">
+                    <div title="推荐人">
+                        <div style="padding: 20px;">
+                            <p>推荐人内容</p>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#accordion_demo').accordion({closed: true});
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Html">
+      <pre class="prettyprint">
+      </pre>
+    </div>
+</div>
+<!--<div class="cont">-->
+
+    <!--<p class="view-desc">基本功能：手风琴效果，可折叠展开内容，提供两种使用方法</p>-->
+
+    <!--<div class="demo_content">-->
+        <!--&lt;!&ndash; 组件示例区域 &ndash;&gt;-->
+        <!--<div class="aries_demo bs-example">-->
+            <!--<p class="pp-ps">样式(页面渲染)</p>-->
+            <!--<hr/>-->
+            <!--<div class="webui-accordion" style="width:500px;height:auto;">-->
+                <!--<div title="代办人">-->
+                    <!--<div style="padding: 20px;">-->
+                        <!--<p>代办人内容</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="webui-accordion" style="width:500px;height:auto;">-->
+                <!--<div title="推荐人">-->
+                    <!--<div style="padding: 20px;">-->
+                        <!--<p>推荐人内容</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 组件示例代码区域 &ndash;&gt;-->
+        <!--<div class="highlight"></div>-->
+    <!--</div>-->
+
+    <!--<div class="demo_content">-->
+        <!--&lt;!&ndash; 组件示例区域 &ndash;&gt;-->
+        <!--<div class="aries_demo bs-example">-->
+            <!--<p class="pp-ps">样式(JS加载)</p>-->
+            <!--<hr/>-->
+            <!--<div id="accordion_demo" style="width:500px;height:auto;">-->
+                <!--<div title="推荐人">-->
+                    <!--<div style="padding: 20px;">-->
+                        <!--<p>推荐人内容</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<script type="text/javascript">-->
+                <!--$(function () {-->
+                    <!--$('#accordion_demo').accordion({closed: true});-->
+                <!--})-->
+            <!--</script>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 组件示例代码区域 &ndash;&gt;-->
+        <!--<div class="highlight"></div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<script>
+    var js=$('.js').html();
+    $(".prettyprint").text(js).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+</body>
+</html>
