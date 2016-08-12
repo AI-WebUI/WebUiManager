@@ -485,8 +485,13 @@
 <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
 <script type="text/javascript" src="../../js/prettify.js"></script>
 <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
 <script>
+    var html = $('.code').html();
+    $(".codes").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+<script class="code">
     $('#chao').combobox({
         url:'data/combobox.json',
         method:'get',
@@ -511,13 +516,6 @@
         alert9(vals)
     });
 </script>
-<script>
-        $(function(){
-            var html = $('.code').html();
-            $(".codes").text(html).addClass("prettyprint linenums");
-            prettyPrint();
-        })
-</script>
-<!--<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>-->
+
 </body>
 </html>
