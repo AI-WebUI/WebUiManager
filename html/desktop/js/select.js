@@ -153,8 +153,6 @@
 			return false;
 		}
 	}
-
-
 	aiSelect.prototype.getSelectedField = function() {
 		var _ = this;
 		var $element = this.$element.find(".ui-select-item.checked");
@@ -179,7 +177,6 @@
 				} else {
 					this.$element.find(".ui-select-item span:eq(1)[value='" + values[i] + "']").addClass("checked");
 				}
-
 			}
 		} else {
 			if (this.block == "block") {
@@ -199,7 +196,6 @@
 				} else {
 					this.$element.find(".ui-select-item span:eq(1)[value='" + values[i] + "']").addClass("disabled");
 				}
-
 			}
 		} else {
 			if (this.block == "block") {
