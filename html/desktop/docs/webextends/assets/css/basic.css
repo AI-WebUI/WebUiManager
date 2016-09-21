@@ -6,7 +6,7 @@ body {
 
 #wrapper {
     width: 100%;
-    background: #202020;
+    background: #fbfbfb;
 }
 
 #page-wrapper {
@@ -52,7 +52,7 @@ body {
 
 .navbar-cls-top .navbar-brand {
     color: #fff;
-    background: #202020;
+    background: #fbfbfb;
     width: 260px;
     text-align: center;
     height: 0px;
@@ -75,8 +75,8 @@ body {
 
 .user-img-div {
     min-height: 0px;
-    padding: 20px;
-    background-color: #000;
+    padding: 30px;
+    background-color: #fbfbfb;
 }
 
     .user-img-div img {
@@ -99,11 +99,11 @@ body {
     background-color:#ff9920 !important;
 }
 .active-menu-top {
-    background-color: #000!important;
+    background-color: #fbfbfb!important;
 }
-.active-menu-top:hover,.active-menu-top:focus{
-    background-color:#ff9920 !important;
-}
+/*.active-menu-top:hover,.active-menu-top:focus{*/
+    /*background-color:#ff9920 !important;*/
+/*}*/
 .arrow {
     float: right;
 }
@@ -141,9 +141,9 @@ body {
     }
 
         .sidebar-collapse .nav > li > a {
-            color: #fff;
-            background: #000;
-            padding: 15px 40px;
+            color: #333;
+            background: #fbfbfb;
+            padding: 5px 40px;
             /*margin-left:40px;*/
             /*border-bottom: 1px solid #2F2E31;*/
         }
@@ -152,15 +152,14 @@ body {
         }
 
     .sidebar-collapse > .nav > li > a {
-        padding: 15px 10px;
+        padding:5px 30px;
     }
 
     .sidebar-collapse .nav > li > a:hover,
     .sidebar-collapse .nav > li > a:focus,
     .sidebar-collapse .nav > li > a:active{
-        background:#ff9920;
+        background:#ededed;
         outline: 0;
-        font-size:18px;
         color:#000;
     }
 
@@ -233,7 +232,7 @@ body {
 
 @media (min-width:768px) {
     #page-wrapper {
-        margin: 0 0 0 250px;
+        margin: 0 0 0 230px;
         padding: 15px 30px;
         height:auto;
     }
@@ -242,7 +241,7 @@ body {
     .navbar-side {
         z-index: 1;
         position: absolute;
-        width: 250px;
+        width: 230px;
     }
 
     .navbar {

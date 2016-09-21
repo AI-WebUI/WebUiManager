@@ -699,3 +699,28 @@ pre .support.value  {
     font-weight: normal;
     color: #3b8bba; /* skinbuilder block-mine-text-low with #1f8dd6 as primary */
 }
+/*表格样式*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th {
+    font-weight: bold;
+    background-color: #DDDDDD;
+}
+
+table th, table td {
+    border: 1px solid #C0C0C0;
+
+    padding: 6px 13px;
+}
+
+table td {
+    background: #FFFFFF;
+}
+
+table tr {
+    border-top: 1px solid #44ABE5;
+    background-color: #fff;
+}

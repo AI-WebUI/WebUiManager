@@ -50,6 +50,7 @@
             margin: 0 auto;
             font-size: 30px;
         }
+
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
         }
@@ -60,16 +61,16 @@
 <h1 class="main_title">WEBUI PC端组件流程条</h1>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
-                                              data-toggle="tab">样式和参数</a></li>
-    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
+                                              data-toggle="tab">面包屑流程条的样式</a></li>
+    <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">面包屑流程条代码</a></li>
+    <li role="presentation"><a href="#process" aria-controls="process" role="tab" data-toggle="tab">流程条样式</a></li>
+    <li role="presentation"><a href="#detailcodes" aria-controls="detailcodes" role="tab" data-toggle="tab">流程条代码</a></li>
 </ul>
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="result">
         <div class="cont">
             <h1>流程条样式基本功能</h1>
-
             <p>流程条：通常用于一个流程较长的任务时；明确告知用户当前的位置，以及用户对这个任务的整体做到心里有数</p>
-
             <div class="demo_content">
                 <div class="aries_demo bs-example code">
                     <a href="#nogo" class="webui-linkbutton btn-grey" id="prevStep" onclick="dd.prevStep()">上一步</a>
@@ -77,6 +78,7 @@
                     <a href="#nogo" class="webui-linkbutton btn-grey" id="getStep" onclick="alert2(dd);">得到当前步数</a>
                     <br/>
                     <br/>
+
                     <div class="demo-test-div">
                         <div id="demo" style="width: 750px;"></div>
                     </div>
@@ -108,6 +110,7 @@
                     </script>
                     <div style="display:none">
                         <p>用法 使用 javascript 创建流程条（step）</p>
+
                         <div id="test"></div>
 
                         var opt = {
@@ -128,6 +131,7 @@
                 </div>
                 <div class="aries_demo bs-example">
                     <h1>面包屑流程条API</h1>
+
                     <p>属性</p>
                     <table>
                         <tr>
@@ -198,8 +202,127 @@
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="Html">
-      <pre class="prettyprint">
+      <pre class="prettyprint details">
       </pre>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="detailcodes">
+      <pre class="prettyprint detailscodes">
+      </pre>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="process">
+        <div class="cont">
+            <h2>带详细的文字描述流程条——静态页面元素</h2>
+            <div class="aries_demo bs-example dtcode">
+                <div class="ui-stepbar">
+                    <div class="ui-stepbar-item ui-finish">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">已完成</div>
+                            <div class="ui-stepbar-desc">这个是描述信息</div>
+                        </div>
+                    </div>
+                    <div class="ui-stepbar-item ui-process">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">进行中</div>
+                            <div class="ui-stepbar-desc">这个是描述信息</div>
+                        </div>
+                    </div>
+                    <div class="ui-stepbar-item ui-wait">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">等待中等待中</div>
+                            <div class="ui-stepbar-desc">这个是描述信息</div>
+                        </div>
+                    </div>
+                    <div class="ui-stepbar-item ui-wait">
+                        <div class="ui-stepbar-line"><i></i></div>
+                        <div class="ui-stepbar-icon">
+                            <div class="ui-stepbar-icon-bg"></div>
+                        </div>
+                        <div class="ui-stepbar-content">
+                            <div class="ui-stepbar-name">正在排队等待</div>
+                            <div class="ui-stepbar-desc">这些文字每行最多八个</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aries_demo bs-example code">
+                <h2>流程条StepBar</h2>
+                <p>使用js动态生成自适应的流程条.</p>
+<pre><code>
+    //html代码
+    &lt;div id=&quot;stepTest&quot;&gt;&lt;/div&gt;
+    //js代码
+    var data = [{
+    "name": "已完成",
+    "state": "finish",
+    "desc": "这个是描述信息"
+    },{
+    "name": "进行中",
+    "state": "process",
+    "desc": "这个是描述信息"
+    },{
+    "name": "等待中等待中",
+    "state": "",
+    "desc": "这个是描述信息"
+    },{
+    "name": "等待中等待中",
+    "state": "",
+    "desc": "这个是描述信息"
+    },{
+    "name": "正在排队等待",
+    "state": "",
+    "desc": "这些文字每行最多八个"
+    }];
+    $("#stepTest").AIStepBar({
+    data:data,
+    width:900
+    });
+</code>
+</pre>
+
+            </div>
+            <h2>参数</h2>
+            <table class="doc-table">
+                <tbody>
+                <tr>
+                    <th>参数名</th>
+                    <th>类型</th>
+                    <th>默认值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>data</td>
+                    <td>array数组</td>
+                    <td>null</td>
+                    <td>需要显示的步骤，每一步的名字、状态、描述。数组对象为一个一个的对象格式为：
+                        <br/>{
+                        "name": "进行中",<br/>
+                        "state": "process",<br/>
+                        "desc": "这个是描述信息"<br/>
+                        }；<br/>状态为三种：finish（完成）、process（进行中）、wait（等待中——默认）
+                    </td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>number</td>
+                    <td>750</td>
+                    <td>步骤条的总长度，根据传入的值自适应。</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 </div>
 </div>
@@ -207,8 +330,9 @@
 <script type="text/javascript" src="../../js/prettify.js"></script>
 <script>
     var html = $(".code").html();
-    console.log(html);
-    $("pre").text(html).addClass("prettyprint linenums");
+    var html = $(".dtcode").html();
+    $(".details").text(html).addClass("prettyprint linenums");
+    $(".detailscodes").text(html).addClass("prettyprint linenums");
     prettyPrint();
 </script>
 <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>

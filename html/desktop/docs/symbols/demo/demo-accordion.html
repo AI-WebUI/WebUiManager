@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
     <link rel="stylesheet" href="../../css/font-awesome.css">
     <!--修改后-->
+    <link rel="stylesheet" href="../../css/demoApi.css"/>
     <link rel="stylesheet" type="text/css" href="../../../css/keytip.css"/>
     <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
@@ -16,6 +17,7 @@
     <script type="text/javascript" src="../../../js/keyTip.js"></script>
     <script type="text/javascript" src="../../js/prettify.js"></script>
     <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script src="../../../js/shade.js" type="text/javascript" charset="utf-8"></script>
     <style>
         h1 {
             font-size: 20px;
@@ -24,16 +26,6 @@
         h2 {
             font-size: 18px;
         }
-
-        /*hr {*/
-            /*display: block;*/
-            /*border: 1px solid #ededed;*/
-            /*width: 80%;*/
-            /*position: absolute;*/
-            /*top: 22px;*/
-            /*left: 110px;*/
-        /*}*/
-
         .pp-ps {
             display: block;
             color: #8E8E8E;
@@ -46,11 +38,29 @@
             margin: 0 auto;
             font-size: 30px;
         }
+        hr{
+            height: 0;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            border: 1px dashed #ccc;
+            width: 100%;
+            margin: 0;
+            border-bottom: none;
+        }
+        .explain—text{
+            font-size:14px;
+            color:#Fd631F;
+            font-weight:bold;
+        }
+        h2{
+            font-weight:900;
+        }
     </style>
 </head>
 
 <body>
-<h1 class="main_title">WEBUI PC端手风琴组件</h1>
+<h1 class="main_title">手风琴、分割线组件</h1>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
                                               data-toggle="tab">样式和参数</a></li>
@@ -93,6 +103,14 @@
                         $('#accordion_demo').accordion({closed: true});
                     })
                 </script>
+            </div>
+            <h2>WEBUI分割线样式 <span class="explain—text">在html页面引用hr标签即可</span> </h2>
+            <div class="cont">
+                <div class="aries_demo bs-example code">
+                    <div class="demo-test-div">
+                        <hr/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

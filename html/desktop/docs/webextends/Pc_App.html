@@ -8,7 +8,6 @@
 	<style>
 	body{
 		background: #f3f3f3;
-	
 	}
 	   *{
 	   	margin: 0;
@@ -16,30 +15,36 @@
 	   	font-family: "微软雅黑";
 	   }
 		.div_bg{
-			width: 930px;
-			height: 580px;
-			margin: 0 auto;
+			width: 100%;
+			height: auto;
+			text-align:center;
 			box-shadow: 2px 2px 2px 2px #ccc;
 		}
-		.div-top{
-			height:40px;
+		.largebg{
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
 		}
 		.logo{
 			position: absolute;
+			top:50px;
+			left:50px;
 			width: 150px;
 			height: 40px;
-			margin: -560px 0 0 20px;
 		}
 		.div-btn{
 			position: absolute;
-			margin: -380px 0 0 20px;
+			top:200px;
+			left:80px;
 		}
 		.div-btn a{
 			display: block;
 			position: absolute;
 			width: 160px;
 			text-align: center;
-			background: #f06521;
+			background: #FF9920;
 			padding:10px 20px;
 			border-radius:10px;
 			color: #FFF;
@@ -55,14 +60,14 @@
 			background: #90c850;
 		}
 		.div-btn .app-a{
-			
-			background: #35b055;
+			background: #35B055;
 			margin: 18px 0 0 240px;
 		}
 		.title-lab{
 			display: block;
 			position: absolute;
-			margin: -550px 0 0 180px;
+			top:60px;
+			left:220px;
 			font-size: 20px;
 			color: #BEBEBE;
 		}
@@ -70,7 +75,7 @@
 	<body>
 		<div class="div-top"></div>
 		<div class="div_bg">
-			<img src="assets/img/bg4.png" />
+			<img class="largebg" src="assets/img/bigbg.jpg" />
 			<div>
 				<img class="logo" src="assets/img/webui1.png" /><label class="title-lab">基于jQuery EasyUI的javascript框架</label>
 			</div>
@@ -79,7 +84,6 @@
 				<a class="app-a" href="../../../mobile/extends/extends.html"><i class="fa fa-mobile-phone"></i> 移动端端组件</a>
 				<!--<a class="app-a" href="../../../mobile/mobile_extends/index_ver1.html"><i class="fa fa-mobile-phone"></i> 移动端端组件</a>-->
 			</div>
-	     		    
 		</div>
 	</body>
 </html>

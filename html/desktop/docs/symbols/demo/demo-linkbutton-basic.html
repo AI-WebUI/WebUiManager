@@ -10,12 +10,14 @@
     <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../css/prettify.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
     <style>
         .main_title {
             width: 500px;
             margin: 0 auto;
             border: none;
         }
+
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
         }
@@ -25,13 +27,13 @@
 <h1 class="main_title">WEBUI按钮组件样式与源码</h1>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
-                                              data-toggle="tab">样式</a></li>
+                                              data-toggle="tab">按钮样式</a></li>
     <li role="presentation"><a href="#Html" aria-controls="Html" role="tab" data-toggle="tab">代码</a></li>
 </ul>
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="result">
-        <div class="cont">
-            <p class="view-desc">基本功能</p>
+        <div class="cont code">
+            <p class="view-desc">基本按钮</p>
 
             <div class="demo_content">
                 <!-- 组件示例区域 -->
@@ -80,17 +82,69 @@
                 </div>
                 <!-- 组件示例代码区域 -->
             </div>
+            <p class="view-desc">数量操作按钮</p>
+
+            <div class="demo_content">
+                <div class="aries_demo bs-example code">
+                    <div id="btn_groupmax"></div>
+                    <br/>
+
+                    <div id="btn_groupsmall"></div>
+                    <script>
+                        $(function () {
+                            $("#btn_groupmax").operateBtn({
+                                max: 15,
+                                min: 1,
+                                type: "big"
+                            });
+                            $("#btn_groupsmall").operateBtn({
+                                max: 10,
+                                min: 1,
+                                type: "small"
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="aries_demo bs-example">
+                <h3>数量操作按钮参数</h3>
+                <table class="doc-table">
+                    <tbody>
+                    <tr>
+                        <th>参数名</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                    </tr>
+                    <tr>
+                        <td>max</td>
+
+                        <td>int</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+
+                        <td>String(big/small)</td>
+                        <td>big</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="Html">
       <pre class="prettyprint">
       </pre>
     </div>
-    </div>
-    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
-    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../js/prettify.js"></script>
-    <script type="text/javascript" src="../../js/texturing.js"></script>
-    <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
+</div>
+<script>
+    var html = $('.code').html();
+    $("pre").text(html).addClass("prettyprint linenums");
+    prettyPrint();
+</script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/prettify.js"></script>
+<!--<script type="text/javascript" src="../../js/texturing.js"></script>-->
+<script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
 </body>
 </html>
