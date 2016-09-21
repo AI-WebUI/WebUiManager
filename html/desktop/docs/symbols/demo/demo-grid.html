@@ -40,6 +40,9 @@
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
         }
+        .panel-body{
+            padding:0;
+        }
     </style>
 </head>
 
@@ -61,12 +64,12 @@
                 <p>1.基础表格</p>
 
                 <div class="c_box">
-                    <table id="data1"></table>
+                    <table id="data11"></table>
                     <script>
                         $(function () {
-                            $("#data1").datagrid({
+                            $("#data11").datagrid({
                                 width: 781,
-                                height: 400,
+                                height: 300,
                                 url: 'data/datagrid_data2.json',
                                 method: 'get',
                                 singleSelect: true,
@@ -77,9 +80,7 @@
 //            fitColumns:true,
                                 columns: [[
                                     {field: 'itemid', title: '号码', width: 100, editor: 'numberbox', align: 'center'},
-                                    {field: 'productid', title: '姓名', width: 100, editor: 'text', align: 'center',styler : function(value, row, index) {
-                                        return 'border:0;';
-                                    }  },
+                                    {field: 'productid', title: '姓名', width: 136, editor: 'text', align: 'center' },
                                     {
                                         field: 'listprice',
                                         title: '地区',
@@ -99,10 +100,10 @@
                 </div>
 
                 <p>2.排序表格</p>
-                <table id="data2"></table>
+                <table id="data22"></table>
                 <script>
                     $(function () {
-                        $("#data2").datagrid({
+                        $("#data22").datagrid({
                             width: 789,
 //                            height: 400,
                             url: 'data/datagrid_data3.json',
@@ -116,7 +117,7 @@
                                 {
                                     field: 'productid',
                                     title: '产品id',
-                                    width: 100,
+                                    width: 120,
                                     editor: 'text',
                                     align: 'center',
                                     sortable: true
@@ -124,7 +125,7 @@
                                 {
                                     field: 'listprice', title: '定价', width: 135, editor: 'numberbox', align: 'center'
                                 },
-                                {field: 'unitcost', title: '单价成本', width: 100, editor: 'text', align: 'center'},
+                                {field: 'unitcost', title: '单价成本', width: 123, editor: 'text', align: 'center'},
                                 {field: 'attr1', title: '品质', width: 148, editor: 'text', align: 'center'},
                                 {field: 'status', title: '状态', width: 158, editor: 'text', align: 'center'},
                             ]]
@@ -133,10 +134,10 @@
                     })
                 </script>
                 <p>3.表格编辑</p>
-                <table id="dg"></table>
+                <table id="dg33"></table>
                 <script>
-                    $("#dg").datagrid({
-                        width: 700,
+                    $("#dg33").datagrid({
+                        width: 782,
                         iconCls: 'icon-edit',
                         rownumbers: true,
                         singleSelect: true,
@@ -175,9 +176,9 @@
                             }
                         }],
                         columns: [[
-                            {field: 'itemid', title: '编号ID', width: 100, editor: 'numberbox', align: 'center'},
+                            {field: 'itemid', title: '编号ID', width: 120, editor: 'numberbox', align: 'center'},
                             {
-                                field: 'productid', title: '产品', width: 80, editor: {
+                                field: 'productid', title: '产品', width: 100, editor: {
                                 type: 'combobox',
                                 options: {
                                     valueField: 'productid',
@@ -191,13 +192,13 @@
                             {
                                 field: 'listprice',
                                 title: '定价',
-                                width: 80,
+                                width: 100,
                                 editor: {type: 'numberbox', options: {precision: 1}},
                                 align: 'center'
                             },
-                            {field: 'unitcost', title: '单价成本', width: 80, editor: 'text', align: 'center'},
+                            {field: 'unitcost', title: '单价成本', width: 125, editor: 'text', align: 'center'},
                             {field: 'attr1', title: '品质', width: 150, editor: 'text', align: 'center'},
-                            {field: 'status', title: '状态', width: 120, editor: 'text', align: 'center'},
+                            {field: 'status', title: '状态', width: 150, editor: 'text', align: 'center'},
                         ]]
                     })
                     var editIndex = undefined;
@@ -262,10 +263,10 @@
                     }
                 </script>
                 <p>4.流式数据网格表格</p>
-                <table id="data3"></table>
+                <table id="data44"></table>
                 <script>
-                    $("#data3").datagrid({
-                        width: 700,
+                    $("#data44").datagrid({
+                        width: 782,
                         height: 250,
                         singleSelect: true,
                         collapsible: true,
@@ -325,10 +326,10 @@
                     })
                 </script>
                 <p>5.锁定行展现表格</p>
-                <table id="data4"></table>
+                <table id="data55"></table>
                 <script>
-                    $("#data4").datagrid({
-                        width: 700,
+                    $("#data55").datagrid({
+                        width: 780,
                         height: 250,
                         singleSelect: true,
                         collapsible: true,
@@ -351,10 +352,10 @@
                     })
                 </script>
                 <p>6.总计工具栏表格</p>
-                <table id="data5"></table>
+                <table id="data66"></table>
                 <script>
-                    $("#data5").datagrid({
-                        width: 700,
+                    $("#data66").datagrid({
+                        width: 782,
                         height: 220,
                         url: 'data/datagrid_data3.json',
                         method: 'get',
@@ -363,47 +364,47 @@
                         rownumbers: true,
                         showFooter: true,
                         columns: [[
-                            {field: 'itemid', title: '产品ID', width: 80, editor: 'numberbox', align: 'center'},
+                            {field: 'itemid', title: '产品ID', width: 100, editor: 'numberbox', align: 'center'},
                             {
                                 field: 'productid', title: 'ID', width: 120
                             },
                             {
-                                field: 'listprice', title: '价格', width: 80, align: 'center'
+                                field: 'listprice', title: '价格', width: 100, align: 'center'
                             },
-                            {field: 'unitcost', title: '有效期', width: 80, editor: 'text', align: 'center'},
+                            {field: 'unitcost', title: '有效期', width: 100, editor: 'text', align: 'center'},
                             {field: 'attr1', title: '规格', width: 250, editor: 'text', align: 'center'},
-                            {field: 'status', title: '状态', width: 60, editor: 'text', align: 'center'},
+                            {field: 'status', title: '状态', width: 82, editor: 'text', align: 'center'},
                         ]]
                     })
                 </script>
                 <p>7.复选框选择</p>
-                <table id="data6"></table>
+                <table id="data77"></table>
                 <script>
-                    $("#data6").datagrid({
-                        width: 700,
+                    $("#data77").datagrid({
+                        width: 782,
                         height: 250,
-                        rownumber: true,
-                        singleSelect: true,
+//                        rownumber: true,
+//                        singleSelect: true,
                         url: 'data/datagrid_data3.json',
                         method: 'get',
 //                        frozenColumns : [[{field : 'ck',checkbox : true}]],
                         columns: [[
-//                            {field: 'ck', checkbox: true},
-                            {field: 'itemid', width: 80, title: '产品ID'},
+                            {field: 'ck', checkbox: true},
+                            {field: 'itemid', width: 100, title: '产品ID'},
                             {
                                 field: 'productid', title: 'ID', width: 100
                             },
                             {
-                                field: 'listprice', title: '价格', width: 80, align: 'center'
+                                field: 'listprice', title: '价格', width: 100, align: 'center'
                             },
-                            {field: 'unitcost', title: '有效期', width: 80, editor: 'text', align: 'center'},
+                            {field: 'unitcost', title: '有效期', width: 100, editor: 'text', align: 'center'},
                             {field: 'attr1', title: '规格', width: 200, editor: 'text', align: 'center'},
                             {field: 'status', title: '状态', width: 60, editor: 'text', align: 'center'},
                         ]]
                     })
                 </script>
                 <p>8.分页表格</p>
-                <table id="data7"></table>
+                <table id="data88"></table>
                 <script>
                     function getdata(){
                         var data = [];
@@ -422,13 +423,13 @@
                         }
                     }
                     $(function () {
-                        $("#data7").datagrid({
+                        $("#data88").datagrid({
                             width: 700,
                             height: 300,
                             singleSelect: true,
                             autoRowHeight: false,
                             rownumbers: true,
-                            fitColumns: true,
+//                            fitColumns: true,
                             pagination: true,
                             data: data.slice(0, 10),
                             pageSize: 10,
@@ -436,22 +437,22 @@
 //                            pagerFilter()
 //                        },
                             columns: [[
-                                {field: 'inv', width: 80, title: 'Inv No'},
+                                {field: 'inv', width: 200, title: 'Inv No'},
                                 {field: 'date', width: 100, title: 'Date'},
-                                {field: 'name', width: 80, title: 'Name'},
+                                {field: 'name', width: 100, title: 'Name'},
                                 {field: 'amount', width: 80, title: 'Amount'},
                                 {field: 'price', width: 80, title: 'Price'},
-                                {field: 'cost', width: 100, title: 'Cost'},
+                                {field: 'cost', width: 200, title: 'Cost'},
                                 {field: 'note', width: 110, title: 'Note'},
                             ]]
                         });
-                        var pager = $("#data7").datagrid("getPager");
+                        var pager = $("#data88").datagrid("getPager");
                         pager.pagination({
                             total: data.length,
                             onSelectPage: function (pageNo, pageSize) {
                                 var start = (pageNo - 1) * pageSize;
                                 var end = start + pageSize;
-                                $("#data7").datagrid("loadData", data.slice(start, end));
+                                $("#data88").datagrid("loadData", data.slice(start, end));
                                 pager.pagination('refresh', {
                                     total: data.length,
                                     pageNumber: pageNo
@@ -460,7 +461,7 @@
                         })
                     })
                     $(".shuaxin").click(function(){
-                        $("#data7").datagrid('loadData', getdata());
+                        $("#data88").datagrid('loadData', getdata());
                     })
                 </script>
             </div>
@@ -538,9 +539,9 @@
                     })
                 </script>
                 <p>3.表格编辑</p>
-                <table id="dg"></table>
+                <table id=""></table>
                 <script>
-                    $("#dg").datagrid({
+                    $("#").datagrid({
                         width: 700,
                         iconCls: 'icon-edit',
                         rownumbers: true,
@@ -667,9 +668,9 @@
                     }
                 </script>
                 <p>4.流式数据网格表格</p>
-                <table id="data3"></table>
+                <table id=""></table>
                 <script>
-                    $("#data3").datagrid({
+                    $("#").datagrid({
                         width: 700,
                         height: 250,
                         singleSelect: true,
@@ -730,9 +731,9 @@
                     })
                 </script>
                 <p>5.锁定行展现表格</p>
-                <table id="data4"></table>
+                <table id=""></table>
                 <script>
-                    $("#data4").datagrid({
+                    $("#").datagrid({
                         width: 700,
                         height: 250,
                         singleSelect: true,
@@ -756,7 +757,7 @@
                     })
                 </script>
                 <p>6.总计工具栏表格</p>
-                <table id="data5"></table>
+                <table id=""></table>
                 <script>
                     $("#data5").datagrid({
                         width: 700,
@@ -782,7 +783,7 @@
                     })
                 </script>
                 <p>7.复选框选择</p>
-                <table id="data6"></table>
+                <table id=""></table>
                 <script>
                     $("#data6").datagrid({
                         width: 700,
@@ -836,11 +837,11 @@
                     $(function () {
                         $("#data7").datagrid({
                             width: 700,
-                            height: 300,
+//                            height: 300,
                             singleSelect: true,
                             autoRowHeight: false,
                             rownumbers: true,
-                            fitColumns: true,
+//                            fitColumns: true,
                             pagination: true,
                             data: data.slice(0, 10),
                             pageSize: 10,
@@ -848,8 +849,8 @@
 //                            pagerFilter()
 //                        },
                             columns: [[
-                                {field: 'inv', width: 80, title: 'Inv No'},
-                                {field: 'date', width: 100, title: 'Date'},
+                                {field: 'inv', width: 100, title: 'Inv No'},
+                                {field: 'date', width: 200, title: 'Date'},
                                 {field: 'name', width: 80, title: 'Name'},
                                 {field: 'amount', width: 80, title: 'Amount'},
                                 {field: 'price', width: 80, title: 'Price'},
@@ -871,7 +872,6 @@
                             }
                         })
                     })
-
                 </script>
             </div>
         </div>

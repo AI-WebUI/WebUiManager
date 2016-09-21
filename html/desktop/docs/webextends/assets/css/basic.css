@@ -143,7 +143,7 @@ body {
         .sidebar-collapse .nav > li > a {
             color: #333;
             background: #fbfbfb;
-            padding: 5px 40px;
+            padding:3px 40px;
             /*margin-left:40px;*/
             /*border-bottom: 1px solid #2F2E31;*/
         }
