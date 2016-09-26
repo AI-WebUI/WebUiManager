@@ -156,8 +156,7 @@ body {
     }
 
     .sidebar-collapse .nav > li > a:hover,
-    .sidebar-collapse .nav > li > a:focus,
-    .sidebar-collapse .nav > li > a:active{
+    .sidebar-collapse .nav > li > a:focus {
         background:#ededed;
         outline: 0;
         color:#000;
@@ -247,4 +246,7 @@ body {
     .navbar {
         border-radius: 0px;
     }
+}
+.selected{
+    background:#EDEDED !important;
 }

@@ -80,10 +80,21 @@
 				<img class="logo" src="assets/img/webui1.png" /><label class="title-lab">基于jQuery EasyUI的javascript框架</label>
 			</div>
 			<div class="div-btn">
-				<a class="pc-a" href="index_ver2.html"><i class="fa fa-desktop"></i>  桌面端组件</a>
-				<a class="app-a" href="../../../mobile/extends/extends.html"><i class="fa fa-mobile-phone"></i> 移动端端组件</a>
+				<a class="pc-a" href="index_ver2.html"> 桌面端组件</a>
+				<a class="app-a" href="../../../mobile/extends/extends.html"> 移动端端组件</a>
 				<!--<a class="app-a" href="../../../mobile/mobile_extends/index_ver1.html"><i class="fa fa-mobile-phone"></i> 移动端端组件</a>-->
 			</div>
 		</div>
+		<script>
+			document.oncontextmenu= function(e){
+				var e = e || window.event;
+				if(e.button == "2"){ //判断是否是右键
+									 //……你的代码……
+					window.location.reload(true);
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</body>
 </html>
