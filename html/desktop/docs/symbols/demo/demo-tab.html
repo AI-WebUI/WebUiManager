@@ -14,6 +14,7 @@
     <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
     <link rel="stylesheet" href="../../css/prettify.css"/>
     <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../js/webui.js"></script>
     <style>
         h1 {
             font-size: 20px;
@@ -61,6 +62,26 @@
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
         }
+       #tt .tabs-wrap .tabs li{
+           width:100px;
+           height:24px;
+           line-height:24px;
+           margin:0px 1px 12px 0px;
+       }
+        #tt .tabs-wrap .tabs li a:hover{
+            font-weight:900;
+            background:#f4fbfe;
+        }
+        #tt .tabs-header-left .tabs li.tabs-selected a.tabs-inner
+        {
+            background:#dbecf9;
+        }
+        #tt .tabs-wrap .tabs li a{
+            border:none;
+            border-radius: 0px;
+            height:36px!important;
+            line-height: 36px!important;
+        }
     </style>
 </head>
 
@@ -86,31 +107,83 @@
                     <div title="业务名称1" style="padding:10px">
                         业务名称1
                     </div>
-                    <div title="业务名称2" data-options="closable:true" style="padding:10px">
-                        业务名称2
-                    </div>
-                    <div title="业务名称3" data-options="closable:true" style="padding:10px">
-                        业务名称3
-                    </div>
-                    <div title="业务名称4" data-options="closable:true" style="padding:10px">
-                        业务名称4
-                    </div>
-                    <div title="业务名称5" data-options="closable:true" style="padding:10px">
-                        业务名称5
-                    </div>
                 </div>
                 <script>
-                    $(function () {
+
                         setTabs();
                         function setTabs() {
                             $('#tt').tabs({
                                 plain: true,
                                 narrow: $('#narrow').is(':checked'),
                                 pill: $('#pill').is(':checked'),
-                                justified: $('#justified').is(':checked')
+                                justified: $('#justified').is(':checked'),
+                                tabPosition:'left'
                             })
                         }
-                    })
+                    var title=["业务名称二","业务名称三","业务名称四"];
+                        var url=["业务名称二","业务名称三","业务名称四d"]
+                        function addTab(title){
+                            if ($('#tt').tabs('exists', title)){
+                            } else {
+                                $('#tt').tabs('add',{
+                                    title:title
+                                });
+
+                            }
+                        }
+                    for(var i=0;i<title.length;i++){
+                        addTab(title[i]);
+                    }
+//                        var current_tab = $('#tt').tabs('getTab',"业务名称二");
+////                        current_tab.options({
+////                            content:'<div class="item2">新业务2</div>'
+////                        })
+//                        current_tab.panel('options').content='<div class="item2">新业务2</div>';
+//                        var content=$('#tt').tabs('getTab',2).panel('options').content;
+//                        content='<div class="item2">新业务2</div>';
+//                        alert(content)
+                        $("#tt").tabs({
+                            onUnselect:function(title,index){
+//                                var tab = $('#tt').tabs('getSelected');
+//                                $('#tt').tabs('update', {
+//                                    tab: tab,
+//                                    options: {
+//                                        content:'<div class="item2">新业务2</div>'
+//                                    }
+//                                });
+
+//                                var href=$('#tt').tabs('tabs');
+                                for(var i=0;i<href.length;i++){
+                                    href[2].html('<div class="item2"></div>');
+                                }
+//                                href='demo-textbox.html';
+//                                $('#tt').tabs('update', {
+//                                    tab: menuName,
+//                                    options: {
+//                                        content:'<div class="item3">新业务</div>'
+//                                    }
+//                                });
+                            },
+                            onSelect:function(title,index){
+                                if(title=="业务名称三"){
+                                    var menuName=parent.$('#tt').tabs('getTab','业务名称三');
+                                    $('#tt').tabs('update', {
+                                        tab: menuName,
+                                        options: {
+                                            content:'<div class="item3">新业务</div>'
+                                        }
+                                    });
+                                }
+                            }
+                        })
+
+//                        var menuName=$('#tt').tabs('getTab','业务名称二').panel('options').content;
+//                        menuName='<div class="yewu2"></div>';
+//                        alert(menuName)
+//                        if($('#tt').tabs('exists', "业务名称二")){
+//                         var t=$('#tt').tabs('getTab',"业务名称二");
+//                            t.tabs({content:"我是大傻逼"});
+//                        }
                 </script>
                 <p>二级tab标签页</p>
                 <div id="tab_newadd" class="webui-tabs" data-options="plain:true,scrollIncrement:160"
@@ -688,6 +761,5 @@
         prettyPrint();
 </script>
 <script type="text/javascript" src="../../js/prettify.js"></script>
-<script type="text/javascript" src="../../../js/webui.js"></script>
 </body>
 </html>

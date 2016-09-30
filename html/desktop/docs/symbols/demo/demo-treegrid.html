@@ -28,6 +28,9 @@
         .datagrid {
             border-right: 1px #ccc solid;
         }
+        .panel-body{
+            padding:0;
+        }
     </style>
 </head>
 
@@ -44,6 +47,7 @@
             <h2>基本功能：Treegrid表格使用案例</h2>
             <div class="aries_demo bs-example code">
                 <table id="dg"></table>
+                <a class="webui-linkbutton btn-grey spread">展开详情</a>
                 <script>
                     $(function () {
                         $('#dg').treegrid({
@@ -59,10 +63,13 @@
                             treeField: 'name',
                             columns: [[
                                 {field: 'name', title: '姓名', width: 220},
-                                {field: 'size', title: '流量M', width: 200},
-                                {field: 'date', title: '日期', width: 150}
+                                {field: 'size', title: '流量M', width: 180},
+                                {field: 'date', title: '日期', width: 250}
                             ]]
                         });
+                    })
+                    $(".spread").click(function(){
+                        $("#dg").treegrid("expandAll",1)
                     })
                 </script>
                 <!--<p>json的格式</p>
@@ -310,7 +317,7 @@
                 </script>
             </div>
         </div>
-        <p>参考地址：<a href="http://www.jeasyui.net/plugins/186.html">http://www.jeasyui.net/plugins/186.html</a> </p>
+        <p>参考地址easyui帮助文档：<a href="http://www.jeasyui.net/plugins/186.html">http://www.jeasyui.net/plugins/186.html</a> </p>
     </div>
     <div role="tabpanel" class="tab-pane" id="Html">
       <pre class="prettyprint">

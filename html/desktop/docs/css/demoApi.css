@@ -106,35 +106,6 @@ blockquote > :last-child {
 
 /* TABLES
 =============================================================================*/
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-table th {
-    font-weight: bold;
-    background-color: #DDDDDD;
-}
-
-table th, table td {
-    border: 1px solid #C0C0C0;
-
-    padding: 6px 13px;
-}
-
-table td {
-    background: #FFFFFF;
-}
-
-table tr {
-    border-top: 1px solid #44ABE5;
-    background-color: #fff;
-}
-
-table tr:nth-child(2n) {
-    background-color: #eee;
-}
-
 /* IMAGES
 =============================================================================*/
 
@@ -150,6 +121,8 @@ strong {
 p {
     margin: 10px;
 }
-
-
+.main_title{
+    width:400px!important;
+    font-size: 24px!important;
+}
 

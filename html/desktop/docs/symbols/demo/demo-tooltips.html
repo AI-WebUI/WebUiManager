@@ -6,6 +6,7 @@
     <title>tooltips</title>
     <!-- 文档框架样式 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/table.css"/>
     <link rel="stylesheet" href="../../css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
@@ -58,17 +59,6 @@
             cursor: pointer;
         }
 
-        /*.ui-label {*/
-            /*width: 56px;*/
-            /*display: block;*/
-            /*float: left;*/
-            /*font-size: 12px;*/
-            /*line-height: 28px;*/
-            /*text-align: right;*/
-            /*border: none;*/
-            /*padding-right: 10px;*/
-        /*}*/
-
         .ui-desk {
             opacity: 1;
             /*background-color: rgba(0, 255, 255,0);*/
@@ -84,6 +74,9 @@
         }
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
+        }
+        .body div{
+            float:left;
         }
     </style>
 </head>
@@ -111,9 +104,7 @@
                     <div style="padding:10px 200px">
                         <div id="pp4" class="webui-pane">top</div>
                     </div>
-                    <div style="padding:10px 200px">
-                        <div class="dd">点击</div>
-                    </div>
+
                 </div>
                 <script>
                     $(function () {
@@ -131,34 +122,7 @@
                         });
                         $('#pp4').tooltip({
                             position: 'top',
-                            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打',
-                        });
-                        $('.dd').each(function () {
-                            $(this).tooltip({
-                                position: 'bottom',
-                                content: $('<div class="ui-desk"></div>'),
-                                showEvent: 'click',
-                                onUpdate: function (content) {
-                                    content.panel({
-                                        width: 200,
-                                        border: false,
-                                        href: '_dialog.html'
-                                    });
-                                },
-                                onShow: function () {
-                                    var t = $(this);
-                                    $(this).tooltip('tip').css({
-                                        background: '#333',
-                                        borderColor: '#44abe5',
-                                        opacity: 1
-                                    });
-                                    t.unbind().bind('mouseenter', function () {
-                                        t.tooltip('show');
-                                    }).bind('mouseleave', function () {
-                                        t.tooltip('show');
-                                    });
-                                }
-                            });
+                            content: '省内网9元/月一价全包，含2-19人网内省内不限量畅打'
                         });
                     })
 
@@ -275,7 +239,7 @@
                     }
                 </script>
             </div>
-            <div class="aries_demo bs-example code" style="width:100%;height:420px;margin-top:80px;">
+            <div class="aries_demo bs-example code" style="width:100%;height:20px;">
                 <p>确认弹出框和信息输入框代码</p>
                 <div style="margin:20px 0;">
                     <a href="#" class="webui-linkbutton btn-blue confirm" onclick="confirm1();">Confirm</a>
@@ -309,7 +273,7 @@
             </div>
             <div class="aries_demo bs-example code">
                 <p>弹出输入框和其他组件</p>
-                <div style="margin-bottom: 280px;">
+                <div style="margin-bottom: 60px;">
                     <a href="javascript:void(0)" class="webui-linkbutton btn-blue input_diolog">Open</a>
                     <a href="javascript:void(0)" class="webui-linkbutton btn-blue input_diolog_close">Close</a>
                 </div>
@@ -331,7 +295,7 @@
                     var t=$(".input_diolog").offset();
                     $("#dlg-1").css({
                         "left": t.left+500+"px",
-                        "top": t.top+1280+"px"
+                        "top": t.top+480+document.body.scrollTop+"px"
                     })
                 </script>
                 <div id="dlg-1-buttons">
@@ -343,7 +307,7 @@
 
             <div class="aries_demo bs-example">
                 <p>弹出对话框</p>
-                <div style="margin-bottom: 280px;">
+                <div style="margin-bottom: 60px;">
                     <a href="javascript:void(0)" class="webui-linkbutton btn-blue diolog_button"
                        onclick="$('#dlg-3').dialog('open')">Open</a>
                     <a href="javascript:void(0)" class="webui-linkbutton btn-blue"
@@ -367,7 +331,7 @@
             <script>
                 var s=$(".diolog_button").offset();
                 $("#dlg-3").css({
-                    "top": s.top+120,
+                    "top": s.top+document.body.scrollTop+20,
                     "left": s.left+500
                 })
             </script>

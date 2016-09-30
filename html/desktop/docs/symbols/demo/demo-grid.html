@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
     <title>Document</title>
     <!-- 文档框架样式 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
@@ -42,6 +43,10 @@
         }
         .panel-body{
             padding:0;
+        }
+        .table8 .datagrid-view2 .datagrid-body{
+            height:auto;
+            overflow-y: visible;
         }
     </style>
 </head>
@@ -337,17 +342,19 @@
                         url: 'data/datagrid_data3.json',
                         method: 'get',
                         onLoadSuccess: function () {
-                            $(this).datagrid('freezeRow', 0).datagrid('freezeRow', 1);
+                            $("#data55").datagrid('freezeRow', 0).datagrid('freezeRow', 1);
                         },
-                        frozenColumns: [[
-                            {field: 'itemid', title: '产品ID', align: 'center', width: 100},
-                            {field: 'productid', title: '名称', align: 'center', width: 120}
-                        ]],
+//                        frozenColumns: [[
+//                            {field: 'itemid', title: '产品ID', align: 'center', width: 100},
+//                            {field: 'productid', title: '名称', align: 'center', width: 120}
+//                        ]],
                         columns: [[
-                            {field: 'listprice', title: '价格', align: 'center', width: 90},
+                            {field: 'itemid', title: '产品ID', align: 'center', width: 100},
+                            {field: 'productid', title: '名称', align: 'center', width: 120},
+                            {field: 'listprice', title: '价格', align: 'center', width: 120},
                             {field: 'unitcost', title: '有效期', align: 'center', width: 90},
                             {field: 'attr1', title: '规格', align: 'center', width: 230},
-                            {field: 'status', title: '状态', align: 'center', width: 60}
+                            {field: 'status', title: '状态', align: 'center', width: 85}
                         ]]
                     })
                 </script>
@@ -390,21 +397,19 @@
 //                        frozenColumns : [[{field : 'ck',checkbox : true}]],
                         columns: [[
                             {field: 'ck', checkbox: true},
-                            {field: 'itemid', width: 100, title: '产品ID'},
-                            {
-                                field: 'productid', title: 'ID', width: 100
-                            },
-                            {
-                                field: 'listprice', title: '价格', width: 100, align: 'center'
-                            },
-                            {field: 'unitcost', title: '有效期', width: 100, editor: 'text', align: 'center'},
+                            {field: 'itemid', width: 120, title: '产品ID'},
+                            {field: 'productid', title: 'ID', width: 100},
+                            {field: 'listprice', title: '价格', width: 120, align: 'center'},
+                            {field: 'unitcost', title: '有效期', width: 120, editor: 'text', align: 'center'},
                             {field: 'attr1', title: '规格', width: 200, editor: 'text', align: 'center'},
-                            {field: 'status', title: '状态', width: 60, editor: 'text', align: 'center'},
+                            {field: 'status', title: '状态', width: 80, editor: 'text', align: 'center'},
                         ]]
                     })
                 </script>
                 <p>8.分页表格</p>
-                <table id="data88"></table>
+                <div class="webui-layout" data-options="fit:true">
+                    <table id="data88" style="height:0px;"></table>
+                </div>
                 <script>
                     function getdata(){
                         var data = [];
@@ -424,11 +429,13 @@
                     }
                     $(function () {
                         $("#data88").datagrid({
-                            width: 700,
-                            height: 300,
-                            singleSelect: true,
-                            autoRowHeight: false,
-                            rownumbers: true,
+                            width: 782,
+//                            singleSelect: true,
+                            autoRowHeight: true,
+//                            nowrap:true,
+//                            fixed:true,
+                            fitColumns:false,
+                            rownumbers: false,
 //                            fitColumns: true,
                             pagination: true,
                             data: data.slice(0, 10),
@@ -438,12 +445,12 @@
 //                        },
                             columns: [[
                                 {field: 'inv', width: 200, title: 'Inv No'},
-                                {field: 'date', width: 100, title: 'Date'},
-                                {field: 'name', width: 100, title: 'Name'},
-                                {field: 'amount', width: 80, title: 'Amount'},
-                                {field: 'price', width: 80, title: 'Price'},
+                                {field: 'date', width: 140, title: 'Date'},
+                                {field: 'name', width: 120, title: 'Name'},
+                                {field: 'amount', width: 100, title: 'Amount'},
+                                {field: 'price', width: 150, title: 'Price'},
                                 {field: 'cost', width: 200, title: 'Cost'},
-                                {field: 'note', width: 110, title: 'Note'},
+                                {field: 'note', width: 112, title: 'Note'},
                             ]]
                         });
                         var pager = $("#data88").datagrid("getPager");
