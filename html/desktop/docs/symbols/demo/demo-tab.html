@@ -14,7 +14,6 @@
     <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
     <link rel="stylesheet" href="../../css/prettify.css"/>
     <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../../js/webui.js"></script>
     <script src="../../js/iframefit.js"></script>
     <style>
         h1 {
@@ -63,26 +62,6 @@
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
         }
-       #tt .tabs-wrap .tabs li{
-           width:100px;
-           height:24px;
-           line-height:24px;
-           margin:0px 1px 12px 0px;
-       }
-        #tt .tabs-wrap .tabs li a:hover{
-            font-weight:900;
-            background:#f4fbfe;
-        }
-        #tt .tabs-header-left .tabs li.tabs-selected a.tabs-inner
-        {
-            background:#dbecf9;
-        }
-        #tt .tabs-wrap .tabs li a{
-            border:none;
-            border-radius: 0px;
-            height:36px!important;
-            line-height: 36px!important;
-        }
     </style>
 </head>
 
@@ -110,7 +89,6 @@
                     </div>
                 </div>
                 <script>
-
                         setTabs();
                         function setTabs() {
                             $('#tt').tabs({
@@ -135,35 +113,13 @@
                     for(var i=0;i<title.length;i++){
                         addTab(title[i]);
                     }
-//                        var current_tab = $('#tt').tabs('getTab',"业务名称二");
-////                        current_tab.options({
-////                            content:'<div class="item2">新业务2</div>'
-////                        })
-//                        current_tab.panel('options').content='<div class="item2">新业务2</div>';
-//                        var content=$('#tt').tabs('getTab',2).panel('options').content;
-//                        content='<div class="item2">新业务2</div>';
-//                        alert(content)
+
                         $("#tt").tabs({
                             onUnselect:function(title,index){
-//                                var tab = $('#tt').tabs('getSelected');
-//                                $('#tt').tabs('update', {
-//                                    tab: tab,
-//                                    options: {
-//                                        content:'<div class="item2">新业务2</div>'
-//                                    }
-//                                });
-
-//                                var href=$('#tt').tabs('tabs');
+                           var href=$('#tt').tabs('tabs');
                                 for(var i=0;i<href.length;i++){
                                     href[2].html('<div class="item2"></div>');
                                 }
-//                                href='demo-textbox.html';
-//                                $('#tt').tabs('update', {
-//                                    tab: menuName,
-//                                    options: {
-//                                        content:'<div class="item3">新业务</div>'
-//                                    }
-//                                });
                             },
                             onSelect:function(title,index){
                                 if(title=="业务名称三"){
@@ -756,11 +712,12 @@
     </div>
 </div>
 <script>
-
-        var html=$('.html').html();
-        $(".code").text(html).addClass("prettyprint linenums");
-        prettyPrint();
+    var html=$('.html').html();
+    $(".code").text(html).addClass("prettyprint linenums");
+    prettyPrint();
 </script>
 <script type="text/javascript" src="../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../js/webui.js"></script>
+
 </body>
 </html>
