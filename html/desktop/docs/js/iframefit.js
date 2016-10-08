@@ -10,6 +10,6 @@
 //setInterval(fitheight,500);
 function fitheight(){
            var iframe = document.getElementById("iframe_m");
-                iframe.style.height = iframe.contentWindow.document.body.scrollHeight +0 + "px";
+                iframe.style.height = iframe.document.documentElement.scrollHeight|| iframe.contentWindow.document.body.scrollHeight +0 + "px";
         }
 setInterval(fitheight,500);
