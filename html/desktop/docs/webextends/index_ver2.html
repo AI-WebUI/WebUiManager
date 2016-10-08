@@ -255,7 +255,7 @@
 //        setInterval(fitheight,500);
         $("#iframe_m").load(function () {
             var mainheight = $(this).contents().find("body").height() + 30;
-            $(this).height(mainheight);
+            $(this).style.height=mainheight;
         });
         $('.sidebar-collapse .nav > li > a').bind('click', function(){
             $('.sidebar-collapse .nav > li > a:not(this)').removeClass('selected');
