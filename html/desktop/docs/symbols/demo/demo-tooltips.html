@@ -66,7 +66,6 @@
             opacity: 1;
             /*background-color: rgba(0, 255, 255,0);*/
         }
-
         .main_title {
             width: 500px;
             margin: 0 auto;
@@ -333,10 +332,11 @@
                 </div>
             </div>
             <script>
+                var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
                 var s=$(".diolog_button").offset();
                 $("#dlg-3").css({
-                    "top": s.top+document.body.scrollTop+20,
-                    "left": s.left+500
+                    "top": s.top+scrollTop-20,
+                    "left": s.left+200
                 })
             </script>
             <script>
