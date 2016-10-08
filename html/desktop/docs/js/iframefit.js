@@ -11,6 +11,6 @@
 function fitheight(){
            var iframe = document.getElementById("iframe_m");
                 //iframe.style.height = iframe.contentWindow.document.body.scrollHeight +0 + "px";
-                iframe.style.height = $(document).height();
+                iframe.style.height =iframe.body.scrollHeight;
         }
 setInterval(fitheight,500);
