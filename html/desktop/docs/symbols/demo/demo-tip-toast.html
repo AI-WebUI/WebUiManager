@@ -63,11 +63,11 @@
         <div class="cont">
             <h2>基本功能：弹出提示框使用案例</h2>
             <div class="aries_demo bs-example">
-                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.open()">成功</a>
-                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.setContent('改变后的内容！');tip.open()">改变内容后打开</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.open();tip.setPosition(300)">成功</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip.setContent('改变后的内容！');tip.open();tip.setPosition(300)">改变内容后打开</a>
                 <a class="webui-linkbutton btn-blue btn-small" class="webui-linkbutton btn-blue btn-small"
-                   onclick="tip.setContent('改变后的内容！');tip.setPosition(500);tip.open()">改变内容和位置后打开</a>
-                <a class="webui-linkbutton btn-blue btn-small" onclick="tip2.open()">错误</a>
+                   onclick="tip.setContent('改变后的内容！');tip.setPosition(500);tip.open();tip.setPosition(300)">改变内容和位置后打开</a>
+                <a class="webui-linkbutton btn-blue btn-small" onclick="tip2.open();tip2.setPosition(300)">错误</a>
                 <a class="webui-linkbutton btn-blue btn-small" onclick="tip3.open();tip3.setPosition(300)">疑问</a>
                 <a class="webui-linkbutton btn-blue btn-small" onclick="tip4.open();tip4.setPosition(300)">信息</a>
                 <a class="webui-linkbutton btn-blue btn-small" onclick="tip5.open();tip5.setPosition(300)">警告（重）</a>
