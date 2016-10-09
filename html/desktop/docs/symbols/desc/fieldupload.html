@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>迭代计划跟日志</title>
+    <style>
+        .datagrid{
+            width:100%;
+            border-collapse:collapse;
+           border:2px solid #ccc;
+            box-shadow: 0 0 3px #F4FBFF;
+        }
+        .datagrid tr{
+            height:30px;
+            line-height:30px;
+            text-align:center;
+        }
+        .title{
+            text-align:center;
+            font-family: "Microsoft YaHei";
+            font-size:24px;
+            font-weight:bold;
+            padding:10px 0;
+            text-shadow: 1px 2px 2px #999;
+        }
+        .datagrid-row0{
+            background-color:#F4FBFE;
+            position: relative;
+            font-weight:bold;
+        }
+        .codeview{
+            margin-bottom:20px;
+        }
+        .phone,.pc{
+            width:98%;
+            height:200px;
+            padding:5px 3px;
+            margin-top:6px;
+            border:none; /* 输入框不要边框 */
+            font-family:Arial;
+            overflow-y:visible;
+        }
+        .datagrid-row1 .datagrid-field0,.datagrid-row1 .datagrid-field1{
+            height:auto;
+        }
+        .texttitle,.controlbutton{
+            font-size:18px;
+            font-weight:bold;
+            text-shadow: 1px 2px 2px #ccc;
+            padding:0px 20px;
+           float:left;
+        }
+        .line{
+            display:inline-block;
+            width:70%;
+            float:left;
+            border-style:dashed;
+        }
+        .controlbutton{
+            font-size:14px;
+            display:inline-block;
+            width:40px;
+            height:24px;
+            line-height:24px;
+            border:1px solid #ddd;
+            text-align:center;
+            margin:0 10px;
+            background:#F4FBFE;
+            cursor: pointer;
+        }
+        .controlbutton:hover{
+            font-size:16px;
+            background:#f2f3fe;
+        }
+        .textarea{
+            width:100%;
+            height:150px;
+            border:1px solid #ddd;
+            overflow-y: auto;
+            display:none;
+            background:#d6d8d0;
+        }
+        .button{
+            width:100%;
+            height:auto;
+            text-align:center;
+            margin:20px 0;
+        }
+        button{
+            width:60px;
+        }
+        .pcbutton{
+           position:absolute;
+            left:3%;
+        }
+        .phonebutton{
+            position: absolute;
+            left:53%;
+        }
+    </style>
+</head>
+<body>
+    <p class="title">组件迭代计划及变更记录</p>
+    <div class="codeview">
+        <p class="text"><span class="texttitle">组件改动变更记录</span><hr class="line"/><span class="controlbutton">展开</span><div style="clear: both;"></div></p>
+        <div class="textarea"></div>
+    </div>
+    <div id="createtable"></div>
+    <div class="button">
+        <button>生成</button>
+    </div>
+<script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+<script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.cookie.js"></script>
+    <script>
+    function CreateTable(rowCount,cellCount)
+    {
+        var table=$("<table border=\"1\">").addClass("datagrid");
+//        var title=$("<caption class='title' align=\"top\"></caption>");
+//        title.appendTo(table);
+        table.appendTo($("#createtable"));
+        for(var i=0;i<rowCount;i++)
+        {
+            var tr=$("<tr></tr>");
+            tr.appendTo(table).addClass("datagrid-row"+i);
+            for(var j=0;j<cellCount;j++)
+            {
+                var td=$("<td>"+"</td>");
+                td.appendTo(tr).addClass("datagrid-field"+j);
+            }
+        }
+//        tr.appendTo(table);
+//        $(".title").text(text)
+        $("#createtable").append("</table>");
+    }
+    CreateTable(2,2);
+    $(".datagrid-row0 .datagrid-field0").text("PC端").css("width","50%");
+    $(".datagrid-row0 .datagrid-field1").text("PHONE端").css("width","50%");
+    $(".datagrid-row1 .datagrid-field0,.datagrid-row1 .datagrid-field1").attr("type","text");
+    $("<textarea class='pc'></textarea>").appendTo(".datagrid-row1 .datagrid-field0");
+    $("<textarea class='phone'></textarea>").appendTo(".datagrid-row1 .datagrid-field1");
+        $(function(){
+            $(".controlbutton").click(function(){
+                if($.trim($(".controlbutton").text())=="展开"){
+//                    $(".textarea").animate({display:'block'},500);
+                    $(".textarea").css("display","block")
+                    $(".controlbutton").text("收起");
+                }else if($.trim($(".controlbutton").text())=="收起"){
+//                    $(".textarea").animate({display:'none'},500);
+                    $(".textarea").css("display","none")
+                    $(".controlbutton").text("展开");
+                }
+            })
+            function encode(str){
+                    var strRtn="";
+                    for (var i=str.length- 1;i>=0;i--)
+                    {
+                        strRtn+=str.charCodeAt(i);
+                        if (i) strRtn+="a"; //用a作分隔符
+                    }
+                   return strRtn;
+            }
+            function savecode(str){
+//                     var pc= $.cookie('pcvalue');
+                    var strArr;
+                    var strRtn="";
+                    strArr=str.split("a");
+                    for (var i=strArr.length-1;i>=0;i--)
+                        strRtn+=String.fromCharCode(eval(strArr[i]));
+                return strRtn;
+//                $.cookie('strRtn');
+            }
+            $(".datagrid-row0 .datagrid-field0").prepend("<span class='pcbutton'><button class='save'>保存</button><button class='recover'>恢复</button></span> <span class='phonebutton'><button class='save'>保存</button><button class='recover'>恢复</button></span> ");
+            $(".pcbutton .save").click(function(){
+                $.cookie("pcvalue",encode($(".pc").val()))
+            })
+            $(".phonebutton .save").click(function(){
+                $.cookie("phonevalue",encode($(".phone").val()))
+            })
+            $(".pcbutton .recover").click(function(){
+                $(".pc").val(savecode($.cookie('pcvalue')))
+            })
+            $(".phonebutton .recover").click(function(){
+                $(".phone").val(savecode($.cookie('phonevalue')))
+            })
+        })
+    function password() {
+        var testV = 1;
+        var pass1 = prompt('请输入密码:','');
+        while (testV < 3) {
+            if (!pass1)
+                history.go(-1);
+            if (pass1 == "88888888") {
+                alert('密码正确!');
+                break;
+            }
+            testV+=1;
+            var pass1 =
+                    prompt('密码错误!请重新输入:');
+        }
+        if (pass1!="password" & testV ==3)
+            history.go(0);
+        return " ";
+    }
+    document.write(password());
+</script>
+</body>
+</html>
