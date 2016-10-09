@@ -38,7 +38,6 @@
             height:16px;
             padding-right:5px;
         }
-
         .row{
             margin-top:-50px;
         }
@@ -248,15 +247,6 @@
                 }
             });
         });
-//        function fitheight(){
-//            var iframe = document.getElementById("iframe_m");
-//                iframe.style.height = iframe.contentWindow.document.body.scrollHeight +0 + "px";
-//        }
-//        setInterval(fitheight,500);
-//        $("#iframe_m").load(function () {
-//            var mainheight = $(this).contents().find("body").height() + 30;
-//            $(this).style.height=mainheight;
-//        });
         $('.sidebar-collapse .nav > li > a').bind('click', function(){
             $('.sidebar-collapse .nav > li > a:not(this)').removeClass('selected');
             $(this).addClass('selected');

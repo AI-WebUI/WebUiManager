@@ -23,10 +23,6 @@
         h1 {
             font-size: 20px;
         }
-
-        h2 {
-            font-size: 18px;
-        }
         .pp-ps {
             display: block;
             color: #8E8E8E;
@@ -57,6 +53,9 @@
         h2{
             font-weight:900;
         }
+        .first_title{
+            font-size:18px;
+        }
     </style>
 </head>
 
@@ -70,18 +69,18 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="result">
         <div class="cont">
-            <h2>基本功能：手风琴效果，可折叠展开内容，提供两种使用方法</h2>
+            <p class="first_title">基本功能：手风琴效果，可折叠展开内容，提供两种使用方法</p>
             <div class="aries_demo bs-example">
                 <p>样式(页面渲染)</p>
                 <hr/>
-                <div class="webui-accordion" style="width:500px;height:auto;">
-                    <div title="代办人">
+                <div class="webui-accordion" style="width:500px;height:auto;" data-options="selected:false">
+                    <div title="代办人" >
                         <div style="padding: 20px;">
                             <p>代办人内容</p>
                         </div>
                     </div>
                 </div>
-                <div class="webui-accordion" style="width:500px;height:auto;">
+                <div class="webui-accordion" style="width:500px;height:auto;" data-options="selected:false">
                     <div title="推荐人">
                         <div style="padding: 20px;">
                             <p>推荐人内容</p>
@@ -93,7 +92,7 @@
                 <p>样式(JS加载)</p>
                 <hr/>
                 <div id="accordion_demo" style="width:500px;height:auto;">
-                    <div title="推荐人">
+                    <div title="推荐人" >
                         <div style="padding: 20px;">
                             <p>推荐人内容</p>
                         </div>
@@ -101,11 +100,11 @@
                 </div>
                 <script type="text/javascript">
                     $(function () {
-                        $('#accordion_demo').accordion({closed: true});
+                        $('#accordion_demo').accordion({'selected':false});
                     })
                 </script>
             </div>
-            <h2>WEBUI分割线样式 <span class="explain—text">在html页面引用hr标签即可</span> </h2>
+            <p class="first_title">WEBUI分割线样式 <span class="explain—text">在html页面引用hr标签即可</span> </p>
             <div class="cont">
                 <div class="aries_demo bs-example code">
                     <div class="demo-test-div">
