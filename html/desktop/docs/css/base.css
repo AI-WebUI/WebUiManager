@@ -699,3 +699,10 @@ pre .support.value  {
     font-weight: normal;
     color: #3b8bba; /* skinbuilder block-mine-text-low with #1f8dd6 as primary */
 }
+.first_title {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin:10px 0px;
+    font-size: 24px;
+}
