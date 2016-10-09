@@ -519,9 +519,7 @@
         $.messager.alert('My Title', mess);
     }
     $("#btns").bind("click", function () {
-        $("#com").combobox("setValue","我是猪");
-        var vals = $("#com").combobox("getValue"); //拿val方法
-//                        var text = $("#com").combobox("getText"); //拿val方法
+        var vals = $("#com").combobox("getText"); //拿val方法
         alert9(vals)
     });
 </script>
