@@ -38,8 +38,10 @@
             border: 1px solid #C0C0C0;
             float: left;
             margin: 20px;
-            color: #C0C0C0;
+            color: #333;
             position: relative;
+            text-align: center;
+            line-height:100px;
         }
         .main_title {
             width: 500px;
@@ -78,7 +80,7 @@
                 <br/>
 
                 <div id="tip_test" class="tip-test">
-                    所需显示的外部div必须存在position属性
+                    所需显示的外部div必须存在position属性不能设置padding
                 </div>
                 <script>
                     var tip = new AIToastTip({
@@ -136,9 +138,9 @@
                 <br/>
                 <a class="webui-linkbutton btn-blue btn-small" onclick="tip7.open()">在下边框中上下居中显示</a>
                 <br/>
-
+                <p>所需显示的外部div必须存在position属性</p>
                 <div id="top_test" class="tip-test">
-                    所需显示的外部div必须存在position属性
+
                 </div>
                 <script>
                     var tip = new AIToastTip({
