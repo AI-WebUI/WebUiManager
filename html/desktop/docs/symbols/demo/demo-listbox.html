@@ -182,21 +182,13 @@
                         <td>function(group)</td>
                         <td>返回要显示在分组项目上的分组文本。该属性自版本 1.3.4 起可用。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">({</span></li>
-                    <li class="L1"><span class="pln">	groupFormatter</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span
-                            class="kwd">group</span><span class="pun">){</span></li>
-                    <li class="L2"><span class="pln">		</span><span class="kwd">return</span><span
-                            class="pln"> </span><span class="str">'&lt;span style="color:red"&gt;'</span><span
-                            class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="kwd">group</span><span
-                            class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'&lt;/span&gt;'</span><span
-                            class="pun">;</span></li>
-                    <li class="L3"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L4"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre >
+$('#cc').combobox({
+	groupFormatter: function(group){
+	return '<span style="color:red">' + group + '</span>';
+	}
+});
+                </pre>
                         </td>
                         <td></td>
                     </tr>
@@ -225,25 +217,21 @@
                         <td>array</td>
                         <td>被加载的列表数据。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span
-                            class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-combobox"</span><span
-                            class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span
-                            class="atv">"</span></li>
-                    <li class="L1"><span class="atv">		valueField: 'label',</span></li>
-                    <li class="L2"><span class="atv">		textField: 'value',</span></li>
-                    <li class="L3"><span class="atv">		data: [{</span></li>
-                    <li class="L4"><span class="atv">			label: 'java',</span></li>
-                    <li class="L5"><span class="atv">			value: 'Java'</span></li>
-                    <li class="L6"><span class="atv">		},{</span></li>
-                    <li class="L7"><span class="atv">			label: 'perl',</span></li>
-                    <li class="L8"><span class="atv">			value: 'Perl'</span></li>
-                    <li class="L9"><span class="atv">		},{</span></li>
-                    <li class="L0"><span class="atv">			label: 'ruby',</span></li>
-                    <li class="L1"><span class="atv">			value: 'Ruby'</span></li>
-                    <li class="L2"><span class="atv">		}]"</span><span class="pln"> </span><span
-                            class="tag">/&gt;</span></li>
-                </ol></pre>
+                <pre >
+ &lt;input class="easyui-combobox" data-options="
+	valueField: 'label',
+	textField: 'value',
+	data: [{
+	  label: 'java',
+	  value: 'Java'
+	},{
+	  label: 'perl',
+	  value: 'Perl'
+	},{
+	  label: 'ruby',
+	  value: 'Ruby'
+}]" /&gt;
+                </pre>
                         </td>
                         <td>null</td>
                     </tr>
@@ -256,28 +244,14 @@
                             <br> 返回 true 则允许显示该行。
                             <br>
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">({</span></li>
-                    <li class="L1"><span class="pln">	filter</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span
-                            class="pln">q</span><span class="pun">,</span><span class="pln"> row</span><span
-                            class="pun">){</span></li>
-                    <li class="L2"><span class="pln">		</span><span class="kwd">var</span><span
-                            class="pln"> opts </span><span class="pun">=</span><span class="pln"> $</span><span
-                            class="pun">(</span><span class="kwd">this</span><span class="pun">).</span><span
-                            class="pln">combobox</span><span class="pun">(</span><span class="str">'options'</span><span
-                            class="pun">);</span></li>
-                    <li class="L3"><span class="pln">		</span><span class="kwd">return</span><span class="pln"> row</span><span
-                            class="pun">[</span><span class="pln">opts</span><span class="pun">.</span><span
-                            class="pln">textField</span><span class="pun">].</span><span class="pln">indexOf</span><span
-                            class="pun">(</span><span class="pln">q</span><span class="pun">)</span><span
-                            class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span
-                            class="lit">0</span><span class="pun">;</span></li>
-                    <li class="L4"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L5"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre>
+$('#cc').combobox({
+filter: function(q, row){
+var opts = $(this).combobox('options');
+return row[opts.textField].indexOf(q) == 0;
+}
+});
+                </pre>
                         </td>
                         <td></td>
                     </tr>
@@ -286,24 +260,14 @@
                         <td>function</td>
                         <td>定义如何呈现行。该函数有一个参数：row。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">({</span></li>
-                    <li class="L1"><span class="pln">	formatter</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span
-                            class="pln">row</span><span class="pun">){</span></li>
-                    <li class="L2"><span class="pln">		</span><span class="kwd">var</span><span
-                            class="pln"> opts </span><span class="pun">=</span><span class="pln"> $</span><span
-                            class="pun">(</span><span class="kwd">this</span><span class="pun">).</span><span
-                            class="pln">combobox</span><span class="pun">(</span><span class="str">'options'</span><span
-                            class="pun">);</span></li>
-                    <li class="L3"><span class="pln">		</span><span class="kwd">return</span><span class="pln"> row</span><span
-                            class="pun">[</span><span class="pln">opts</span><span class="pun">.</span><span
-                            class="pln">textField</span><span class="pun">];</span></li>
-                    <li class="L4"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L5"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre>
+$('#cc').combobox({
+ formatter: function(row){
+ var opts = $(this).combobox('options');
+ return row[opts.textField];
+}
+});
+                </pre>
                         </td>
                         <td></td>
                     </tr>
@@ -338,24 +302,15 @@
                         <td>param</td>
                         <td>在请求加载数据之前触发，返回 false 则取消加载动作。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span
-                            class="com">// change the http request parameters before load data from server</span></li>
-                    <li class="L1"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">({</span></li>
-                    <li class="L2"><span class="pln">	onBeforeLoad</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span
-                            class="pln">param</span><span class="pun">){</span></li>
-                    <li class="L3"><span class="pln">		param</span><span class="pun">.</span><span
-                            class="pln">id </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span
-                            class="pun">;</span></li>
-                    <li class="L4"><span class="pln">		param</span><span class="pun">.</span><span class="pln">language </span><span
-                            class="pun">=</span><span class="pln"> </span><span class="str">'js'</span><span
-                            class="pun">;</span></li>
-                    <li class="L5"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L6"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre>
+// change the http request parameters before load data from server
+$('#cc').combobox({
+ onBeforeLoad: function(param){
+   param.id = 2;
+   param.language = 'js';
+	}
+});
+                </pre>
                         </td>
                     </tr>
                     <tr>
@@ -408,17 +363,10 @@
                         <td>url</td>
                         <td>请求远程的列表数据。传 'url' 参数来重写原始的 URL 值。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">(</span><span class="str">'reload'</span><span class="pun">);</span><span
-                            class="pln">  </span><span class="com">// reload list data using old URL</span></li>
-                    <li class="L1"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">(</span><span class="str">'reload'</span><span class="pun">,</span><span
-                            class="str">'get_data.php'</span><span class="pun">);</span><span class="pln">  </span><span
-                            class="com">// reload list data using new URL</span></li>
-                </ol></pre>
+                <pre>
+$('#cc').combobox('reload');  // reload list data using old URL
+$('#cc').combobox('reload','get_data.php');  // reload list data using new URL
+                </pre>
                         </td>
                     </tr>
                     <tr>
@@ -426,13 +374,9 @@
                         <td>values</td>
                         <td>设置组合框（combobox）值的数组。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">(</span><span class="str">'setValues'</span><span class="pun">,</span><span
-                            class="pln"> </span><span class="pun">[</span><span class="str">'001'</span><span
-                            class="pun">,</span><span class="str">'002'</span><span class="pun">]);</span></li>
-                </ol></pre>
+                <pre>
+$('#cc').combobox('setValues', ['001','002']);
+                </pre>
                         </td>
                     </tr>
                     <tr>
@@ -440,12 +384,9 @@
                         <td>value</td>
                         <td>设置组合框（combobox）的值。
                             <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span
-                            class="pun">(</span><span class="str">'setValue'</span><span class="pun">,</span><span
-                            class="pln"> </span><span class="str">'001'</span><span class="pun">);</span></li>
-                </ol></pre>
+                <pre>
+$('#cc').combobox('setValue', '001');
+                </pre>
                         </td>
                     </tr>
                     <tr>
