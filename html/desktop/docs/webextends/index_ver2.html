@@ -223,7 +223,7 @@
 
             </div>
             <!-- 控件内容填充区域 ,高度是当前iframe内容高度的2倍-->
-            <iframe id="iframe_m" src="wel.html" style="border: none; width:100%;margin-left:40px" scrolling="no" frameborder="0" onload="this.style.height = this.contentWindow.document.body.scrollHeight +0 + 'px';"></iframe>
+            <iframe id="iframe_m" src="wel.html" style="border: none; height:0; width:100%;margin-left:40px" scrolling="no" frameborder="0" onload="this.style.height = this.contentWindow.document.body.scrollHeight +0 + 'px';"></iframe>
             <!--<iframe id="iframe_m_api" src="" style="border: none; width: 100%;" onload="this.height=this.contentWindow.document.documentElement.scrollHeight+288"></iframe>-->
         </div>
     </div>
@@ -251,6 +251,9 @@
             $('.sidebar-collapse .nav > li > a:not(this)').removeClass('selected');
             $(this).addClass('selected');
         });
+        function resizeIframe(obj) {
+            obj.style.height =obj.contentWindow.document.body.scrollHeight +0 + 'px';
+        }
     </script>
 </body>
 </html>
