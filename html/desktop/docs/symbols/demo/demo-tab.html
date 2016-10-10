@@ -6,6 +6,7 @@
     <title>PC端Tab</title>
     <!-- 文档框架样式 -->
     <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/table.css"/>
     <link rel="stylesheet" href="../../css/font-awesome.css">
     <link rel="stylesheet" href="../../css/demoApi.css">
     <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
@@ -14,7 +15,7 @@
     <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
     <link rel="stylesheet" href="../../css/prettify.css"/>
     <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/iframefit.js"></script>
+    <!--<script src="../../js/iframefit.js"></script>-->
     <style>
         h1 {
             font-size: 20px;
@@ -66,7 +67,7 @@
 </head>
 
 <body>
-<h1 class="main_title">TAB组件</h1>
+<span class="first_title">TAB组件</span>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
                                               data-toggle="tab">样式和参数</a></li>
@@ -160,18 +161,15 @@
                         $('#tab_newadd').tabs({
                             className: "gray-bg"
                         })
+                        var t=$('#tab_newadd').tabs("tabs")[0];
+                        console.log(t)
                     });
                 </script>
             </div>
             <div class="aries_demo bs-example">
                 <h1 class="main_title">tab样式5（顶部tabAPI）</h1>
-
-
                 <p>1、通过标记创建标签页（Tabs）</p>
-
                 <p>从标记创建标签页（Tabs）更容易，我们不需要写任何 JavaScript 代码。记住把 'webui-tabs' class 添加到标记。每个标签页面板（tab panel）通过子标记被创建。</p>
-
-
 			<pre><code>    &lt;div id=&quot;tt&quot; class=&quot;webui-tabs&quot; data-options=&quot;tabWidth:160,tabHeight:40,plain:true,scrollIncrement:160&quot;
                 style=&quot;width:700px;height:250px&quot;&gt;
                 &lt;div title=&quot;My Documents&quot; style=&quot;padding:10px&quot;&gt;
