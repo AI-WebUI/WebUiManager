@@ -386,19 +386,19 @@
  // using the async confirm dialog
  $('#tt').tabs({
       onBeforeClose: function(title,index){
-		var target = this;
-		$.messager.confirm('Confirm','Are you sure you want to close '+title,function(r){
-		if (r){
-	      var opts = $(target).tabs('options');
-		  var bc = opts.onBeforeClose;
-		  opts.onBeforeClose = function(){};  // allowed to close now
-		  $(target).tabs('close',index);
-	      opts.onBeforeClose = bc;  // restore the event function
-		 }
-        });
-	    return false;	// prevent from closing
-        }
-        });
+	var target = this;
+$.messager.confirm('Confirm','Are you sure you want to close '+title,function(r){
+if (r){
+var opts = $(target).tabs('options');
+var bc = opts.onBeforeClose;
+opts.onBeforeClose = function(){};  // allowed to close now
+$(target).tabs('close',index);
+opts.onBeforeClose = bc;  // restore the event function
+}
+});
+return false;	// prevent from closing
+}
+});
                     </pre>
                         </td>
                     </tr>
