@@ -294,6 +294,128 @@
                 <p>5.不可选状态</p>
                 <label class="label">该选项禁止：</label>
                 <input class="webui-datebox" data-options="disabled:true"/>
+                <p>6、用combobox下拉框改造的年月时间控件</p>
+                <p>页面引用时用一个元素把日期组件包起来</p>
+                  <span id="webui-onlymonth">
+                    <input type="text"  class="ui-input ui-input-small" panelWidth="256"/>
+                </span>
+                <p>js代码</p>
+                <script>
+                        $("").combobox('yearandmonth');
+                </script>
+                <p>公共方法yearandmonth可以放在公共js里面方便引用</p>
+                <script>
+                    $.extend($.fn.combobox.methods, {
+                        yearandmonth: function (jq) {
+                            return jq.each(function () {
+                                var obj = $(this).combobox();
+                                var date = new Date();
+                                var year = date.getFullYear();
+                                var month = date.getMonth() + 1;
+                                var table = $('<table>');
+                                var tr1 = $('<tr>');
+                                var tr1td1 = $('<td>', {
+                                    text: '一',
+                                    click: function () {
+                                        var y = $(this).next().html();
+                                        y = parseInt(y) - 1;
+                                        $(this).next().html(y);
+                                    }
+                                });
+                                tr1td1.addClass("minus").appendTo(tr1);
+                                var tr1td2 = $('<td>', {
+                                    text: year
+                                }).addClass("fullyear").appendTo(tr1);
+
+                                var tr1td3 = $('<td>', {
+                                    text: '十',
+                                    click: function () {
+                                        var y = $(this).prev().html();
+                                        y = parseInt(y) + 1;
+                                        $(this).prev().html(y);
+                                    }
+                                }).addClass("plus").appendTo(tr1);
+                                tr1.appendTo(table);
+                                var n = "01";
+                                for (var i = 1; i <= 4; i++) {
+                                    var tr = $('<tr>');
+                                    for (var m = 1; m <= 3; m++) {
+                                        var td = $('<td>', {
+                                            text: n,
+                                            click: function () {
+                                                var yyyy = $(table).find("tr:first>td:eq(1)").html();
+                                                var cell = $(this).html();
+                                                var v = yyyy + '-' + (cell.length < 2 ? '0' + cell : cell);
+                                                obj.combobox('setValue', v).combobox('hidePanel');
+                                            }
+                                        });
+                                        td.addClass("month").appendTo(tr);
+                                        n++;
+                                        if (n < 10) {
+                                            n = "0" + n;
+                                        }
+                                    }
+                                    tr.appendTo(table);
+                                }
+                                table.addClass('mytable cursor');
+                                table.find('td').hover(function () {
+                                    $(this).addClass('tdbackground');
+                                }, function () {
+                                    $(this).removeClass('tdbackground');
+                                });
+                                table.appendTo(obj.combobox("panel"));
+                                $(".month").on('click',function(){
+                                    $(".month").not(this).removeClass('monthchoosen');
+                                    $(this).addClass('monthchoosen');
+                                })
+                            });
+                        }
+                    });
+                </script>
+                <p>CSS代码可放在公共的css文件里面</p>
+                <style>
+                    #webui-onlymonth .combo-arrow{
+                        background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACISURBVDhPY4CBOXPmeM+ePfsjELtCheAAJAfEH1Dk5s6d6wkULAcKVgDp/1C6HBmjy4H0MAA5P0GCQJwLZINszITykTG63A+QM8CSQMFbQNwLomFi+OTgGknFYI1Aky4D3e1CDAapRdZ4GBpWBAFI7ahGHABd43sg3k0kfg/WCGSATSANzzkCALLVTdYNdqDjAAAAAElFTkSuQmCC) no-repeat center center;
+                    }
+                    #webui-onlymonth .combo-arrow:hover{
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACZSURBVDhPY4AB55WPvZ1XP/notPKpK1QIDkByLquffkCRc1r9zBMoWO6y6mkFkP4PpctRMJocSA+D8+qnP8GCK5/mg2x0XvkkE8xHxmhyzque/mCASQI5t4B0L5RG0YhNDq6RVAzW6LzqyWXnNU9ciMJAtQiNq58choYVQQBSO6oRB0DRCExK74F4N5H4PVgjzARSsPOqJ0cAIsVNzxg/dKQAAAAASUVORK5CYII=);
+                        background-position: center center;
+                    }
+                    .mytable tr:first-child,.mytable tr:first-child td{
+                        border:1px solid #ddd;
+                        font-size:16px;
+                        color:#44ABE5;
+                    }
+                    .mytable caption
+                    {
+                        font-size: 12px;
+                        color: #0E2D5F;
+                        height: 16px;
+                        line-height: 16px;
+                        border: 1px dashed red;
+                        empty-cells: hide;
+                    }
+                    .mytable tr td
+                    {
+                        width:76px;
+                        font-size: 12px;
+                        padding: 6px 6px 6px 12px;
+                        empty-cells: show;
+                        border-collapse: collapse;
+                        text-align:center;
+                    }
+                    .cursor
+                    {
+                        cursor: pointer;
+                    }
+                    .tdbackground
+                    {
+                        background-color: #DBECF9;
+                    }
+                    .monthchoosen{
+                        background:#44abe5;
+                    }
+                </style>
             </div>
             <div class="aries_demo bs-example">
                 <span class="main_title">日期控件API</span>
