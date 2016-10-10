@@ -52,6 +52,10 @@
         .prettyprint ol.linenums {
             background: #f8f8f8 !important;
         }
+        table tr td{
+            word-wrap:break-word;
+            word-break:break-all;
+        }
     </style>
 </head>
 
@@ -69,7 +73,6 @@
 
             <div class="aries_demo bs-example html">
                 <p>一级tab便签页</p>
-
                 <div id="tt" class="webui-tabs" data-options="tabWidth:160,plain:true,scrollIncrement:160"
                      style="width:700px;height:250px">
                     <div title="客户首页" style="padding:10px">
@@ -276,32 +279,32 @@
                             <br>
                             <br> 代码实例：
                             <br> 通过数组定义工具。
-					<pre>
-                        $('#tt').tabs({
-	                        tools:[{
-		                         iconCls:'icon-add',
-                                handler:function(){
-			                        alert('add')
-		                             }
-	                         },{
-		                        iconCls:'icon-save',
-		                         handler:function(){
-			                    alert('save')
-		                        }
-	                        }]
-                         });
+                            <pre>
+   $('#tt').tabs({
+		tools:[{
+			iconCls:'icon-add',
+			handler:function(){
+			alert('add')
+           }
+	        },{
+		  iconCls:'icon-save',
+		   handler:function(){
+           alert('save')
+		  }
+	    }]
+   });                         
    </pre>
                             通过已有的 DOM 容器定义工具。
          <pre>
              <code>
-                 $('#tt').tabs({
-                 tools:'#tab-tools'
-                 });
-                 &lt;div id="tab-tools"&gt;
-                 &lt;a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add"&gt;&lt;/a&gt;
-                 &lt;a href="#"class="easyui-linkbutton" plain="true" iconCls="icon-save"&gt;&lt;/a&gt;
-                 &lt;/div&gt;
-             </code>
+   $('#tt').tabs({
+       tools:'#tab-tools'
+   });
+   &lt;div id="tab-tools"&gt;
+   &lt;a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add"&gt;&lt;/a&gt;
+   &lt;a href="#"class="easyui-linkbutton" plain="true" iconCls="icon-save"&gt;&lt;/a&gt;
+   &lt;/div&gt;
+			</code>
          </pre>
                         </td>
                         <td>null</td>
@@ -376,29 +379,30 @@
                     <tr>
                         <td>onBeforeClose</td>
                         <td>title,index</td>
-                        <td>当一个标签页面板（tab panel）被关闭前触发，返回 false 就取消关闭动作。下面的实例演示如何在关闭标签页面板（tab panel）前显示确认对话框。
+                        <td>当一个标签页面板（tab panel）被关闭前触发，返回 false 就取消关闭动作。下面的实例演示如何在关闭标签<br/>
+                            页面板（tab panel）前显示确认对话框。
 					<pre>
-                        $('#tt').tabs({
-                            onBeforeClose: function(title){
-	                            return confirm('Are you sure you want to close ' + title);
-                             }
-                        });
-                    // using the async confirm dialog
-                        $('#tt').tabs({
-                             onBeforeClose: function(title,index){
-	                             var target = this;
-	                            $.messager.confirm('Confirm','Are you sure you want to close '+title,function(r){
-		                        if (r){
-			                        var opts = $(target).tabs('options');
-			                        var bc = opts.onBeforeClose;
-			                        opts.onBeforeClose = function(){};  // allowed to close now
-			                        $(target).tabs('close',index);
-			                        opts.onBeforeClose = bc;  // restore the event function
-		                        }
-                            });
-	                        return false;	// prevent from closing
-                             }
-                        });
+ $('#tt').tabs({
+   onBeforeClose: function(title){
+		return confirm('Are you sure you want to close ' + title);
+        }
+ });
+ // using the async confirm dialog
+ $('#tt').tabs({
+      onBeforeClose: function(title,index){
+		var target = this;
+		$.messager.confirm('Confirm','Are you sure you want to close '+title,function(r){
+		if (r){
+	      var opts = $(target).tabs('options');
+		  var bc = opts.onBeforeClose;
+		  opts.onBeforeClose = function(){};  // allowed to close now
+		  $(target).tabs('close',index);
+	      opts.onBeforeClose = bc;  // restore the event function
+		 }
+        });
+	    return false;	// prevent from closing
+        }
+        });
                     </pre>
                         </td>
                     </tr>
@@ -450,16 +454,16 @@
                     <tr>
                         <td>add</td>
                         <td>options</td>
-                        <td>添加一个新的标签页面板（tab panel），options 参数是一个配置对象，更多详细信息请参见标签页面板（tab panel）属性。
+                        <td>添加一个新的标签页面板（tab panel），options 参数是一个配置对象，更多详细信息请参见标<br/>签页面板（tab panel）属性。
                             <br> 当添加一个新的标签页面板（tab panel）时，它将被选中。
                             <br> 如需添加一个未选中的标签页面板（tab panel），请记得设置 'selected' 属性为 false。
 					<pre>
-                        // add a unselected tab panel
-                        $('#tt').tabs('add',{
-	                        title: 'new tab',
-	                        selected: false
-	                        //...
-                        });
+ // add a unselected tab panel
+ $('#tt').tabs('add',{
+	title: 'new tab',
+	selected: false
+	//...
+ });
                     </pre>
                         </td>
                     </tr>
@@ -483,9 +487,9 @@
                         <td>none</td>
                         <td>获取选中的标签页面板（tab panel）。下面的实例演示如何获取选中的标签页面板（tab panel）的索引。
 					<pre>
-                        var tab = $('#tt').tabs('getSelected');
-                        var index = $('#tt').tabs('getTabIndex',tab);
-                        alert(index);
+ var tab = $('#tt').tabs('getSelected');
+ var index = $('#tt').tabs('getTabIndex',tab);
+ alert(index);
                     </pre>
                         </td>
                     </tr>
@@ -524,18 +528,18 @@
                             <br>
                             <br> 代码实例：
 					<pre>
-                        // update the selected panel with new title and content
-                        var tab = $('#tt').tabs('getSelected');  // get selected panel
-                        $('#tt').tabs('update', {
-	                    tab: tab,
-	                    options: {
-		                    title: 'New Title',
-		                    href: 'get_content.php'  // the new content URL
-	                    }
-                    });
-                    // call 'refresh' method for tab panel to update its content
-                        var tab = $('#tt').tabs('getSelected');  // get selected panel
-                        tab.panel('refresh', 'get_content.php');
+// update the selected panel with new title and content
+var tab = $('#tt').tabs('getSelected');  // get selected panel
+ $('#tt').tabs('update', {
+	tab: tab,
+	options: {
+	title: 'New Title',
+	href: 'get_content.php'  // the new content URL
+	}
+  });
+ // call 'refresh' method for tab panel to update its content
+  var tab = $('#tt').tabs('getSelected');  // get selected panel
+  tab.panel('refresh', 'get_content.php');
                     </pre>
                         </td>
                     </tr>
@@ -546,8 +550,8 @@
                             <br>
                             <br> 代码实例：
 					<pre>
-                        $('#tt').tabs('enableTab', 1);	// enable the second tab panel
-                        $('#tt').tabs('enableTab', 'Tab2');	enable the tab panel that has 'Tab2' title
+$('#tt').tabs('enableTab', 1);	// enable the second tab panel
+$('#tt').tabs('enableTab', 'Tab2');	enable the tab panel that has 'Tab2' title
                     </pre>
                         </td>
                     </tr>
@@ -558,7 +562,7 @@
                             <br>
                             <br> 代码实例：
 					<pre>
-                        $('#tt').tabs('disableTab', 1);	// disable the second tab panel.
+$('#tt').tabs('disableTab', 1);	// disable the second tab panel.
                     </pre>
                         </td>
                     </tr>
@@ -569,8 +573,8 @@
                             <br>
                             <br> 代码实例：
 					<pre>
-                        // scroll the tab header to left
-                        $('#tt').tabs('scroll', 10);
+// scroll the tab header to left
+$('#tt').tabs('scroll', 10);
                     </pre>
                         </td>
                     </tr>
