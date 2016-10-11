@@ -18,6 +18,9 @@
     <script type="text/javascript" src="../../../../webui/1.0.0/pc/js/webui.js"></script>
     <script src="../../js/iframefit.js"></script>
     <style>
+        body{
+            position: relative;
+        }
         h1 {
             font-size: 18px;
         }
@@ -42,6 +45,7 @@
     </style>
 </head>
 <body>
+<a id="to_top" href="#" class="to_top"></a>
 <span class="first_title">WEBUI PC端数据表格的各种形式</span>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
@@ -90,7 +94,6 @@
 
                     </script>
                 </div>
-
                 <p>2.排序表格</p>
                 <table id="data22"></table>
                 <script>
@@ -439,6 +442,7 @@
                                 {field: 'cost', width: 200, title: 'Cost'},
                                 {field: 'note', width: 112, title: 'Note'},
                             ]]
+
                         });
                         var pager = $("#data88").datagrid("getPager");
                         pager.pagination({
@@ -453,6 +457,7 @@
                                 });
                             }
                         })
+
                     })
                     $(".shuaxin").click(function(){
                         $("#data88").datagrid('loadData', getdata());
@@ -877,6 +882,7 @@
 </div>
 
 </body>
+<script src="../../js/totop.js"></script>
 <script>
     var html = $('.code').html();
     $(".codes").text(html).addClass("prettyprint linenums");
