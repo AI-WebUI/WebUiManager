@@ -12,6 +12,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="../../../css/icon.css">
     <link rel="stylesheet" type="text/css" href="../../../css/panel.css">
     <link rel="stylesheet" type="text/css" href="../../../css/datagrid.css"> -->
+    <link rel="stylesheet" href="../../css/prettify.css"/>
     <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
     <script type="text/javascript" src="../../../js/jquery.blockUI.js"></script>
     <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
@@ -21,6 +22,9 @@
     <style>
         body{
             height:800px;
+        }
+        .prettyprint ol.linenums {
+            background: #f8f8f8 !important;
         }
     </style>
 </head>
@@ -93,8 +97,7 @@
                     })
                 </script>
                 <!--<p>用html加载加载组件</p>-->
-                    <div id="" class="webui-panel" title="内容区域Loading"
-                         data-options="
+                    <div id="" class="webui-panel" title="内容区域Loading" data-options="
         width:700,
         tools:[{
             iconCls:'icon-reload',
@@ -102,8 +105,7 @@
                 $('').panel('refresh', 'http://www.baidu.com');
             }
         }],
-        loadingMessage:'数据加载中...'
-"></div>
+        loadingMessage:'数据加载中...'"></div>
             </div>
             </div>
     </div>
