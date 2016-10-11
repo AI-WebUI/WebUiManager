@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../../css/demoApi.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
+    <link rel="stylesheet" href="../../css/prettify.css"/>
+
     <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
     <!--<script type="text/javascript" src="../../js/rainbow.min.js"></script>-->
     <script type="text/javascript" src="../../js/prettify.js"></script>
@@ -20,14 +22,9 @@
     <!--<link rel="stylesheet" href="../../css/prettify.css"/>-->
     <!--<script type="text/javascript" src="../../js/prettify.js"></script>-->
     <style type="text/css">
-        h1 {
-            font-size: 20px;
+        body{
+            height:3200px;
         }
-
-        h2 {
-            font-size: 18px;
-        }
-
         p {
             display: block;
             padding: 6px 0 6px 2px;
@@ -40,6 +37,9 @@
             border: 1px #E9E9E9 solid;
             height: 50px;
             /*background: #FAFAFA;*/
+        }
+        .prettyprint ol.linenums {
+            background: #f8f8f8 !important;
         }
     </style>
 </head>
@@ -521,11 +521,9 @@
     });
 </script>
 <script>
-    $(function(){
         var html = $('.code').html();
         $(".codes").text(html).addClass("prettyprint linenums");
         prettyPrint();
-    })
 </script>
 
 </body>
