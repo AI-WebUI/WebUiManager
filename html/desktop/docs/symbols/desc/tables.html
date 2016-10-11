@@ -8,10 +8,12 @@
     <link rel="stylesheet" type="text/css" href="../../css/table.css"/>
     <link rel="stylesheet" href="../../css/font-awesome.css">
     <link rel="stylesheet" href="../../css/demoApi.css">
+    <link rel="stylesheet" href="../../css/prettify.css"/>
     <link rel="stylesheet" type="text/css" href="../../../../webui/1.0.0/pc/css/webui.css">
     <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
     <script type="text/javascript" src="../../js/rainbow.min.js"></script>
     <script src="../../js/iframefit.js"></script>
+    <script type="text/javascript" src="../../js/prettify.js"></script>
     <style type="text/css">
         h1 {
             font-size: 20px;
@@ -26,11 +28,13 @@
         p {
             font-size: 16px;
         }
+        .prettyprint ol.linenums {
+            background: #f8f8f8 !important;
+        }
     </style>
-
 </head>
 
-<body>
+<body onload="prettyPrint();">
 <div class="cont">
     <h1>表格组件API</h1>
 
@@ -219,7 +223,6 @@
             rownumbers:true
             });
         </code></pre>
-
     <p> 属性值： </p>
     <table border="0" cellspacing="0" cellpadding="0">
         <thead>
@@ -314,30 +317,18 @@
             <td>object</td>
             <td>当销毁一行时要显示的确认对话框消息。</td>
             <td>
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">destroyMsg</span><span class="pun">:{</span></li>
-                    <li class="L1"><span class="pln">	no</span><span id="1_nwp"
-                                                                        style="width: auto; height: auto; float: none;"><a
-                            id="1_nwl"
-                            href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=1001&amp;ch=0&amp;di=128&amp;fv=19&amp;is_app=0&amp;jk=f349e7605ab8f407&amp;k=record&amp;k0=record&amp;kdi0=0&amp;luki=7&amp;n=10&amp;p=baidu&amp;q=75027160_cpr&amp;rb=0&amp;rs=1&amp;seller_id=1&amp;sid=7f4b85a60e749f3&amp;ssp2=1&amp;stid=0&amp;t=tpclicked3_hc&amp;td=1948811&amp;tu=u1948811&amp;u=http%3A%2F%2Fwww%2Ejeasyui%2Enet%2Fextension%2F190%2Ehtml&amp;urlid=0"
-                            target="_blank" mpid="1" style="text-decoration: none;"><span
-                            style="color:#0000ff;font-size:13px;width:auto;height:auto;float:none;"><span class="pln">record</span></span></a></span><span
-                            class="pun">:{</span><span class="pln">	</span><span class="com">// when no record is selected</span>
-                    </li>
-                    <li class="L2"><span class="pln">		title</span><span class="pun">:</span><span class="str">'Warning'</span><span
-                            class="pun">,</span></li>
-                    <li class="L3"><span class="pln">		msg</span><span class="pun">:</span><span class="str">'No record is selected.'</span>
-                    </li>
-                    <li class="L4"><span class="pln">	</span><span class="pun">},</span></li>
-                    <li class="L5"><span class="pln">	confirm</span><span class="pun">:{</span><span
-                            class="pln">	</span><span class="com">// when select a row</span></li>
-                    <li class="L6"><span class="pln">		title</span><span class="pun">:</span><span class="str">'Confirm'</span><span
-                            class="pun">,</span></li>
-                    <li class="L7"><span class="pln">		msg</span><span class="pun">:</span><span class="str">'Are you sure you want to delete?'</span>
-                    </li>
-                    <li class="L8"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L9"><span class="pun">}</span></li>
-                </ol></pre>
+                <pre>
+ destroyMsg:{
+	norecord:{	// when no record is selected
+		title:'Warning',
+		msg:'No record is selected.'
+	},
+	confirm:{	// when select a row
+		title:'Confirm',
+		msg:'Are you sure you want to delete?'
+	}
+}
+                </pre>
             </td>
         </tr>
         </tbody>
@@ -451,39 +442,27 @@
                 <br> row：新的行数据。
                 <br>
                 <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#dg'</span><span class="pun">).</span><span class="pln">datagrid</span><span
-                            class="pun">(</span><span class="str">'updateRow'</span><span class="pun">,{</span></li>
-                    <li class="L1"><span class="pln">	index</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="lit">2</span><span class="pun">,</span></li>
-                    <li class="L2"><span class="pln">	row</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="pun">{</span></li>
-                    <li class="L3"><span class="pln">		name</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
-                    <li class="L4"><span class="pln">		note</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="str">'new note message'</span></li>
-                    <li class="L5"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L6"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre>
+      $('#dg').datagrid('updateRow',{
+	    index: 2,
+	    row: {
+		name: 'new name',
+		note: 'new note message'
+	    }});
+                </pre>
             </td>
         </tr>
         <tr>
             <td>appendRow</td>
             <td>row</td>
             <td>追加一个新行。新的行将被添加在最后的位置：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#dg'</span><span class="pun">).</span><span class="pln">datagrid</span><span
-                            class="pun">(</span><span class="str">'appendRow'</span><span class="pun">,{</span></li>
-                    <li class="L1"><span class="pln">	name</span><span class="pun">:</span><span class="pln"> </span><span
-                            class="str">'new name'</span><span class="pun">,</span></li>
-                    <li class="L2"><span class="pln">	age</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="lit">30</span><span class="pun">,</span></li>
-                    <li class="L3"><span class="pln">	note</span><span class="pun">:</span><span class="pln"> </span><span
-                            class="str">'some messages'</span></li>
-                    <li class="L4"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre>
+$('#dg').datagrid('appendRow',{
+	name: 'new name',
+	age: 30,
+	note: 'some messages'
+});
+                </pre>
             </td>
         </tr>
         <tr>
@@ -494,25 +473,16 @@
                 <br> row：行的数据。
                 <br>
                 <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="com">// insert a new row at second row position</span></li>
-                    <li class="L1"><span class="pln">$</span><span class="pun">(</span><span
-                            class="str">'#dg'</span><span class="pun">).</span>datagrid</span><span class="pun">(</span><span
-                            class="str">'insertRow'</span><span class="pun">,{</span></li>
-                    <li class="L2"><span class="pln">	index</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span
-                            class="pln">	</span><span class="com">// index start with 0</span></li>
-                    <li class="L3"><span class="pln">	row</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="pun">{</span></li>
-                    <li class="L4"><span class="pln">		name</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="str">'new name'</span><span class="pun">,</span></li>
-                    <li class="L5"><span class="pln">		age</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="lit">30</span><span class="pun">,</span></li>
-                    <li class="L6"><span class="pln">		note</span><span class="pun">:</span><span
-                            class="pln"> </span><span class="str">'some messages'</span></li>
-                    <li class="L7"><span class="pln">	</span><span class="pun">}</span></li>
-                    <li class="L8"><span class="pun">});</span></li>
-                </ol></pre>
+                <pre>
+$('#dg').datagrid('insertRow',{
+	index: 1,	// index start with 0
+	row: {
+		name: 'new name',
+		age: 30,
+		note: 'some messages'
+	}
+});
+                </pre>
             </td>
         </tr>
         <tr>
@@ -610,20 +580,10 @@
                 <br> field：字段名。
                 <br>
                 <br> 代码实例：
-                <pre class="prettyprint linenums"><ol class="linenums">
-                    <li class="L0"><span class="com">// get the datebox editor and change its value</span></li>
-                    <li class="L1"><span class="kwd">var</span><span class="pln"> ed </span><span
-                            class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#dg'</span><span
-                            class="pun">).</span><span class="pln">datagrid</span><span class="pun">(</span><span
-                            class="str">'getEditor'</span><span class="pun">,</span><span class="pln"> </span><span
-                            class="pun">{</span><span class="pln">index</span><span class="pun">:</span><span
-                            class="lit">1</span><span class="pun">,</span><span class="pln">field</span><span
-                            class="pun">:</span><span class="str">'birthday'</span><span class="pun">});</span></li>
-                    <li class="L2"><span class="pln">$</span><span class="pun">(</span><span class="pln">ed</span><span
-                            class="pun">.target</span><span class="pun">).</span><span class="pln">datebox</span><span
-                            class="pun">(</span><span class="str">'setValue'</span><span class="pun">,</span><span
-                            class="pln"> </span><span class="str">'5/4/2012'</span><span class="pun">);</span></li>
-                </ol></pre>
+                <pre>
+var ed = $('#dg').datagrid('getEditor', {index:1,field:'birthday'});
+$(ed.target).datebox('setValue', '5/4/2012');
+                </pre>
             </td>
         </tr>
         <tr>
