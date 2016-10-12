@@ -89,48 +89,6 @@
                             tabPosition: 'left'
                         })
                     }
-                    var title = ["业务名称二", "业务名称三", "业务名称四"];
-                    var url = ["业务名称二", "业务名称三", "业务名称四d"]
-                    function addTab(title) {
-                        if ($('#tt').tabs('exists', title)) {
-                        } else {
-                            $('#tt').tabs('add', {
-                                title: title
-                            });
-
-                        }
-                    }
-                    for (var i = 0; i < title.length; i++) {
-                        addTab(title[i]);
-                    }
-
-                    $("#tt").tabs({
-                        onUnselect: function (title, index) {
-                            var href = $('#tt').tabs('tabs');
-                            for (var i = 0; i < href.length; i++) {
-                                href[2].html('<div class="item2"></div>');
-                            }
-                        },
-                        onSelect: function (title, index) {
-                            if (title == "业务名称三") {
-                                var menuName = parent.$('#tt').tabs('getTab', '业务名称三');
-                                $('#tt').tabs('update', {
-                                    tab: menuName,
-                                    options: {
-                                        content: '<div class="item3">新业务</div>'
-                                    }
-                                });
-                            }
-                        }
-                    })
-
-                    //                        var menuName=$('#tt').tabs('getTab','业务名称二').panel('options').content;
-                    //                        menuName='<div class="yewu2"></div>';
-                    //                        alert(menuName)
-                    //                        if($('#tt').tabs('exists', "业务名称二")){
-                    //                         var t=$('#tt').tabs('getTab',"业务名称二");
-                    //                            t.tabs({content:"我是大傻逼"});
-                    //                        }
                 </script>
                 <p>二级tab标签页</p>
 
