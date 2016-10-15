@@ -62,8 +62,19 @@
 </ul>
 <script src="../lib/jquery/2.1.4/jquery.js"></script>
 <script src="../js/webui.js"></script>
-<script>
 
+<script>
+    $(function(){
+        $(".ui-new-list-item .ui-new-item-icon").click(function(){
+            var t = $(this).attr("href").replace(/.*\/(.*).html$/, "$1");
+            $('pre', window.parent.document).text($("." + t, window.parent.document).html());
+            if( $(".ui-new-list-item .ui-new-item-icon").not(this)){
+                parent.prettyPrint();
+            }else{
+                parent.prettyPrint();
+            }
+        })
+    })
 </script>
 </body>
 </html>

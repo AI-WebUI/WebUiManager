@@ -84,8 +84,10 @@ ul{
 }
 .div-code{
 	position: absolute;
-	width: 57%;
-	margin: 180px 0 0 100px;
+	width: 736px;
+	height:340px;
+	text-align:left;
+	margin: 20px 0 0 90px;
 	/*overflow: scroll;*/
 	-webkit-border-radius: 4px;
 	-ms-border-radius: 4px;
