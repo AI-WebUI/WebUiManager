@@ -24,40 +24,40 @@
 
 <ul class="ui-new-list">
     <li class="ui-new-list-item">
-        <a href="../app_btn.html"  class="ui-new-item-icon ">按钮(Button)</a>
+        <a href="../app_btn.html" name="Button"  class="ui-new-item-icon ">按钮(Button)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../grid.html"  class="ui-new-item-icon ">表格(Table)</a>
+        <a href="../grid.html" name="Table"  class="ui-new-item-icon ">表格(Table)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../input.html"  class="ui-new-item-icon ">输入框(Input)</a>
+        <a href="../input.html" name="Input"  class="ui-new-item-icon ">输入框(Input)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../dtPicker.html"  class="ui-new-item-icon ">时间选择(Date time)</a>
+        <a href="../dtPicker.html" name="Date Time"  class="ui-new-item-icon ">时间选择(Date time)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../loading.html"  class="ui-new-item-icon ">加载(Loading)</a>
+        <a href="../loading.html" name="Loading"  class="ui-new-item-icon ">加载(Loading)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../collapse.html"  class="ui-new-item-icon ">折叠面板(Accordion)</a>
+        <a href="../collapse.html" name="Accordion"  class="ui-new-item-icon ">折叠面板(Accordion)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../select.html"  class="ui-new-item-icon ">选择(Select)</a>
+        <a href="../select.html" name="Select"  class="ui-new-item-icon ">选择(Select)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../tab.html"  class="ui-new-item-icon ">标签(Label)</a>
+        <a href="../tab.html" name="Label"  class="ui-new-item-icon ">标签(Label)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../tips.html"  class="ui-new-item-icon ">提示(Tip)</a>
+        <a href="../tips.html" name="Tip" class="ui-new-item-icon ">提示(Tip)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../hr.html"   class="ui-new-item-icon ">分割线(Split Line)</a>
+        <a href="../hr.html" name="Split Line"   class="ui-new-item-icon ">分割线(Split Line)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../list_new.html"  class="ui-new-item-icon ">列表(List)</a>
+        <a href="../list_new.html" name="List"  class="ui-new-item-icon ">列表(List)</a>
     </li>
     <li class="ui-new-list-item">
-        <a href="../doc/webui_iconfont/demo.html" class="ui-new-item-icon ">图标(Icon)</a>
+        <a href="../doc/webui_iconfont/demo.html" name="Tcon" class="ui-new-item-icon ">图标(Icon)</a>
     </li>
 </ul>
 <script src="../lib/jquery/2.1.4/jquery.js"></script>
@@ -70,8 +70,7 @@
             $('pre', window.parent.document).text($("." + t, window.parent.document).html());
             if( $(".ui-new-list-item .ui-new-item-icon").not(this)){
                 parent.prettyPrint();
-            }else{
-                parent.prettyPrint();
+                $('.header .header_text', window.parent.document).text($(this).attr('name'))
             }
         })
     })
