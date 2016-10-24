@@ -88,7 +88,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" class="active-menu-top ye"><b>控件字体颜色规范</b></a>
+                    <a class="active-menu-top ye"><b>控件字体颜色规范</b></a>
                     <ul class="nav nav-second-level  collapse off in">
                         <li>
                             <a href="#" class="firstchild" name="../../../desktop/docs/symbols/desc/desc-pcfont.html">字体规范</a>
@@ -99,7 +99,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="active-menu-top ye"><b>控件</b></a>
+                    <a class="active-menu-top ye"><b>控件</b></a>
                     <ul class="nav nav-second-level  collapse off in">
                         <li>
                             <a href="#" class="firstchild" name="../../../desktop/docs/symbols/demo/demo-linkbutton-basic.html">
@@ -192,36 +192,13 @@
                             <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI1.html" class="ye" style="font-size:16px;font-weight:900;color:#333">迭代计划</a>-->
                         <!--</li>-->
                     </ul>
-                    <a href="#" name="../../../desktop/docs/symbols/desc/Iteration.html" class="ye" style="font-size:16px;font-weight:900;color:#333">迭代计划</a>
-                    <!--<li>-->
-                    <!--<a href="#" class="active-menu-top"><i class="fa fa-newspaper-o"></i>迭代计划 <span-->
-                            <!--class="fa arrow"></span></a>-->
-                    <!--<ul class="nav nav-second-level  collapse off">-->
-                        <!--<li>-->
+                    <a class="active-menu-top ye"><b>迭代计划</b></a>
+                    <ul class="nav nav-second-level fatheritem">
+                        <li>
+                            <a href="#" name="../../../desktop/docs/symbols/desc/Iteration.html">迭代计划</a>
+                        </li>
+                    </ul>
 
-                            <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI1.html"><i-->
-                                    <!--class="fa fa-toggle-on"></i>第三次迭代</a>-->
-                            <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI.html"><i-->
-                                    <!--class="fa fa-toggle-on"></i>第四次迭代</a>-->
-                            <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI-5.html"><i-->
-                                    <!--class="fa fa-toggle-on"></i>第五次迭代</a>-->
-                            <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI-7.html"><i-->
-                                    <!--class="fa fa-toggle-on"></i>第七次迭代</a>-->
-                            <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI-8.html"><i-->
-                                    <!--class="fa fa-toggle-on"></i>第八次迭代</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a href="#" class="active-menu-top"><i class="fa fa-history "></i>更新日志<span class="fa arrow"></span></a>-->
-                    <!--<ul class="nav nav-second-level  collapse off">-->
-                        <!--<li>-->
-                            <!--<a href="#" name="../../../desktop/docs/symbols/desc/logowebUI2.html"><i-->
-                                    <!--class="fa fa-toggle-on"></i>日志</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-
-                <!--</li>-->
                 </li>
             </ul>
         </div>
@@ -256,6 +233,7 @@
                     $("#iframe_m_api").attr("src", _site_a);
                 }
             });
+            $('.ye').unbind("click");
         });
         $('.sidebar-collapse .nav > li > a').bind('click', function(){
             $('.sidebar-collapse .nav > li > a:not(this)').removeClass('selected');
