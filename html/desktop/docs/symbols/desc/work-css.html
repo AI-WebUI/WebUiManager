@@ -63,21 +63,21 @@
                 <span id="copy-button" type="button" class="copy" title="复制" data-clipboard-target="code"  ></span>
 <pre id="code"><code>
 &lt;div class="page-container"> &lt;!-- 业务最外面一层--&gt;
-    &lt;div class="grid">&lt;!-- 业务第二层--&gt;
-         &lt;div class="ui-panel input-group" id="input_group">
-            &lt;div>
-               &lt;span class="title">查询条件</span>
-               &lt;div class="input-group">
-                 &lt;label class="ui-label">查询方式:&lt;/label>
-                 &lt;input  class="ui-input" id="query_type" type="text" defaultchars="" maxlength="15" value="" panelHeight="98" />
-                 &lt;input  class="ui-input" id="query_value" type="text" defaultchars="" maxlength="15" value="" required />
-                 &lt;a class=" btn-grey qry-btn" id="query_btn">查询</a>
-                 &lt;a class=" btn-grey qry-btn btn-disabled" id="reset_btn">重置</a>
-                &lt;/div>
-            &lt;/div>
+  &lt;div class="grid">&lt;!-- 业务第二层--&gt;
+     &lt;div class="ui-panel input-group" id="input_group">
+        &lt;div>
+         &lt;span class="title">查询条件</span>
+          &lt;div class="input-group">
+            &lt;label class="ui-label">查询方式:&lt;/label>
+            &lt;input  class="ui-input" id="query_type" type="text" defaultchars="" maxlength="15" value="" panelHeight="98" />
+            &lt;input  class="ui-input" id="query_value" type="text" defaultchars="" maxlength="15" value="" required />
+            &lt;a class=" btn-grey qry-btn" id="query_btn">查询</a>
+            &lt;a class=" btn-grey qry-btn btn-disabled" id="reset_btn">重置</a>
           &lt;/div>
-    &lt;/div&gt;
- &lt;/div&gt;
+        &lt;/div>
+      &lt;/div>
+   &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
             </div>
             <p class="smtitle">二、常见的输入框组合</p>
@@ -88,33 +88,34 @@
                 <span id="copy-button2" type="button" class="copy" title="复制" data-clipboard-target="code2"  ></span>
 <pre id="code2"><code>
     &lt;div class="page-container">
-        &lt;div class="grid"><!--最外一层-->
-            &lt;span class="title">查询条件 &lt;/span>
-            &lt;div class="input-groups">
-                &lt;div class="left input-group-block">&lt;!--input-group-block的宽度和ui-input的宽度需要自行设定三列输入框宽度一般为122px-->
-                    &lt;p class="input-group-text">查询区域：&lt;input type="text" name="regionId" class="ui-input ui-input-small searcharea"/> &lt;/p>
-                    &lt;p class="input-group-text">退费服务号码：&lt;input type="text" name="billId" class="ui-input ui-input-small servicenumber"/> &lt;/p>
-                    &lt;p class="input-group-text">操作起始时间：&lt;input type="text" name="spStartDate" class="ui-input ui-input-small starttime"/> &lt;/p>
-                    &lt;p class="input-group-text">错收费用起始月：&lt;input name="wrongBillCycleBegin" type="text" class="ui-input ui-input-small/> &lt;/p>
-                &lt;/div>
-                &lt;div class="left input-group-block">
-                    &lt;p class="input-group-text">客户标识：&lt;input type="text" name="custId" class="ui-input ui-input-small  customeridentity"/> &lt;/p>
-                    &lt;p class="input-group-text">操作员工号：&lt;input type="text" name="operatorId" class="ui-input ui-input-small operatorid"/> &lt;/p>
-                    &lt;p class="input-group-text">操作截止时间：&lt;input type="text" name="spEndDate" class="ui-input ui-input-small endtime"/> &lt;/p>
-                    &lt;p class="input-group-text">错收费用截止月：&lt;input type="text" name="wrongBillCycleEnd" class="ui-input ui-input-small endmonth"/> &lt;/p>
-                &lt;/div>
-                &lt;div class="left input-group-block">
-                    &lt;p class="input-group-text">客户名称：&lt;input type="text" name="custName" class="ui-input ui-input-small customername"/> &lt;/p>
-                    &lt;p class="input-group-text">子号用户信息：&lt;input type="text" name="revFeeModel" class="ui-input ui-input-small customerInfo"/> &lt;/p>
-                    &lt;p class="input-group-text">SP业务代码：&lt;input type="text" name="spCode" class="ui-input ui-input-small spcode"/> &lt;/p>
-                &lt;/div>
-                &lt;!--自行设定#button的margin-left控制按钮的左边距和padding-top上边距-->
-                &lt;p id="button" class="clear-float">&lt;!--在不需要浮动的最后块级元素加clear-float类名清除浮动带来影响-->
-                    &lt;a  class="webui-linkbutton btn-grey btnSearch">查询 &lt;/a>
-                    &lt;a  class="webui-linkbutton btn-grey btnSearch">重置 &lt;/a>
-                &lt;/p>
-            &lt;/div>
-        &lt;/div>
+    &lt;div class="grid"><!--最外一层-->
+    &lt;span class="title">查询条件 &lt;/span>
+    &lt;div class="input-groups">
+    &lt;!--input-group-block的宽度和ui-input的宽度需要自行设定三列输入框宽度一般为122px-->
+    &lt;div class="left input-group-block">
+    &lt;p class="input-group-text">查询区域：&lt;input type="text" name="regionId" class="ui-input ui-input-small searcharea"/> &lt;/p>
+    &lt;p class="input-group-text">退费服务号码：&lt;input type="text" name="billId" class="ui-input ui-input-small servicenumber"/> &lt;/p>
+    &lt;p class="input-group-text">操作起始时间：&lt;input type="text" name="spStartDate" class="ui-input ui-input-small starttime"/> &lt;/p>
+    &lt;p class="input-group-text">错收费用起始月：&lt;input name="wrongBillCycleBegin" type="text" class="ui-input ui-input-small/> &lt;/p>
+    &lt;/div>
+    &lt;div class="left input-group-block">
+    &lt;p class="input-group-text">客户标识：&lt;input type="text" name="custId" class="ui-input ui-input-small  customeridentity"/> &lt;/p>
+    &lt;p class="input-group-text">操作员工号：&lt;input type="text" name="operatorId" class="ui-input ui-input-small operatorid"/> &lt;/p>
+    &lt;p class="input-group-text">操作截止时间：&lt;input type="text" name="spEndDate" class="ui-input ui-input-small endtime"/> &lt;/p>
+    &lt;p class="input-group-text">错收费用截止月：&lt;input type="text" name="wrongBillCycleEnd" class="ui-input ui-input-small endmonth"/> &lt;/p>
+    &lt;/div>
+    &lt;div class="left input-group-block">
+    &lt;p class="input-group-text">客户名称：&lt;input type="text" name="custName" class="ui-input ui-input-small customername"/> &lt;/p>
+    &lt;p class="input-group-text">子号用户信息：&lt;input type="text" name="revFeeModel" class="ui-input ui-input-small customerInfo"/> &lt;/p>
+    &lt;p class="input-group-text">SP业务代码：&lt;input type="text" name="spCode" class="ui-input ui-input-small spcode"/> &lt;/p>
+    &lt;/div>
+    &lt;!--自行设定#button的margin-left控制按钮的左边距和padding-top上边距-->
+    &lt;p id="button" class="clear-float">&lt;!--在不需要浮动的最后块级元素加clear-float类名清除浮动带来影响-->
+    &lt;a  class="webui-linkbutton btn-grey btnSearch">查询 &lt;/a>
+    &lt;a  class="webui-linkbutton btn-grey btnSearch">重置 &lt;/a>
+    &lt;/p>
+    &lt;/div>
+    &lt;/div>
     &lt;/div>
 </code></pre>
             </div>
