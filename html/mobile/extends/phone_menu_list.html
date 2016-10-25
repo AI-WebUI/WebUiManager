@@ -21,7 +21,6 @@
 <body>
 <header>
 </header>
-
 <ul class="ui-new-list">
     <li class="ui-new-list-item">
         <a href="../app_btn.html" name="Button"  class="ui-new-item-icon ">按钮(Button)</a>
@@ -62,12 +61,14 @@
 </ul>
 <script src="../lib/jquery/2.1.4/jquery.js"></script>
 <script src="../js/webui.js"></script>
-
 <script>
     $(function(){
         $(".ui-new-list-item .ui-new-item-icon").click(function(){
             var t = $(this).attr("href").replace(/.*\/(.*).html$/, "$1");
             $('pre', window.parent.document).text($("." + t, window.parent.document).html());
+            if(t=="demo"){
+                $('pre', window.parent.document).html("<p class='icon-text'>图标使用请参照图标展示里面的说明</p>");
+            }
             if( $(".ui-new-list-item .ui-new-item-icon").not(this)){
                 parent.prettyPrint();
                 $('.header .header_text', window.parent.document).text($(this).attr('name'))

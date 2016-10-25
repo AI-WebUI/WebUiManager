@@ -88,6 +88,18 @@
             margin:0;
             padding:10px 80px;
         }
+        .pre{
+            position: relative;
+        }
+        .icon-text {
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-left:-190px;
+            margin-top:54px;
+            font-size:24px;
+            color:#333;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +125,7 @@
     <iframe id="ifr_m" name="phone" class="iframe-mobile" src="phone_menu_list.html"  style="overflow-x: hidden" scrolling="auto"></iframe>
 </div>
 <!--代码区-->
-<!--表格源码-->
+<!--按钮源码-->
 <div class="app_btn">
     <div class="title-p">按钮</div>
     <p>1.页面级操作按钮</p>
@@ -1740,6 +1752,6 @@
 <script src="js/prettify.js" type="text/javascript"/>
 <script src="js/highlight.js"></script>
 <script>
-        $(".return").click(function(){document.location=location.href;})
+        $(".return").click(function(){document.location=location.href;});
 </script>
 </html>
