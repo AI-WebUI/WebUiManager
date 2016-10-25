@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
@@ -40,10 +39,9 @@
         margin: 0 auto;
     }
     .counter_div {
-        width: 290px;
         height: 38px;
         display: block;
-        margin: 0 auto;
+        margin-left:80px;
     }
     .mess {
         width: 80%;
@@ -63,10 +61,9 @@
 
     }
     .cont_btn {
-        width: 100%;
         height: auto;
         background: #FFF;
-        padding: 20px 0 20px 0;
+        padding: 20px 0 20px 20px;
     }
     .title-p {
         text-align: center;
@@ -88,6 +85,9 @@
         font-size: 16px;
         color: #febe44;
     }
+    h4{
+        padding-left:15px;
+    }
     /*body::-webkit-scrollbar{
             width:4px;
             height:20px;
@@ -107,14 +107,14 @@
 -->
 <div class="title-p">按钮</div>
 <div class="con_div">
-    <p>1.页面级操作按钮</p>
+    <h4>1.页面级操作按钮</h4>
     <div class="cont_btn">
         <p class="title_p">(1)页面级操作按钮</p>
         <a type="button" id="block-btn" class="ui-block-btn">受理提交</a>
         <p class="title_p">(2)不可选状态</p>
         <input type="button" class="ui-disabled-block-btn" disabled value="独立按钮">
     </div>
-    <p>2. 移动端开关</p>
+    <h4>2. 移动端开关</h4>
     <div class="cont_btn">
         <div class="switch_div1">
             <!--控件代码-->
@@ -135,12 +135,10 @@
     <br/>
     <br/>
 
-    <p> 3.数据操作按钮(可点击可输入)</p>
-
+    <h4> 3.数据操作按钮(可点击可输入)</h4>
     <div class="cont_btn">
         <p class="title_p">最大值最小值可配置，手动输入 <br/>
             只是别数字字符(此处展示的值范围1-9)</p>
-
         <div class="counter_div">
             <!--控件代码-->
             <div id="ui-btn-group-div1" class="ui-btn-group">
@@ -166,7 +164,6 @@
         $("#panel").css("overflowY", "scroll")
     }
     $(function () {
-
         $("#block-btn").blockBtn();
         $("#js-btn-getVaule").blockBtn();
         $("#switch-group").switchBtn({
@@ -263,5 +260,4 @@
         });
     });
 </script>
-
 </html>
