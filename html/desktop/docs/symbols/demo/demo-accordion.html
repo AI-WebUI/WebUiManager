@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>手风琴</title>
@@ -21,6 +20,9 @@
     <script src="../../../js/shade.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../js/iframefit.js"></script>
     <style>
+        html{
+            overflow-y: scroll;
+        }
         h1 {
             font-size: 20px;
         }
@@ -65,7 +67,6 @@
 
 <body>
 <span class="first_title">手风琴、分割线组件</span>
-
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#result" aria-controls="result" role="tab"
                                               data-toggle="tab">样式和参数</a></li>
@@ -99,6 +100,11 @@
                     <div title="推荐人" >
                         <div style="padding: 20px;">
                             <p>推荐人内容</p>
+                        </div>
+                    </div>
+                    <div title="代办人" >
+                        <div style="padding: 20px;">
+                            <p>代办人内容</p>
                         </div>
                     </div>
                 </div>
@@ -173,8 +179,6 @@
         <!--<div class="highlight"></div>-->
     <!--</div>-->
 <!--</div>-->
-
-
 <script>
     var js=$('.js').html();
     $(".prettyprint").text(js).addClass("prettyprint linenums");
