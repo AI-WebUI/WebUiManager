@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<!--<meta name="viewport" content="width=750,user-scalable=no">-->
@@ -10,7 +9,6 @@
 		<!--<script src="js/mobile-util.js"></script>-->
 		<script src="js/tips.js"></script>
 		<script src="js/btn-bak.js"></script>
-
 		<link rel="stylesheet" href="css/base.css" />
 		<link rel="stylesheet" type="text/css" href="css320/tips.css" />
 		<link rel="stylesheet" type="text/css" href="css320/btn.css" />
@@ -36,11 +34,9 @@
 				font-size: 20px;
 				padding: 24px 0 18px 0
 			}
-			
 			body {
 				background-color: #f1f1f1;
 			}
-			
 			.lab_text {
 				font-size: 14px;
 				color: #787878;
@@ -66,7 +62,6 @@
 				color: #BEBEBE;
 				padding: 6px 6px 20px 6px;
 			}
-			
 			.tips_cont {
 				width: 40%;
 				height: auto;
@@ -82,17 +77,14 @@
 				margin: -12% 0 60% 2%;
 				z-index: 45;
 			}
-			
 			.tips_cont3 {
 				margin: -10px 0 0 60px;
 				z-index: 50;
 			}
-			
 			.tips_cont4 {
 				margin: -68px 0 0 50px;
 				z-index: 55;
 			}
-			
 			.test-input {
 				width: 30%;
 				height: auto;
@@ -100,18 +92,16 @@
 				padding: 6px 10px 6px 0;
 				outline: none;
 				margin: 10px 0 10px 30%;
+				border-radius:10px;
 			}
-			
 			::-webkit-input-placeholder {
 				font-size: 14px;
 				line-height: 22px;
 				padding: 0 0 0 10px;
 			}
-			
 			input:focus {
 				padding-left: 10px;
 			}
-			
 			.demo-content {
 				background: #FFFFFF;
 				border-bottom: 1px #ccc solid;
@@ -119,7 +109,6 @@
 				padding: 0 0 20px 0;
 				margin: 0 0 10px 0;
 			}
-			
 			.top-title {
 				background: #fff;
 				padding: 6px;
@@ -128,7 +117,6 @@
 				font-size: 20px;
 				text-align: center;
 			}
-			
 			.top-title span {
 				display: block;
 				position: absolute;
@@ -137,13 +125,16 @@
 				margin: -6px 0 0 -6px;
 				height: 40px;
 			}
+			.smtitle{
+				padding-left: 15px;
+			}
 			/*以上css仅作demo排版样式*/
 		</style>
 	</head>
 
 	<body>
 		<div class="title-p">提示</div>
-		<p>1.顶部提示</p>
+		<p class="smtitle">1.顶部提示</p>
 		<div class="demo-content">
 			<div class="text_div">
 				显示在顶栏下方，通常用于反馈系统当前状态，长时间显示，直到状态改变。比如网络未连接。 可嵌在内容页面内，跟随页面滚动，也可以固定在上方。
@@ -151,47 +142,47 @@
 			</div>
 			<div class="text_div">
 				<span class="lab_text">重要顶部提示</span>
-				<input id="tips4" type="checkbox"></input>
+				<input id="tips4" type="checkbox">
 			</div>
 			<div class="text_div">
 				<span class="lab_text">普通顶部提示——白底</span>
-				<input id="tips4-1" type="checkbox"></input>
+				<input id="tips4-1" type="checkbox">
 			</div>
 			<div class="text_div">
 				<span class="lab_text">普通顶部提示——黄底</span>
-				<input id="tips4-2" type="checkbox"></input>
+				<input id="tips4-2" type="checkbox">
 			</div>
 		</div>
 
-		<p>2.选择对话框</p>
+		<p class="smtitle">2.选择对话框</p>
 		<div class="demo-content">
 			<div class="text_div">
 				通常有取消和确定按钮，按钮名称可以是其它； 手机端有确定含义的按钮统一在右侧； 按钮的颜色可以相同，也可以不同，示需求而定； 按钮点击时有视觉反馈； 提示内容可以包含图标； 用于需要用户进一步确认的场合，会打断操作，对用户干扰较大，尽量少用。
 			</div>
 			<a type="button" id="tips1" class="ui-block-btn">选择对话框</a>
 		</div>
-		<p>着重提示选择对话框</p>
+		<p class="smtitle">着重提示选择对话框</p>
 		<div class="demo-content">
 			<div class="text_div">
 				通常有取消和确定按钮，按钮名称可以是其它；拥有着重提示用户点击的效果。
 			</div>
 			<a type="button" id="tips_key" class="ui-block-btn">着重选择对话框</a>
 		</div>
-		<p>3.单键对话框</p>
+		<p class="smtitle">3.单键对话框</p>
 		<div class="demo-content">
 			<div class="text_div">
 				与选择对话框类似，用于用户必需知道的提示。按键名称可以是其它。
 			</div>
 			<a id="tips2" class="ui-block-btn">单键对话框</a>
 		</div>
-		<p>单键对话框——标题+内容</p>
+		<p class="smtitle">单键对话框——标题+内容</p>
 		<div class="demo-content">
 			<div class="text_div">
 				与选择对话框类似，用于用户必需知道的提示。按键名称可以是其它。
 			</div>
 			<a id="tips_2" class="ui-block-btn">单键对话框</a>
 		</div>
-		<p>4.toast提示</p>
+		<p class="smtitle">4.toast提示</p>
 		<div class="demo-content">
 			<div class="text_div">
 				出现3秒后消失，通常用于不太紧要的提示，对用户干扰较低；图标可有可无；
@@ -200,35 +191,30 @@
 			<a id="tips3" class="ui-block-btn">toast提示</a>
 		</div>
 
-		<p>5.指引提示</p>
+		<p class="smtitle">5.指引提示</p>
 		<div class="demo-content">
 
 			<div class="text_div">
 				通常用于对某个重要功能或隐藏操作做说明； 可以在首次打开时出现，点屏幕后消失，或有关闭的按钮； 也可以通过点击按钮唤出。(位置可自定义配置)
-
 			</div>
-
 			<input type="text" id="tips51" class="test-input" placeholder="触发左箭头提示" />
 			<div class="tips_cont" id="cont_1"></div>
 			<!--单个提示的容器范例-->
 			<br />
-
 			<input type="text" id="tips52" class="test-input" placeholder="触发右箭头提示" />
 			<div class="tips_cont2" id="cont_2"></div>
 			<br />
-
 			<input type="text" id="tips53" class="test-input" placeholder="触发上箭头提示" />
 			<div class="tips_cont3" id="cont_3"></div>
 			<br />
 			<br />
-
 			<input type="text" id="tips54" class="test-input" placeholder="触发下箭头提示" />
 			<div class="tips_cont4" id="cont_4"></div>
 			<br />
 			<br />
 			<br />
 		</div>
-		<p>6.圆点提示</p>
+		<p class="smtitle">6.圆点提示</p>
 		<div class="demo-content">
 			<div class="text_div">
 				通常用于有更新未读或需要引起用户注意去查看； 圆点位置可根据需要具体放置，通常放在图标右上角或列表右侧； 颜色可根据实在情况和需要引起注意的程度进行选择。
@@ -243,9 +229,9 @@
 				<div id="dotBox" style="width: 50px;height: 54px;float: right;"></div>
 			</div>
 			<br />
-			<input id="tips6" type="checkbox"></input>
+			<input id="tips6" type="checkbox">
 		</div>
-		<p>7.未读数量提示</p>
+		<p class="smtitle">7.未读数量提示</p>
 		<div class="demo-content">
 			<div class="text_div">
 				与圆点提示类似，不同的是会显示具体的更新或未读数量。(以下是一个范例，数值范围是(0-99))
@@ -257,7 +243,7 @@
 				<div id="dotNum " style="width: 40px;height: 52px;float: right; "></div>
 			</div>
 			<br />
-			<a id="tips8 " class="ui-block-btn ">初始化6条信息</a>
+			<a class="ui-block-btn tips8">初始化6条信息</a>
 			<br />
 			<a id="tips9 " class="ui-block-btn ">初始化100条信息</a>
 		</div>
@@ -459,15 +445,15 @@
 				zzz.hideDot();
 			}
 		});
-		var g6;
-		g6 = $('#dotNum').AITips({
+		var g6 = $('#dotNum').AITips({
 			'type': 'remains',
 			'theme': 'weixin'
 		});
-		$('#tips8').on("click ", function() {
+		$(".tips8").on("click", function(){
+			console.log(123)
 			g6.remainsNum(6);
 		});
-		$('#tips9').on("click ", function() {
+		$('#tips9').on("click", function() {
 			g6.remainsNum(100);
 		});
 	});
