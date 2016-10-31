@@ -45,9 +45,9 @@
         .copy:hover{
             background-color: #fffdef;
         }
-        .tooltip-top{
-            padding:3px;
-        }
+        /*.tooltip-top{*/
+            /*padding:3px;*/
+        /*}*/
     </style>
 </head>
 <body onselectstart="return true" oncopy="return true" onload="prettyPrint();">
@@ -320,16 +320,14 @@ var clip = new ZeroClipboard(document.getElementById("copy-button4"));
             $(this).tooltip({
                 position: 'top',
                 content: '<span style="color:#fff;">已复制</span>',
-                showEvent:'click',
-                        onShow:function(){
-                    $(this).tooltip('tip').css({
-                        backgroundColor: '#666',
-                        borderColor: '#666',
-                        padding:'3px'
-                    });
-                }
+                showEvent:'click'
             });
             $(this).tooltip("show");
+            $(this).tooltip('tip').css({
+                backgroundColor: '#666',
+                borderColor: '#666',
+                padding:'3px'
+            });
         }
     </script>
 </body>
