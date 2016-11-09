@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>业务常用的js方法</title>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <script type="text/javascript" src="../../../lib/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="../../../lib/handlebars/3.0.3/handlebars.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            margin: 0 auto;
+            width: 900px;
+            border: 1px solid #44abe5;
+        }
+        table tr td,
+        table tr th {
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #44abe5;
+        }
+        table tr th {
+            font-size: 20px;
+            background-color: #44ABE5;
+            color: #fff;
+        }
+        table tr td:first-child {
+            background-color: #eee;
+        }
+        table tr td:nth-child(2),
+        table tr td:nth-child(3) {
+            text-align: left;
+            font-size: 14px;
+        }
+        body{
+            height:900px;
+        }
+        h4{
+            width:100%;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            font-size:24px;
+            margin-top:20px;
+            font-weight:100;
+        }
+    </style>
+</head>
+<body>
+<h4>Util.js的公共方法</h4>
+<div id="method-list"></div>
+    <script id="tpl_iconList" type="text/x-handlebars-template">
+        `      <table id="method-table" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>分类</th>
+                <th>方法名</th>
+                <th>参数</th>
+                <th>样式</th>
+            </tr>
+        {{#each this}}
+        {{#with tips}}
+        {{#each this}}
+            <tr>
+                <td class="tips">提示</td>
+                <td>{{value}}</td>
+                <td>{{name}}</td>
+                <td><img src="{{number}}" style="background-image: #eee;" /></td>
+            </tr>
+        {{/each}}
+        {{/with}}
+        {{#with loading}}
+        {{#each this}}
+        <tr>
+            <td class="loading">加载</td>
+            <td>{{value}}</td>
+            <td>{{name}}</td>
+            <td><img src="{{number}}" style="background-image: #eee;" /></td>
+        </tr>
+        {{/each}}
+        {{/with}}
+        {{/each}}
+        </table>
+    </script>
+<script>
+        $.extend({
+            /*
+             * get方式请求数据。返回的JSON要符合规范。
+             * 引号不能去掉。完整写法：{"key","value"}
+             */
+            GetJson: function(url, datas, callback) {
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: "_=" + (new Date()).getTime() + (datas == null || datas == "" ? "" : ("&" + datas)),
+                    cache: false,
+                    dataType: "json",
+                    beforeSend: function(xhr) {
+                        xhr.overrideMimeType("text/plain; charset=utf-8");
+                    },
+                    success: function(json) {
+                        callback("success", json);
+                    },
+                    error: function(e) {
+                        callback("error", {
+                            "flag": false,
+                            "errmsg": "Call service failed！"
+                        });
+                    }
+                });
+            }
+        });
+        $.GetJson("work_js.json", '', function(state, json) {
+            if (state) {
+                var _temp = Handlebars.compile($("#tpl_iconList").html());
+                $("#method-list").html(_temp(json.data));
+                $(".tips:eq(0)").attr("rowSpan",json.data[0]['tips'].length);
+                $(".loading:eq(0)").attr("rowSpan",json.data[0]['loading'].length);
+                $(".tips").not($(".tips")[0]).css("display","none");
+                $(".loading").not($(".loading")[0]).css("display","none");
+            }
+        });
+    Handlebars.registerHelper("addOne",function(index,options){
+                return parseInt(index)+1;
+    });
+</script>
+</body>
+</html>
