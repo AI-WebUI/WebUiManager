@@ -68,51 +68,52 @@
             <h2>基本功能：TAB组件使用案例</h2>
 
             <div class="aries_demo bs-example html">
-                <p>一级tab便签页</p>
-                <div id="tt" class="webui-tabs" data-options="tabWidth:160,plain:true,scrollIncrement:160"
-                     style="width:700px;height:250px">
-                    <div title="客户首页" style="padding:10px">
-                        客服首页内容
-                    </div>
-                    <div title="业务名称1" style="padding:10px">
-                        业务名称1
-                    </div>
-                </div>
-                <script>
-                    setTabs();
-                    function setTabs() {
-                        $('#tt').tabs({
-                            plain: true,
-                            narrow: $('#narrow').is(':checked'),
-                            pill: $('#pill').is(':checked'),
-                            justified: $('#justified').is(':checked'),
-                            tabPosition: 'left'
-                        })
-                    }
-                </script>
+        <p>一级tab便签页</p>
+
+ <div id="tt" class="webui-tabs" data-options="tabWidth:160,plain:true,scrollIncrement:160"
+      style="width:700px;height:250px">
+      <div title="客户首页" style="padding:10px">
+            客服首页内容
+       </div>
+       <div title="业务名称1" style="padding:10px;height:auto;overflow-y: visible">
+            业务名称1
+       </div>
+</div>
+<script>
+    setTabs();
+     function setTabs() {
+         $('#tt').tabs({
+            plain: true,
+            narrow: $('#narrow').is(':checked'),
+            pill: $('#pill').is(':checked'),
+            justified: $('#justified').is(':checked'),
+            tabPosition: 'left'
+         })
+     }
+</script>
                 <p>二级tab标签页</p>
 
-                <div id="tab_newadd" class="webui-tabs" data-options="plain:true,scrollIncrement:160"
-                     style="width:700px;height:250px">
-                    <div title="业务一" style="padding:10px">
-                        业务一
-                    </div>
-                    <div title="业务二" style="padding:10px">
-                        业务二
-                    </div>
-                    <div title="业务三" data-options="closable:true" style="padding:10px">
-                        业务三
-                    </div>
-                </div>
-                <script>
-                    $(function () {
-                        $('#tab_newadd').tabs({
-                            className: "gray-bg"
-                        })
-                        var t = $('#tab_newadd').tabs("tabs")[0];
-                        console.log(t)
-                    });
-                </script>
+<div id="tab_newadd" class="webui-tabs" data-options="plain:true,scrollIncrement:160"
+      style="width:700px;height:250px">
+      <div title="业务一" style="padding:10px">
+            业务一
+       </div>
+      <div title="业务二" style="padding:10px">
+            业务二
+      </div>
+      <div title="业务三" data-options="closable:true" style="padding:10px">
+            业务三
+      </div>
+</div>
+     <script>
+         $(function () {
+              $('#tab_newadd').tabs({
+                   className: "gray-bg"
+              })
+              var t = $('#tab_newadd').tabs("tabs")[0];
+              console.log(t)
+         });
+     </script>
             </div>
             <div class="aries_demo bs-example">
                 <p>1、通过标记创建标签页（Tabs）</p>
@@ -251,14 +252,14 @@
                             通过已有的 DOM 容器定义工具。
          <pre>
              <code>
-   $('#tt').tabs({
-       tools:'#tab-tools'
-   });
-   &lt;div id="tab-tools"&gt;
-   &lt;a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add"&gt;&lt;/a&gt;
-   &lt;a href="#"class="easyui-linkbutton" plain="true" iconCls="icon-save"&gt;&lt;/a&gt;
-   &lt;/div&gt;
-			</code>
+                 $('#tt').tabs({
+                 tools:'#tab-tools'
+                 });
+                 &lt;div id="tab-tools"&gt;
+                 &lt;a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add"&gt;&lt;/a&gt;
+                 &lt;a href="#"class="easyui-linkbutton" plain="true" iconCls="icon-save"&gt;&lt;/a&gt;
+                 &lt;/div&gt;
+             </code>
          </pre>
                         </td>
                         <td>null</td>
