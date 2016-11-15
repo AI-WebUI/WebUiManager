@@ -81,6 +81,26 @@
         </tr>
         {{/each}}
         {{/with}}
+        {{#with checking}}
+        {{#each this}}
+        <tr>
+            <td class="checking">输入框输入限制</td>
+            <td>{{value}}</td>
+            <td>{{name}}</td>
+            <td><img src="{{number}}" style="background-image: #eee;" /></td>
+        </tr>
+        {{/each}}
+        {{/with}}
+        {{#with datagrid}}
+        {{#each this}}
+        <tr>
+            <td class="datagrid">加载表格</td>
+            <td>{{value}}</td>
+            <td>{{name}}</td>
+            <td><img src="{{number}}" style="background-image: #eee;" /></td>
+        </tr>
+        {{/each}}
+        {{/with}}
         {{/each}}
         </table>
     </script>
@@ -118,8 +138,10 @@
                 $("#method-list").html(_temp(json.data));
                 $(".tips:eq(0)").attr("rowSpan",json.data[0]['tips'].length);
                 $(".loading:eq(0)").attr("rowSpan",json.data[0]['loading'].length);
+                $(".datagrid:eq(0)").attr("rowSpan",json.data[0]['datagrid'].length);
                 $(".tips").not($(".tips")[0]).css("display","none");
                 $(".loading").not($(".loading")[0]).css("display","none");
+                $(".datagrid").not($(".datagrid")[0]).css("display","none");
             }
         });
     Handlebars.registerHelper("addOne",function(index,options){
