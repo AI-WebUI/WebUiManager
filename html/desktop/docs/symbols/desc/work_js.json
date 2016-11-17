@@ -49,7 +49,7 @@
     "number":""
   },{
     "value": "modify_datagrid_empty_msg：自定义表格内容为空时候的提示信息",
-    "name": "function(node, emptyMsg) node：节点；emptyMsg：提示信息",
+    "name": "参数：function(node, emptyMsg) node：节点；emptyMsg：提示信息",
     "number":""
   }]
 }]
